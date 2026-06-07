@@ -1,0 +1,469 @@
+.practice-section {
+    padding: 25px 70px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    background: white;
+  }
+  
+  .mock-card {
+    min-height: 290px;
+    border-radius: 18px;
+    padding: 28px;
+    background:
+      radial-gradient(circle at 72% 38%, rgba(139, 92, 246, 0.55), transparent 28%),
+      linear-gradient(135deg, #08051f, #170949 60%, #09051f);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.16);
+  }
+  
+  .mock-label {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: rgba(124, 58, 237, 0.7);
+  
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  
+  .mock-card h2 {
+    margin: 16px 0 18px;
+  
+    font-family: var(--font-heading);
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+  }
+  
+  .mock-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mock-card li {
+    margin-bottom: 10px;
+    color: #e5e7eb;
+  
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+  
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  
+  .mock-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  
+  .mock-actions button,
+.problem-actions button {
+  border: none;
+  padding: 13px 22px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: white;
+
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+
+  cursor: pointer;
+}
+
+.problem-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+  
+  .mock-actions .outline-btn,
+  .problem-actions .solution-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+  }
+  
+  .trophy-area {
+    width: 220px;
+    position: relative;
+    display: grid;
+    place-items: center;
+  
+    transform: translateY(-15px);
+  }
+
+  .trophy-ring {
+    position: absolute;
+  
+    width: 180px;
+    height: 180px;
+  
+    border-radius: 50%;
+  
+    border-top: 1px solid rgba(255,255,255,0.45);
+    border-right: 1px solid rgba(168,85,247,0.45);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;  
+    animation: rotateRing 18s linear infinite;
+  }
+  
+  .premium-trophy {
+    position: relative;
+    width: 220px;
+    height: 220px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .trophy-glow {
+    position: absolute;
+    inset: 0;
+  
+    background:
+      radial-gradient(
+        circle,
+        rgba(250, 204, 21, 0.28),
+        transparent 70%
+      );
+  
+    filter: blur(30px);
+  }
+  
+  .trophy-svg {
+    width: 200px;
+    height: 200px;
+  
+    position: relative;
+    z-index: 2;
+  
+    filter:
+      drop-shadow(0 0 18px rgba(250, 204, 21, 0.5))
+      drop-shadow(0 0 35px rgba(168, 85, 247, 0.25));
+  
+    animation: trophyFloat 4s ease-in-out infinite;
+    transition: transform 0.25s ease;
+  }
+  
+  .cup-body {
+    fill: url(#trophyGold);
+  }
+  
+  .cup-handle {
+    fill: none;
+    stroke: #facc15;
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+  
+  .trophy-stem {
+    fill: url(#trophyGold);
+  }
+  
+  .trophy-base {
+    fill: url(#trophyPurple);
+  }
+  
+  .trophy-medal {
+    fill: rgba(255,255,255,0.15);
+  }
+  
+  .trophy-star {
+    fill: white;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  
+  .trophy-highlight {
+    fill: none;
+    stroke: rgba(255,255,255,0.45);
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
+  
+  .trophy-shadow {
+    fill: rgba(168, 85, 247, 0.18);
+  }
+  
+  @keyframes trophyFloat {
+    0%,100% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .registered-box {
+    position: absolute;
+    bottom: -20px;
+    right: -15px;
+    width: 145px;
+    padding: 14px;
+    text-align: center;
+    border-radius: 13px;
+    background: rgba(31, 27, 55, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  
+  .registered-box b {
+    display: block;
+  
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  
+  .registered-box span {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: #d1d5db;
+  }
+  
+  .problem-card {
+    min-height: 290px;
+    border-radius: 18px;
+    padding: 30px 32px;
+    background: white;
+    border: 2px solid #7c3aed;
+    box-shadow: 0 18px 50px rgba(124, 58, 237, 0.12);
+  }
+  
+  .problem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .problem-header h2 {
+    margin: 0;
+  
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  
+    color: #111827;
+  }
+  
+  .problem-header span {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #fde68a;
+  
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  
+    color: #111827;
+  }
+  
+  .problem-topic {
+    margin: 16px 0 18px;
+  
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  
+    color: #4f46e5;
+  }
+  
+  .problem-body {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 28px;
+    align-items: center;
+  }
+  
+  .problem-text p {
+    color: #111827;
+  
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.65;
+  
+    margin: 0 0 20px;
+  }
+  
+  .problem-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .problem-actions .solution-btn {
+    color: #111827;
+    border-color: rgba(124, 58, 237, 0.4);
+  }
+  
+  .problem-text a {
+    color: #6d28d9;
+  
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  
+    text-decoration: none;
+  }
+  
+  .triangle-diagram {
+    height: 180px;
+    position: relative;
+  }
+  .triangle-diagram {
+    height: 190px;
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  
+  .geometry-svg {
+    width: 220px;
+    height: 180px;
+  }
+  
+  .triangle-fill {
+    fill: rgba(124, 58, 237, 0.08);
+  }
+  
+  .triangle-outline {
+    fill: none;
+    stroke: #111827;
+    stroke-width: 2.4;
+    stroke-linejoin: round;
+  }
+  
+  .bisector-line {
+    fill: none;
+    stroke: #4f46e5;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    opacity: 0.75;
+  }
+  
+  .point-dot {
+    fill: #111827;
+  }
+  
+  .angle-arc {
+    fill: none;
+    stroke: #7c3aed;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+  
+  .svg-label {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+    fill: #111827;
+  }
+  
+  @keyframes rotateRing {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .mock-card,
+.problem-card,
+.test-banner,
+.stats-bar {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mock-card:hover,
+.problem-card:hover {
+  transform: translateY(-4px);
+}
+
+.mock-actions button:hover,
+.problem-actions button:hover {
+  transform: translateY(-2px);
+}
+
+.mock-actions button:hover,
+.problem-actions button:hover {
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.35);
+}
+
+.mock-card,
+.problem-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mock-card:hover,
+.problem-card:hover {
+  transform: translateY(-5px);
+}
+
+.mock-card:hover {
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.22);
+}
+
+.problem-card:hover {
+  box-shadow: 0 26px 70px rgba(124, 58, 237, 0.18);
+}
+
+.mock-actions button:hover,
+.problem-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.32);
+}
+
+.premium-trophy:hover .trophy-svg {
+  transform: scale(1.04);
+}
+
+  @media (max-width: 900px) {
+    .practice-section {
+      grid-template-columns: 1fr;
+      padding: 25px 24px;
+    }
+  
+    .mock-card {
+      flex-direction: column;
+    }
+  
+    .trophy-area {
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .problem-body {
+      grid-template-columns: 1fr;
+    }
+  }
