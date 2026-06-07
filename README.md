@@ -1,16 +1,48 @@
-# React + Vite
+# Maths Beyond Classroom (MBC)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Maths Beyond Classroom (MBC) is an Olympiad Mathematics learning platform being developed to help students prepare for examinations such as IOQM, RMO, INMO, SEHSS, NMTS and other problem-solving competitions.
 
-Currently, two official plugins are available:
+## Current Status
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🚧 Under Development
 
-## React Compiler
+The homepage UI has been completed and serves as the design foundation for the platform.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Implemented
 
-## Expanding the ESLint configuration
+* Premium homepage design
+* Responsive navigation bar
+* Hero section with mathematical visualizations
+* Feature highlights section
+* Topic Explorer section
+* Mock Test showcase
+* Problem of the Day section
+* Statistics section
+* Test Series banner
+* Footer
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Planned Features
+
+* Student Authentication (Login/Register)
+* Student Dashboard
+* Topic-wise Learning Modules
+* PYQ Library
+* Mock Test Platform
+* Daily Practice System
+* Leaderboard
+* Admin Panel
+
+## Tech Stack
+
+* React
+* Vite
+* CSS
+* Git & GitHub
+
+## Vision
+
+To build a focused platform for Olympiad Mathematics preparation, structured learning, and problem-solving excellence.
+
+---
+
+Built by Avilash Satpathy using React and Vite.
