@@ -1,5 +1,5 @@
 import "./Register.css";
-import logo from "../../assets/mbc-logo.png";
+import logo from "../../assets/mbc-logo-8.png";
 import { FcGoogle } from "react-icons/fc";
 
 function Register() {
