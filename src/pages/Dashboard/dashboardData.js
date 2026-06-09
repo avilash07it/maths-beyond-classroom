@@ -7,7 +7,7 @@ import {
   Sigma,
   Calculator,
   Triangle,
-  Infinity as InfinityIcon,
+  Network,
   PlayCircle,
   FileText,
   Library,
@@ -47,7 +47,7 @@ export const continueLearning = [
     lecture: "Lecture 2",
     subtitle: "Counting Principles",
     color: "blue",
-    icon: InfinityIcon,
+    icon: Network,
   },
 ];
 

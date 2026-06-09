@@ -1,3 +1,4 @@
+import TopicExplorerPage from "./pages/TopicExplorerPage/TopicExplorerPage";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -39,6 +40,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/topics" element={<TopicExplorerPage />} />
         </Routes>
       </BrowserRouter>
     </div>

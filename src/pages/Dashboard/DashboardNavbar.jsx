@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "./DashboardNavbar.css";
 import logo from "../../assets/mbc-logo-8.png";
 
@@ -14,14 +15,14 @@ function DashboardNavbar() {
       </div>
 
       <div className="dashboard-links">
-        <a href="#" className="active">Dashboard</a>
-        <a href="#">Topics</a>
-        <a href="#">Lectures</a>
-        <a href="#">Study Material</a>
-        <a href="#">PYQ Library</a>
-        <a href="#">Mock Tests</a>
-        <a href="#">POTD</a>
-      </div>
+  <NavLink to="/dashboard">Dashboard</NavLink>
+  <NavLink to="/topics">Topics</NavLink>
+  <NavLink to="/lectures">Lectures</NavLink>
+  <NavLink to="/study-material">Study Material</NavLink>
+  <NavLink to="/pyq-library">PYQ Library</NavLink>
+  <NavLink to="/mock-tests">Mock Tests</NavLink>
+  <NavLink to="/potd">POTD</NavLink>
+</div>
 
       <div className="dashboard-streak">
         🔥 12 Day Streak
