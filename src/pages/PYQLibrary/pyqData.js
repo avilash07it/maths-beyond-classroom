@@ -1,0 +1,78 @@
+export const pyqSets = [
+  {
+    id: "ioqm-2024-number-theory",
+    exam: "IOQM",
+    examName: "Indian Olympiad Qualifier in Mathematics",
+    year: 2024,
+    topic: "Number Theory",
+    questions: 20,
+    difficulty: "Advanced",
+  },
+  {
+    id: "ioqm-2023-algebra",
+    exam: "IOQM",
+    examName: "Indian Olympiad Qualifier in Mathematics",
+    year: 2023,
+    topic: "Algebra",
+    questions: 20,
+    difficulty: "Intermediate",
+  },
+  {
+    id: "rmo-2023-geometry",
+    exam: "RMO",
+    examName: "Regional Mathematical Olympiad",
+    year: 2023,
+    topic: "Geometry",
+    questions: 6,
+    difficulty: "Advanced",
+  },
+  {
+    id: "rmo-2022-number-theory",
+    exam: "RMO",
+    examName: "Regional Mathematical Olympiad",
+    year: 2022,
+    topic: "Number Theory",
+    questions: 6,
+    difficulty: "Advanced",
+  },
+  {
+    id: "nmtc-2024-combinatorics",
+    exam: "NMTC",
+    examName: "National Mathematics Talent Contest",
+    year: 2024,
+    topic: "Combinatorics",
+    questions: 25,
+    difficulty: "Intermediate",
+  },
+  {
+    id: "nmtc-2023-algebra",
+    exam: "NMTC",
+    examName: "National Mathematics Talent Contest",
+    year: 2023,
+    topic: "Algebra",
+    questions: 25,
+    difficulty: "Foundation",
+  },
+  {
+    id: "sehss-2024-geometry",
+    exam: "SEHSS",
+    examName: "Sri Chaitanya Educational Institutions",
+    year: 2024,
+    topic: "Geometry",
+    questions: 30,
+    difficulty: "Intermediate",
+  },
+  {
+    id: "cbse-ix-x-2024-algebra",
+    exam: "CBSE IX & X",
+    examName: "School Board Mathematics",
+    year: 2024,
+    topic: "Algebra",
+    questions: 18,
+    difficulty: "Foundation",
+  },
+];
+
+export const exams = ["IOQM", "RMO", "NMTC", "SEHSS", "CBSE IX & X"];
+
+export const topics = ["Number Theory", "Algebra", "Geometry", "Combinatorics"];

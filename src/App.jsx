@@ -16,6 +16,7 @@ import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import TopicExplorerPage from "./pages/TopicExplorerPage/TopicExplorerPage";
 import TopicDetail from "./pages/TopicDetail/TopicDetail";
+import PYQLibrary from "./pages/PYQLibrary/PYQLibrary";
 
 function HomePage() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/topics" element={<TopicExplorerPage />} />
+          <Route path="/pyq-library" element={<PYQLibrary />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}
