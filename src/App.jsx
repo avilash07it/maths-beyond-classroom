@@ -1,4 +1,3 @@
-import TopicExplorerPage from "./pages/TopicExplorerPage/TopicExplorerPage";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,6 +14,8 @@ import Footer from "./components/Footer/Footer";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import TopicExplorerPage from "./pages/TopicExplorerPage/TopicExplorerPage";
+import TopicDetail from "./pages/TopicDetail/TopicDetail";
 
 function HomePage() {
   return (
@@ -41,6 +42,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/topics" element={<TopicExplorerPage />} />
+          <Route
+  path="/topics/number-theory"
+  element={<TopicDetail />}
+/>
         </Routes>
       </BrowserRouter>
     </div>
