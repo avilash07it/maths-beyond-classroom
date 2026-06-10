@@ -1,0 +1,735 @@
+.proplans-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 75% 0%, rgba(124, 58, 237, 0.13), transparent 30%),
+    linear-gradient(180deg, #05071a 0%, #070a1d 42%, #f7f8fc 42%, #f7f8fc 100%);
+  color: #101827;
+  font-family: "Inter", sans-serif;
+}
+
+.proplans-shell {
+  width: min(1510px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 26px 0 56px;
+}
+
+.proplans-hero {
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  gap: 32px;
+  align-items: center;
+  padding: 48px 54px;
+  border-radius: 22px 22px 0 0;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 78% 44%, rgba(251, 191, 36, 0.18), transparent 27%),
+    radial-gradient(circle at 35% 92%, rgba(124, 58, 237, 0.2), transparent 32%),
+    linear-gradient(135deg, #05071a 0%, #090b22 52%, #13051f 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
+}
+
+.proplans-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+}
+
+.proplans-hero-copy,
+.proplans-crown-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.proplans-hero-kicker {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.26);
+  font-weight: 900;
+}
+
+.proplans-hero h1 {
+  margin: 28px 0 0;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(42px, 5vw, 66px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.proplans-hero h1 span {
+  color: #f8d76f;
+}
+
+.proplans-hero p {
+  width: min(650px, 100%);
+  margin: 16px 0 0;
+  color: #d9e0ee;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.proplans-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.proplans-hero-chips span {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.62);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  font-weight: 800;
+  backdrop-filter: blur(14px);
+}
+
+.proplans-crown-visual {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.proplans-crown-visual::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.2), transparent 62%);
+  filter: blur(8px);
+}
+
+.proplans-crown-orbit {
+  position: absolute;
+  width: 430px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 191, 36, 0.38);
+  transform: rotate(-6deg);
+}
+
+.proplans-crown {
+  width: 190px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 2;
+  color: #3a1e00;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 255, 255, 0.74), transparent 22%),
+    linear-gradient(135deg, #fde68a, #f59e0b 72%);
+  box-shadow:
+    0 0 42px rgba(251, 191, 36, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+
+.proplans-crown-base {
+  width: 310px;
+  height: 68px;
+  position: absolute;
+  bottom: 48px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #7c3aed, #2e1065);
+  box-shadow: 0 28px 55px rgba(124, 58, 237, 0.34);
+}
+
+.proplans-crown-base::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 12px;
+  height: 4px;
+  border-radius: 999px;
+  background: #fcd34d;
+  box-shadow: 0 0 16px rgba(252, 211, 77, 0.85);
+}
+
+.proplans-gold-star {
+  position: absolute;
+  color: #fbbf24;
+  font-size: 28px;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.76);
+}
+
+.proplans-gold-star-one {
+  left: 18%;
+  top: 22%;
+}
+
+.proplans-gold-star-two {
+  right: 17%;
+  top: 24%;
+}
+
+.proplans-gold-star-three {
+  right: 25%;
+  bottom: 24%;
+}
+
+.proplans-plans-area,
+.proplans-comparison-area,
+.proplans-manual-note,
+.proplans-benefit-strip,
+.proplans-bottom-cta {
+  background: #ffffff;
+}
+
+.proplans-plans-area {
+  padding: 40px 28px 30px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-top: 0;
+  border-radius: 0 0 24px 24px;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(251, 191, 36, 0.12), transparent 24%),
+    radial-gradient(circle at 45% 8%, rgba(124, 58, 237, 0.16), transparent 32%),
+    linear-gradient(135deg, #05071a, #080d22 58%, #09071c);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.22);
+}
+
+.proplans-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.proplans-section-heading span {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: #f8d76f;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proplans-section-heading h2,
+.proplans-comparison-card h2,
+.proplans-manual-note h2,
+.proplans-benefit-title h2,
+.proplans-bottom-cta h2 {
+  margin: 0;
+  color: #111827;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.proplans-section-heading p,
+.proplans-comparison-card p,
+.proplans-manual-note p,
+.proplans-bottom-cta p {
+  margin: 8px 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.proplans-plans-area .proplans-section-heading h2 {
+  color: #ffffff;
+}
+
+.proplans-plans-area .proplans-section-heading p {
+  color: #cbd5e1;
+}
+
+.proplans-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.proplans-price-card {
+  min-height: 670px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 26px 24px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.2), transparent 35%),
+    linear-gradient(180deg, rgba(12, 18, 41, 0.98), rgba(5, 10, 24, 0.98));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.proplans-price-card-recommended {
+  transform: translateY(-10px);
+  border-color: rgba(168, 85, 247, 0.9);
+  box-shadow:
+    0 32px 70px rgba(124, 58, 237, 0.22),
+    0 0 0 1px rgba(168, 85, 247, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.proplans-price-card-premium {
+  border-color: rgba(251, 191, 36, 0.78);
+  background:
+    radial-gradient(circle at 95% 0%, rgba(251, 191, 36, 0.24), transparent 34%),
+    radial-gradient(circle at 0% 100%, rgba(124, 58, 237, 0.26), transparent 36%),
+    linear-gradient(180deg, rgba(15, 18, 40, 0.99), rgba(8, 8, 23, 0.99));
+  box-shadow:
+    0 30px 72px rgba(245, 158, 11, 0.16),
+    0 0 0 1px rgba(251, 191, 36, 0.28);
+}
+
+.proplans-recommended-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transform: translateX(-50%);
+  min-height: 32px;
+  padding: 0 18px;
+  border-radius: 999px;
+  color: #4b2c00;
+  background: linear-gradient(135deg, #a855f7, #6d28d9);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  box-shadow: 0 12px 26px rgba(245, 158, 11, 0.22);
+}
+
+.proplans-price-card-premium .proplans-recommended-badge {
+  top: 18px;
+  right: -34px;
+  left: auto;
+  min-width: 148px;
+  justify-content: center;
+  transform: rotate(40deg);
+  border-radius: 0;
+  color: #2b1600;
+  background: linear-gradient(135deg, #fde68a, #f59e0b);
+  box-shadow: 0 14px 32px rgba(245, 158, 11, 0.24);
+}
+
+.proplans-price-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  color: #7c3aed;
+  background: #f0e7ff;
+}
+
+.proplans-price-card-blue .proplans-price-icon {
+  color: #2563eb;
+  background: #e8f1ff;
+}
+
+.proplans-price-card-gold .proplans-price-icon {
+  color: #a16207;
+  background: #fef3c7;
+}
+
+.proplans-price-card h3 {
+  margin: 22px 0 0;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 25px;
+  letter-spacing: 0;
+}
+
+.proplans-price-card-recommended h3 {
+  color: #d8b4fe;
+}
+
+.proplans-price-card-premium h3 {
+  color: #f8d76f;
+}
+
+.proplans-price-card > strong {
+  display: block;
+  margin-top: 18px;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.proplans-price-card > p {
+  margin: 14px 0 0;
+  color: #d4dbe8;
+  line-height: 1.6;
+}
+
+.proplans-includes-heading {
+  margin: 22px 0 0;
+  color: #c084fc;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.proplans-price-card-blue .proplans-includes-heading {
+  color: #60a5fa;
+}
+
+.proplans-price-card-premium .proplans-includes-heading {
+  color: #f8d76f;
+}
+
+.proplans-feature-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.proplans-feature-list div {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #edf2fb;
+  font-weight: 800;
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.proplans-feature-list svg {
+  flex: 0 0 auto;
+  color: #7c3aed;
+  margin-top: 2px;
+}
+
+.proplans-price-card-blue .proplans-feature-list svg {
+  color: #2563eb;
+}
+
+.proplans-price-card-gold .proplans-feature-list svg {
+  color: #d97706;
+}
+
+.proplans-best-for {
+  margin-top: auto;
+  padding: 16px;
+  border-radius: 15px;
+  background: rgba(15, 23, 42, 0.58);
+  border: 1px solid rgba(168, 85, 247, 0.24);
+}
+
+.proplans-best-for span {
+  color: #c084fc;
+  font-weight: 900;
+}
+
+.proplans-best-for p {
+  margin: 7px 0 0;
+  color: #d4dbe8;
+  line-height: 1.55;
+}
+
+.proplans-price-card-blue .proplans-best-for {
+  border-color: rgba(96, 165, 250, 0.24);
+}
+
+.proplans-price-card-blue .proplans-best-for span {
+  color: #60a5fa;
+}
+
+.proplans-price-card-premium .proplans-best-for {
+  border-color: rgba(251, 191, 36, 0.34);
+  background: rgba(24, 18, 24, 0.7);
+}
+
+.proplans-price-card-premium .proplans-best-for span {
+  color: #f8d76f;
+}
+
+.proplans-price-card button,
+.proplans-bottom-cta button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  font-family: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(124, 58, 237, 0.24);
+}
+
+.proplans-price-card-gold button,
+.proplans-bottom-cta button {
+  color: #2b1600;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 16px 32px rgba(245, 158, 11, 0.24);
+}
+
+.proplans-price-card-recommended:not(.proplans-price-card-premium) button {
+  background: linear-gradient(135deg, #a855f7, #6d28d9);
+  box-shadow: 0 18px 38px rgba(124, 58, 237, 0.34);
+}
+
+.proplans-comparison-area {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.proplans-comparison-card,
+.proplans-manual-note,
+.proplans-benefit-strip,
+.proplans-bottom-cta {
+  border: 1px solid rgba(226, 232, 240, 0.92);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+}
+
+.proplans-comparison-card {
+  padding: 28px;
+}
+
+.proplans-comparison-heading {
+  display: flex;
+  gap: 16px;
+}
+
+.proplans-comparison-heading > span,
+.proplans-manual-note > span,
+.proplans-benefit-title > span {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 17px;
+}
+
+.proplans-free-card .proplans-comparison-heading > span {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.proplans-paid-card .proplans-comparison-heading > span,
+.proplans-manual-note > span {
+  color: #7c3aed;
+  background: #f0e7ff;
+}
+
+.proplans-comparison-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.proplans-comparison-list div {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px;
+  border-radius: 14px;
+  color: #334155;
+  background: #f8fafc;
+  font-weight: 850;
+}
+
+.proplans-free-card .proplans-comparison-list svg {
+  color: #16a34a;
+}
+
+.proplans-paid-card .proplans-comparison-list svg {
+  color: #7c3aed;
+}
+
+.proplans-manual-note {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-top: 24px;
+  padding: 26px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.08), transparent 32%),
+    #ffffff;
+}
+
+.proplans-benefit-strip {
+  display: grid;
+  grid-template-columns: 1.18fr repeat(6, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 50%, rgba(251, 191, 36, 0.16), transparent 18%),
+    linear-gradient(135deg, #080b22, #140527);
+  border-color: rgba(251, 191, 36, 0.2);
+}
+
+.proplans-benefit-title,
+.proplans-benefit-item {
+  min-height: 118px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px;
+  color: #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.proplans-benefit-title > span {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.14);
+}
+
+.proplans-benefit-title h2 {
+  color: #fde68a;
+  font-size: 23px;
+}
+
+.proplans-benefit-item {
+  color: #dbe4f0;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.proplans-benefit-item svg {
+  flex: 0 0 auto;
+  color: #fbbf24;
+}
+
+.proplans-bottom-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 34px 42px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 14% 50%, rgba(124, 58, 237, 0.3), transparent 24%),
+    radial-gradient(circle at 84% 50%, rgba(251, 191, 36, 0.18), transparent 24%),
+    linear-gradient(135deg, #05071a, #12052e);
+  border-color: rgba(168, 85, 247, 0.24);
+}
+
+.proplans-bottom-cta h2 {
+  color: #ffffff;
+}
+
+.proplans-bottom-cta p {
+  color: #d8deea;
+}
+
+.proplans-bottom-cta button {
+  min-width: 250px;
+  margin: 0;
+}
+
+@media (max-width: 1180px) {
+  .proplans-hero,
+  .proplans-comparison-area {
+    grid-template-columns: 1fr;
+  }
+
+  .proplans-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proplans-price-card {
+    min-height: 0;
+  }
+
+  .proplans-benefit-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proplans-benefit-title,
+  .proplans-benefit-item {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 760px) {
+  .proplans-shell {
+    width: min(100% - 28px, 1510px);
+    padding-top: 18px;
+  }
+
+  .proplans-hero {
+    padding: 30px 22px;
+  }
+
+  .proplans-crown-visual {
+    min-height: 240px;
+  }
+
+  .proplans-crown {
+    width: 142px;
+    height: 118px;
+  }
+
+  .proplans-crown svg {
+    width: 86px;
+    height: 86px;
+  }
+
+  .proplans-crown-base {
+    width: 230px;
+  }
+
+  .proplans-section-heading,
+  .proplans-bottom-cta {
+    display: grid;
+  }
+
+  .proplans-plans-area {
+    padding: 28px 18px 20px;
+  }
+
+  .proplans-price-card,
+  .proplans-comparison-card,
+  .proplans-manual-note,
+  .proplans-bottom-cta {
+    padding: 22px;
+  }
+
+  .proplans-comparison-list,
+  .proplans-card-grid,
+  .proplans-benefit-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .proplans-manual-note {
+    display: grid;
+  }
+
+  .proplans-bottom-cta button {
+    width: 100%;
+    min-width: 0;
+  }
+}
