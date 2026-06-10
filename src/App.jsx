@@ -19,6 +19,7 @@ import TopicDetail from "./pages/TopicDetail/TopicDetail";
 import PYQLibrary from "./pages/PYQLibrary/PYQLibrary";
 import Lectures from "./pages/Lectures/Lectures";
 import StudyMaterial from "./pages/StudyMaterial/StudyMaterial";
+import POTD from "./pages/POTD/POTD";
 
 function HomePage() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/study-material" element={<StudyMaterial />} />
           <Route path="/pyq-library" element={<PYQLibrary />} />
+          <Route path="/potd" element={<POTD />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}

@@ -1,0 +1,780 @@
+.potd-page {
+  min-height: 100vh;
+  background: #f7f8fc;
+  color: #111827;
+  font-family: "Inter", sans-serif;
+}
+
+.potd-shell {
+  width: min(1480px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 30px 0 56px;
+}
+
+.potd-hero {
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.88fr);
+  gap: 32px;
+  align-items: center;
+  padding: 44px 48px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 74% 44%, rgba(139, 92, 246, 0.35), transparent 28%),
+    radial-gradient(circle at 13% 100%, rgba(14, 165, 233, 0.09), transparent 35%),
+    linear-gradient(135deg, #05071a 0%, #080b23 50%, #10062a 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
+}
+
+.potd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 85%, transparent);
+}
+
+.potd-hero-copy,
+.potd-hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.potd-hero-kicker {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: #eadcff;
+  background: rgba(124, 58, 237, 0.22);
+  border: 1px solid rgba(168, 85, 247, 0.26);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.potd-hero h1 {
+  margin: 28px 0 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(42px, 5vw, 66px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.potd-hero h1 span {
+  color: #a855f7;
+}
+
+.potd-hero p {
+  max-width: 610px;
+  margin: 16px 0 0;
+  color: #d9e0ee;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.potd-hero-badges {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.potd-hero-badge {
+  min-height: 76px;
+  padding: 15px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.66);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(16px);
+}
+
+.potd-hero-badge strong,
+.potd-hero-badge span {
+  display: block;
+}
+
+.potd-hero-badge strong {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.potd-hero-badge span {
+  margin-top: 6px;
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.potd-hero-visual {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.potd-hero-visual::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.36), transparent 63%);
+  filter: blur(8px);
+}
+
+.potd-question-orb {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 2;
+  border-radius: 50%;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 94px;
+  font-weight: 900;
+  background:
+    radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.45), transparent 26%),
+    linear-gradient(135deg, #a855f7, #4c1d95);
+  border: 1px solid rgba(233, 213, 255, 0.34);
+  box-shadow:
+    0 0 42px rgba(168, 85, 247, 0.55),
+    inset 0 0 28px rgba(255, 255, 255, 0.18);
+}
+
+.potd-visual-base {
+  width: 270px;
+  height: 72px;
+  position: absolute;
+  bottom: 46px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #8b5cf6, #2e1065);
+  box-shadow: 0 30px 55px rgba(124, 58, 237, 0.38);
+}
+
+.potd-visual-base::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 12px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e9d5ff;
+  box-shadow: 0 0 18px rgba(233, 213, 255, 0.8);
+}
+
+.potd-hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(196, 181, 253, 0.34);
+  border-radius: 50%;
+}
+
+.potd-hero-orbit-one {
+  width: 265px;
+  height: 74px;
+  transform: rotate(18deg);
+}
+
+.potd-hero-orbit-two {
+  width: 265px;
+  height: 74px;
+  transform: rotate(-18deg);
+}
+
+.potd-symbol {
+  position: absolute;
+  color: #a855f7;
+  font-weight: 900;
+  text-shadow: 0 0 24px rgba(168, 85, 247, 0.72);
+}
+
+.potd-symbol-one {
+  left: 12%;
+  bottom: 24%;
+  font-size: 34px;
+}
+
+.potd-symbol-two {
+  right: 18%;
+  top: 29%;
+  font-size: 32px;
+}
+
+.potd-symbol-three {
+  left: 18%;
+  top: 30%;
+  font-size: 38px;
+}
+
+.potd-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(330px, 0.82fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.potd-main-column,
+.potd-side-column {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.potd-problem-card,
+.potd-streak-card,
+.potd-recent-card,
+.potd-side-card,
+.potd-bottom-cta {
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+}
+
+.potd-problem-card {
+  padding: 30px;
+}
+
+.potd-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.potd-card-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.potd-card-heading.compact {
+  margin-bottom: 16px;
+}
+
+.potd-card-heading.compact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #7c3aed;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.potd-section-icon,
+.potd-side-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  color: #7c3aed;
+  background: #f0e7ff;
+}
+
+.potd-card-heading h2,
+.potd-streak-card h2,
+.potd-recent-card h2,
+.potd-side-card h2,
+.potd-bottom-cta h2 {
+  margin: 0;
+  color: #111827;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 25px;
+  letter-spacing: 0;
+}
+
+.potd-card-heading p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.potd-difficulty,
+.potd-problem-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 13px;
+  border-radius: 999px;
+  color: #7c3aed;
+  background: #f3e8ff;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.potd-problem-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 18px;
+}
+
+.potd-problem-image {
+  min-height: 245px;
+  display: grid;
+  align-content: center;
+  position: relative;
+  padding: 46px 54px;
+  border-radius: 16px;
+  color: #111827;
+  background:
+    linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+    linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+    #fbfbfd;
+  background-size: 28px 28px;
+  border: 1px solid #e5e7eb;
+}
+
+.potd-paper-label {
+  position: absolute;
+  top: 15px;
+  left: 18px;
+  color: #8b5cf6;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.potd-problem-image p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.65;
+}
+
+.potd-problem-description {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #faf7ff;
+  border: 1px solid #eadcff;
+}
+
+.potd-problem-description h3,
+.potd-hint-panel h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+}
+
+.potd-problem-description p,
+.potd-hint-panel p,
+.potd-side-card p,
+.potd-bottom-cta p {
+  margin: 7px 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.potd-hint-panel {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 16px;
+  color: #d97706;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+.potd-problem-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.potd-problem-actions button,
+.potd-support-card button,
+.potd-bottom-cta button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 14px;
+  border: 0;
+  font-family: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.potd-view-problem-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 15px 30px rgba(124, 58, 237, 0.24);
+}
+
+.potd-hint-btn {
+  color: #7c3aed;
+  background: #f1e9ff;
+}
+
+.potd-solution-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #111827, #4c1d95);
+}
+
+.potd-solution-btn span {
+  padding: 4px 7px;
+  border-radius: 999px;
+  color: #2b1600;
+  background: #fbbf24;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.potd-streak-card,
+.potd-recent-card,
+.potd-side-card {
+  padding: 24px;
+}
+
+.potd-streak-copy {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.potd-streak-copy > span {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fb923c;
+  background: #fff1e7;
+}
+
+.potd-streak-copy p {
+  margin: 6px 0 0;
+  color: #64748b;
+}
+
+.potd-streak-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.potd-streak-days div {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: #059669;
+  font-weight: 900;
+}
+
+.potd-streak-days div svg {
+  width: 38px;
+  height: 38px;
+  padding: 9px;
+  border-radius: 50%;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.potd-streak-days div.current {
+  color: #f97316;
+}
+
+.potd-streak-days div.current svg {
+  background: #ffedd5;
+  border-color: #fdba74;
+}
+
+.potd-streak-days span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.potd-recent-list,
+.potd-stat-list,
+.potd-why-list {
+  display: grid;
+  gap: 12px;
+}
+
+.potd-recent-row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid #eef2f7;
+}
+
+.potd-recent-date {
+  color: #7c3aed;
+  font-weight: 900;
+}
+
+.potd-recent-row strong {
+  display: block;
+  color: #111827;
+}
+
+.potd-recent-row p {
+  margin: 4px 0 0;
+  color: #64748b;
+}
+
+.potd-recent-row svg {
+  color: #10b981;
+}
+
+.potd-side-card {
+  display: grid;
+  gap: 14px;
+}
+
+.potd-topic-card {
+  grid-template-columns: 52px minmax(0, 1fr);
+}
+
+.potd-topic-card strong {
+  display: block;
+  margin-top: 8px;
+  color: #7c3aed;
+  font-size: 20px;
+}
+
+.potd-stat-list div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid #eef2f7;
+}
+
+.potd-stat-list span {
+  color: #64748b;
+  font-weight: 800;
+}
+
+.potd-stat-list strong {
+  color: #111827;
+  font-size: 20px;
+}
+
+.potd-tip-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.potd-tip-card li {
+  display: flex;
+  gap: 10px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.potd-tip-card li svg {
+  flex: 0 0 auto;
+  color: #10b981;
+  margin-top: 2px;
+}
+
+.potd-support-card {
+  grid-template-columns: 58px minmax(0, 1fr);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.12), transparent 28%),
+    #ffffff;
+}
+
+.potd-support-card > span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  border-radius: 16px;
+  background: #22c55e;
+  box-shadow: 0 14px 28px rgba(34, 197, 94, 0.22);
+}
+
+.potd-support-card button {
+  min-height: 42px;
+  justify-content: flex-start;
+  padding: 0;
+  color: #16a34a;
+  background: transparent;
+}
+
+.potd-why-list div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #334155;
+  font-weight: 800;
+}
+
+.potd-why-list svg {
+  width: 38px;
+  height: 38px;
+  padding: 9px;
+  border-radius: 11px;
+  color: #7c3aed;
+  background: #f0e7ff;
+}
+
+.potd-bottom-cta {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 34px 42px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(168, 85, 247, 0.34), transparent 24%),
+    radial-gradient(circle at 84% 50%, rgba(124, 58, 237, 0.32), transparent 24%),
+    linear-gradient(135deg, #05071a, #13052f);
+  border-color: rgba(168, 85, 247, 0.24);
+}
+
+.potd-bottom-cta h2 {
+  color: #ffffff;
+}
+
+.potd-bottom-cta p {
+  color: #d8deea;
+}
+
+.potd-trophy-visual {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  color: #fbbf24;
+  background:
+    radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.38), transparent 25%),
+    linear-gradient(135deg, #7c3aed, #3b0764);
+  box-shadow: 0 20px 45px rgba(124, 58, 237, 0.28);
+}
+
+.potd-bottom-cta button {
+  min-width: 250px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 18px 38px rgba(124, 58, 237, 0.34);
+}
+
+@media (max-width: 1180px) {
+  .potd-hero,
+  .potd-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .potd-side-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .potd-shell {
+    width: min(100% - 28px, 1480px);
+    padding-top: 20px;
+  }
+
+  .potd-hero {
+    padding: 30px 24px;
+  }
+
+  .potd-hero-badges,
+  .potd-side-column,
+  .potd-problem-actions,
+  .potd-bottom-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .potd-bottom-cta {
+    text-align: center;
+  }
+
+  .potd-trophy-visual {
+    margin: 0 auto;
+  }
+
+  .potd-bottom-cta button {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .potd-shell {
+    width: min(100% - 20px, 1480px);
+  }
+
+  .potd-hero {
+    min-height: 0;
+  }
+
+  .potd-hero-visual {
+    min-height: 230px;
+  }
+
+  .potd-question-orb {
+    width: 118px;
+    height: 118px;
+    font-size: 72px;
+  }
+
+  .potd-visual-base {
+    width: 210px;
+  }
+
+  .potd-problem-card,
+  .potd-streak-card,
+  .potd-recent-card,
+  .potd-side-card,
+  .potd-bottom-cta {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .potd-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .potd-problem-image {
+    min-height: 210px;
+    padding: 42px 22px 28px;
+  }
+
+  .potd-streak-days {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .potd-recent-row {
+    grid-template-columns: 1fr 24px;
+  }
+
+  .potd-recent-date {
+    grid-column: 1 / -1;
+  }
+
+  .potd-topic-card,
+  .potd-support-card {
+    grid-template-columns: 1fr;
+  }
+}
