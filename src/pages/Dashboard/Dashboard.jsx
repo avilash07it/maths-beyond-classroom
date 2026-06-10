@@ -151,8 +151,8 @@ function Dashboard() {
         </main>
 
         <aside className="dashboard-sidebar">
-          <div className="side-card potd-card">
-            <div className="section-header">
+        <div className="side-card dashboard-potd-card">
+                      <div className="section-header">
               <h2>{potd.title}</h2>
               <a href="#">View all →</a>
             </div>

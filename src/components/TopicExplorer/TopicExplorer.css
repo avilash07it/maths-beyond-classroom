@@ -129,7 +129,7 @@
   .topic-icon {
     width: 68px;
     height: 68px;
-    margin: 0 auto 16px;
+    margin: 0 auto 20px;
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -142,7 +142,7 @@
   }
   
   .topic-card h3 {
-    margin: 0 0 10px;
+    margin: 0;
     color: #090b22;
   
     font-family: var(--font-heading);
@@ -153,20 +153,23 @@
   }
   
   .topic-card span {
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin: 12px auto 0;
     padding: 6px 13px;
     border-radius: 8px;
   
     font-family: var(--font-body);
     font-size: 13px;
     font-weight: 700;
+    line-height: 1.15;
     letter-spacing: -0.01em;
   
     color: #111827;
   }
   
   .topic-card p {
-    margin: 15px 0 16px;
+    margin: 18px 0 16px;
   
     font-family: var(--font-heading);
     font-size: 15px;
