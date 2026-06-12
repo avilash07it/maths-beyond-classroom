@@ -25,6 +25,7 @@ import MockTests from "./pages/MockTests/MockTests";
 import Payment from "./pages/Payment/Payment";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+import ManageLectures from "./pages/ManageLectures/ManageLectures";
 
 function HomePage() {
   return (
@@ -61,6 +62,7 @@ function App() {
           <Route path="/manual-payment" element={<Payment />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/manage-lectures" element={<ManageLectures />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}
