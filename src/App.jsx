@@ -21,6 +21,8 @@ import Lectures from "./pages/Lectures/Lectures";
 import StudyMaterial from "./pages/StudyMaterial/StudyMaterial";
 import POTD from "./pages/POTD/POTD";
 import ProPlans from "./pages/ProPlans/ProPlans";
+import MockTests from "./pages/MockTests/MockTests";
+import Payment from "./pages/Payment/Payment";
 
 function HomePage() {
   return (
@@ -50,8 +52,11 @@ function App() {
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/study-material" element={<StudyMaterial />} />
           <Route path="/pyq-library" element={<PYQLibrary />} />
+          <Route path="/mock-tests" element={<MockTests />} />
           <Route path="/potd" element={<POTD />} />
           <Route path="/pro-plans" element={<ProPlans />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/manual-payment" element={<Payment />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}

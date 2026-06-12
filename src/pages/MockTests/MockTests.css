@@ -1,0 +1,659 @@
+.mocktest-page {
+  min-height: 100vh;
+  background: #f7f8fc;
+  color: #111827;
+  font-family: "Inter", sans-serif;
+}
+
+.mocktest-shell {
+  width: min(1480px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 30px 0 56px;
+}
+
+.mocktest-hero {
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 46px 52px;
+  border-radius: 22px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 78% 42%, rgba(124, 58, 237, 0.34), transparent 27%),
+    radial-gradient(circle at 18% 100%, rgba(14, 165, 233, 0.08), transparent 34%),
+    linear-gradient(135deg, #05071a 0%, #090b22 52%, #13052d 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
+}
+
+.mocktest-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.034) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+}
+
+.mocktest-hero-copy,
+.mocktest-hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.mocktest-hero-kicker {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  color: #e9d5ff;
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  font-weight: 900;
+}
+
+.mocktest-hero h1 {
+  margin: 28px 0 0;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(42px, 5vw, 66px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.mocktest-hero h1 span {
+  color: #a855f7;
+}
+
+.mocktest-hero p {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: #d9e0ee;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.mocktest-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.mocktest-hero-badges span {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.62);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  font-weight: 800;
+  backdrop-filter: blur(14px);
+}
+
+.mocktest-hero-visual {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.mocktest-hero-visual::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.32), transparent 63%);
+  filter: blur(8px);
+}
+
+.mocktest-trophy-mark {
+  width: 158px;
+  height: 158px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 2;
+  border-radius: 34px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 34% 22%, rgba(255, 255, 255, 0.34), transparent 23%),
+    linear-gradient(135deg, #a855f7, #4c1d95);
+  border: 1px solid rgba(233, 213, 255, 0.32);
+  box-shadow: 0 0 48px rgba(124, 58, 237, 0.56);
+}
+
+.mocktest-trophy-platform {
+  width: 270px;
+  height: 66px;
+  position: absolute;
+  bottom: 48px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #7c3aed, #2e1065);
+  box-shadow: 0 28px 55px rgba(124, 58, 237, 0.34);
+}
+
+.mocktest-orbit {
+  position: absolute;
+  border: 1px solid rgba(196, 181, 253, 0.34);
+  border-radius: 50%;
+}
+
+.mocktest-orbit-one {
+  width: 310px;
+  height: 88px;
+  transform: rotate(17deg);
+}
+
+.mocktest-orbit-two {
+  width: 310px;
+  height: 88px;
+  transform: rotate(-17deg);
+}
+
+.mocktest-float {
+  position: absolute;
+  color: #c084fc;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 900;
+  text-shadow: 0 0 24px rgba(168, 85, 247, 0.72);
+}
+
+.mocktest-float-one {
+  left: 14%;
+  top: 24%;
+  font-size: 34px;
+}
+
+.mocktest-float-two {
+  right: 18%;
+  bottom: 25%;
+  font-size: 34px;
+}
+
+.mocktest-float-three {
+  right: 21%;
+  top: 23%;
+  font-size: 42px;
+}
+
+.mocktest-top-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.mocktest-free-card,
+.mocktest-pro-banner,
+.mocktest-series-area,
+.mocktest-status-section,
+.mocktest-benefits-area,
+.mocktest-benefit-card,
+.mocktest-bottom-cta {
+  border: 1px solid rgba(226, 232, 240, 0.92);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+}
+
+.mocktest-free-card {
+  padding: 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.1), transparent 30%),
+    #ffffff;
+}
+
+.mocktest-free-content {
+  display: flex;
+  gap: 18px;
+}
+
+.mocktest-free-icon,
+.mocktest-pro-crown {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 18px;
+}
+
+.mocktest-free-icon {
+  color: #7c3aed;
+  background: #f0e7ff;
+}
+
+.mocktest-free-label,
+.mocktest-pro-label,
+.mocktest-section-heading span {
+  display: inline-flex;
+  color: #7c3aed;
+  font-size: 13px;
+  font-weight: 1000;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mocktest-free-card h2,
+.mocktest-pro-banner h2,
+.mocktest-section-heading h2,
+.mocktest-status-heading h3,
+.mocktest-benefits-area h2,
+.mocktest-benefit-card h3,
+.mocktest-bottom-cta h2 {
+  margin: 0;
+  color: #111827;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 0;
+}
+
+.mocktest-free-card h2,
+.mocktest-pro-banner h2 {
+  margin-top: 8px;
+  font-size: 29px;
+}
+
+.mocktest-free-card p,
+.mocktest-pro-banner p,
+.mocktest-section-heading p,
+.mocktest-status-heading p,
+.mocktest-benefit-card p,
+.mocktest-bottom-cta p {
+  margin: 8px 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.mocktest-free-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.mocktest-free-meta div {
+  min-height: 92px;
+  display: grid;
+  gap: 5px;
+  padding: 15px;
+  border-radius: 16px;
+  color: #7c3aed;
+  background: #f8f5ff;
+  border: 1px solid #eadcff;
+}
+
+.mocktest-free-meta span {
+  color: #64748b;
+  font-weight: 800;
+}
+
+.mocktest-free-meta strong {
+  color: #111827;
+}
+
+.mocktest-free-card button,
+.mocktest-pro-banner button,
+.mocktest-bottom-cta button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  font-family: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(124, 58, 237, 0.24);
+}
+
+.mocktest-pro-banner {
+  display: flex;
+  gap: 18px;
+  padding: 28px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 88% 45%, rgba(251, 191, 36, 0.32), transparent 30%),
+    radial-gradient(circle at 0% 100%, rgba(124, 58, 237, 0.3), transparent 34%),
+    linear-gradient(135deg, #05071a, #13052f);
+  border-color: rgba(251, 191, 36, 0.2);
+}
+
+.mocktest-pro-crown {
+  color: #2b1600;
+  background: linear-gradient(135deg, #fde68a, #f59e0b);
+  box-shadow: 0 18px 42px rgba(245, 158, 11, 0.28);
+}
+
+.mocktest-pro-banner h2 {
+  color: #ffffff;
+}
+
+.mocktest-pro-banner p {
+  color: #dbe4f0;
+}
+
+.mocktest-pro-label {
+  color: #fde68a;
+}
+
+.mocktest-pro-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.mocktest-pro-pills span {
+  padding: 8px 11px;
+  border-radius: 999px;
+  color: #fde68a;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.mocktest-pro-banner button {
+  color: #2b1600;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 16px 32px rgba(245, 158, 11, 0.24);
+}
+
+.mocktest-series-area,
+.mocktest-benefits-area {
+  margin-top: 24px;
+  padding: 28px;
+}
+
+.mocktest-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.mocktest-section-heading h2 {
+  margin-top: 8px;
+  font-size: 29px;
+}
+
+.mocktest-section-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.mocktest-status-section {
+  padding: 22px;
+  box-shadow: none;
+}
+
+.mocktest-status-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.mocktest-status-heading h3 {
+  font-size: 23px;
+}
+
+.mocktest-status-heading > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
+  color: #7c3aed;
+  background: #f3e8ff;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.mocktest-test-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mocktest-test-card {
+  display: grid;
+  gap: 15px;
+  min-height: 210px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  background: #fbfcff;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mocktest-test-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(124, 58, 237, 0.34);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.09);
+}
+
+.mocktest-test-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mocktest-status-badge,
+.mocktest-lock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 1000;
+}
+
+.mocktest-status-live {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.mocktest-status-upcoming {
+  color: #d97706;
+  background: #ffedd5;
+}
+
+.mocktest-status-completed {
+  color: #059669;
+  background: #dcfce7;
+}
+
+.mocktest-lock-badge {
+  color: #7c3aed;
+  background: #f3e8ff;
+}
+
+.mocktest-test-card h4 {
+  margin: 0;
+  color: #111827;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 19px;
+  line-height: 1.28;
+}
+
+.mocktest-test-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mocktest-test-meta span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: #475569;
+  background: #f1f5f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.mocktest-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: #7c3aed;
+  font-weight: 1000;
+}
+
+.mocktest-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.mocktest-benefit-card {
+  padding: 22px;
+  box-shadow: none;
+}
+
+.mocktest-benefit-card > span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #7c3aed;
+  background: #f0e7ff;
+}
+
+.mocktest-benefit-card h3 {
+  margin-top: 18px;
+  font-size: 20px;
+}
+
+.mocktest-bottom-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 34px 42px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 14% 50%, rgba(124, 58, 237, 0.3), transparent 24%),
+    radial-gradient(circle at 84% 50%, rgba(251, 191, 36, 0.18), transparent 24%),
+    linear-gradient(135deg, #05071a, #12052e);
+  border-color: rgba(168, 85, 247, 0.24);
+}
+
+.mocktest-bottom-cta h2 {
+  color: #ffffff;
+  font-size: 29px;
+}
+
+.mocktest-bottom-cta p {
+  color: #d8deea;
+}
+
+.mocktest-bottom-cta button {
+  margin: 0;
+  color: #2b1600;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 16px 32px rgba(245, 158, 11, 0.24);
+}
+
+@media (max-width: 1180px) {
+  .mocktest-hero,
+  .mocktest-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mocktest-test-grid,
+  .mocktest-benefit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .mocktest-shell {
+    width: min(100% - 28px, 1480px);
+    padding-top: 20px;
+  }
+
+  .mocktest-hero {
+    padding: 30px 22px;
+  }
+
+  .mocktest-hero-visual {
+    min-height: 230px;
+  }
+
+  .mocktest-trophy-mark {
+    width: 122px;
+    height: 122px;
+  }
+
+  .mocktest-trophy-mark svg {
+    width: 68px;
+    height: 68px;
+  }
+
+  .mocktest-trophy-platform {
+    width: 210px;
+  }
+
+  .mocktest-free-card,
+  .mocktest-pro-banner,
+  .mocktest-series-area,
+  .mocktest-status-section,
+  .mocktest-benefits-area,
+  .mocktest-bottom-cta {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .mocktest-free-content,
+  .mocktest-pro-banner,
+  .mocktest-section-heading,
+  .mocktest-status-heading,
+  .mocktest-bottom-cta {
+    display: grid;
+  }
+
+  .mocktest-free-meta,
+  .mocktest-test-grid,
+  .mocktest-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mocktest-bottom-cta button,
+  .mocktest-free-card button,
+  .mocktest-pro-banner button {
+    width: 100%;
+  }
+}

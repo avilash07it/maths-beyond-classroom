@@ -72,7 +72,7 @@ export const proPlans = [
       "Access to Model Expert Solutions for POTD",
       "Advanced Problem-Solving Approaches and Shortcuts",
       "Detailed Performance Analytics",
-      "AI-Powered Learning Features",
+      "AI-Powered Learning Features", 
       "Extended Support for Higher Olympiad Levels (RMO and Beyond)",
     ],
     bestFor:
