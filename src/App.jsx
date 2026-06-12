@@ -23,6 +23,8 @@ import POTD from "./pages/POTD/POTD";
 import ProPlans from "./pages/ProPlans/ProPlans";
 import MockTests from "./pages/MockTests/MockTests";
 import Payment from "./pages/Payment/Payment";
+import AdminLogin from "./pages/AdminLogin/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 
 function HomePage() {
   return (
@@ -57,6 +59,8 @@ function App() {
           <Route path="/pro-plans" element={<ProPlans />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/manual-payment" element={<Payment />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}
