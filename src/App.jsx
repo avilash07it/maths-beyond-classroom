@@ -26,6 +26,9 @@ import Payment from "./pages/Payment/Payment";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import ManageLectures from "./pages/ManageLectures/ManageLectures";
+import ManageStudyMaterial from "./pages/ManageStudyMaterial/ManageStudyMaterial";
+import ManagePYQs from "./pages/ManagePYQs/ManagePYQs";
+import ManagePOTD from "./pages/ManagePOTD/ManagePOTD";
 
 function HomePage() {
   return (
@@ -63,6 +66,9 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin/manage-lectures" element={<ManageLectures />} />
+          <Route path="/admin/manage-study-material" element={<ManageStudyMaterial />} />
+          <Route path="/admin/manage-pyqs" element={<ManagePYQs />} />
+          <Route path="/admin/manage-potd" element={<ManagePOTD />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}
