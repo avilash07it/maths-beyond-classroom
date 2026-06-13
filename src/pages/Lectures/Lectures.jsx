@@ -14,6 +14,7 @@ import {
   Trophy,
   Video,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { exams, lectures, topics } from "./lecturesData";
 import "./Lectures.css";
@@ -35,6 +36,7 @@ function Lectures() {
   const [query, setQuery] = useState("");
   const [selectedExam, setSelectedExam] = useState("All Exams");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
+  const navigate = useNavigate();
 
   const filteredLectures = useMemo(() => {
     const searchTerm = query.trim().toLowerCase();
@@ -325,7 +327,7 @@ function Lectures() {
                 <small>Test Series</small>
                 <small>Personal Support</small>
               </div>
-              <button type="button">
+              <button type="button" onClick={() => navigate("/pro-plans")}>
                 Explore Pro Plans
                 <ArrowRight size={16} />
               </button>

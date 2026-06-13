@@ -451,19 +451,121 @@
   @media (max-width: 900px) {
     .practice-section {
       grid-template-columns: 1fr;
-      padding: 25px 24px;
+      padding: 22px 24px;
+      gap: 22px;
     }
   
     .mock-card {
       flex-direction: column;
+      min-height: 0;
     }
   
     .trophy-area {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 12px;
     }
   
     .problem-body {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .practice-section {
+      padding: 18px 16px;
+      gap: 16px;
+    }
+
+    .mock-card,
+    .problem-card {
+      min-height: 0;
+      padding: 20px 16px;
+      border-radius: 16px;
+    }
+
+    .mock-card h2,
+    .problem-header h2 {
+      font-size: 29px;
+      letter-spacing: 0;
+      line-height: 1.12;
+    }
+
+    .mock-card h2 {
+      margin: 12px 0 14px;
+    }
+
+    .mock-card li {
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .mock-actions,
+    .problem-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mock-actions button,
+    .problem-actions button {
+      width: 100%;
+      padding: 12px 16px;
+    }
+
+    .problem-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .problem-topic {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+
+    .problem-text p {
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .trophy-area {
+      transform: none;
+      min-height: 170px;
+      margin-top: 8px;
+    }
+
+    .premium-trophy {
+      width: 168px;
+      height: 168px;
+    }
+
+    .trophy-svg {
+      width: 150px;
+      height: 150px;
+    }
+
+    .trophy-ring {
+      width: 140px;
+      height: 140px;
+    }
+
+    .registered-box {
+      right: 18px;
+      bottom: 0;
+      width: 122px;
+      padding: 10px;
+    }
+
+    .registered-box b {
+      font-size: 20px;
+    }
+
+    .triangle-diagram {
+      height: 150px;
+    }
+
+    .geometry-svg {
+      width: 180px;
+      height: 148px;
     }
   }

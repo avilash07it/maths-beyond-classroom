@@ -1,8 +1,11 @@
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../../assets/mbc-logo-8.png";
 
 function Login() {
+  const navigate = useNavigate();
+
   return (
     <main className="login-page">
       <div className="login-bg-glow"></div>
@@ -83,7 +86,7 @@ function Login() {
             </label>
           </div>
 
-          <button type="button" className="login-btn">
+          <button type="button" className="login-btn" onClick={() => navigate("/dashboard")}>
             Login →
           </button>
         </form>

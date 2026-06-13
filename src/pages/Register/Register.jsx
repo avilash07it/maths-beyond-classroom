@@ -1,8 +1,11 @@
 import "./Register.css";
 import logo from "../../assets/mbc-logo-8.png";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
+
   return (
     <main className="register-page">
       <div className="register-bg-glow"></div>
@@ -67,7 +70,7 @@ function Register() {
           <label>Password</label>
           <input type="password" placeholder="Create a password" />
 
-          <button type="button" className="register-btn">
+          <button type="button" className="register-btn" onClick={() => navigate("/dashboard")}>
             Create Account →
           </button>
         </form>

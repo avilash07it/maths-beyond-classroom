@@ -246,10 +246,13 @@ function Payment() {
               <div>
                 <h2>{paymentSupport.title}</h2>
                 <p>{paymentSupport.description}</p>
-                <button type="button">
-                  {paymentSupport.action}
-                  <ArrowRight size={16} />
-                </button>
+                <button
+  type="button"
+  onClick={() => window.open("https://wa.me/91XXXXXXXXXX", "_blank")}
+>
+  {paymentSupport.action}
+  <ArrowRight size={16} />
+</button>
               </div>
             </article>
           </aside>

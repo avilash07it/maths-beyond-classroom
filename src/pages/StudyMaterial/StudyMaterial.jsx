@@ -12,6 +12,7 @@ import {
   Sparkles,
   Trophy,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import {
   exams,
@@ -45,6 +46,7 @@ function StudyMaterial() {
   const [selectedExam, setSelectedExam] = useState("All Exams");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
   const [selectedType, setSelectedType] = useState("All Types");
+  const navigate = useNavigate();
 
   const filteredMaterials = useMemo(() => {
     const searchTerm = query.trim().toLowerCase();
@@ -264,7 +266,7 @@ function StudyMaterial() {
                 Get help choosing the right notes, assignments, and practice
                 sheets for your preparation stage.
               </p>
-              <button type="button">
+              <button type="button" onClick={() => navigate("/pro-plans")}>
                 Explore Support
                 <ArrowRight size={16} />
               </button>

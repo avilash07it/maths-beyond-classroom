@@ -40,3 +40,24 @@ button,
 .dashboard-nav a {
   font-family: var(--font-heading);
 }
+
+@media (max-width: 1180px) {
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    min-width: 0;
+  }
+}

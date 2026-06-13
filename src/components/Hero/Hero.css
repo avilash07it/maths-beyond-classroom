@@ -417,15 +417,23 @@ bottom: 115px;
   @media (max-width: 900px) {
     .hero-section {
       grid-template-columns: 1fr;
-      padding: 90px 24px 40px;
+      padding: 118px 24px 40px;
+      gap: 24px;
     }
   
     .hero-left h1 {
-      font-size: 48px;
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero-left p {
+      font-size: 18px;
+      line-height: 1.7;
     }
   
     .hero-right {
-      height: 380px;
+      height: 340px;
     }
   
     .float-card {
@@ -441,5 +449,93 @@ bottom: 115px;
 .streak-card {
   min-width: 155px;
 }
+  }
+
+  @media (max-width: 520px) {
+    .hero-section {
+      min-height: 0;
+      padding: 152px 18px 30px;
+      gap: 16px;
+    }
+
+    .hero-left h1 {
+      font-size: 36px;
+      line-height: 1.12;
+      letter-spacing: 0;
+      margin-bottom: 18px;
+    }
+
+    .hero-left p {
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    .exam-pill {
+      margin-bottom: 18px;
+      padding: 9px 12px;
+      font-size: 13px;
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .primary-action,
+    .secondary-action {
+      width: 100%;
+      max-width: 100%;
+      padding: 14px 18px;
+    }
+
+    .hero-right {
+      height: 250px;
+      transform: none;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .premium-math-visual {
+      width: 250px;
+      height: 250px;
+      right: 50%;
+      top: 0;
+      transform: translateX(50%);
+    }
+
+    .float-card {
+      min-width: 132px;
+      max-width: 140px;
+      padding: 12px;
+      border-radius: 14px;
+      gap: 8px;
+    }
+
+    .float-card b {
+      font-size: 13px;
+    }
+
+    .float-card span {
+      font-size: 12px;
+    }
+
+    .rank-card {
+      left: 8px;
+      top: 82px;
+    }
+
+    .challenge-card {
+      right: 8px;
+      top: 30px;
+    }
+
+    .streak-card {
+      right: 8px;
+      bottom: 28px;
+    }
   }
   

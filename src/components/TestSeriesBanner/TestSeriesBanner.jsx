@@ -1,8 +1,11 @@
 import { Target } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import "./TestSeriesBanner.css";
 
 function TestSeriesBanner() {
+  const navigate = useNavigate();
+
   return (
     <section className="test-banner">
       <div className="banner-left">
@@ -17,7 +20,7 @@ function TestSeriesBanner() {
         </div>
       </div>
 
-      <button className="banner-btn">Explore Test Series →</button>
+      <button className="banner-btn" onClick={() => navigate("/mock-tests")}>Explore Test Series →</button>
     </section>
   );
 }

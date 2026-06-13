@@ -118,7 +118,7 @@ function POTD() {
               )}
 
               <div className="potd-problem-actions">
-                <button className="potd-view-problem-btn" type="button">
+                <button className="potd-view-problem-btn" type="button" onClick={() => navigate("/potd")}>
                   <Eye size={18} />
                   View Problem
                 </button>
@@ -167,7 +167,7 @@ function POTD() {
             <article className="potd-recent-card">
               <div className="potd-card-heading compact">
                 <h2>Previous POTDs</h2>
-                <a href="#">
+                <a href="/potd">
                   View All
                   <ArrowRight size={16} />
                 </a>
@@ -234,7 +234,7 @@ function POTD() {
               <div>
                 <h2>Need personal support?</h2>
                 <p>Talk to a mentor for problem solving guidance.</p>
-                <button type="button">
+                <button type="button" onClick={() => window.open("https://wa.me/91XXXXXXXXXX", "_blank")}>
                   WhatsApp Support
                   <ArrowRight size={16} />
                 </button>
@@ -269,7 +269,7 @@ function POTD() {
             <h2>Build consistency with one problem every day.</h2>
             <p>Solve daily problems and strengthen your path to Olympiad confidence.</p>
           </div>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/potd")}>
             Continue Daily Practice
             <ArrowRight size={17} />
           </button>

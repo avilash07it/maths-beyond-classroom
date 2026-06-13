@@ -27,17 +27,17 @@ function Footer() {
       <div className="footer-links">
         <div>
           <h4>Explore</h4>
-          <a>Topics</a>
-          <a>Mock Tests</a>
-          <a>PYQs</a>
+          <a href="/topics">Topics</a>
+          <a href="/mock-tests">Mock Tests</a>
+          <a href="/pyq-library">PYQs</a>
           <a>Leaderboard</a>
         </div>
 
         <div>
           <h4>Resources</h4>
-          <a>Study Notes</a>
+          <a href="/study-material">Study Notes</a>
           <a>Formula Sheet</a>
-          <a>Problem Archive</a>
+          <a href="/potd">Problem Archive</a>
           <a>Wall of Fame</a>
         </div>
 

@@ -39,7 +39,7 @@ function ProPlans() {
   const navigate = useNavigate();
 
   const handleChoosePlan = (planId) => {
-    navigate(`/manual-payment?plan=${planId}`);
+    navigate(`/payment?plan=${planId}`);
   };
 
   return (

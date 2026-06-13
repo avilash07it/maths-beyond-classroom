@@ -4,10 +4,13 @@ import {
   ClipboardList,
   Lightbulb,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import "./PracticeSection.css";
 
 function PracticeSection() {
+  const navigate = useNavigate();
+
   return (
     <section className="practice-section">
       <div className="mock-card">
@@ -31,8 +34,8 @@ function PracticeSection() {
           </ul>
 
           <div className="mock-actions">
-            <button>Register Now</button>
-            <button className="outline-btn">View PYQs</button>
+            <button onClick={() => navigate("/mock-tests")}>Register Now</button>
+            <button className="outline-btn" onClick={() => navigate("/pyq-library")}>View PYQs</button>
           </div>
         </div>
 
@@ -113,13 +116,13 @@ function PracticeSection() {
             </p>
 
             <div className="problem-actions">
-              <button>
+              <button onClick={() => navigate("/potd")}>
                 View Hint <Lightbulb size={16} strokeWidth={2.2} />
               </button>
-              <button className="solution-btn">View Solution</button>
+              <button className="solution-btn" onClick={() => navigate("/pro-plans")}>View Solution</button>
             </div>
 
-            <a href="#">Try more such challenges →</a>
+            <a href="/potd">Try more such challenges →</a>
           </div>
 
           <div className="triangle-diagram">

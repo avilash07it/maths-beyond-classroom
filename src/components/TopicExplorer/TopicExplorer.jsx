@@ -17,7 +17,7 @@ function TopicExplorer() {
     <section className="topic-section">
       <div className="topic-header">
       <h2>Master the Core Topics</h2>
-        <a href="#">View all topics →</a>
+        <a href="/topics">View all topics →</a>
       </div>
 
       <div className="topic-grid">

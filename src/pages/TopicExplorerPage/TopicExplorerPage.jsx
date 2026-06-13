@@ -2,8 +2,11 @@ import { topics } from "./topicsData";
 import "./TopicExplorerPage.css";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { FaWhatsapp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function TopicExplorerPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="topics-page">
       <DashboardNavbar />
@@ -70,7 +73,7 @@ function TopicExplorerPage() {
                     <span>{topic.materials} Notes</span>
                   </div>
 
-                  <button>Explore →</button>
+                  <button onClick={() => navigate("/topics/number-theory")}>Explore →</button>
                 </div>
               );
             })}
@@ -89,7 +92,7 @@ function TopicExplorerPage() {
       <span>Mentor Support</span>
     </div>
 
-    <button>Explore Pro Plans →</button>
+    <button onClick={() => navigate("/pro-plans")}>Explore Pro Plans →</button>
   </div>
 
   <div className="topics-pro-crown">♛</div>
@@ -117,7 +120,7 @@ function TopicExplorerPage() {
             <div>
               <h3>Need help choosing a topic?</h3>
               <p>Talk to a mentor for guidance.</p>
-              <a href="#">WhatsApp Support →</a>
+              <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer">WhatsApp Support →</a>
             </div>
           </div>
         </aside>

@@ -659,3 +659,69 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .pyq-info-card ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pyq-hero-filters label,
+  .pyq-hero-filters button {
+    flex: 1 1 220px;
+  }
+}
+
+@media (max-width: 520px) {
+  .pyq-hero {
+    margin: 14px 10px 0;
+    padding: 26px 18px;
+  }
+
+  .pyq-hero h1 {
+    font-size: 36px;
+  }
+
+  .pyq-search-wrap {
+    padding: 0 14px;
+  }
+
+  .pyq-hero-filters {
+    flex-direction: column;
+  }
+
+  .pyq-hero-filters label,
+  .pyq-hero-filters button,
+  .pyq-hero-filters select {
+    width: 100%;
+  }
+
+  .pyq-hero-visual {
+    transform: scale(0.74);
+  }
+
+  .pyq-content {
+    padding: 16px 10px 26px;
+  }
+
+  .pyq-section-card,
+  .pyq-side-card,
+  .pyq-info-card,
+  .pyq-support-card,
+  .pyq-pro-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .pyq-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pyq-actions {
+    grid-column: auto;
+    flex-direction: column;
+  }
+
+  .pyq-actions button {
+    width: 100%;
+  }
+}

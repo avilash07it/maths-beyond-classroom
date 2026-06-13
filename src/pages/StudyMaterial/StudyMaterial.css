@@ -662,3 +662,78 @@
     flex-direction: column;
   }
 }
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .study-material-shell {
+    padding: 28px 28px 56px;
+  }
+
+  .study-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .study-search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .study-material-shell {
+    padding: 18px 12px 38px;
+  }
+
+  .study-material-breadcrumb {
+    flex-wrap: wrap;
+    margin-inline: 2px;
+  }
+
+  .study-material-hero {
+    padding: 26px 18px;
+  }
+
+  .study-material-hero h1 {
+    font-size: 34px;
+  }
+
+  .study-stat-chips span {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .study-hero-visual {
+    min-height: 210px;
+    transform: scale(0.78);
+  }
+
+  .study-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-panel,
+  .study-side-card,
+  .study-reminder-card,
+  .study-pro-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .materials-header > span {
+    white-space: normal;
+  }
+
+  .material-card {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .material-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .organization-steps div,
+  .study-reminder-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

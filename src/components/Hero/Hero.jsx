@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import heroLogo from "../../assets/mbc-logo-3.png";
 import "./Hero.css";
 
 function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section className="hero-section">
       <div className="hero-left">
@@ -22,8 +25,8 @@ function Hero() {
         </p>
 
         <div className="hero-actions">
-          <button className="primary-action">Start Learning →</button>
-          <button className="secondary-action">Take a Mock Test →</button>
+          <button className="primary-action" onClick={() => navigate("/topics")}>Start Learning →</button>
+          <button className="secondary-action" onClick={() => navigate("/mock-tests")}>Take a Mock Test →</button>
         </div>
       </div>
 

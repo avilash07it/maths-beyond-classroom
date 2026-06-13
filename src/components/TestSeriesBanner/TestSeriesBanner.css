@@ -160,3 +160,19 @@
       flex-direction: column;
     }
   }
+
+  @media (max-width: 520px) {
+    .test-banner {
+      margin: 18px 18px 28px;
+      padding: 22px 18px;
+    }
+
+    .banner-left h2 {
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+
+    .banner-btn {
+      width: 100%;
+    }
+  }

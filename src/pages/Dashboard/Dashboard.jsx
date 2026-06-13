@@ -1,4 +1,5 @@
 import "./Dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 import {
   continueLearning,
@@ -15,6 +16,8 @@ import DashboardNavbar from "./DashboardNavbar";
 import { FaWhatsapp } from "react-icons/fa";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
   return (
     <div className="dashboard-page">
       <DashboardNavbar />
@@ -83,7 +86,7 @@ function Dashboard() {
         <main className="dashboard-main">
           <div className="section-header">
             <h2>Continue Learning</h2>
-            <a href="#">View all →</a>
+            <a href="/lectures">View all →</a>
           </div>
 
           <div className="learning-grid">
@@ -101,7 +104,7 @@ function Dashboard() {
                   <h3>{item.topic}</h3>
                   <p>{item.lecture}</p>
                   <small>{item.subtitle}</small>
-                  <button>Continue →</button>
+                  <button onClick={() => navigate("/lectures")}>Continue →</button>
                 </div>
               );
             })}
@@ -116,7 +119,13 @@ function Dashboard() {
               const Icon = item.icon;
 
               return (
-                <div className="quick-card" key={item.title}>
+                <div
+  className="quick-card"
+  key={item.title}
+  onClick={() => navigate(item.path)}
+  role="button"
+  tabIndex={0}
+>
                   <div className="quick-icon">
                     <Icon size={28} />
                   </div>
@@ -137,7 +146,13 @@ function Dashboard() {
               const ExamIcon = exam.icon;
 
               return (
-                <div className="exam-card" key={exam.name}>
+                <div
+  className="exam-card"
+  key={exam.name}
+  onClick={() => navigate("/topics")}
+  role="button"
+  tabIndex={0}
+>
                   <div className="exam-icon">
                     <ExamIcon size={26} />
                   </div>
@@ -154,7 +169,7 @@ function Dashboard() {
         <div className="side-card dashboard-potd-card">
                       <div className="section-header">
               <h2>{potd.title}</h2>
-              <a href="#">View all →</a>
+              <a href="/potd">View all →</a>
             </div>
 
             <span className="topic-pill">{potd.topic}</span>
@@ -164,19 +179,25 @@ function Dashboard() {
   <h3>Today’s challenge is ready</h3>
   <p>Open the uploaded problem image and try solving it before viewing the hint or solution.</p>
 
-  <button className="view-problem-btn">View Problem →</button>
+  <button className="view-problem-btn" onClick={() => navigate("/potd")}>
+  View Problem →
+</button>
 </div>
 
 <div className="potd-actions">
-  <button className="outline-btn">View Hint</button>
-  <button>View Solution</button>
+<button className="outline-btn" onClick={() => navigate("/potd")}>
+  View Hint
+</button>
+<button onClick={() => navigate("/pro-plans")}>
+  View Solution
+</button>
 </div>
           </div>
 
           <div className="side-card">
             <div className="section-header">
               <h2>Upcoming Test</h2>
-              <a href="#">View all →</a>
+              <a href="/mock-tests">View all →</a>
             </div>
 
             <h3>{upcomingTest.title}</h3>
@@ -187,7 +208,9 @@ function Dashboard() {
               <div>{upcomingTest.questions}</div>
             </div>
 
-            <button className="side-btn">View Details</button>
+            <button className="side-btn" onClick={() => navigate("/mock-tests")}>
+  View Details
+</button>
           </div>
 
           <div className="pro-card">
@@ -203,7 +226,9 @@ function Dashboard() {
       <span>Personal Support</span>
     </div>
 
-    <button>Explore Pro Plans →</button>
+    <button onClick={() => navigate("/pro-plans")}>
+  Explore Pro Plans →
+</button>
   </div>
 </div>
 
@@ -215,7 +240,9 @@ function Dashboard() {
   <div className="support-content">
     <h3>Need guidance?</h3>
     <p>Talk to a mentor for lectures, tests and preparation doubts.</p>
-    <a href="#">WhatsApp Support →</a>
+    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer">
+  WhatsApp Support →
+</a>
   </div>
 </div>
         </aside>

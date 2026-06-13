@@ -57,26 +57,31 @@ export const quickAccess = [
     title: "Lectures",
     description: "Live & recorded lectures",
     icon: PlayCircle,
+    path: "/lectures"
   },
   {
     title: "Study Material",
     description: "Notes, assignments & sheets",
     icon: FileText,
+    path: "/study-material"
   },
   {
     title: "PYQ Library",
     description: "Topic-wise previous papers",
     icon: Library,
+    path: "/pyq-library"
   },
   {
     title: "Mock Tests",
     description: "Practice test series",
     icon: ClipboardList,
+    path: "/mock-tests"
   },
   {
     title: "Problem of the Day",
     description: "Daily challenge problems",
     icon: Lightbulb,
+    path: "/potd"
   },
 ];
 

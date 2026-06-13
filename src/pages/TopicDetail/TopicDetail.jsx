@@ -1,5 +1,6 @@
 import "./TopicDetail.css";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
@@ -39,6 +40,8 @@ const statIcons = {
 const statusClass = (status) => status.toLowerCase().replace(/\s+/g, "-");
 
 function TopicDetail() {
+  const navigate = useNavigate();
+
   return (
     <div className="topic-detail-page">
       <DashboardNavbar />
@@ -114,23 +117,23 @@ function TopicDetail() {
             <BookOpen size={16} />
             Overview
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/lectures")}>
             <PlayCircle size={16} />
             Lectures
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/pyq-library")}>
             <FileText size={16} />
             PYQ Papers
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/study-material")}>
             <Bookmark size={16} />
             Study Material
           </button>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/mock-tests")}>
             <Target size={16} />
             Topic Tests
           </button>
-          <button className="continue-btn" type="button">
+          <button className="continue-btn" type="button" onClick={() => navigate("/lectures")}>
             Continue Learning
             <ArrowRight size={16} />
           </button>
@@ -144,7 +147,7 @@ function TopicDetail() {
                   <h2>Learning Path</h2>
                   <p>Step by step journey to master Number Theory</p>
                 </div>
-                <a href="#" aria-label="View full roadmap">
+                <a href="/topics" aria-label="View full roadmap">
                   View Full Roadmap
                   <ArrowRight size={16} />
                 </a>
@@ -179,7 +182,7 @@ function TopicDetail() {
                   <h2>Lectures</h2>
                   <p>Watch, learn and strengthen your concepts</p>
                 </div>
-                <a href="#" aria-label="View all lectures">
+                <a href="/lectures" aria-label="View all lectures">
                   View All Lectures
                   <ArrowRight size={16} />
                 </a>
@@ -202,7 +205,7 @@ function TopicDetail() {
       <div className="td-lecture-action">
         {lecture.status === "Continue" ? (
           <>
-            <button type="button">Continue</button>
+            <button type="button" onClick={() => navigate("/lectures")}>Continue</button>
             <span>{lecture.progress}</span>
           </>
         ) : (
@@ -219,7 +222,7 @@ function TopicDetail() {
   ))}
 </div>
 
-              <a className="card-bottom-link" href="#">
+              <a className="card-bottom-link" href="/lectures">
                 View All Lectures
                 <ArrowRight size={16} />
               </a>
@@ -232,7 +235,7 @@ function TopicDetail() {
                     <h2>Study Material</h2>
                     <p>High quality notes and resources</p>
                   </div>
-                  <a href="#" aria-label="View all study material">
+                  <a href="/study-material" aria-label="View all study material">
                     View All
                     <ArrowRight size={16} />
                   </a>
@@ -248,7 +251,7 @@ function TopicDetail() {
                         <h3>{item.title}</h3>
                         <p>{item.meta}</p>
                       </div>
-                      <button type="button">
+                      <button type="button" onClick={() => navigate("/study-material")}>
                         <Eye size={15} />
                         View
                       </button>
@@ -256,7 +259,7 @@ function TopicDetail() {
                   ))}
                 </div>
 
-                <a className="card-bottom-link" href="#">
+                <a className="card-bottom-link" href="/study-material">
                   View All Study Material
                   <ArrowRight size={16} />
                 </a>
@@ -268,7 +271,7 @@ function TopicDetail() {
                     <h2>PYQ Papers</h2>
                     <p>Practice and analyze real exam papers</p>
                   </div>
-                  <a href="#" aria-label="View all PYQ papers">
+                  <a href="/pyq-library" aria-label="View all PYQ papers">
                     View All
                     <ArrowRight size={16} />
                   </a>
@@ -284,7 +287,7 @@ function TopicDetail() {
                         <h3>{item.title}</h3>
                         <p>{item.meta}</p>
                       </div>
-                      <button type="button">
+                      <button type="button" onClick={() => navigate("/pyq-library")}>
                         <Eye size={15} />
                         View
                       </button>
@@ -292,7 +295,7 @@ function TopicDetail() {
                   ))}
                 </div>
 
-                <a className="card-bottom-link" href="#">
+                <a className="card-bottom-link" href="/pyq-library">
                   View All PYQ Papers
                   <ArrowRight size={16} />
                 </a>
@@ -328,7 +331,7 @@ function TopicDetail() {
                 </div>
               </div>
               <p className="progress-note">Keep going! You're doing great.</p>
-              <button className="outline-action" type="button">
+              <button className="outline-action" type="button" onClick={() => navigate("/dashboard")}>
                 View Detailed Progress
                 <ArrowRight size={16} />
               </button>
@@ -389,7 +392,7 @@ function TopicDetail() {
               <div>
                 <h2>Challenge Yourself Daily!</h2>
                 <p>Solve POTD and improve your problem solving skills.</p>
-                <button type="button">
+                <button type="button" onClick={() => navigate("/potd")}>
                   Solve POTD Now
                   <ArrowRight size={16} />
                 </button>
@@ -411,7 +414,7 @@ function TopicDetail() {
             <h2>Master Number Theory with Consistency.</h2>
             <p>Watch lectures, revise concepts and practice PYQs to excel in Olympiads.</p>
           </div>
-          <button type="button">
+          <button type="button" onClick={() => navigate("/lectures")}>
             Start Learning Now
             <ArrowRight size={17} />
           </button>

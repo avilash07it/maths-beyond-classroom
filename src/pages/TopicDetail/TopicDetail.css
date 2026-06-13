@@ -1265,3 +1265,60 @@
   }
 }
 
+@media (min-width: 641px) and (max-width: 900px) {
+  .topic-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .path-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .topic-detail-shell {
+    width: min(100% - 20px, 1510px);
+  }
+
+  .topic-hero-copy h1 {
+    font-size: 34px;
+  }
+
+  .topic-breadcrumb {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .topic-tabs {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .topic-tabs button {
+    flex-basis: 100%;
+    min-height: 44px;
+  }
+
+  .resource-row,
+  .td-lecture-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .resource-icon,
+  .td-lecture-play {
+    justify-self: start;
+  }
+
+  .td-lecture-action {
+    flex-wrap: wrap;
+  }
+
+  .td-lecture-action button {
+    width: 100%;
+  }
+
+  .topic-bottom-cta {
+    padding: 22px 18px;
+  }
+}

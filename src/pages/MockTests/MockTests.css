@@ -657,3 +657,43 @@
     width: 100%;
   }
 }
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .mocktest-free-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .mocktest-shell {
+    width: min(100% - 20px, 1480px);
+    padding-bottom: 38px;
+  }
+
+  .mocktest-hero {
+    padding: 26px 18px;
+  }
+
+  .mocktest-hero h1 {
+    font-size: 36px;
+  }
+
+  .mocktest-hero p {
+    font-size: 15px;
+  }
+
+  .mocktest-hero-badges span {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mocktest-hero-visual {
+    min-height: 200px;
+  }
+
+  .mocktest-test-topline,
+  .mocktest-test-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

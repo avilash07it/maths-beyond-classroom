@@ -796,6 +796,11 @@ align-self: center;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
+
+  .quick-card,
+.exam-card {
+  cursor: pointer;
+}
   
   @media (max-width: 1100px) {
     .dashboard-content {
@@ -811,5 +816,95 @@ align-self: center;
     .dashboard-hero {
       flex-direction: column;
       align-items: flex-start;
+    }
+  }
+
+  @media (min-width: 761px) and (max-width: 1100px) {
+    .dashboard-hero,
+    .dashboard-content {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+
+    .hero-stats-panel {
+      width: 100%;
+      margin-top: 26px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .dashboard-hero {
+      padding: 38px 18px 30px;
+      min-height: 0;
+    }
+
+    .dashboard-hero h1 {
+      font-size: 30px;
+      line-height: 1.15;
+    }
+
+    .dashboard-hero p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .hero-status-cards,
+    .hero-stats-panel {
+      width: 100%;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-status-cards {
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .hero-status-cards div {
+      min-width: 0;
+      width: 100%;
+      padding: 18px;
+    }
+
+    .dashboard-content {
+      padding: 24px 14px 38px;
+      gap: 18px;
+    }
+
+    .dashboard-main,
+    .dashboard-sidebar,
+    .side-card,
+    .dashboard-sidebar .dashboard-potd-card,
+    .pro-card,
+    .support-card {
+      padding: 18px;
+      border-radius: 18px;
+    }
+
+    .section-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .learning-grid,
+    .quick-grid,
+    .exam-grid,
+    .potd-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .pro-card,
+    .support-card {
+      flex-direction: column;
+    }
+
+    .time-pill {
+      float: none;
+      margin-left: 8px;
+    }
+
+    .dashboard-sidebar .dashboard-potd-card .section-header h2 {
+      max-width: none;
     }
   }

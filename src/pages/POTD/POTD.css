@@ -778,3 +778,48 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (min-width: 621px) and (max-width: 860px) {
+  .potd-hero-badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .potd-shell {
+    width: min(100% - 20px, 1480px);
+    padding-bottom: 38px;
+  }
+
+  .potd-hero {
+    padding: 26px 18px;
+  }
+
+  .potd-hero h1 {
+    font-size: 36px;
+  }
+
+  .potd-hero p {
+    font-size: 15px;
+  }
+
+  .potd-hero-visual {
+    min-height: 200px;
+  }
+
+  .potd-problem-actions button {
+    width: 100%;
+  }
+
+  .potd-streak-copy,
+  .potd-hint-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .potd-stat-list div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

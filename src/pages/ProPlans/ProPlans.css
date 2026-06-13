@@ -733,3 +733,64 @@
     min-width: 0;
   }
 }
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .proplans-comparison-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .proplans-shell {
+    width: min(100% - 20px, 1510px);
+    padding-bottom: 38px;
+  }
+
+  .proplans-hero {
+    padding: 26px 18px;
+  }
+
+  .proplans-hero h1 {
+    font-size: 36px;
+  }
+
+  .proplans-hero p {
+    font-size: 15px;
+  }
+
+  .proplans-hero-chips span {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .proplans-crown-visual {
+    min-height: 210px;
+  }
+
+  .proplans-card-grid,
+  .proplans-comparison-list,
+  .proplans-comparison-area,
+  .proplans-benefit-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .proplans-price-card-recommended {
+    transform: none;
+  }
+
+  .proplans-price-card-premium .proplans-recommended-badge {
+    position: static;
+    width: fit-content;
+    min-width: 0;
+    transform: none;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  .proplans-benefit-title,
+  .proplans-benefit-item,
+  .proplans-comparison-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -9,6 +9,7 @@ import {
   Sparkles,
   Trophy,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { exams, pyqSets, topics } from "./pyqData";
 import "./PYQLibrary.css";
@@ -25,6 +26,7 @@ function PYQLibrary() {
   const [query, setQuery] = useState("");
   const [selectedExam, setSelectedExam] = useState("All Exams");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
+  const navigate = useNavigate();
 
   const filteredSets = useMemo(() => {
     const searchTerm = query.trim().toLowerCase();
@@ -170,7 +172,7 @@ function PYQLibrary() {
 
                   <div className="pyq-actions">
                     <button type="button">View PDF</button>
-                    <button type="button">View Solution</button>
+                    <button type="button" onClick={() => navigate("/pro-plans")}>View Solution</button>
                   </div>
                 </article>
               ))}
@@ -241,7 +243,7 @@ function PYQLibrary() {
               <small>Detailed Solutions</small>
               <small>Personal Support</small>
             </div>
-            <button type="button">
+            <button type="button" onClick={() => navigate("/pro-plans")}>
               Explore Pro Plans
               <ArrowRight size={16} />
             </button>
