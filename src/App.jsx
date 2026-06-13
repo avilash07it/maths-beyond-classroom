@@ -29,6 +29,8 @@ import ManageLectures from "./pages/ManageLectures/ManageLectures";
 import ManageStudyMaterial from "./pages/ManageStudyMaterial/ManageStudyMaterial";
 import ManagePYQs from "./pages/ManagePYQs/ManagePYQs";
 import ManagePOTD from "./pages/ManagePOTD/ManagePOTD";
+import ManagePayments from "./pages/ManagePayments/ManagePayments";
+import ManageMockTests from "./pages/ManageMockTests/ManageMockTests";
 
 function HomePage() {
   return (
@@ -69,6 +71,8 @@ function App() {
           <Route path="/admin/manage-study-material" element={<ManageStudyMaterial />} />
           <Route path="/admin/manage-pyqs" element={<ManagePYQs />} />
           <Route path="/admin/manage-potd" element={<ManagePOTD />} />
+          <Route path="/admin/manage-payments" element={<ManagePayments />} />
+          <Route path="/admin/manage-mock-tests" element={<ManageMockTests />} />
           <Route
   path="/topics/number-theory"
   element={<TopicDetail />}
