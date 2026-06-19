@@ -3,7 +3,7 @@ import { Sigma, Calculator, Triangle, Network } from "lucide-react";
 export const topics = [
   {
     title: "Number Theory",
-    description: "Divisibility, primes, congruences and modular arithmetic.",
+    description: "Divisibility, Primes, Congruences ,Diophantine Equations & more",
     lectures: 42,
     materials: 18,
     color: "purple",
@@ -11,26 +11,26 @@ export const topics = [
   },
   {
     title: "Algebra",
-    description: "Equations, inequalities, polynomials and functions.",
+    description: "Equations, Inequalities, Polynomials functions & Algebraic Techniques.",
     lectures: 36,
     materials: 14,
-    color: "blue",
+    color: "green",
     icon: Calculator,
   },
   {
     title: "Geometry",
-    description: "Triangles, circles, polygons and constructions.",
+    description: "Triangles, Circles, Polygons, Angles, Constructions & more.",
     lectures: 39,
     materials: 17,
-    color: "green",
+    color: "orange",
     icon: Triangle,
   },
   {
     title: "Combinatorics",
-    description: "Permutations, combinations and counting principles.",
+    description: "Permutations, Combinations, Pigeonhole Principle & more.",
     lectures: 28,
     materials: 12,
-    color: "orange",
+    color: "blue",
     icon: Network,
   },
 ];

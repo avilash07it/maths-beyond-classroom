@@ -1,7 +1,9 @@
 import { topics } from "./topicsData";
 import "./TopicExplorerPage.css";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
+import magicalBook from "../../assets/image.png";
 import { FaWhatsapp } from "react-icons/fa";
+import { BookOpen, FileText } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 function TopicExplorerPage() {
@@ -60,43 +62,65 @@ function TopicExplorerPage() {
               const TopicIcon = topic.icon;
 
               return (
-                <div className={`topic-card ${topic.color}`} key={topic.title}>
-                  <div className="topic-icon">
-                    <TopicIcon size={38} />
-                  </div>
-
-                  <h3>{topic.title}</h3>
-                  <p>{topic.description}</p>
-
-                  <div className="topic-meta">
-                    <span>{topic.lectures} Lectures</span>
-                    <span>{topic.materials} Notes</span>
-                  </div>
-
-                  <button onClick={() => navigate("/topics/number-theory")}>Explore →</button>
-                </div>
-              );
-            })}
-          </div>
-          <div className="topics-pro-card">
-  <div>
-    <span className="topics-pro-label">GO PRO</span>
-    <h2>Unlock Test Series & Personal Support</h2>
-    <p>
-      Get access to advanced test series, detailed solutions and mentor support.
-    </p>
-
-    <div className="topics-pro-benefits">
-      <span>Test Series</span>
-      <span>Detailed Solutions</span>
-      <span>Mentor Support</span>
+  <div className={`topic-card ${topic.color}`} key={topic.title}>
+    <div className="topic-icon">
+      <TopicIcon size={38} />
     </div>
 
-    <button onClick={() => navigate("/pro-plans")}>Explore Pro Plans →</button>
+    <h3>{topic.title}</h3>
+    <p>{topic.description}</p>
+    <div className="topic-divider"></div>
+
+
+    <div className="topic-stats">
+   <div className="stat-box">
+  <div className="stat-top">
+    <BookOpen size={18} />
+    <span className="meta-number">{topic.lectures}</span>
   </div>
 
-  <div className="topics-pro-crown">♛</div>
+  <span className="meta-label">Lectures</span>
 </div>
+
+<div className="stat-box">
+  <div className="stat-top">
+    <FileText size={18} />
+    <span className="meta-number">{topic.materials}</span>
+  </div>
+
+  <span className="meta-label">Notes</span>
+</div>
+ </div>
+
+    <button onClick={() => navigate("/topics/number-theory")}>
+      Explore →
+    </button>
+  </div>
+);
+  })}
+          </div>
+ <div className="learning-banner">
+  <div className="learning-banner-left">
+    <div className="learning-banner-icon">
+      <img src={magicalBook} alt="Magical Book" />
+    </div>
+
+    <div className="learning-banner-content">
+      <h3>All-in-One Learning</h3>
+
+      <p>
+        Each topic includes Lectures, Study Materials,
+        Practice Sheets, PYQs and Topic Tests to help
+        you master the subject.
+      </p>
+    </div>
+  </div>
+
+  <button className="learning-banner-btn">
+    How it works  →
+  </button>
+</div>
+       
         </main>
 
         <aside className="topics-sidebar">
