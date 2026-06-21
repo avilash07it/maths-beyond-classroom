@@ -8,6 +8,7 @@ const createPYQ = async (pyqData) => {
       exam: pyqData.exam,
       topic: pyqData.topic,
       year: pyqData.year,
+        status: pyqData.status,
     },
   });
 
@@ -44,6 +45,7 @@ const updatePYQ = async (id, pyqData) => {
       exam: pyqData.exam,
       topic: pyqData.topic,
       year: pyqData.year,
+      status: pyqData.status,
     },
   });
 

@@ -124,6 +124,8 @@ model PYQ {
 
   year Int?
 
+ status  String @default("Draft")
+ 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

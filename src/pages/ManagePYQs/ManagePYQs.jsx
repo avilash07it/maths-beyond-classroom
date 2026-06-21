@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import axios from "axios";
 import {
   Archive,
   CheckCircle2,
@@ -20,13 +21,12 @@ import {
   managePYQsAdminNotes,
   managePYQsExams,
   managePYQsInitialForm,
-  managePYQsSeedPYQs,
   managePYQsTopics,
   managePYQsYears,
 } from "./managePYQsData";
 
 function ManagePYQs() {
-  const [pyqs, setPyqs] = useState(managePYQsSeedPYQs);
+const [pyqs, setPyqs] = useState([]);
   const [form, setForm] = useState(managePYQsInitialForm);
   const [editingPYQId, setEditingPYQId] = useState(null);
   const [filters, setFilters] = useState({
@@ -36,7 +36,20 @@ function ManagePYQs() {
     year: "All Years",
     status: "All Status",
   });
+const fetchPYQs = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/pyqs"
+    );
 
+    setPyqs(response.data.data);
+  } catch (error) {
+    console.error("Fetch Error:", error);
+  }
+};
+useEffect(() => {
+  fetchPYQs();
+}, []);
   const summaryCards = useMemo(
     () => [
       {
@@ -76,12 +89,13 @@ function ManagePYQs() {
 
     return pyqs.filter((pyq) => {
       const searchableText =
-        `${pyq.title} ${pyq.exam} ${pyq.topic} ${pyq.year} ${pyq.status} ${pyq.pdfName}`.toLowerCase();
+        `${pyq.title} ${pyq.exam} ${pyq.topic} ${pyq.year} ${pyq.status} ${pyq.pdfUrl}`.toLowerCase();
       const matchesSearch = !searchTerm || searchableText.includes(searchTerm);
       const matchesExam = filters.exam === "All Exams" || pyq.exam === filters.exam;
       const matchesTopic = filters.topic === "All Topics" || pyq.topic === filters.topic;
-      const matchesYear = filters.year === "All Years" || pyq.year === filters.year;
-      const matchesStatus = filters.status === "All Status" || pyq.status === filters.status;
+const matchesYear =
+  filters.year === "All Years" ||
+  String(pyq.year) === filters.year;      const matchesStatus = filters.status === "All Status" || pyq.status === filters.status;
 
       return matchesSearch && matchesExam && matchesTopic && matchesYear && matchesStatus;
     });
@@ -106,47 +120,97 @@ function ManagePYQs() {
     setEditingPYQId(null);
   };
 
-  const savePYQ = (event) => {
+  const savePYQ = async (event) => {
     event.preventDefault();
 
     const pyqPayload = {
       ...form,
       title: form.title.trim(),
-      pdfName: form.pdfName.trim() || "pyq-paper-placeholder.pdf",
+      pdfUrl: form.pdfUrl.trim() || "pyq-paper-placeholder.pdf",
+       year: Number(form.year),
+      status: form.status,
     };
+try {
+  if (editingPYQId) {
+    await axios.put(
+      `http://localhost:5000/api/pyqs/${editingPYQId}`,
+      pyqPayload
+    );
+  } else {
+    await axios.post(
+      "http://localhost:5000/api/pyqs",
+      pyqPayload
+    );
+  }
 
-    if (editingPYQId) {
-      setPyqs((currentPYQs) =>
-        currentPYQs.map((pyq) =>
-          pyq.id === editingPYQId ? { ...pyqPayload, id: editingPYQId } : pyq,
-        ),
-      );
-    } else {
-      setPyqs((currentPYQs) => [{ ...pyqPayload, id: Date.now() }, ...currentPYQs]);
-    }
+  await fetchPYQs();
+  clearForm();
 
-    clearForm();
+} catch (error) {
+  console.error(error);
+}
+  if (editingPYQId) {
+  await axios.put(
+    `http://localhost:5000/api/pyqs/${editingPYQId}`,
+    pyqPayload
+  );
+
+  await fetchPYQs();
+
+  clearForm();
+
+  return;
+}
+
+await axios.post(
+  "http://localhost:5000/api/pyqs",
+  pyqPayload
+);
+
+await fetchPYQs();
+
+clearForm();
   };
 
   const editPYQ = (pyq) => {
+    console.log("EDIT CLICKED");
+  console.log(pyq);
+   console.log("FORM SET", {
+    title: pyq.title,
+    exam: pyq.exam,
+    topic: pyq.topic,
+    year: pyq.year,
+    pdfUrl: pyq.pdfUrl,
+    status: pyq.status,
+  });
+
     setEditingPYQId(pyq.id);
-    setForm({
+    setForm(
+     {
       title: pyq.title,
       exam: pyq.exam,
       topic: pyq.topic,
-      year: pyq.year,
-      pdfName: pyq.pdfName,
+      year: String(pyq.year),
+      pdfUrl: pyq.pdfUrl,
       status: pyq.status,
     });
   };
 
-  const deletePYQ = (pyqId) => {
-    setPyqs((currentPYQs) => currentPYQs.filter((pyq) => pyq.id !== pyqId));
+ const deletePYQ = async (pyqId) => {
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/pyqs/${pyqId}`
+    );
+
+    await fetchPYQs();
 
     if (editingPYQId === pyqId) {
       clearForm();
     }
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <main className="manage-pyqs-page">
@@ -249,12 +313,12 @@ function ManagePYQs() {
               </label>
 
               <label className="manage-pyqs-field manage-pyqs-field-wide">
-                <span>PDF Name Placeholder</span>
+                <span>PDF URL</span>
                 <input
                   type="text"
-                  value={form.pdfName}
-                  onChange={(event) => updateFormField("pdfName", event.target.value)}
-                  placeholder="e.g. ioqm-2024-number-theory.pdf"
+                  value={form.pdfUrl}
+                  onChange={(event) => updateFormField("pdfUrl", event.target.value)}
+                  placeholder="e.g. https://example.com/ioqm-2024-number-theory.pdf"
                 />
               </label>
 
@@ -363,7 +427,7 @@ function ManagePYQs() {
                 <div className="manage-pyqs-table-row" role="row" key={pyq.id}>
                   <span role="cell" data-label="Title">
                     <strong>{pyq.title}</strong>
-                    <small>{pyq.pdfName}</small>
+                    <small>{pyq.pdfUrl}</small>
                   </span>
                   <span role="cell" data-label="Exam">{pyq.exam}</span>
                   <span role="cell" data-label="Topic">{pyq.topic}</span>
