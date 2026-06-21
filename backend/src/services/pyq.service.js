@@ -43,10 +43,20 @@ const updatePYQ = async (id, pyqData) => {
 
   return pyq;
 };
+const deletePYQ = async (id) => {
+  const pyq = await prisma.pYQ.delete({
+    where: {
+      id: Number(id),
+    },
+  });
 
+  return pyq;
+};
 module.exports = {
   createPYQ,
   getAllPYQs,
   getPYQById,
   updatePYQ,
+  deletePYQ,
 };
+

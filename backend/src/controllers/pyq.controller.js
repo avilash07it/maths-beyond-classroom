@@ -81,9 +81,28 @@ const updatePYQ = async (req, res) => {
     });
   }
 };
+
+const deletePYQ = async (req, res) => {
+  try {
+    await pyqService.deletePYQ(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      message: "PYQ deleted successfully",
+    });
+  } catch (error) {
+    console.error("Delete PYQ Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 module.exports = {
   createPYQ,
   getAllPYQs,
   getPYQById,
   updatePYQ,
+  deletePYQ,
 };
