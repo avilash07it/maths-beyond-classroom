@@ -20,7 +20,10 @@ const createPYQ = async (req, res) => {
 };
 const getAllPYQs = async (req, res) => {
   try {
-    const pyqs = await pyqService.getAllPYQs();
+    const pyqs = await pyqService.getAllPYQs({
+      exam: req.query.exam,
+      topic: req.query.topic,
+    });
 
     res.status(200).json({
       success: true,

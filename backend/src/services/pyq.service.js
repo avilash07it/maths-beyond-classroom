@@ -13,8 +13,14 @@ const createPYQ = async (pyqData) => {
 
   return pyq;
 };
-const getAllPYQs = async () => {
-  const pyqs = await prisma.pYQ.findMany();
+const getAllPYQs = async (filters) => {
+  const pyqs = await prisma.pYQ.findMany({
+    where: {
+      ...(filters.exam && { exam: filters.exam }),
+      ...(filters.topic && { topic: filters.topic }),
+      
+    },
+  });
 
   return pyqs;
 };
