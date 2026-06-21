@@ -27,9 +27,26 @@ const getPYQById = async (id) => {
 
   return pyq;
 };
+const updatePYQ = async (id, pyqData) => {
+  const pyq = await prisma.pYQ.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      title: pyqData.title,
+      pdfUrl: pyqData.pdfUrl,
+      exam: pyqData.exam,
+      topic: pyqData.topic,
+      year: pyqData.year,
+    },
+  });
+
+  return pyq;
+};
 
 module.exports = {
   createPYQ,
   getAllPYQs,
   getPYQById,
+  updatePYQ,
 };
