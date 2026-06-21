@@ -4,8 +4,7 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -125,6 +124,8 @@ model PYQ {
 
   year Int?
 
+ status  String @default("Draft")
+ 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -140,6 +141,7 @@ model POTD {
 
   exam  String
   topic String
+  status String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

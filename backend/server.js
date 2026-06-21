@@ -1,8 +1,16 @@
 require("dotenv").config();
 
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
+app.use(cors());
+app.use(express.json());
+
+const pyqRoutes = require("./src/routes/pyq.routes");
+const potdRoutes=require("./src/routes/potd.routes");
+app.use("/api/potd", potdRoutes);
+
+app.use("/api/pyqs", pyqRoutes);
 
 app.get("/api/health", (req, res) => {
   res.json({
