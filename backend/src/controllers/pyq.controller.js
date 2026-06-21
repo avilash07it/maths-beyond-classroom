@@ -18,7 +18,26 @@ const createPYQ = async (req, res) => {
     });
   }
 };
+const getAllPYQs = async (req, res) => {
+  try {
+    const pyqs = await pyqService.getAllPYQs();
+
+    res.status(200).json({
+      success: true,
+      count: pyqs.length,
+      data: pyqs,
+    });
+  } catch (error) {
+    console.error("Get PYQs Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 module.exports = {
   createPYQ,
+  getAllPYQs,
 };

@@ -13,7 +13,13 @@ const createPYQ = async (pyqData) => {
 
   return pyq;
 };
+const getAllPYQs = async () => {
+  const pyqs = await prisma.pYQ.findMany();
+
+  return pyqs;
+};
 
 module.exports = {
   createPYQ,
+  getAllPYQs,
 };
