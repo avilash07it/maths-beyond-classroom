@@ -16,4 +16,39 @@ const createPOTD=async(req,res) =>{
 }
 }
 
-module.exports={createPOTD};
+const getAllPOTDs=async(req,res)=>{
+    try{
+        const potds=await potdService.getAllPOTDs();
+        res.status(200).json({
+            success: true,
+            message: "POTDs retrieved successfully",
+            data: potds
+        });
+    } catch(error){
+        console.error("Get All POTDs Error:",error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+const getPOTDById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const potd = await potdService.getPOTDById(id);
+
+    res.status(200).json({
+      success: true,
+      data: potd,
+    });
+  } catch (error) {
+    console.error("Get POTD Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+module.exports={createPOTD, getAllPOTDs, getPOTDById};

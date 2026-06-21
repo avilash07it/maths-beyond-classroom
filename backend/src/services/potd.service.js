@@ -13,6 +13,26 @@ topic: potdData.topic,
     });
     return potd;
 };
+const getAllPOTDs = async () => {
+  const potds = await prisma.pOTD.findMany();
+
+  return potds;
+};
+
+const getPOTDById = async (id) => {
+  const potd = await prisma.pOTD.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+
+  return potd;
+};
+
+module.exports = {
+  createPOTD,
+  getAllPOTDs,
+  getPOTDById,
+};
        
 
-module.exports={createPOTD};
