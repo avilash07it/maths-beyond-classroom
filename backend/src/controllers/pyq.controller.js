@@ -36,8 +36,33 @@ const getAllPYQs = async (req, res) => {
     });
   }
 };
+const getPYQById = async (req, res) => {
+  try {
+    const pyq = await pyqService.getPYQById(req.params.id);
+
+    if (!pyq) {
+      return res.status(404).json({
+        success: false,
+        message: "PYQ not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: pyq,
+    });
+  } catch (error) {
+    console.error("Get PYQ By Id Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 module.exports = {
   createPYQ,
   getAllPYQs,
+  getPYQById,
 };

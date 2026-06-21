@@ -18,8 +18,18 @@ const getAllPYQs = async () => {
 
   return pyqs;
 };
+const getPYQById = async (id) => {
+  const pyq = await prisma.pYQ.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+
+  return pyq;
+};
 
 module.exports = {
   createPYQ,
   getAllPYQs,
+  getPYQById,
 };

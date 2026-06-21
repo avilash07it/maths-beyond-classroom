@@ -6,5 +6,6 @@ const pyqController = require("../controllers/pyq.controller");
 
 router.post("/", pyqController.createPYQ);
 router.get("/", pyqController.getAllPYQs);
+router.get("/:id", pyqController.getPYQById);
 
 module.exports = router;
