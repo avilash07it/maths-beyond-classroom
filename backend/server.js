@@ -4,6 +4,12 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json());
+
+const pyqRoutes = require("./src/routes/pyq.routes");
+
+app.use("/api/pyqs", pyqRoutes);
+
 app.get("/api/health", (req, res) => {
   res.json({
     success: true,
