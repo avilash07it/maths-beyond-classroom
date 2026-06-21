@@ -7,6 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 const pyqRoutes = require("./src/routes/pyq.routes");
+const potdRoutes=require("./src/routes/potd.routes");
+app.use("/api/potd", potdRoutes);
 
 app.use("/api/pyqs", pyqRoutes);
 
