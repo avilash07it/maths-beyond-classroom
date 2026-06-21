@@ -21,6 +21,7 @@ const getAllPOTDs=async(req,res)=>{
         const potds=await potdService.getAllPOTDs();
         res.status(200).json({
             success: true,
+            count: potds.length,
             message: "POTDs retrieved successfully",
             data: potds
         });
@@ -87,5 +88,57 @@ const updatePOTD=async(req,res)=>{
         });
     }
 };
+const getTodayPOTD = async (req, res) => {
+  try {
+    const potd = await potdService.getTodayPOTD();
 
-module.exports={createPOTD, getAllPOTDs, getPOTDById, deletePOTD, updatePOTD};
+    res.status(200).json({
+      success: true,
+      data: potd,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+const getHint = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const hint = await potdService.getHint(id);
+
+    res.status(200).json({
+      success: true,
+      data: hint,
+    });
+  } catch (error) {
+    console.error("Get Hint Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+const getSolution = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const solution = await potdService.getSolution(id);
+
+    res.status(200).json({
+      success: true,
+      data: solution,
+    });
+  } catch (error) {
+    console.error("Get Solution Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+module.exports={createPOTD, getAllPOTDs, getPOTDById, deletePOTD, updatePOTD, getTodayPOTD, getHint, getSolution};

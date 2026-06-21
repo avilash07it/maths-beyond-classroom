@@ -56,6 +56,36 @@ const updatePOTD = async (id, potdData) => {
 
   return potd;
 };
+const getTodayPOTD = async () => {
+  return await prisma.pOTD.findFirst({
+    where: {
+      status: "Published",
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+};
+const getHint = async (id) => {
+  return await prisma.pOTD.findUnique({
+    where: {
+      id: Number(id),
+    },
+    select: {
+      hintImageUrl: true,
+    },
+  });
+};
+const getSolution = async (id) => {
+  return await prisma.pOTD.findUnique({
+    where: {
+      id: Number(id),
+    },
+    select: {
+      solutionImageUrl: true,
+    },
+  });
+};
 
 module.exports = {
   createPOTD,
@@ -63,6 +93,9 @@ module.exports = {
   getPOTDById,
   deletePOTD,
   updatePOTD,
+  getTodayPOTD,
+  getHint,
+    getSolution,
 };
 
 
