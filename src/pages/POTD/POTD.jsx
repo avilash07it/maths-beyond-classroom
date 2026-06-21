@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -23,18 +24,55 @@ import {
   potdHeroStats,
   potdStats,
   preparationTips,
-  previousPotds,
-  todayProblem,
 } from "./potdData";
-
 function POTD() {
   const [isHintVisible, setIsHintVisible] = useState(false);
-  const navigate = useNavigate();
+  const [hintData, setHintData] = useState(null);
+  const [todayProblem, setTodayProblem] = useState(null);
+const [previousPotds, setPreviousPotds] = useState([]);
 
+ const navigate = useNavigate();
+ const fetchHint = async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:5000/api/potd/${todayProblem.id}/hint`
+    );
+
+    setHintData(response.data.data);
+    setIsHintVisible(true);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+const fetchPOTDs = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/potd"
+    );
+console.log(response.data.data[0]);
+
+    const potds = response.data.data;
+
+    setPreviousPotds(potds);
+
+    if (potds.length > 0) {
+      setTodayProblem(potds[0]);
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+};
   const handleSolutionClick = () => {
     navigate("/pro-plans");
   };
-
+useEffect(() => {
+  fetchPOTDs();
+}, []);
+if (!todayProblem) {
+  return <div>Loading...</div>;
+}
   return (
     <div className="potd-page">
       <DashboardNavbar />
@@ -98,24 +136,33 @@ function POTD() {
               </div>
 
               <div className="potd-problem-image">
-                <span className="potd-paper-label">Problem Image</span>
-                <p>{todayProblem.prompt}</p>
-              </div>
+  <span className="potd-paper-label">Problem Image</span>
+
+  {todayProblem.problemImageUrl ? (
+    <img
+      src={todayProblem.problemImageUrl}
+      alt={todayProblem.title}
+      className="potd-problem-img"
+    />
+  ) : (
+    <p>No problem image available</p>
+  )}
+</div>
 
               <div className="potd-problem-description">
                 <h3>{todayProblem.title}</h3>
                 <p>{todayProblem.description}</p>
               </div>
 
-              {isHintVisible && (
-                <div className="potd-hint-panel">
-                  <Lightbulb size={20} />
-                  <div>
-                    <h3>Hint</h3>
-                    <p>{todayProblem.hint}</p>
-                  </div>
-                </div>
-              )}
+             {isHintVisible && (
+  <div className="potd-hint-panel">
+    <img
+      src={todayProblem.hintImageUrl}
+      alt="Hint"
+      style={{ maxWidth: "100%" }}
+    />
+  </div>
+)}
 
               <div className="potd-problem-actions">
                 <button className="potd-view-problem-btn" type="button" onClick={() => navigate("/potd")}>
@@ -123,13 +170,14 @@ function POTD() {
                   View Problem
                 </button>
                 <button
-                  className="potd-hint-btn"
-                  type="button"
-                  onClick={() => setIsHintVisible((visible) => !visible)}
-                >
-                  <Lightbulb size={18} />
-                  {isHintVisible ? "Hide Hint" : "View Hint"}
-                </button>
+  className="potd-hint-btn"
+  type="button"
+  onClick={fetchHint}
+  onClick={() => setIsHintVisible(!isHintVisible)}
+>
+  <Lightbulb size={18} />
+  View Hint
+</button>
                 <button
                   className="potd-solution-btn"
                   type="button"
