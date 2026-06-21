@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import axios from "axios";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -11,7 +12,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
-import { exams, pyqSets, topics } from "./pyqData";
+import { exams, topics } from "./pyqData";
 import "./PYQLibrary.css";
 
 const examAccent = {
@@ -24,11 +25,13 @@ const examAccent = {
 
 function PYQLibrary() {
   const [query, setQuery] = useState("");
+  const [pyqSets, setPyqSets] = useState([]);
   const [selectedExam, setSelectedExam] = useState("All Exams");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
   const navigate = useNavigate();
 
   const filteredSets = useMemo(() => {
+    console.log("pyqSets state:", pyqSets);
     const searchTerm = query.trim().toLowerCase();
 
     return pyqSets.filter((set) => {
@@ -44,13 +47,28 @@ function PYQLibrary() {
 
       return matchesExam && matchesTopic && matchesSearch;
     });
-  }, [query, selectedExam, selectedTopic]);
+  }, [pyqSets, query, selectedExam, selectedTopic]);
 
   const resetFilters = () => {
     setQuery("");
     setSelectedExam("All Exams");
     setSelectedTopic("All Topics");
   };
+
+  const fetchPYQs = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/pyqs"
+    );
+console.log(response.data.data);
+    setPyqSets(response.data.data);
+  } catch (error) {
+    console.error("Fetch Error:", error);
+  }
+};
+useEffect(() => {
+  fetchPYQs();
+}, []);
 
   return (
     <div className="pyq-page">
@@ -149,9 +167,7 @@ function PYQLibrary() {
                   </div>
 
                   <div className="pyq-row-title">
-                    <h3>
-                      {set.exam} {set.year}
-                    </h3>
+                    <h3>{set.title}</h3>
                     <p>{set.examName}</p>
                   </div>
 
