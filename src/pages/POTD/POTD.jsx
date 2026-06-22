@@ -55,7 +55,11 @@ console.log(response.data.data[0]);
 
     const potds = response.data.data;
 
-    setPreviousPotds(potds);
+   setPreviousPotds(
+  publishedPotds.filter(
+    (potd) => potd.id !== todayProblem?.id
+  )
+);
 
     
 
