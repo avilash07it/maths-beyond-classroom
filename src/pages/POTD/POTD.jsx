@@ -29,6 +29,7 @@ function POTD() {
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [hintData, setHintData] = useState(null);
   const [todayProblem, setTodayProblem] = useState(null);
+  
 const [previousPotds, setPreviousPotds] = useState([]);
 
  const navigate = useNavigate();
@@ -56,22 +57,38 @@ console.log(response.data.data[0]);
 
     setPreviousPotds(potds);
 
-    if (potds.length > 0) {
-      setTodayProblem(potds[0]);
-    }
+    
 
   } catch (error) {
     console.error(error);
   }
 };
+const fetchTodayPOTD = async () => {
+  const response = await axios.get(
+    "http://localhost:5000/api/potd/today"
+  );
+
+  setTodayProblem(response.data.data);
+};
+useEffect(() => {
+  fetchTodayPOTD();
+}, []);
   const handleSolutionClick = () => {
     navigate("/pro-plans");
   };
 useEffect(() => {
   fetchPOTDs();
 }, []);
+
 if (!todayProblem) {
-  return <div>Loading...</div>;
+  return (
+    <div className="potd-page">
+      <DashboardNavbar />
+      <main className="potd-shell">
+        <h2>No POTD Published Yet</h2>
+      </main>
+    </div>
+  );
 }
   return (
     <div className="potd-page">
@@ -173,7 +190,6 @@ if (!todayProblem) {
   className="potd-hint-btn"
   type="button"
   onClick={fetchHint}
-  onClick={() => setIsHintVisible(!isHintVisible)}
 >
   <Lightbulb size={18} />
   View Hint
