@@ -19,32 +19,6 @@ export const todayProblem = {
     "Start by assuming n is composite. Choose a prime divisor p of n and compare the divisibility condition modulo p.",
 };
 
-export const previousPotds = [
-  {
-    date: "22 May",
-    topic: "Number Theory",
-    title: "Find the remainder when 7^2025 is divided by 13.",
-    solved: true,
-  },
-  {
-    date: "21 May",
-    topic: "Algebra",
-    title: "Solve a quadratic expression using discriminant conditions.",
-    solved: true,
-  },
-  {
-    date: "20 May",
-    topic: "Geometry",
-    title: "Prove a cyclic quadrilateral angle relation.",
-    solved: true,
-  },
-  {
-    date: "19 May",
-    topic: "Combinatorics",
-    title: "Count arrangements with one fixed restriction.",
-    solved: false,
-  },
-];
 
 export const preparationTips = [
   "Attempt the problem before opening the hint.",

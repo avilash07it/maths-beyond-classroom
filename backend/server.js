@@ -9,11 +9,16 @@ app.use(express.json());
 const authRoutes = require("./src/routes/auth.routes");
 const pyqRoutes = require("./src/routes/pyq.routes");
 const potdRoutes=require("./src/routes/potd.routes");
+const mockTestRoutes = require("./src/routes/mocktest.routes");
+
 app.use("/api/potd", potdRoutes);
 
 app.use("/api/pyqs", pyqRoutes);
 
 app.use("/api/auth", authRoutes);
+
+
+app.use("/api/mock-tests", mockTestRoutes);
 
 app.get("/api/health", (req, res) => {
   res.json({
