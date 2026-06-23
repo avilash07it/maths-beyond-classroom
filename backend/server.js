@@ -6,11 +6,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const authRoutes = require("./src/routes/auth.routes");
 const pyqRoutes = require("./src/routes/pyq.routes");
 const potdRoutes=require("./src/routes/potd.routes");
 app.use("/api/potd", potdRoutes);
 
 app.use("/api/pyqs", pyqRoutes);
+
+app.use("/api/auth", authRoutes);
 
 app.get("/api/health", (req, res) => {
   res.json({
