@@ -9,6 +9,7 @@ solutionImageUrl: potdData.solutionImageUrl,
 status: potdData.status,
 exam: potdData.exam,
 topic: potdData.topic,
+hintImageUrl: potdData.hintImageUrl,
         },
     });
     return potd;
@@ -48,6 +49,7 @@ const updatePOTD = async (id, potdData) => {
       title: potdData.title,
       problemImageUrl: potdData.problemImageUrl,
       solutionImageUrl: potdData.solutionImageUrl,
+      hintImageUrl: potdData.hintImageUrl,
       status: potdData.status,
       exam: potdData.exam,
       topic: potdData.topic,

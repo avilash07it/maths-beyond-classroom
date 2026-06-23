@@ -1,4 +1,5 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect} from "react";
+import axios from "axios";
 import {
   Archive,
   CalendarDays,
@@ -23,25 +24,22 @@ import {
   managePOTDDifficulties,
   managePOTDExams,
   managePOTDInitialForm,
-  managePOTDSeedProblems,
   managePOTDStatuses,
   managePOTDTopics,
 } from "./managePOTDData";
 
-const formatDisplayDate = (dateValue) => {
-  if (!dateValue) {
-    return "Not scheduled";
-  }
+const formatDisplayDate = (date) => {
+  if (!date) return "N/A";
 
   return new Intl.DateTimeFormat("en-GB", {
-    day: "2-digit",
+    day: "numeric",
     month: "short",
     year: "numeric",
-  }).format(new Date(`${dateValue}T00:00:00`));
+  }).format(new Date(date));
 };
 
 function ManagePOTD() {
-  const [problems, setProblems] = useState(managePOTDSeedProblems);
+  const [problems, setProblems] = useState([]);
   const [form, setForm] = useState(managePOTDInitialForm);
   const [editingProblemId, setEditingProblemId] = useState(null);
   const fileInputRefs = {
@@ -49,17 +47,37 @@ function ManagePOTD() {
     hintImage: useRef(null),
     solutionImage: useRef(null),
   };
+const fetchPOTDs = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/potd"
+    );
 
+    setProblems(response.data.data);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+useEffect(() => {
+  fetchPOTDs();
+}, []);
   const summaryCards = useMemo(() => {
-    const currentProblem = problems
-      .filter((problem) => problem.status === "Published")
-      .sort((firstProblem, secondProblem) => secondProblem.date.localeCompare(firstProblem.date))[0];
-
+   
+const currentProblem = problems
+  .filter((problem) => problem.status === "Published")
+  .sort(
+    (a, b) =>
+      new Date(b.createdAt) -
+      new Date(a.createdAt)
+  )[0];
     return [
       {
         label: "Current POTD",
-        value: currentProblem ? formatDisplayDate(currentProblem.date) : "None",
-        note: currentProblem ? currentProblem.title : "No published problem",
+value: currentProblem
+  ? formatDisplayDate(currentProblem.createdAt)
+  : "None",
+          note: currentProblem ? currentProblem.title : "No published problem",
         icon: Flame,
         tone: "orange",
       },
@@ -95,61 +113,101 @@ function ManagePOTD() {
   };
 
   const updateImageField = (field, fileList) => {
-    updateFormField(field, fileList?.[0]?.name || "");
-  };
+  const file = fileList?.[0];
 
+  if (!file) return;
+
+  updateFormField(
+    field,
+    URL.createObjectURL(file)
+  );
+};
+{form.problemImage && (
+  <img
+    src={form.problemImage}
+    alt="Preview"
+    style={{ width: "200px" }}
+  />
+)}
   const clearForm = () => {
     setForm(managePOTDInitialForm);
     setEditingProblemId(null);
   };
 
-  const saveProblem = (event, statusOverride) => {
-    event.preventDefault();
+  const saveProblem = async (event, statusOverride) => {
+  event.preventDefault();
 
-    const problemPayload = {
-      ...form,
-      title: form.title.trim() || "Untitled POTD",
-      status: statusOverride || form.status,
-    };
+  const problemPayload = {
+    title: form.title,
+    problemImageUrl: form.problemImage,
+    hintImageUrl: form.hintImage,
+    solutionImageUrl: form.solutionImage,
+    exam: form.exam,
+    topic: form.topic,
+    status: statusOverride || form.status,
+  };
+
+  try {
 
     if (editingProblemId) {
-      setProblems((currentProblems) =>
-        currentProblems.map((problem) =>
-          problem.id === editingProblemId ? { ...problemPayload, id: editingProblemId } : problem,
-        ),
+
+      await axios.put(
+        `http://localhost:5000/api/potd/${editingProblemId}`,
+        problemPayload
       );
+
     } else {
-      setProblems((currentProblems) => [
-        { ...problemPayload, id: Date.now() },
-        ...currentProblems,
-      ]);
+
+      await axios.post(
+        "http://localhost:5000/api/potd",
+        problemPayload
+      );
+
     }
+
+    await fetchPOTDs();
+    clearForm();
+
+  } catch (error) {
+    console.error(error);
+  }
+
+
+    
 
     clearForm();
   };
 
   const editProblem = (problem) => {
-    setEditingProblemId(problem.id);
-    setForm({
-      title: problem.title,
-      exam: problem.exam,
-      topic: problem.topic,
-      difficulty: problem.difficulty,
-      date: problem.date,
-      problemImage: problem.problemImage,
-      hintImage: problem.hintImage,
-      solutionImage: problem.solutionImage,
-      status: problem.status,
-    });
-  };
+  setEditingProblemId(problem.id);
 
-  const deleteProblem = (problemId) => {
-    setProblems((currentProblems) => currentProblems.filter((problem) => problem.id !== problemId));
+  setForm({
+    title: problem.title,
+    exam: problem.exam,
+    topic: problem.topic,
+    difficulty: problem.difficulty || "Medium",
+date: problem.createdAt || "",
+    problemImage: problem.problemImageUrl || "",
+    hintImage: problem.hintImageUrl || "",
+    solutionImage: problem.solutionImageUrl || "",
+    status: problem.status,
+  });
+};
 
-    if (editingProblemId === problemId) {
-      clearForm();
-    }
-  };
+  const deleteProblem = async (problemId) => {
+  try {
+
+    await axios.delete(
+      `http://localhost:5000/api/potd/${problemId}`
+    );
+
+   await fetchPOTDs();
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
   const archiveProblem = (problemId) => {
     setProblems((currentProblems) =>
@@ -260,7 +318,6 @@ function ManagePOTD() {
                   {editingProblemId ? "Edit daily problem" : "Create daily problem"}
                 </h2>
               </div>
-              <p>Frontend-only image placeholders ready for backend wiring later.</p>
             </div>
 
             <form className="manage-potd-form" onSubmit={(event) => saveProblem(event)}>
@@ -309,7 +366,6 @@ function ManagePOTD() {
                 <span>Date</span>
                 <input
                   type="date"
-                  value={form.date}
                   onChange={(event) => updateFormField("date", event.target.value)}
                   required
                 />
@@ -394,7 +450,6 @@ function ManagePOTD() {
                 <span>POTD Library</span>
                 <h2 id="manage-potd-table-title">Manage daily problems</h2>
               </div>
-              <p>{problems.length} dummy problem rows</p>
             </div>
 
             <div className="manage-potd-table-wrap">
@@ -418,14 +473,17 @@ function ManagePOTD() {
                     <span role="cell" data-label="Exam">{problem.exam}</span>
                     <span role="cell" data-label="Topic">{problem.topic}</span>
                     <span role="cell" data-label="Difficulty">
-                      <span className={`manage-potd-pill manage-potd-difficulty-${problem.difficulty.toLowerCase()}`}>
-                        {problem.difficulty}
-                      </span>
+                      <span
+  className={`manage-potd-pill manage-potd-difficulty-${(
+    problem.difficulty || "medium"
+  ).toLowerCase()}`}
+>
+  {problem.difficulty || "Medium"}
+</span>
                     </span>
                     <span role="cell" data-label="Date">
                       <CalendarDays size={15} aria-hidden="true" />
-                      {formatDisplayDate(problem.date)}
-                    </span>
+{formatDisplayDate(problem.createdAt)}                    </span>
                     <span role="cell" data-label="Status">
                       <span className={`manage-potd-pill manage-potd-status-${problem.status.toLowerCase()}`}>
                         {problem.status}
