@@ -1,4 +1,4 @@
-const mocktestService = require('../services/mocktest.service');
+const mocktestService = require('../services/mocktest.services');
 const createMockTest = async (req, res) => {
   try {
     const mocktest = await mocktestService.createMockTest(req.body);

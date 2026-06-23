@@ -110,7 +110,7 @@
 
 .manage-mock-tests-summary-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -449,13 +449,30 @@
 
 .manage-mock-tests-table-row {
   display: grid;
-  grid-template-columns: minmax(220px, 1.45fr) 0.7fr 0.9fr 0.66fr 0.76fr 0.9fr 0.76fr 0.86fr 1.35fr;
+  grid-template-columns:
+    minmax(260px, 2fr)
+    0.8fr
+    1fr
+    1fr
+    1.2fr
+    1.3fr;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
+  gap: 16px;
   padding: 14px 16px;
-  background: #ffffff;
+  background: #fff;
   border-bottom: 1px solid #eef0f6;
+
+}
+.manage-mock-tests-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.manage-mock-tests-row-actions button,
+.manage-mock-tests-row-actions a {
+  white-space: nowrap;
 }
 
 .manage-mock-tests-table-row:last-child {
@@ -484,12 +501,14 @@
   overflow-wrap: anywhere;
   color: #111827;
   font-family: var(--font-heading);
-  font-size: 14px;
+ font-size: 15px;
+  margin-bottom: 4px;
 }
 
 .manage-mock-tests-table-row small {
   display: block;
-  margin-top: 5px;
+  line-height: 1.5;
+  white-space: normal;
   color: #7b8496;
   font-size: 12px;
 }

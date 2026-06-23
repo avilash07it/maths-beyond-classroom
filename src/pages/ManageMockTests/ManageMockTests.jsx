@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import axios from "axios";
 import {
   CalendarClock,
   CheckCircle2,
@@ -24,11 +25,10 @@ import "./ManageMockTests.css";
 import {
   manageMockTestPlatforms,
   manageMockTestStatuses,
-  manageMockTestTypes,
+
   manageMockTestsAdminNotes,
   manageMockTestsExams,
   manageMockTestsInitialForm,
-  manageMockTestsSeedTests,
   manageMockTestsTopics,
 } from "./manageMockTestsData";
 
@@ -40,58 +40,17 @@ const manageMockTestsHeroBadges = [
 ];
 
 function ManageMockTests() {
-  const [tests, setTests] = useState(manageMockTestsSeedTests);
+const [tests, setTests] = useState([]);
   const [form, setForm] = useState(manageMockTestsInitialForm);
   const [editingTestId, setEditingTestId] = useState(null);
   const [filters, setFilters] = useState({
     search: "",
     exam: "All Exams",
     topic: "All Topics",
-    testType: "All Types",
-    accessType: "All Access",
     status: "All Status",
   });
 
-  const summaryCards = useMemo(
-    () => [
-      {
-        label: "Total Tests",
-        value: tests.length,
-        note: "External test links",
-        icon: FileQuestion,
-        tone: "purple",
-      },
-      {
-        label: "Live Tests",
-        value: tests.filter((test) => test.status === "Live").length,
-        note: "Open for attempts",
-        icon: Sparkles,
-        tone: "green",
-      },
-      {
-        label: "Upcoming Tests",
-        value: tests.filter((test) => test.status === "Upcoming").length,
-        note: "Scheduled releases",
-        icon: CalendarClock,
-        tone: "blue",
-      },
-      {
-        label: "Pro Tests",
-        value: tests.filter((test) => test.accessType === "Pro").length,
-        note: "Redirect via Pro access",
-        icon: LockKeyhole,
-        tone: "gold",
-      },
-      {
-        label: "Free Mock Tests",
-        value: tests.filter((test) => test.accessType === "Free").length,
-        note: "Open starter practice",
-        icon: Gift,
-        tone: "pink",
-      },
-    ],
-    [tests],
-  );
+
 
   const filteredTests = useMemo(() => {
     const searchTerm = filters.search.trim().toLowerCase();
@@ -102,13 +61,41 @@ function ManageMockTests() {
       const matchesSearch = !searchTerm || searchableText.includes(searchTerm);
       const matchesExam = filters.exam === "All Exams" || test.exam === filters.exam;
       const matchesTopic = filters.topic === "All Topics" || test.topic === filters.topic;
-      const matchesType = filters.testType === "All Types" || test.testType === filters.testType;
-      const matchesAccess = filters.accessType === "All Access" || test.accessType === filters.accessType;
       const matchesStatus = filters.status === "All Status" || test.status === filters.status;
 
-      return matchesSearch && matchesExam && matchesTopic && matchesType && matchesAccess && matchesStatus;
+      return matchesSearch && matchesExam && matchesTopic && matchesStatus;
     });
   }, [filters, tests]);
+const summaryCards = [
+  {
+    label: "Total Tests",
+    value: tests.length,
+    note: "Mock tests created",
+    icon: ListChecks,
+    tone: "blue",
+  },
+  {
+    label: "Pro Tests",
+    value: tests.filter((test) => test.isProOnly).length,
+    note: "Requires Pro",
+    icon: Crown,
+    tone: "purple",
+  },
+  {
+    label: "Free Tests",
+    value: tests.filter((test) => !test.isProOnly).length,
+    note: "Available to everyone",
+    icon: Gift,
+    tone: "green",
+  },
+  {
+    label: "Published",
+    value: tests.filter((test) => test.status === "Published").length,
+    note: "Visible to students",
+    icon: CheckCircle2,
+    tone: "gold",
+  },
+];
 
   const updateFormField = (field, value) => {
     setForm((currentForm) => ({
@@ -129,60 +116,91 @@ function ManageMockTests() {
     setEditingTestId(null);
   };
 
-  const saveTest = (event) => {
-    event.preventDefault();
+  const fetchMockTests = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/mock-tests/getall"
+    );
 
-    const testPayload = {
-      ...form,
-      title: form.title.trim(),
-      externalUrl: form.externalUrl.trim(),
-      duration: form.duration.trim(),
-      questions: Number(form.questions),
-      marks: Number(form.marks),
-    };
+    console.log(response.data);
 
+    setTests(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  fetchMockTests();
+}, []);
+  
+
+
+
+const saveTest = async (event) => {
+    console.log("SAVE CLICKED");
+
+  event.preventDefault();
+
+  const testPayload = {
+    title: form.title,
+    exam: form.exam,
+    topic: form.topic,
+    externalUrl: form.externalUrl,
+    platform: form.platform,
+    duration: Number(form.duration),
+    questions: Number(form.questions),
+    marks: Number(form.marks),
+    status: form.status,
+    isProOnly: form.isProOnly,
+  };
+
+  try {
     if (editingTestId) {
-      setTests((currentTests) =>
-        currentTests.map((test) =>
-          test.id === editingTestId ? { ...testPayload, id: editingTestId } : test,
-        ),
+      await axios.put(
+        `http://localhost:5000/api/mock-tests/update/${editingTestId}`,
+        testPayload
       );
     } else {
-      setTests((currentTests) => [
-        { ...testPayload, id: Date.now() },
-        ...currentTests,
-      ]);
+      await axios.post(
+        "http://localhost:5000/api/mock-tests/create",
+        testPayload
+      );
     }
+await fetchMockTests();
+clearForm();
+    
+  } catch (error) {
+    console.error(error);
+  }
+}
+const deleteTest = async (id) => {
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/mock-tests/delete/${id}`
+    );
 
-    clearForm();
-  };
+    await fetchMockTests();
+  } catch (error) {
+    console.error(error);
+  }
+};
+const editTest = (test) => {
+  setEditingTestId(test.id);
 
-  const editTest = (test) => {
-    setEditingTestId(test.id);
-    setForm({
-      title: test.title,
-      exam: test.exam,
-      topic: test.topic,
-      testType: test.testType,
-      accessType: test.accessType,
-      externalUrl: test.externalUrl,
-      platform: test.platform,
-      duration: test.duration,
-      questions: String(test.questions),
-      marks: String(test.marks),
-      date: test.date,
-      status: test.status,
-    });
-  };
-
-  const deleteTest = (testId) => {
-    setTests((currentTests) => currentTests.filter((test) => test.id !== testId));
-
-    if (editingTestId === testId) {
-      clearForm();
-    }
-  };
-
+  setForm({
+    title: test.title,
+    exam: test.exam,
+    topic: test.topic,
+    externalUrl: test.externalUrl,
+    platform: test.platform || "",
+    duration: test.duration || "",
+    questions: test.questions || "",
+    marks: test.marks || "",
+    status: test.status,
+    isProOnly: test.isProOnly,
+  });
+};
   return (
     <main className="manage-mock-tests-page">
       <section className="manage-mock-tests-hero" aria-labelledby="manage-mock-tests-title">
@@ -274,28 +292,9 @@ function ManageMockTests() {
                 </select>
               </label>
 
-              <label className="manage-mock-tests-field">
-                <span>Test Type</span>
-                <select
-                  value={form.testType}
-                  onChange={(event) => updateFormField("testType", event.target.value)}
-                >
-                  {manageMockTestTypes.map((testType) => (
-                    <option key={testType}>{testType}</option>
-                  ))}
-                </select>
-              </label>
+           
 
-              <label className="manage-mock-tests-field">
-                <span>Access Type</span>
-                <select
-                  value={form.accessType}
-                  onChange={(event) => updateFormField("accessType", event.target.value)}
-                >
-                  <option>Free</option>
-                  <option>Pro</option>
-                </select>
-              </label>
+              
 
               <label className="manage-mock-tests-field manage-mock-tests-field-wide">
                 <span>External URL</span>
@@ -352,16 +351,7 @@ function ManageMockTests() {
                 />
               </label>
 
-              <label className="manage-mock-tests-field">
-                <span>Date</span>
-                <input
-                  type="date"
-                  value={form.date}
-                  onChange={(event) => updateFormField("date", event.target.value)}
-                  required
-                />
-              </label>
-
+              
               <label className="manage-mock-tests-field">
                 <span>Status</span>
                 <select value={form.status} onChange={(event) => updateFormField("status", event.target.value)}>
@@ -447,24 +437,11 @@ function ManageMockTests() {
                 value={filters.testType}
                 onChange={(event) => updateFilter("testType", event.target.value)}
               >
-                <option>All Types</option>
-                {manageMockTestTypes.map((testType) => (
-                  <option key={testType}>{testType}</option>
-                ))}
+                
               </select>
             </label>
 
-            <label className="manage-mock-tests-filter-field">
-              <span>Access Type</span>
-              <select
-                value={filters.accessType}
-                onChange={(event) => updateFilter("accessType", event.target.value)}
-              >
-                <option>All Access</option>
-                <option>Free</option>
-                <option>Pro</option>
-              </select>
-            </label>
+            
 
             <label className="manage-mock-tests-filter-field">
               <span>Status</span>
@@ -482,11 +459,8 @@ function ManageMockTests() {
               <div className="manage-mock-tests-table-row manage-mock-tests-table-head" role="row">
                 <span role="columnheader">Title</span>
                 <span role="columnheader">Exam</span>
-                <span role="columnheader">Type</span>
-                <span role="columnheader">Access</span>
                 <span role="columnheader">Status</span>
                 <span role="columnheader">Platform</span>
-                <span role="columnheader">Date</span>
                 <span role="columnheader">External Link</span>
                 <span role="columnheader">Actions</span>
               </div>
@@ -500,19 +474,13 @@ function ManageMockTests() {
                     </small>
                   </span>
                   <span role="cell" data-label="Exam">{test.exam}</span>
-                  <span role="cell" data-label="Type">{test.testType}</span>
-                  <span role="cell" data-label="Access">
-                    <span className={`manage-mock-tests-pill manage-mock-tests-access-${test.accessType.toLowerCase()}`}>
-                      {test.accessType}
-                    </span>
-                  </span>
+                    
                   <span role="cell" data-label="Status">
                     <span className={`manage-mock-tests-pill manage-mock-tests-status-${test.status.toLowerCase()}`}>
                       {test.status}
                     </span>
                   </span>
                   <span role="cell" data-label="Platform">{test.platform}</span>
-                  <span role="cell" data-label="Date">{test.date}</span>
                   <span role="cell" data-label="External Link">
                     <a
                       className="manage-mock-tests-link-button"
