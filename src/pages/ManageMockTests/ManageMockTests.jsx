@@ -259,7 +259,6 @@ const editTest = (test) => {
                   {editingTestId ? "Edit external test link" : "Add or update test link"}
                 </h2>
               </div>
-              <p>Frontend-only dummy controls for external test platforms.</p>
             </div>
 
             <form className="manage-mock-tests-form" onSubmit={saveTest}>
