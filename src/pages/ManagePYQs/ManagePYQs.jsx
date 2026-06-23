@@ -149,27 +149,7 @@ try {
 } catch (error) {
   console.error(error);
 }
-  if (editingPYQId) {
-  await axios.put(
-    `http://localhost:5000/api/pyqs/${editingPYQId}`,
-    pyqPayload
-  );
-
-  await fetchPYQs();
-
-  clearForm();
-
-  return;
-}
-
-await axios.post(
-  "http://localhost:5000/api/pyqs",
-  pyqPayload
-);
-
-await fetchPYQs();
-
-clearForm();
+  
   };
 
   const editPYQ = (pyq) => {
