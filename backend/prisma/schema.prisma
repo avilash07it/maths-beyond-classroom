@@ -156,6 +156,13 @@ model MockTest {
   topic String
 
   externalUrl String
+  platform String?
+  duration Int
+  marks Int?
+  questions Int?
+
+
+  status String @default("Draft")
 
   isProOnly Boolean @default(true)
 

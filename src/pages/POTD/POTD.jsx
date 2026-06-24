@@ -29,7 +29,7 @@ function POTD() {
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [hintData, setHintData] = useState(null);
   const [todayProblem, setTodayProblem] = useState(null);
-  
+  const [isProblemVisible, setIsProblemVisible] = useState(false);
 const [previousPotds, setPreviousPotds] = useState([]);
 
  const navigate = useNavigate();
@@ -54,7 +54,12 @@ const fetchPOTDs = async () => {
 console.log(response.data.data[0]);
 
     const potds = response.data.data;
-
+const publishedPotds = potds.filter(
+  (potd) => potd.status === "Published"
+);
+const previousProblems = publishedPotds.filter(
+  (potd) => potd.id !== todayProblem?.id
+);
    setPreviousPotds(
   publishedPotds.filter(
     (potd) => potd.id !== todayProblem?.id
@@ -81,8 +86,10 @@ useEffect(() => {
     navigate("/pro-plans");
   };
 useEffect(() => {
-  fetchPOTDs();
-}, []);
+  if (todayProblem) {
+    fetchPOTDs();
+  }
+}, [todayProblem]);
 
 if (!todayProblem) {
   return (
@@ -156,19 +163,21 @@ if (!todayProblem) {
                 <span>{todayProblem.difficulty}</span>
               </div>
 
-              <div className="potd-problem-image">
-  <span className="potd-paper-label">Problem Image</span>
+              {isProblemVisible && (
+  <div className="potd-problem-image">
+    <span className="potd-paper-label">Problem Image</span>
 
-  {todayProblem.problemImageUrl ? (
-    <img
-      src={todayProblem.problemImageUrl}
-      alt={todayProblem.title}
-      className="potd-problem-img"
-    />
-  ) : (
-    <p>No problem image available</p>
-  )}
-</div>
+    {todayProblem.problemImageUrl ? (
+      <img
+        src={todayProblem.problemImageUrl}
+        alt={todayProblem.title}
+        className="potd-problem-img"
+      />
+    ) : (
+      <p>No problem image available</p>
+    )}
+  </div>
+)}
 
               <div className="potd-problem-description">
                 <h3>{todayProblem.title}</h3>
@@ -178,7 +187,7 @@ if (!todayProblem) {
              {isHintVisible && (
   <div className="potd-hint-panel">
     <img
-      src={todayProblem.hintImageUrl}
+src={hintData?.hintImageUrl}
       alt="Hint"
       style={{ maxWidth: "100%" }}
     />
@@ -186,10 +195,12 @@ if (!todayProblem) {
 )}
 
               <div className="potd-problem-actions">
-                <button className="potd-view-problem-btn" type="button" onClick={() => navigate("/potd")}>
-                  <Eye size={18} />
-                  View Problem
-                </button>
+               <button
+  className="potd-view-problem-btn"
+  type="button"
+  onClick={() => setIsProblemVisible((prev) => !prev)}
+>View Problem</button>
+                
                 <button
   className="potd-hint-btn"
   type="button"

@@ -187,8 +187,18 @@ useEffect(() => {
                   </div>
 
                   <div className="pyq-actions">
-                    <button type="button">View PDF</button>
-                    <button type="button" onClick={() => navigate("/pro-plans")}>View Solution</button>
+<button
+  type="button"
+  onClick={() => {
+    if (set.pdfUrl) {
+      window.open(set.pdfUrl, "_blank");
+    } else {
+      alert("PDF not available");
+    }
+  }}
+>
+  View PDF
+</button>                    <button type="button" onClick={() => navigate("/pro-plans")}>View Solution</button>
                   </div>
                 </article>
               ))}
