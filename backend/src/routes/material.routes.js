@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const lectureController = require("../controllers/lecture.controller");
+const materialController = require("../controllers/material.controller");
 const authMiddleware = require("../middleware/auth.middleware");
 const requireAdmin = require("../middleware/admin.middleware");
 
@@ -10,25 +10,25 @@ router.post(
   "/",
   authMiddleware,
   requireAdmin,
-  lectureController.createLecture
+  materialController.createMaterial
 );
 
-router.get("/", lectureController.getAllLectures);
+router.get("/", materialController.getAllMaterials);
 
-router.get("/:id", lectureController.getLectureById);
+router.get("/:id", materialController.getMaterialById);
 
 router.put(
   "/:id",
   authMiddleware,
   requireAdmin,
-  lectureController.updateLecture
+  materialController.updateMaterial
 );
 
 router.delete(
   "/:id",
   authMiddleware,
   requireAdmin,
-  lectureController.deleteLecture
+  materialController.deleteMaterial
 );
 
 module.exports = router;

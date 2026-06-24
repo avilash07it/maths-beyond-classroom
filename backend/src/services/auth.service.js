@@ -59,6 +59,7 @@ const loginUser = async (loginData) => {
     {
       userId: user.id,
       role: user.role,
+      isPro: user.isPro,
     },
     process.env.JWT_SECRET,
     {
