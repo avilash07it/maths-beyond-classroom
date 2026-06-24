@@ -9,9 +9,11 @@ app.use(express.json());
 const authRoutes = require("./src/routes/auth.routes");
 const pyqRoutes = require("./src/routes/pyq.routes");
 const potdRoutes=require("./src/routes/potd.routes");
-app.use("/api/potd", potdRoutes);
+const lectureRoutes = require("./src/routes/lecture.routes");
 
+app.use("/api/potd", potdRoutes);
 app.use("/api/pyqs", pyqRoutes);
+app.use("/api/lectures", lectureRoutes);
 
 app.use("/api/auth", authRoutes);
 
