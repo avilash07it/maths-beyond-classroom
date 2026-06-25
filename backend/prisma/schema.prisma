@@ -69,6 +69,21 @@ model Plan {
   updatedAt DateTime @updatedAt
 }
 
+model PersonalSupport {
+  id Int @id @default(autoincrement())
+
+  whatsappNo String
+  phoneNo String
+
+  whatsappLink String
+  message String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Payment {
   id Int @id @default(autoincrement())
 

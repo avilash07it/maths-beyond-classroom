@@ -29,6 +29,7 @@ function POTD() {
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [hintData, setHintData] = useState(null);
   const [todayProblem, setTodayProblem] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [isProblemVisible, setIsProblemVisible] = useState(false);
 const [previousPotds, setPreviousPotds] = useState([]);
@@ -47,6 +48,7 @@ const [previousPotds, setPreviousPotds] = useState([]);
     console.error(error);
   }
 };
+
 const fetchPOTDs = async () => {
   try {
     const response = await axios.get(
@@ -76,12 +78,16 @@ console.log(previousProblems);
   }
 };
 const fetchTodayPOTD = async () => {
-  const response = await axios.get(
-    "http://localhost:5000/api/potd/today"
-  );
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/potd/today"
+    );
 
-  setTodayProblem(response.data.data);
-  setSelectedProblem(response.data.data);
+    setTodayProblem(response.data.data);
+    setSelectedProblem(response.data.data);
+  } finally {
+    setLoading(false);
+  }
 };
 useEffect(() => {
   fetchTodayPOTD();
@@ -94,6 +100,16 @@ useEffect(() => {
     fetchPOTDs();
   }
 }, [todayProblem]);
+if (loading) {
+  return (
+    <div className="potd-page">
+      <DashboardNavbar />
+      <main className="potd-shell">
+        <h2>Loading today's problem...</h2>
+      </main>
+    </div>
+  );
+}
 
 if (!todayProblem) {
   return (
