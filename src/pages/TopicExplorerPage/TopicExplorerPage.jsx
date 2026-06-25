@@ -3,10 +3,33 @@ import "./TopicExplorerPage.css";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+
+
 
 function TopicExplorerPage() {
   const navigate = useNavigate();
+  const [support, setSupport] = useState(null);
 
+  const fetchSupport = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/support"
+      );
+
+      setSupport(response.data.data[0]);
+      console.log(response.data.data[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSupport();
+  }, []);
+  
   return (
     <div className="topics-page">
       <DashboardNavbar />
@@ -120,8 +143,16 @@ function TopicExplorerPage() {
             <div>
               <h3>Need help choosing a topic?</h3>
               <p>Talk to a mentor for guidance.</p>
-              <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer">WhatsApp Support →</a>
-            </div>
+<a
+  href={support?.whatsappLink || "#"}
+  target="_blank"
+  rel="noreferrer"
+   onClick={(e) => {
+    if (!support) e.preventDefault();
+  }}
+>
+  WhatsApp Support →
+</a>              </div>
           </div>
         </aside>
       </section>

@@ -1,5 +1,7 @@
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 import {
   continueLearning,
@@ -17,7 +19,22 @@ import { FaWhatsapp } from "react-icons/fa";
 
 function Dashboard() {
   const navigate = useNavigate();
+const [support, setSupport] = useState(null);
+const fetchSupport = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/support"
+    );
 
+    setSupport(response.data.data[0]);
+    console.log("Support:", response.data.data[0]);
+  } catch (error) {
+    console.error(error);
+  }
+};
+useEffect(() => {
+  fetchSupport();
+}, []);
   return (
     <div className="dashboard-page">
       <DashboardNavbar />
@@ -240,9 +257,16 @@ function Dashboard() {
   <div className="support-content">
     <h3>Need guidance?</h3>
     <p>Talk to a mentor for lectures, tests and preparation doubts.</p>
-    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer">
+<a
+  href={support?.whatsappLink || "#"}
+  target="_blank"
+  rel="noreferrer"
+   onClick={(e) => {
+    if (!support) e.preventDefault();
+  }}
+>
   WhatsApp Support →
-</a>
+</a>  
   </div>
 </div>
         </aside>

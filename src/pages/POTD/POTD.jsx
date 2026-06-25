@@ -33,6 +33,7 @@ function POTD() {
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [isProblemVisible, setIsProblemVisible] = useState(false);
 const [previousPotds, setPreviousPotds] = useState([]);
+const [support, setSupport] = useState(null);
 
  const navigate = useNavigate();
  const fetchHint = async () => {
@@ -91,13 +92,28 @@ const fetchTodayPOTD = async () => {
 };
 useEffect(() => {
   fetchTodayPOTD();
+        fetchSupport();
+
 }, []);
   const handleSolutionClick = () => {
     navigate("/pro-plans");
   };
+
+  const fetchSupport = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/support"
+    );
+
+    setSupport(response.data.data[0]);
+  } catch (error) {
+    console.error(error);
+  }
+};
 useEffect(() => {
   if (todayProblem) {
     fetchPOTDs();
+
   }
 }, [todayProblem]);
 if (loading) {
@@ -353,20 +369,32 @@ if (!todayProblem) {
                 ))}
               </ul>
             </article>
+<article className="potd-side-card potd-support-card">
+  <span>
+    <MessageCircle size={24} />
+  </span>
 
-            <article className="potd-side-card potd-support-card">
-              <span>
-                <MessageCircle size={24} />
-              </span>
-              <div>
-                <h2>Need personal support?</h2>
-                <p>Talk to a mentor for problem solving guidance.</p>
-                <button type="button" onClick={() => window.open("https://wa.me/91XXXXXXXXXX", "_blank")}>
-                  WhatsApp Support
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            </article>
+  <div>
+    <h2>Need personal support?</h2>
+
+    <p>
+      {support?.message ||
+        "Talk to a mentor for problem solving guidance."}
+    </p>
+
+    <button
+      type="button"
+      onClick={() => {
+        if (support?.whatsappLink) {
+          window.open(support.whatsappLink, "_blank");
+        }
+      }}
+    >
+      WhatsApp Support
+      <ArrowRight size={16} />
+    </button>
+  </div>
+</article>
 
             <article className="potd-side-card potd-why-card">
               <h2>Why Solve POTD?</h2>
