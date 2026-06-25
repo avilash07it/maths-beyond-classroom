@@ -46,10 +46,20 @@ model User {
 }
 
 model Plan {
-  id          Int     @id @default(autoincrement())
-  name        String
-  price       Int
+  id Int @id @default(autoincrement())
+
+  name String
+  price Int
   description String?
+
+  accent String
+  includesHeading String?
+  features Json
+  bestFor String?
+  badge String?
+
+  recommended Boolean @default(false)
+  premium Boolean @default(false)
 
   isActive Boolean @default(true)
 
