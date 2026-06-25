@@ -279,6 +279,7 @@
 
 .proplans-price-card-recommended {
   transform: translateY(-10px);
+   padding-top: 52px;
   border-color: rgba(168, 85, 247, 0.9);
   box-shadow:
     0 32px 70px rgba(124, 58, 237, 0.22),
@@ -298,13 +299,13 @@
 }
 
 .proplans-recommended-badge {
-  position: absolute;
-  top: -15px;
-  left: 50%;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  transform: translateX(-50%);
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
   min-height: 32px;
   padding: 0 18px;
   border-radius: 999px;

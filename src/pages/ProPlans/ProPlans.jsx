@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   ArrowRight,
   BadgeCheck,
@@ -23,7 +25,6 @@ import {
   paidFeatures,
   proBenefits,
   proHeroChips,
-  proPlans,
 } from "./proPlansData";
 
 const accentIcons = {
@@ -37,10 +38,27 @@ const paidIcons = [Trophy, MessageCircle, HelpCircle];
 
 function ProPlans() {
   const navigate = useNavigate();
+  const [proPlans, setProPlans] = useState([]);
 
   const handleChoosePlan = (planId) => {
     navigate(`/payment?plan=${planId}`);
   };
+  const fetchPlans = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/plans"
+    );
+
+    setProPlans(
+      response.data.data.filter((plan) => plan.isActive)
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+useEffect(() => {
+  fetchPlans();
+}, []);
 
   return (
     <div className="proplans-page">
@@ -111,13 +129,13 @@ function ProPlans() {
                     <Icon size={34} />
                   </div>
                   <h3>{plan.name}</h3>
-                  <strong>{plan.price}</strong>
+<strong>Rs {plan.price}</strong>
                   <p>{plan.description}</p>
 
                   <h4 className="proplans-includes-heading">{plan.includesHeading}</h4>
 
                   <div className="proplans-feature-list">
-                    {plan.features.map((feature) => (
+                    {(plan.features || []).map((feature) => (
                       <div key={feature}>
                         <CheckCircle2 size={17} />
                         <span>{feature}</span>
@@ -223,7 +241,7 @@ function ProPlans() {
             <h2>Start with the right plan for your exam goal.</h2>
             <p>Choose IOQM, SEHSS, or the combo plan and continue with manual payment approval.</p>
           </div>
-          <button type="button" onClick={() => handleChoosePlan("ioqm-sehss-combo")}>
+          <button type="button" onClick={() => navigate("/payment")}>
             Choose Best Value
             <ArrowRight size={17} />
           </button>
