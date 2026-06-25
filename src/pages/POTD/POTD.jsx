@@ -29,6 +29,7 @@ function POTD() {
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [hintData, setHintData] = useState(null);
   const [todayProblem, setTodayProblem] = useState(null);
+  const [selectedProblem, setSelectedProblem] = useState(null);
   const [isProblemVisible, setIsProblemVisible] = useState(false);
 const [previousPotds, setPreviousPotds] = useState([]);
 
@@ -36,7 +37,7 @@ const [previousPotds, setPreviousPotds] = useState([]);
  const fetchHint = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/potd/${todayProblem.id}/hint`
+      `http://localhost:5000/api/potd/${selectedProblem.id}/hint`
     );
 
     setHintData(response.data.data);
@@ -60,6 +61,8 @@ const publishedPotds = potds.filter(
 const previousProblems = publishedPotds.filter(
   (potd) => potd.id !== todayProblem?.id
 );
+
+console.log(previousProblems);
    setPreviousPotds(
   publishedPotds.filter(
     (potd) => potd.id !== todayProblem?.id
@@ -78,6 +81,7 @@ const fetchTodayPOTD = async () => {
   );
 
   setTodayProblem(response.data.data);
+  setSelectedProblem(response.data.data);
 };
 useEffect(() => {
   fetchTodayPOTD();
@@ -150,47 +154,68 @@ if (!todayProblem) {
                     <CalendarDays size={20} />
                   </span>
                   <div>
-                    <h2>Today's Problem</h2>
-                    <p>{todayProblem.date}</p>
+<h2>
+  {selectedProblem?.id === todayProblem?.id
+    ? "Today's Problem"
+    : "Previous Problem"}
+</h2>
+                    <p>{selectedProblem?.date}</p>
                   </div>
+                  {selectedProblem?.id !== todayProblem?.id && (
+  <button
+  onClick={() => {
+    setSelectedProblem(todayProblem);
+    setIsProblemVisible(false);
+    setIsHintVisible(false);
+    setHintData(null);
+  }}
+>
+  Back to Today's Problem
+</button>
+                  )}
+
                 </div>
-                <span className="potd-difficulty">{todayProblem.difficulty}</span>
+                <span className="potd-difficulty">{selectedProblem?.difficulty}</span>
               </div>
 
               <div className="potd-problem-meta">
-                <span>{todayProblem.topic}</span>
-                <span>{todayProblem.exam}</span>
-                <span>{todayProblem.difficulty}</span>
+                <span>{selectedProblem?.topic}</span>
+                <span>{selectedProblem?.exam}</span>
+                <span>{selectedProblem?.difficulty}</span>
               </div>
 
               {isProblemVisible && (
   <div className="potd-problem-image">
     <span className="potd-paper-label">Problem Image</span>
 
-    {todayProblem.problemImageUrl ? (
-      <img
-        src={todayProblem.problemImageUrl}
-        alt={todayProblem.title}
-        className="potd-problem-img"
-      />
-    ) : (
-      <p>No problem image available</p>
-    )}
+    {selectedProblem?.problemImageUrl ? (
+       <img
+    src={selectedProblem.problemImageUrl}
+    alt={selectedProblem.title}
+    className="potd-problem-img"
+  />
+) : (
+  <p>No problem image available.</p>
+)}
   </div>
 )}
 
               <div className="potd-problem-description">
-                <h3>{todayProblem.title}</h3>
-                <p>{todayProblem.description}</p>
+                <h3>{selectedProblem?.title}</h3>
+                <p>{selectedProblem?.description}</p>
               </div>
 
              {isHintVisible && (
   <div className="potd-hint-panel">
-    <img
-src={hintData?.hintImageUrl}
-      alt="Hint"
-      style={{ maxWidth: "100%" }}
-    />
+    {hintData?.hintImageUrl ? (
+  <img
+    src={hintData.hintImageUrl}
+    alt="Hint"
+    style={{ maxWidth: "100%" }}
+  />
+) : (
+  <p>No hint available.</p>
+)}
   </div>
 )}
 
@@ -253,8 +278,15 @@ src={hintData?.hintImageUrl}
               </div>
               <div className="potd-recent-list">
                 {previousPotds.map((problem) => (
-                  <div className="potd-recent-row" key={`${problem.date}-${problem.title}`}>
-                    <span className="potd-recent-date">{problem.date}</span>
+<div
+  className="potd-recent-row"
+  key={problem.id}
+  onClick={() => {
+    setSelectedProblem(problem);
+    setIsProblemVisible(false);
+    setIsHintVisible(false);
+  }}
+>                    <span className="potd-recent-date">{problem.date}</span>
                     <div>
                       <strong>{problem.title}</strong>
                       <p>{problem.topic}</p>
@@ -277,7 +309,7 @@ src={hintData?.hintImageUrl}
               </span>
               <div>
                 <h2>Today's Topic</h2>
-                <strong>{todayProblem.topic}</strong>
+                <strong>{selectedProblem?.topic}</strong>
                 <p>Prime numbers, divisibility, and contradiction-based proof.</p>
               </div>
             </article>
