@@ -14,6 +14,7 @@ const potdRoutes = require("./src/routes/potd.routes");
 const lectureRoutes = require("./src/routes/lecture.routes");
 const mockTestRoutes = require("./src/routes/mocktest.routes");
 const materialRoutes = require("./src/routes/material.routes");
+const planRoutes = require("./src/routes/plan.routes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/pyqs", pyqRoutes);
@@ -21,6 +22,8 @@ app.use("/api/potd", potdRoutes);
 app.use("/api/lectures", lectureRoutes);
 app.use("/api/mock-tests", mockTestRoutes);
 app.use("/api/materials", materialRoutes);
+app.use("/api/plans", planRoutes);
+
 
 app.get("/api/health", (req, res) => {
   res.json({
