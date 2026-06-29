@@ -27,7 +27,6 @@ import {
   manageLecturesAdminNotes,
   manageLecturesExams,
   manageLecturesInitialForm,
-  manageLecturesSeedLectures,
   manageLecturesTopics,
 } from "./manageLecturesData";
 

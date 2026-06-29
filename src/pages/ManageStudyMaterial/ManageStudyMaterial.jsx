@@ -15,21 +15,58 @@ import {
   Trash2,
 } from "lucide-react";
 
+
 import "./ManageStudyMaterial.css";
 
 import {
   manageStudyMaterialAdminNotes,
   manageStudyMaterialExams,
   manageStudyMaterialInitialForm,
-  manageStudyMaterialSeedMaterials,
   manageStudyMaterialTopics,
   manageStudyMaterialTypes,
 } from "./manageStudyMaterialData";
 
+import axios from "axios";
+import { useEffect } from "react";
+
 function ManageStudyMaterial() {
-  const [materials, setMaterials] = useState(manageStudyMaterialSeedMaterials);
+const [materials, setMaterials] = useState([]);
   const [form, setForm] = useState(manageStudyMaterialInitialForm);
   const [editingMaterialId, setEditingMaterialId] = useState(null);
+  const fetchMaterials = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/materials"
+    );
+const reverseTypeMap = {
+  NOTES: "Study Notes",
+  ASSIGNMENT: "Assignments",
+  PRACTICE_SHEET: "Practice Sheets",
+  OTHER: "Other Material",
+};
+
+const formattedMaterials = response.data.data.map((material) => ({
+  ...material,
+
+  type: reverseTypeMap[material.type],
+
+  pdfName: material.pdfUrl,
+
+  status: "Published",
+
+  date: new Date(material.createdAt).toLocaleDateString("en-GB"),
+}));
+    
+
+    setMaterials(formattedMaterials);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  fetchMaterials();
+}, []);
   const [filters, setFilters] = useState({
     search: "",
     exam: "All Exams",
@@ -49,21 +86,21 @@ function ManageStudyMaterial() {
       },
       {
         label: "Notes",
-        value: materials.filter((material) => material.type === "Study Notes").length,
+        value: materials.filter((material) => material.type === "NOTES").length,
         note: "Theory resources",
         icon: FileText,
         tone: "green",
       },
       {
         label: "Assignments",
-        value: materials.filter((material) => material.type === "Assignments").length,
+        value: materials.filter((material) => material.type === "ASSIGNMENT").length,
         note: "Submitted practice",
         icon: ClipboardList,
         tone: "orange",
       },
       {
         label: "Practice Sheets",
-        value: materials.filter((material) => material.type === "Practice Sheets").length,
+        value: materials.filter((material) => material.type === "PRACTICE_SHEET").length,
         note: "Skill drills",
         icon: BookOpenCheck,
         tone: "blue",
@@ -107,37 +144,45 @@ function ManageStudyMaterial() {
     setEditingMaterialId(null);
   };
 
-  const saveMaterial = (event) => {
-    event.preventDefault();
+  const saveMaterial = async (event) => {
+  event.preventDefault();
 
-    const materialPayload = {
-      ...form,
-      title: form.title.trim(),
-      pdfName: form.pdfName.trim() || "uploaded-material-placeholder.pdf",
-      date: new Date().toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }),
-    };
+  const typeMap = {
+  "Study Notes": "NOTES",
+  "Assignments": "ASSIGNMENT",
+  "Assignment": "ASSIGNMENT",
+  "Practice Sheets": "PRACTICE_SHEET",
+  "Practice Sheet": "PRACTICE_SHEET",
+  "Other Material": "OTHER",
+};
 
+const payload = {
+  title: form.title,
+  pdfUrl: form.pdfName,
+  exam: form.exam,
+  topic: form.topic,
+  type: typeMap[form.type],
+};
+
+  try {
     if (editingMaterialId) {
-      setMaterials((currentMaterials) =>
-        currentMaterials.map((material) =>
-          material.id === editingMaterialId
-            ? { ...materialPayload, id: editingMaterialId }
-            : material,
-        ),
+      await axios.put(
+        `http://localhost:5000/api/materials/${editingMaterialId}`,
+        payload
       );
     } else {
-      setMaterials((currentMaterials) => [
-        { ...materialPayload, id: Date.now() },
-        ...currentMaterials,
-      ]);
+      await axios.post(
+        "http://localhost:5000/api/materials",
+        payload
+      );
     }
 
+    fetchMaterials();
     clearForm();
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   const editMaterial = (material) => {
     setEditingMaterialId(material.id);
@@ -146,20 +191,26 @@ function ManageStudyMaterial() {
       exam: material.exam,
       topic: material.topic,
       type: material.type,
-      pdfName: material.pdfName,
-      status: material.status,
+      pdfName: material.pdfUrl,
+status: "Published",
     });
   };
 
-  const deleteMaterial = (materialId) => {
-    setMaterials((currentMaterials) =>
-      currentMaterials.filter((material) => material.id !== materialId),
+  const deleteMaterial = async (materialId) => {
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/materials/${materialId}`
     );
+
+    fetchMaterials();
 
     if (editingMaterialId === materialId) {
       clearForm();
     }
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <main className="manage-study-material-page">
@@ -277,7 +328,7 @@ function ManageStudyMaterial() {
               </label>
 
               <label className="manage-study-material-field manage-study-material-field-wide">
-                <span>PDF Name Placeholder</span>
+                <span>PDF URL</span>
                 <input
                   type="text"
                   value={form.pdfName}
@@ -392,7 +443,7 @@ function ManageStudyMaterial() {
                 <div className="manage-study-material-table-row" role="row" key={material.id}>
                   <span role="cell" data-label="Title">
                     <strong>{material.title}</strong>
-                    <small>{material.pdfName}</small>
+<small>{material.pdfUrl}</small>
                   </span>
                   <span role="cell" data-label="Exam">{material.exam}</span>
                   <span role="cell" data-label="Topic">{material.topic}</span>

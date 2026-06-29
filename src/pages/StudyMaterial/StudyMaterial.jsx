@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -17,9 +16,11 @@ import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import {
   exams,
   materialTypes,
-  studyMaterials,
   topics,
 } from "./studyMaterialData";
+
+import axios from "axios";
+import { useEffect, useMemo, useState } from "react";
 import "./StudyMaterial.css";
 
 const typeMeta = {
@@ -45,8 +46,41 @@ function StudyMaterial() {
   const [query, setQuery] = useState("");
   const [selectedExam, setSelectedExam] = useState("All Exams");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
+  const [loading, setLoading] = useState(true);
   const [selectedType, setSelectedType] = useState("All Types");
+  const [studyMaterials, setStudyMaterials] = useState([]);
   const navigate = useNavigate();
+const fetchMaterials = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/materials"
+    );
+
+    const reverseTypeMap = {
+      NOTES: "Notes",
+      ASSIGNMENT: "Assignment",
+      PRACTICE_SHEET: "Practice Sheet",
+      OTHER: "Other Material",
+    };
+
+    const formattedMaterials = response.data.data.map((material) => ({
+      ...material,
+      type: reverseTypeMap[material.type],
+      description: "-",
+      label: "-",
+      updated: "-",
+    }));
+
+    setStudyMaterials(formattedMaterials);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
+useEffect(() => {
+  fetchMaterials();
+}, []);
 
   const filteredMaterials = useMemo(() => {
     const searchTerm = query.trim().toLowerCase();
@@ -66,7 +100,13 @@ function StudyMaterial() {
 
       return matchesExam && matchesTopic && matchesType && matchesSearch;
     });
-  }, [query, selectedExam, selectedTopic, selectedType]);
+  },  [
+  studyMaterials,
+  query,
+  selectedExam,
+  selectedTopic,
+  selectedType,
+]);
 
   const resetFilters = () => {
     setQuery("");
@@ -74,7 +114,17 @@ function StudyMaterial() {
     setSelectedTopic("All Topics");
     setSelectedType("All Types");
   };
+if (loading) {
+  return (
+    <div className="study-material-page">
+      <DashboardNavbar />
 
+      <main className="study-material-shell">
+        <h2>Loading study materials...</h2>
+      </main>
+    </div>
+  );
+}
   return (
     <div className="study-material-page">
       <DashboardNavbar />
@@ -192,8 +242,8 @@ function StudyMaterial() {
               {filteredMaterials.length > 0 ? (
                 <div className="materials-grid">
                   {filteredMaterials.map((material) => {
-                    const meta = typeMeta[material.type];
-                    const MaterialIcon = meta.Icon;
+                   const meta = typeMeta[material.type] || typeMeta["Other Material"];
+const MaterialIcon = meta.Icon;
 
                     return (
                       <article
@@ -219,9 +269,12 @@ function StudyMaterial() {
                           <span>Updated {material.updated}</span>
                         </div>
 
-                        <button type="button">
-                          View Material
-                          <ArrowRight size={16} />
+                      <button
+  type="button"
+  onClick={() =>
+    window.open(material.pdfUrl, "_blank")
+  }
+> View Pdf
                         </button>
                       </article>
                     );
