@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -16,7 +15,9 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
-import { exams, lectures, topics } from "./lecturesData";
+import { exams, topics } from "./lecturesData";
+import axios from "axios";
+import { useEffect, useMemo, useState } from "react";
 import "./Lectures.css";
 
 const statusIcon = {
@@ -33,11 +34,38 @@ const lectureSteps = [
 ];
 
 function Lectures() {
+  const [lectures, setLectures] = useState([]);
+
   const [query, setQuery] = useState("");
   const [selectedExam, setSelectedExam] = useState("All Exams");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
   const navigate = useNavigate();
+const fetchLectures = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/lectures"
+    );
 
+    const formattedLectures = response.data.data.map((lecture) => ({
+      ...lecture,
+
+      status: lecture.isRecorded ? "Recorded" : "Live",
+
+      duration: "-",
+
+      chapter: "-",
+
+      action: lecture.isRecorded ? "Watch Now" : "Join Live",
+    }));
+
+    setLectures(formattedLectures);
+  } catch (error) {
+    console.error(error);
+  }
+};
+useEffect(() => {
+  fetchLectures();
+}, []);
   const filteredLectures = useMemo(() => {
     const searchTerm = query.trim().toLowerCase();
 
@@ -56,13 +84,26 @@ function Lectures() {
     });
   }, [query, selectedExam, selectedTopic]);
 
-  const liveLecture = lectures.find((lecture) => lecture.status === "Live");
+const liveLecture =
+  lectures.find((lecture) => lecture.status === "Live") ||
+  lectures[0];
+
 
   const resetFilters = () => {
     setQuery("");
     setSelectedExam("All Exams");
     setSelectedTopic("All Topics");
   };
+  if (lectures.length === 0) {
+  return (
+    <div className="lectures-page">
+      <DashboardNavbar />
+      <main className="lectures-shell">
+        <h2>Loading lectures...</h2>
+      </main>
+    </div>
+  );
+}
 
   return (
     <div className="lectures-page">
@@ -86,8 +127,8 @@ function Lectures() {
             <div className="lectures-hero-stats">
               <div>
                 <ListVideo size={28} />
-                <strong>356</strong>
-                <span>Total Lectures</span>
+<strong>{lectures.length}</strong>
+<span>Total Lectures</span>
               </div>
               <div>
                 <Radio size={28} />
@@ -170,10 +211,11 @@ function Lectures() {
                 <strong>{liveLecture.duration}</strong>
               </div>
             </div>
+<button
+  type="button"
+  onClick={() => window.open(liveLecture.youtubeUrl, "_blank")}
+>  Join Live
 
-            <button type="button">
-              Join Live
-              <ExternalLink size={16} />
             </button>
           </div>
         </section>
@@ -225,9 +267,11 @@ function Lectures() {
                         <span>{lecture.exam}</span>
                       </div>
 
-                      <button type="button" className="lecture-action">
-                        {lecture.action}
-                        <ExternalLink size={16} />
+                       <button
+  type="button"
+  className="lecture-action"
+  onClick={() => window.open(lecture.youtubeUrl, "_blank")}
+>
                       </button>
                     </article>
                   );
@@ -307,9 +351,11 @@ function Lectures() {
                   <em>Live class is in progress. Join before the problem set starts.</em>
                 </div>
               </div>
-              <button type="button">
-                Join Live Class
-                <ExternalLink size={16} />
+              <button
+  type="button"
+  onClick={() => window.open(liveLecture.youtubeUrl, "_blank")}
+>  Join Live Class
+
               </button>
             </div>
 

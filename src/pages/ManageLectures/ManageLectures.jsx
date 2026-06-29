@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 import {
   BadgeCheck,
   CalendarClock,
@@ -37,15 +39,42 @@ const manageLecturesHeroBadges = [
 ];
 
 function ManageLectures() {
-  const [lectures, setLectures] = useState(manageLecturesSeedLectures);
+  const [lectures, setLectures] = useState([]);
   const [form, setForm] = useState(manageLecturesInitialForm);
   const [editingLectureId, setEditingLectureId] = useState(null);
+  const fetchLectures = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/lectures"
+    );
+
+    const formattedLectures = response.data.data.map((lecture) => ({
+  ...lecture,
+
+  type: lecture.isRecorded ? "Recorded" : "Live",
+
+  status: "-",
+
+  scheduledAt: "-",
+}));
+
+    setLectures(formattedLectures);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  fetchLectures();
+}, []);
+
   const [filters, setFilters] = useState({
     search: "",
     exam: "All Exams",
     topic: "All Topics",
     type: "All Types",
     status: "All Status",
+    
   });
 
   const summaryCards = useMemo(() => {
@@ -117,31 +146,37 @@ function ManageLectures() {
     setEditingLectureId(null);
   };
 
-  const saveLecture = (event) => {
-    event.preventDefault();
+  const saveLecture = async (event) => {
+  event.preventDefault();
 
-    const lecturePayload = {
-      ...form,
-      title: form.title.trim(),
-      youtubeUrl: form.youtubeUrl.trim(),
-      lectureNumber: Number(form.lectureNumber),
-    };
+  const lecturePayload = {
+    title: form.title,
+    lectureNumber: Number(form.lectureNumber),
+    youtubeUrl: form.youtubeUrl,
+    exam: form.exam,
+    topic: form.topic,
+    isRecorded: form.type === "Recorded",
+  };
 
+  try {
     if (editingLectureId) {
-      setLectures((currentLectures) =>
-        currentLectures.map((lecture) =>
-          lecture.id === editingLectureId ? { ...lecturePayload, id: editingLectureId } : lecture,
-        ),
+      await axios.put(
+        `http://localhost:5000/api/lectures/${editingLectureId}`,
+        lecturePayload
       );
     } else {
-      setLectures((currentLectures) => [
-        { ...lecturePayload, id: Date.now() },
-        ...currentLectures,
-      ]);
+      await axios.post(
+        "http://localhost:5000/api/lectures",
+        lecturePayload
+      );
     }
 
+    fetchLectures();
     clearForm();
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   const editLecture = (lecture) => {
     setEditingLectureId(lecture.id);
@@ -150,22 +185,30 @@ function ManageLectures() {
       exam: lecture.exam,
       topic: lecture.topic,
       lectureNumber: String(lecture.lectureNumber),
-      type: lecture.type,
       youtubeUrl: lecture.youtubeUrl,
-      scheduledAt: lecture.scheduledAt,
-      status: lecture.status,
+      type: lecture.isRecorded ? "Recorded" : "Live",
+
+scheduledAt: "",
+
+status: "-",
     });
   };
 
-  const deleteLecture = (lectureId) => {
-    setLectures((currentLectures) =>
-      currentLectures.filter((lecture) => lecture.id !== lectureId),
+  const deleteLecture = async (lectureId) => {
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/lectures/${lectureId}`
     );
+
+    fetchLectures();
 
     if (editingLectureId === lectureId) {
       clearForm();
     }
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <main className="manage-lectures-page">
@@ -225,7 +268,6 @@ function ManageLectures() {
                   {editingLectureId ? "Edit lecture details" : "Add or update lecture link"}
                 </h2>
               </div>
-              <p>Frontend-only mock controls for MVP planning.</p>
             </div>
 
             <form className="manage-lectures-form" onSubmit={saveLecture}>
@@ -439,7 +481,7 @@ function ManageLectures() {
                     <strong>{lecture.title}</strong>
                     <small>
                       <CalendarClock size={14} aria-hidden="true" />
-                      {lecture.scheduledAt.replace("T", " ")}
+{lecture.scheduledAt || "-"}
                     </small>
                   </span>
                   <span role="cell" data-label="Exam">{lecture.exam}</span>
