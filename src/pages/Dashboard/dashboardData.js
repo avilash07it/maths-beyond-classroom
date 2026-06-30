@@ -16,40 +16,6 @@ import {
 } from "lucide-react";
 
 // Continue Learning Cards
-export const continueLearning = [
-  {
-    exam: "IOQM",
-    topic: "Number Theory",
-    lecture: "Lecture 4",
-    subtitle: "Divisibility Rules",
-    color: "purple",
-    icon: Sigma,
-  },
-  {
-    exam: "RMO",
-    topic: "Algebra",
-    lecture: "Lecture 3",
-    subtitle: "Quadratic Equations",
-    color: "green",
-    icon: Calculator,
-  },
-  {
-    exam: "SEHSS",
-    topic: "Geometry",
-    lecture: "Lecture 5",
-    subtitle: "Triangles and Properties",
-    color: "orange",
-    icon: Triangle,
-  },
-  {
-    exam: "NMTC",
-    topic: "Combinatorics",
-    lecture: "Lecture 2",
-    subtitle: "Counting Principles",
-    color: "blue",
-    icon: Network,
-  },
-];
 
 // Quick Access
 export const quickAccess = [
@@ -115,20 +81,9 @@ export const exams = [
 ];
 
 // Problem of the Day
-export const potd = {
-  topic: "Geometry",
-  title: "Problem of the Day",
-  timeLeft: "10h 35m left",
-  question: "In △ABC, AB = AC and ∠B = 50°. Find ∠C.",
-};
+
 
 // Upcoming Test
-export const upcomingTest = {
-  title: "IOQM Test - 07",
-  date: "15 May 2026",
-  time: "10:00 AM - 1:00 PM",
-  questions: "60 Questions",
-};
 
 // Pro Banner
 export const proPlan = {
