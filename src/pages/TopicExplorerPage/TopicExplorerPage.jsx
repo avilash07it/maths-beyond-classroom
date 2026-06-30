@@ -12,6 +12,31 @@ import { useEffect, useState } from "react";
 function TopicExplorerPage() {
   const navigate = useNavigate();
   const [support, setSupport] = useState(null);
+  const [lectures, setLectures] = useState([]);
+const [materials, setMaterials] = useState([]);
+const fetchLectures = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/lectures"
+    );
+
+    setLectures(response.data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+const fetchMaterials = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/materials"
+    );
+
+    setMaterials(response.data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
   const fetchSupport = async () => {
     try {
@@ -27,8 +52,10 @@ function TopicExplorerPage() {
   };
 
   useEffect(() => {
-    fetchSupport();
-  }, []);
+  fetchSupport();
+  fetchLectures();
+  fetchMaterials();
+}, []);
   
   return (
     <div className="topics-page">
@@ -81,7 +108,13 @@ function TopicExplorerPage() {
           <div className="topics-grid">
             {topics.map((topic) => {
               const TopicIcon = topic.icon;
+const lectureCount = lectures.filter(
+  (lecture) => lecture.topic === topic.title
+).length;
 
+const materialCount = materials.filter(
+  (material) => material.topic === topic.title
+).length;
               return (
                 <div className={`topic-card ${topic.color}`} key={topic.title}>
                   <div className="topic-icon">
@@ -92,12 +125,21 @@ function TopicExplorerPage() {
                   <p>{topic.description}</p>
 
                   <div className="topic-meta">
-                    <span>{topic.lectures} Lectures</span>
-                    <span>{topic.materials} Notes</span>
+                   <span>{lectureCount} Lectures</span>
+
+<span>{materialCount} Notes</span>
                   </div>
 
-                  <button onClick={() => navigate("/topics/number-theory")}>Explore →</button>
-                </div>
+<button
+  onClick={() =>
+    navigate(
+      `/lectures?topic=${encodeURIComponent(topic.title)}`
+    )
+  }
+>
+  View Lectures →
+</button>           
+     </div>
               );
             })}
           </div>

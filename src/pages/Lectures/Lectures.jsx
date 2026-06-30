@@ -13,7 +13,7 @@ import {
   Trophy,
   Video,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { exams, topics } from "./lecturesData";
 import axios from "axios";
@@ -33,13 +33,19 @@ const lectureSteps = [
   { title: "Practice Assignments", icon: Trophy },
 ];
 
-function Lectures() {
-  const [lectures, setLectures] = useState([]);
+  function Lectures() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const topicFromURL = new URLSearchParams(location.search).get("topic");
 
   const [query, setQuery] = useState("");
   const [selectedExam, setSelectedExam] = useState("All Exams");
-  const [selectedTopic, setSelectedTopic] = useState("All Topics");
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [lectures, setLectures] = useState([]);
+  const [selectedTopic, setSelectedTopic] = useState(
+    topicFromURL || "All Topics"
+  );
 const fetchLectures = async () => {
   try {
     const response = await axios.get(
@@ -48,24 +54,22 @@ const fetchLectures = async () => {
 
     const formattedLectures = response.data.data.map((lecture) => ({
       ...lecture,
-
       status: lecture.isRecorded ? "Recorded" : "Live",
-
       duration: "-",
-
       chapter: "-",
-
       action: lecture.isRecorded ? "Watch Now" : "Join Live",
     }));
 
     setLectures(formattedLectures);
   } catch (error) {
     console.error(error);
+  } finally {
+    setLoading(false);
   }
 };
 useEffect(() => {
   fetchLectures();
-}, []);
+}, [topicFromURL]);
   const filteredLectures = useMemo(() => {
     const searchTerm = query.trim().toLowerCase();
 
@@ -82,19 +86,33 @@ useEffect(() => {
 
       return matchesExam && matchesTopic && matchesSearch;
     });
-  }, [query, selectedExam, selectedTopic]);
-
+  },  [
+  lectures,
+  query,
+  selectedExam,
+  selectedTopic,
+]);
 const liveLecture =
-  lectures.find((lecture) => lecture.status === "Live") ||
-  lectures[0];
-
+  lectures.find((lecture) => lecture.status === "Live") ??
+  lectures[0] ??
+  null;
+if (!loading && lectures.length === 0) {
+  return (
+    <div className="lectures-page">
+      <DashboardNavbar />
+      <main className="lectures-shell">
+        <h2>No lectures uploaded yet.</h2>
+      </main>
+    </div>
+  );
+}
 
   const resetFilters = () => {
     setQuery("");
     setSelectedExam("All Exams");
     setSelectedTopic("All Topics");
   };
-  if (lectures.length === 0) {
+  if (loading) {
   return (
     <div className="lectures-page">
       <DashboardNavbar />
@@ -103,6 +121,7 @@ const liveLecture =
       </main>
     </div>
   );
+
 }
 
   return (
@@ -204,19 +223,22 @@ const liveLecture =
 
             <div className="featured-live-copy">
               <span>Featured Live Class</span>
-              <h2>{liveLecture.title}</h2>
+<h2>{liveLecture?.title || "No live lecture available"}</h2>
               <div className="featured-live-meta">
-                <strong>{liveLecture.exam}</strong>
-                <strong>{liveLecture.topic}</strong>
-                <strong>{liveLecture.duration}</strong>
-              </div>
+<strong>{liveLecture?.exam || "-"}</strong>
+<strong>{liveLecture?.topic || "-"}</strong>
+<strong>{liveLecture?.duration || "-"}</strong>              </div>
             </div>
 <button
   type="button"
-  onClick={() => window.open(liveLecture.youtubeUrl, "_blank")}
->  Join Live
-
-            </button>
+  onClick={() => {
+    if (liveLecture?.youtubeUrl) {
+      window.open(liveLecture.youtubeUrl, "_blank");
+    }
+  }}
+>
+  Join Live
+</button>
           </div>
         </section>
 
@@ -231,52 +253,65 @@ const liveLecture =
                 <span>{filteredLectures.length} Lectures</span>
               </div>
 
-              <div className="lecture-list">
-                {filteredLectures.map((lecture) => {
-                  const StatusIcon = statusIcon[lecture.status];
+             <div className="lecture-list">
+  {filteredLectures.length > 0 ? (
+    filteredLectures.map((lecture) => {
+      const StatusIcon = statusIcon[lecture.status];
 
-                  return (
-                    <article
-                      className={`lecture-row ${lecture.status.toLowerCase()}`}
-                      key={lecture.id}
-                    >
-                      <div className="lecture-number">
-                        {String(lecture.lectureNumber).padStart(2, "0")}
-                      </div>
+      return (
+        <article
+          className={`lecture-row ${lecture.status.toLowerCase()}`}
+          key={lecture.id}
+        >
+          <div className="lecture-number">
+            {String(lecture.lectureNumber).padStart(2, "0")}
+          </div>
 
-                      <div className="lecture-status-icon">
-                        <StatusIcon size={20} />
-                      </div>
+          <div className="lecture-status-icon">
+            <StatusIcon size={20} />
+          </div>
 
-                      <div className="lecture-title-block">
-                        <span className="lecture-status-pill">
-                          {lecture.status}
-                        </span>
-                        <h3>{lecture.title}</h3>
-                        <p>{lecture.topic}</p>
-                        <small>{lecture.chapter}</small>
-                        {lecture.status === "Recorded" && (
-                          <div className="lecture-progress">
-                            <span></span>
-                          </div>
-                        )}
-                      </div>
+          <div className="lecture-title-block">
+            <span className="lecture-status-pill">
+              {lecture.status}
+            </span>
 
-                      <div className="lecture-meta">
-                        <strong>{lecture.duration}</strong>
-                        <span>{lecture.exam}</span>
-                      </div>
+            <h3>{lecture.title}</h3>
 
-                       <button
-  type="button"
-  className="lecture-action"
-  onClick={() => window.open(lecture.youtubeUrl, "_blank")}
->
-                      </button>
-                    </article>
-                  );
-                })}
+            <p>{lecture.topic}</p>
+
+            <small>{lecture.chapter}</small>
+
+            {lecture.status === "Recorded" && (
+              <div className="lecture-progress">
+                <span></span>
               </div>
+            )}
+          </div>
+
+          <div className="lecture-meta">
+            <strong>{lecture.duration}</strong>
+            <span>{lecture.exam}</span>
+          </div>
+
+          <button
+            type="button"
+            className="lecture-action"
+            onClick={() => window.open(lecture.youtubeUrl, "_blank")}
+          >
+            {lecture.action}
+            <ExternalLink size={16} />
+          </button>
+        </article>
+      );
+    })
+  ) : (
+    <div className="lecture-empty-state">
+      <h3>No lectures found</h3>
+      <p>No lectures match the selected topic or filters.</p>
+    </div>
+  )}
+</div>
             </div>
 
             <div className="lectures-info-card">
@@ -353,10 +388,14 @@ const liveLecture =
               </div>
               <button
   type="button"
-  onClick={() => window.open(liveLecture.youtubeUrl, "_blank")}
->  Join Live Class
-
-              </button>
+  onClick={() => {
+    if (liveLecture?.youtubeUrl) {
+      window.open(liveLecture.youtubeUrl, "_blank");
+    }
+  }}
+>
+  Join Live Class
+</button>
             </div>
 
             <div className="lectures-pro-card">

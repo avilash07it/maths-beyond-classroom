@@ -5,19 +5,7 @@ export const potdHeroStats = [
   { label: "Solution Available", value: "Pro access" },
 ];
 
-export const todayProblem = {
-  title: "Divisibility and Prime Numbers",
-  topic: "Number Theory",
-  exam: "IOQM",
-  difficulty: "Advanced",
-  date: "23 May 2025",
-  prompt:
-    "Let n be a positive integer. If n divides 2^n - 2, then prove that n is a prime number.",
-  description:
-    "Use divisibility properties carefully and test how the condition behaves for composite values of n.",
-  hint:
-    "Start by assuming n is composite. Choose a prime divisor p of n and compare the divisibility condition modulo p.",
-};
+
 
 
 export const preparationTips = [
@@ -27,7 +15,7 @@ export const preparationTips = [
 ];
 
 export const potdStats = [
-  { label: "Days Active", value: "142" },
-  { label: "Problems Solved", value: "128" },
-  { label: "Success Rate", value: "78%" },
+  { label: "Days Active", value: "-" },
+  { label: "Problems Solved", value: "-" },
+  { label: "Success Rate", value: "-" },
 ];

@@ -4,11 +4,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import {
-  continueLearning,
   quickAccess,
-  exams,
-  potd,
-  upcomingTest,
+    exams,
+
   proPlan,
   welcomeData,
 } from "./dashboardData";
