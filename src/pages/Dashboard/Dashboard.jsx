@@ -19,7 +19,81 @@ import { FaWhatsapp } from "react-icons/fa";
 
 function Dashboard() {
   const navigate = useNavigate();
+
 const [support, setSupport] = useState(null);
+const [liveLecture, setLiveLecture] = useState(null);
+const [todayProblem, setTodayProblem] = useState(null);
+const [lectures, setLectures] = useState([]);
+const [upcomingMockTest, setUpcomingMockTest] = useState(null);
+const [latestMaterial, setLatestMaterial] = useState(null);
+const [materials, setMaterials] = useState([]);
+const [mockTests, setMockTests] = useState([]);
+const fetchMaterials = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/materials"
+    );
+
+   const materialsData = response.data.data;
+
+setMaterials(materialsData);
+
+if (materialsData.length > 0) {
+    setLatestMaterial(materialsData[0]);
+}
+  } catch (error) {
+    console.error(error);
+  }
+};
+const fetchLectures = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/lectures"
+    );
+
+    const lecturesData = response.data.data;
+
+setLectures(lecturesData);
+
+const live =
+  lecturesData.find((lecture) => !lecture.isRecorded) ||
+  lecturesData[0];
+
+setLiveLecture(live || null);
+  } catch (error) {
+    console.error(error);
+  }
+};
+const fetchTodayPOTD = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:5000/api/potd/today"
+    );
+console.log("POTD:", response.data);
+    setTodayProblem(response.data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+const fetchMockTests = async () => {
+  try {
+    const response = await axios.get(
+ "http://localhost:5000/api/mock-tests/getall"
+    );
+
+const tests = response.data;
+
+setMockTests(tests);
+
+    const upcoming =
+      tests.find((test) => test.status === "Published") ||
+      tests[0];
+console.log("Mock Tests:", response.data);
+    setUpcomingMockTest(upcoming || null);
+  } catch (error) {
+    console.error(error);
+  }
+};
 const fetchSupport = async () => {
   try {
     const response = await axios.get(
@@ -34,6 +108,10 @@ const fetchSupport = async () => {
 };
 useEffect(() => {
   fetchSupport();
+  fetchLectures();
+  fetchTodayPOTD();
+  fetchMaterials();
+  fetchMockTests();
 }, []);
   return (
     <div className="dashboard-page">
@@ -48,18 +126,33 @@ useEffect(() => {
 
           <div className="hero-status-cards">
             <div>
-              <b>Today’s Live Class</b>
-              <span>Number Theory • 10:00 AM</span>
+              <b>Today's Live Class</b>
+
+<span>
+  {liveLecture
+    ? `${liveLecture.title}`
+    : "No lecture uploaded"}
+</span>
             </div>
 
             <div>
               <b>Latest Material</b>
-              <span>Quadratic Equations</span>
+
+<span>
+  {latestMaterial
+    ? latestMaterial.title
+    : "No material uploaded"}
+</span>
             </div>
 
             <div>
-              <b>POTD Available</b>
-              <span>Solve and keep your streak alive</span>
+             <b>POTD</b>
+
+<span>
+  {todayProblem
+    ? todayProblem.title
+    : "No POTD uploaded"}
+</span>
             </div>
           </div>
         </div>
@@ -68,7 +161,7 @@ useEffect(() => {
           <div className="hero-stat-card">
             <span>📖</span>
             <div>
-              <h3>32</h3>
+              <h3>{lectures.length}</h3>
               <p>Lectures Watched</p>
             </div>
           </div>
@@ -76,7 +169,7 @@ useEffect(() => {
           <div className="hero-stat-card">
             <span>📄</span>
             <div>
-              <h3>18</h3>
+             <h3>{materials.length}</h3>
               <p>Materials Read</p>
             </div>
           </div>
@@ -84,7 +177,7 @@ useEffect(() => {
           <div className="hero-stat-card">
             <span>🎯</span>
             <div>
-              <h3>7</h3>
+<h3>{mockTests.length}</h3>
               <p>Tests Attempted</p>
             </div>
           </div>
@@ -92,7 +185,7 @@ useEffect(() => {
           <div className="hero-stat-card">
             <span>🔥</span>
             <div>
-              <h3>12</h3>
+              <h3>-</h3>
               <p>Day Streak</p>
             </div>
           </div>
@@ -106,26 +199,36 @@ useEffect(() => {
             <a href="/lectures">View all →</a>
           </div>
 
-          <div className="learning-grid">
-            {continueLearning.map((item) => {
-              const LessonIcon = item.icon;
+       <div className="learning-grid">
+  {lectures.length > 0 ? (
+    lectures.map((item) => (
+      <div className="learning-card" key={item.id}>
+        <span>{item.exam}</span>
 
-              return (
-                <div className={`learning-card ${item.color}`} key={item.topic}>
-                  <span>{item.exam}</span>
+        <div className="lesson-icon">
+          <PlayCircle size={38} />
+        </div>
 
-                  <div className="lesson-icon">
-                    <LessonIcon size={38} />
-                  </div>
+        <h3>{item.title}</h3>
 
-                  <h3>{item.topic}</h3>
-                  <p>{item.lecture}</p>
-                  <small>{item.subtitle}</small>
-                  <button onClick={() => navigate("/lectures")}>Continue →</button>
-                </div>
-              );
-            })}
-          </div>
+        <p>Lecture {item.lectureNumber}</p>
+
+        <small>{item.topic}</small>
+
+        <button
+          onClick={() => window.open(item.youtubeUrl, "_blank")}
+        >
+          {item.isRecorded ? "Watch Now →" : "Join Live →"}
+        </button>
+      </div>
+    ))
+  ) : (
+    <div className="learning-card">
+      <h3>No lectures uploaded</h3>
+      <p>Lectures will appear here once they're added by the admin.</p>
+    </div>
+  )}
+</div>
 
           <div className="section-header quick-heading">
             <h2>Quick Access</h2>
@@ -185,12 +288,21 @@ useEffect(() => {
         <aside className="dashboard-sidebar">
         <div className="side-card dashboard-potd-card">
                       <div className="section-header">
-              <h2>{potd.title}</h2>
-              <a href="/potd">View all →</a>
+<h2>
+  {todayProblem
+    ? todayProblem.title
+    : "Problem of the Day"}
+</h2>             
+ <a href="/potd">View all →</a>
             </div>
 
-            <span className="topic-pill">{potd.topic}</span>
-            <span className="time-pill">{potd.timeLeft}</span>
+<span className="topic-pill">
+  {todayProblem?.topic || "-"}
+</span>
+
+<span className="time-pill">
+  {todayProblem ? "Published" : "No POTD"}
+</span>
 
             <div className="potd-preview-box">
   <h3>Today’s challenge is ready</h3>
@@ -213,16 +325,31 @@ useEffect(() => {
 
           <div className="side-card">
             <div className="section-header">
-              <h2>Upcoming Test</h2>
+<h3>
+  {upcomingMockTest
+    ? upcomingMockTest.title
+    : "No test uploaded"}
+</h3>
               <a href="/mock-tests">View all →</a>
             </div>
 
-            <h3>{upcomingTest.title}</h3>
 
             <div className="test-info">
-              <div>{upcomingTest.date}</div>
-              <div>{upcomingTest.time}</div>
-              <div>{upcomingTest.questions}</div>
+<div>
+  {upcomingMockTest
+    ? upcomingMockTest.exam
+    : "-"}
+</div>
+<div>
+  {upcomingMockTest
+    ? `${upcomingMockTest.duration} mins`
+    : "-"}
+</div>
+<div>
+  {upcomingMockTest
+    ? `${upcomingMockTest.questions ?? "-"} Questions`
+    : "-"}
+</div>
             </div>
 
             <button className="side-btn" onClick={() => navigate("/mock-tests")}>
