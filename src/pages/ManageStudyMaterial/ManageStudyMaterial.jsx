@@ -265,7 +265,6 @@ status: "Published",
                   {editingMaterialId ? "Edit resource details" : "Add study material"}
                 </h2>
               </div>
-              <p>Frontend-only controls ready for backend wiring later.</p>
             </div>
 
             <form className="manage-study-material-form" onSubmit={saveMaterial}>
