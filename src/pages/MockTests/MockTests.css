@@ -720,3 +720,403 @@
     flex-direction: column;
   }
 }
+
+/* =========================================================
+   <=1200px
+========================================================= */
+@media (max-width:1200px){
+
+  .mocktest-shell{
+    width:min(100% - 40px,1480px);
+  }
+
+  .mocktest-hero{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:40px;
+    min-height:auto;
+  }
+
+  .mocktest-hero-copy{
+    max-width:100%;
+  }
+
+  .mocktest-hero p{
+    max-width:100%;
+  }
+
+  .mocktest-top-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mocktest-test-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .mocktest-benefit-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .mocktest-bottom-cta{
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* =========================================================
+   <=992px
+========================================================= */
+@media (max-width:992px){
+
+  .mocktest-shell{
+    width:min(100% - 32px,1480px);
+  }
+
+  .mocktest-hero{
+    padding:36px 30px;
+  }
+
+  .mocktest-hero-visual{
+    min-height:250px;
+    transform:scale(.90);
+  }
+
+  .mocktest-trophy-platform{
+    width:230px;
+  }
+
+  .mocktest-trophy-mark{
+    width:135px;
+    height:135px;
+  }
+
+  .mocktest-test-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mocktest-benefit-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .mocktest-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .mocktest-bottom-cta{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .mocktest-bottom-cta button{
+    width:100%;
+  }
+
+}
+
+
+/* =========================================================
+   iPad Air Portrait (820 × 1180)
+========================================================= */
+@media (min-width:768px) and (max-width:900px){
+
+  .mocktest-shell{
+    width:min(100% - 40px,1480px);
+  }
+
+  .mocktest-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 36px;
+  }
+
+  .mocktest-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .mocktest-hero p{
+    font-size:18px;
+    line-height:1.75;
+    max-width:100%;
+  }
+
+  .mocktest-hero-badges{
+    gap:14px;
+  }
+
+  .mocktest-hero-badges span{
+    font-size:15px;
+    padding:0 18px;
+  }
+
+  .mocktest-hero-visual{
+    min-height:260px;
+    transform:scale(.92);
+  }
+
+  .mocktest-top-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mocktest-free-card,
+  .mocktest-pro-banner,
+  .mocktest-series-area,
+  .mocktest-benefits-area{
+    padding:30px;
+  }
+
+  .mocktest-free-card h2,
+  .mocktest-pro-banner h2,
+  .mocktest-section-heading h2{
+    font-size:30px;
+  }
+
+  .mocktest-free-card p,
+  .mocktest-pro-banner p,
+  .mocktest-section-heading p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .mocktest-free-meta strong{
+    font-size:18px;
+  }
+
+  .mocktest-test-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .mocktest-test-card{
+    min-height:260px;
+    padding:24px;
+  }
+
+  .mocktest-test-card h4{
+    font-size:21px;
+    line-height:1.45;
+  }
+
+  .mocktest-test-meta span{
+    font-size:13px;
+  }
+
+  .mocktest-card-cta{
+    font-size:15px;
+  }
+
+  .mocktest-benefit-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .mocktest-benefit-card h3{
+    font-size:22px;
+  }
+
+  .mocktest-benefit-card p{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  .mocktest-bottom-cta h2{
+    font-size:32px;
+  }
+
+  .mocktest-bottom-cta p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+}
+
+
+/* =========================================================
+   <=768px
+========================================================= */
+@media (max-width:768px){
+
+  .mocktest-shell{
+    width:min(100% - 24px,1480px);
+    padding-top:20px;
+  }
+
+  .mocktest-hero{
+    padding:28px 22px;
+  }
+
+  .mocktest-hero h1{
+    font-size:42px;
+  }
+
+  .mocktest-hero p{
+    font-size:16px;
+  }
+
+  .mocktest-hero-visual{
+    min-height:220px;
+    transform:scale(.82);
+  }
+
+  .mocktest-free-card,
+  .mocktest-pro-banner,
+  .mocktest-series-area,
+  .mocktest-benefits-area,
+  .mocktest-bottom-cta{
+    padding:22px;
+  }
+
+  .mocktest-free-content{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .mocktest-free-meta{
+    grid-template-columns:1fr;
+  }
+
+  .mocktest-benefit-grid,
+  .mocktest-test-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mocktest-pro-banner{
+    flex-direction:column;
+  }
+
+  .mocktest-bottom-cta{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .mocktest-bottom-cta button{
+    width:100%;
+  }
+
+}
+
+
+/* =========================================================
+   <=576px
+========================================================= */
+@media (max-width:576px){
+
+  .mocktest-shell{
+    width:min(100% - 20px,1480px);
+  }
+
+  .mocktest-hero{
+    padding:24px 18px;
+  }
+
+  .mocktest-hero h1{
+    font-size:36px;
+  }
+
+  .mocktest-hero p{
+    font-size:15px;
+  }
+
+  .mocktest-hero-badges span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .mocktest-hero-visual{
+    min-height:180px;
+    transform:scale(.72);
+  }
+
+  .mocktest-free-card,
+  .mocktest-pro-banner,
+  .mocktest-series-area,
+  .mocktest-benefits-area,
+  .mocktest-bottom-cta{
+    padding:20px;
+    border-radius:18px;
+  }
+
+  .mocktest-test-card{
+    min-height:auto;
+    padding:20px;
+  }
+
+  .mocktest-test-card h4{
+    font-size:18px;
+  }
+
+  .mocktest-test-topline,
+  .mocktest-test-meta{
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* =========================================================
+   <=400px
+========================================================= */
+@media (max-width:400px){
+
+  .mocktest-shell{
+    width:min(100% - 16px,1480px);
+  }
+
+  .mocktest-hero{
+    padding:20px 14px;
+  }
+
+  .mocktest-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .mocktest-hero-kicker{
+    font-size:12px;
+  }
+
+  .mocktest-hero-visual{
+    display:none;
+  }
+
+  .mocktest-free-card,
+  .mocktest-pro-banner,
+  .mocktest-series-area,
+  .mocktest-benefits-area,
+  .mocktest-bottom-cta{
+    padding:16px;
+  }
+
+  .mocktest-free-card h2,
+  .mocktest-pro-banner h2,
+  .mocktest-section-heading h2,
+  .mocktest-bottom-cta h2{
+    font-size:24px;
+  }
+
+  .mocktest-free-meta div{
+    min-height:auto;
+    padding:14px;
+  }
+
+  .mocktest-test-card{
+    padding:16px;
+  }
+
+  .mocktest-test-card h4{
+    font-size:16px;
+  }
+
+  .mocktest-test-meta span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .mocktest-free-card button,
+  .mocktest-pro-banner button,
+  .mocktest-bottom-cta button{
+    width:100%;
+    min-height:48px;
+  }
+
+}

@@ -849,3 +849,470 @@
   transform: translateY(-5px);
   border-color:#0b0757;
 }
+
+/* =========================================================
+   <=1200px
+========================================================= */
+@media (max-width:1200px){
+
+  .pyq-hero{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:40px;
+  }
+
+  .pyq-hero-content{
+    max-width:100%;
+  }
+
+  .pyq-hero p{
+    max-width:100%;
+  }
+
+  .pyq-content{
+    grid-template-columns:1fr;
+  }
+
+  .pyq-sidebar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .pyq-pro-card{
+    grid-column:1/-1;
+  }
+
+  .pyq-row{
+    grid-template-columns:48px minmax(220px,1fr) repeat(3,minmax(90px,auto));
+  }
+
+  .pyq-actions{
+    grid-column:2/-1;
+    justify-content:flex-start;
+    margin-top:10px;
+  }
+
+}
+
+
+/* =========================================================
+   <=992px
+========================================================= */
+@media (max-width:992px){
+
+  .pyq-hero{
+    padding:36px 30px;
+  }
+   .pyq-row{
+    grid-template-columns:46px 1fr;
+  }
+
+  .pyq-row .pyq-meta-block:nth-of-type(2),
+  .pyq-row .pyq-meta-block:nth-of-type(3){
+    display:none;
+  }
+
+  .pyq-hero-visual{
+    min-height:240px;
+    transform:scale(.90);
+  }
+
+  .pyq-section-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .pyq-sidebar{
+    grid-template-columns:1fr;
+  }
+
+  .pyq-info-card ol{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .pyq-row{
+    grid-template-columns:48px 1fr;
+    gap:16px;
+  }
+
+  .pyq-meta-block,
+  .pyq-actions{
+    grid-column:2;
+  }
+
+}
+
+
+/* =========================================================
+   iPad Air (820 × 1180)
+========================================================= */
+@media (min-width:768px) and (max-width:900px){
+
+  .pyq-hero{
+    grid-template-columns:1fr;
+    gap:38px;
+    padding:42px 36px;
+  }
+
+  .pyq-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .pyq-hero p{
+    font-size:18px;
+    line-height:1.75;
+    max-width:100%;
+  }
+
+  .pyq-search-wrap{
+    min-height:60px;
+  }
+
+  .pyq-search-wrap input{
+    font-size:17px;
+  }
+
+  .pyq-hero-filters{
+    gap:16px;
+  }
+
+  .pyq-hero-filters label{
+    flex:1 1 240px;
+  }
+
+  .pyq-hero-filters button{
+    flex:1 1 100%;
+  }
+
+  .pyq-hero-visual{
+    min-height:260px;
+    transform:scale(.92);
+  }
+
+  .pyq-content{
+    grid-template-columns:1fr;
+  }
+
+  .pyq-sidebar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .pyq-pro-card{
+    grid-column:1/-1;
+  }
+
+  .pyq-section-card,
+  .pyq-side-card,
+  .pyq-info-card,
+  .pyq-pro-card,
+  .pyq-support-card{
+    padding:28px;
+  }
+
+  .pyq-section-header h2{
+    font-size:30px;
+  }
+
+  .pyq-section-header p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .pyq-row{
+    grid-template-columns:54px 1fr;
+    gap:18px;
+    padding:22px 0;
+  }
+
+  .pyq-exam-icon{
+    width:52px;
+    height:52px;
+  }
+
+  .pyq-row-title h3{
+    font-size:21px;
+    line-height:1.4;
+  }
+
+  .pyq-row-title p{
+    font-size:15px;
+  }
+
+  .pyq-meta-block{
+    gap:4px;
+  }
+
+  .pyq-meta-block span{
+    font-size:14px;
+  }
+
+  .pyq-meta-block strong{
+    font-size:17px;
+  }
+
+    .pyq-row{
+    grid-template-columns:46px 1fr;
+  }
+
+  .pyq-row .pyq-meta-block:nth-of-type(2),
+  .pyq-row .pyq-meta-block:nth-of-type(3){
+    display:none;
+  }
+
+  .pyq-actions{
+    grid-column:2;
+    margin-top:10px;
+  }
+
+  .pyq-actions button{
+    min-height:46px;
+    font-size:15px;
+  }
+
+  .pyq-side-card h3{
+    font-size:24px;
+  }
+
+  .pyq-filter-list button{
+    font-size:15px;
+  }
+
+  .pyq-info-card h2,
+  .pyq-pro-card h2{
+    font-size:28px;
+  }
+
+  .pyq-info-card ol{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    font-size:16px;
+  }
+
+  .pyq-support-card p,
+  .pyq-pro-card p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+}
+
+
+/* =========================================================
+   <=768px
+========================================================= */
+@media (max-width:768px){
+
+  .pyq-hero{
+    margin:18px 16px 0;
+    padding:28px 22px;
+  }
+
+  .pyq-hero h1{
+    font-size:42px;
+  }
+
+  .pyq-hero p{
+    font-size:16px;
+  }
+
+   .pyq-row{
+    grid-template-columns:46px 1fr;
+  }
+
+  .pyq-row .pyq-meta-block:nth-of-type(2),
+  .pyq-row .pyq-meta-block:nth-of-type(3){
+    display:none;
+  }
+
+  .pyq-hero-visual{
+    min-height:220px;
+    transform:scale(.82);
+  }
+
+  .pyq-content{
+    padding:18px 16px 30px;
+  }
+
+  .pyq-section-card,
+  .pyq-side-card,
+  .pyq-info-card,
+  .pyq-pro-card,
+  .pyq-support-card{
+    padding:22px;
+  }
+
+  .pyq-row{
+    grid-template-columns:46px 1fr;
+    gap:14px;
+  }
+
+  .pyq-meta-block,
+  .pyq-actions{
+    grid-column:1/-1;
+  }
+
+  .pyq-actions{
+    width:100%;
+  }
+
+  .pyq-actions button{
+    flex:1;
+  }
+
+  .pyq-info-card{
+    flex-direction:column;
+  }
+
+  .pyq-info-card ol{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* =========================================================
+   <=576px
+========================================================= */
+@media (max-width:576px){
+
+  .pyq-hero{
+    margin:14px 12px 0;
+    padding:24px 18px;
+  }
+     .pyq-row{
+    grid-template-columns:46px 1fr;
+  }
+
+  .pyq-row .pyq-meta-block:nth-of-type(2),
+  .pyq-row .pyq-meta-block:nth-of-type(3){
+    display:none;
+  }
+
+  .pyq-hero h1{
+    font-size:36px;
+  }
+
+  .pyq-hero p{
+    font-size:15px;
+  }
+
+  .pyq-search-wrap{
+    min-height:54px;
+  }
+
+  .pyq-hero-filters{
+    flex-direction:column;
+  }
+
+  .pyq-hero-filters label,
+  .pyq-hero-filters button,
+  .pyq-hero-filters select{
+    width:100%;
+  }
+
+  .pyq-hero-visual{
+    min-height:190px;
+    transform:scale(.72);
+  }
+
+  .pyq-content{
+    padding:16px 12px 28px;
+  }
+
+  .pyq-row{
+    grid-template-columns:1fr;
+  }
+
+  .pyq-actions{
+    flex-direction:column;
+  }
+
+  .pyq-actions button{
+    width:100%;
+  }
+
+}
+
+
+/* =========================================================
+   <=400px
+========================================================= */
+@media (max-width:400px){
+  
+    .pyq-row{
+    grid-template-columns:46px 1fr;
+  }
+
+  .pyq-row .pyq-meta-block:nth-of-type(2),
+  .pyq-row .pyq-meta-block:nth-of-type(3){
+    display:none;
+  }
+
+  .pyq-hero{
+    margin:10px;
+    padding:20px 14px;
+  }
+
+  .pyq-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .pyq-kicker{
+    font-size:11px;
+  }
+
+  .pyq-search-wrap{
+    min-height:50px;
+    padding:0 14px;
+  }
+
+  .pyq-search-wrap input{
+    font-size:15px;
+  }
+
+  .pyq-hero-visual{
+    display:none;
+  }
+
+  .pyq-content{
+    padding:12px 10px 24px;
+  }
+
+  .pyq-section-card,
+  .pyq-side-card,
+  .pyq-info-card,
+  .pyq-pro-card,
+  .pyq-support-card{
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .pyq-section-header h2{
+    font-size:22px;
+  }
+
+  .pyq-row-title h3{
+    font-size:17px;
+  }
+
+  .pyq-row-title p,
+  .pyq-meta-block span{
+    font-size:13px;
+  }
+
+  .pyq-meta-block strong{
+    font-size:15px;
+  }
+
+  .pyq-actions button,
+  .pyq-pro-card button{
+    width:100%;
+    min-height:44px;
+  }
+
+  .pyq-info-card h2,
+  .pyq-pro-card h2{
+    font-size:24px;
+  }
+
+}
