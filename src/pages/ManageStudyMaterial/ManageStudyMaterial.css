@@ -720,3 +720,344 @@
     flex: 1 1 120px;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .manage-study-material-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 34px 72px;
+  }
+
+  .manage-study-material-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-study-material-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-study-material-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-study-material-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-study-material-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .manage-study-material-hero{
+    padding:38px 28px 66px;
+  }
+
+  .manage-study-material-hero h1{
+    font-size:48px;
+  }
+
+  .manage-study-material-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.7;
+  }
+
+  .manage-study-material-shell{
+    width:min(100% - 28px,1180px);
+  }
+
+  .manage-study-material-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-study-material-section-heading p{
+    max-width:100%;
+    text-align:left;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .manage-study-material-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 36px 70px;
+  }
+
+  .manage-study-material-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .manage-study-material-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .manage-study-material-hero-panel{
+    padding:24px;
+  }
+
+  .manage-study-material-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-study-material-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-study-material-summary-card{
+    padding:22px;
+  }
+
+  .manage-study-material-summary-card strong{
+    font-size:32px;
+  }
+
+  .manage-study-material-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-study-material-form-card,
+  .manage-study-material-notes-card,
+  .manage-study-material-table-card{
+    padding:28px;
+  }
+
+  .manage-study-material-section-heading h2{
+    font-size:30px;
+  }
+
+  .manage-study-material-section-heading p{
+    max-width:100%;
+    font-size:16px;
+    line-height:1.7;
+    text-align:left;
+  }
+
+  .manage-study-material-form{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-study-material-field-wide,
+  .manage-study-material-form-actions{
+    grid-column:1/-1;
+  }
+
+  .manage-study-material-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-study-material-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .manage-study-material-hero{
+    padding:30px 22px 58px;
+  }
+
+  .manage-study-material-hero h1{
+    font-size:42px;
+  }
+
+  .manage-study-material-hero p{
+    font-size:16px;
+  }
+
+  .manage-study-material-hero-panel{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-study-material-shell{
+    width:min(100% - 20px,1180px);
+  }
+
+  .manage-study-material-summary-grid,
+  .manage-study-material-filter-bar,
+  .manage-study-material-form{
+    grid-template-columns:1fr;
+  }
+
+  .manage-study-material-form-card,
+  .manage-study-material-notes-card,
+  .manage-study-material-table-card{
+    padding:22px;
+  }
+
+  .manage-study-material-table-wrap{
+    overflow:visible;
+  }
+
+  .manage-study-material-table{
+    min-width:0;
+    border:none;
+    border-radius:0;
+    gap:14px;
+    overflow:visible;
+  }
+
+  .manage-study-material-table-head{
+    display:none;
+  }
+
+  .manage-study-material-table-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px;
+    border:1px solid #eef0f6;
+    border-radius:18px;
+  }
+
+  .manage-study-material-table-row > span:not(.manage-study-material-row-actions){
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+  }
+
+  .manage-study-material-table-row > span:first-child{
+    display:block;
+  }
+
+  .manage-study-material-table-row > span:first-child::before{
+    display:none;
+  }
+
+  .manage-study-material-row-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .manage-study-material-hero{
+    padding:24px 18px 54px;
+  }
+
+  .manage-study-material-hero h1{
+    font-size:36px;
+  }
+
+  .manage-study-material-hero p{
+    font-size:15px;
+  }
+
+  .manage-study-material-summary-grid,
+  .manage-study-material-filter-bar{
+    grid-template-columns:1fr;
+  }
+
+  .manage-study-material-summary-card,
+  .manage-study-material-form-card,
+  .manage-study-material-notes-card,
+  .manage-study-material-table-card{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .manage-study-material-form-actions{
+    flex-direction:column;
+  }
+
+  .manage-study-material-save-button,
+  .manage-study-material-clear-button{
+    width:100%;
+  }
+
+  .manage-study-material-row-actions button{
+    flex:1 1 100%;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .manage-study-material-hero{
+    padding:20px 14px 48px;
+  }
+
+  .manage-study-material-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .manage-study-material-hero p{
+    font-size:14px;
+  }
+
+  .manage-study-material-shell{
+    width:min(100% - 16px,1180px);
+  }
+
+  .manage-study-material-summary-card,
+  .manage-study-material-form-card,
+  .manage-study-material-notes-card,
+  .manage-study-material-table-card{
+    padding:16px;
+  }
+
+  .manage-study-material-summary-icon,
+  .manage-study-material-notes-icon{
+    width:48px;
+    height:48px;
+  }
+
+  .manage-study-material-summary-card strong{
+    font-size:24px;
+  }
+
+  .manage-study-material-section-heading h2{
+    font-size:22px;
+  }
+
+  .manage-study-material-field input,
+  .manage-study-material-field select,
+  .manage-study-material-search-field,
+  .manage-study-material-filter-field{
+    min-height:48px;
+  }
+
+  .manage-study-material-save-button,
+  .manage-study-material-clear-button,
+  .manage-study-material-row-actions button{
+    width:100%;
+    min-height:46px;
+  }
+
+}

@@ -730,3 +730,358 @@
     flex: 1 1 120px;
   }
 }
+/* =========================================================
+   <=1200px
+========================================================= */
+@media (max-width:1200px){
+
+  .manage-lectures-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 32px 72px;
+  }
+
+  .manage-lectures-hero-badges{
+    justify-content:flex-start;
+  }
+
+  .manage-lectures-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-lectures-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-lectures-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-lectures-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-lectures-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* =========================================================
+   <=992px
+========================================================= */
+@media (max-width:992px){
+
+  .manage-lectures-hero{
+    padding:38px 28px 64px;
+  }
+
+  .manage-lectures-hero h1{
+    font-size:48px;
+  }
+
+  .manage-lectures-hero p{
+    font-size:18px;
+    max-width:100%;
+  }
+
+  .manage-lectures-shell{
+    width:min(100% - 28px,1180px);
+  }
+
+  .manage-lectures-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-lectures-section-heading p{
+    text-align:left;
+    max-width:100%;
+  }
+
+  .manage-lectures-form{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* =========================================================
+   iPad Air (820 × 1180)
+========================================================= */
+@media (min-width:768px) and (max-width:900px){
+
+  .manage-lectures-hero{
+    grid-template-columns:1fr;
+    gap:34px;
+    padding:42px 36px 68px;
+  }
+
+  .manage-lectures-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .manage-lectures-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .manage-lectures-hero-badges{
+    justify-content:flex-start;
+    gap:14px;
+  }
+
+  .manage-lectures-hero-badges span{
+    font-size:14px;
+  }
+
+  .manage-lectures-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-lectures-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-lectures-summary-card{
+    padding:22px;
+  }
+
+  .manage-lectures-summary-card strong{
+    font-size:32px;
+  }
+
+  .manage-lectures-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-lectures-form-card,
+  .manage-lectures-notes-card,
+  .manage-lectures-table-card{
+    padding:28px;
+  }
+
+  .manage-lectures-section-heading h2{
+    font-size:30px;
+  }
+
+  .manage-lectures-section-heading p{
+    font-size:16px;
+    line-height:1.7;
+    max-width:100%;
+    text-align:left;
+  }
+
+  .manage-lectures-form{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-lectures-field-wide,
+  .manage-lectures-form-actions{
+    grid-column:1/-1;
+  }
+
+  .manage-lectures-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-lectures-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* =========================================================
+   <=768px
+========================================================= */
+@media (max-width:768px){
+
+  .manage-lectures-hero{
+    padding:30px 22px 58px;
+  }
+
+  .manage-lectures-hero h1{
+    font-size:42px;
+  }
+
+  .manage-lectures-hero p{
+    font-size:16px;
+  }
+
+  .manage-lectures-shell{
+    width:min(100% - 20px,1180px);
+  }
+
+  .manage-lectures-summary-grid,
+  .manage-lectures-filter-bar,
+  .manage-lectures-form{
+    grid-template-columns:1fr;
+  }
+
+  .manage-lectures-form-card,
+  .manage-lectures-notes-card,
+  .manage-lectures-table-card{
+    padding:22px;
+  }
+
+  .manage-lectures-table-wrap{
+    overflow:visible;
+  }
+
+  .manage-lectures-table{
+    min-width:0;
+    border:none;
+    gap:14px;
+  }
+
+  .manage-lectures-table-head{
+    display:none;
+  }
+
+  .manage-lectures-table-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px;
+    border:1px solid #eef0f6;
+    border-radius:18px;
+  }
+
+  .manage-lectures-table-row>span:not(.manage-lectures-row-actions){
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .manage-lectures-table-row>span:first-child{
+    display:block;
+  }
+
+  .manage-lectures-table-row>span:first-child::before{
+    display:none;
+  }
+
+  .manage-lectures-row-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* =========================================================
+   <=576px
+========================================================= */
+@media (max-width:576px){
+
+  .manage-lectures-hero{
+    padding:24px 18px 54px;
+  }
+
+  .manage-lectures-hero h1{
+    font-size:36px;
+  }
+
+  .manage-lectures-hero p{
+    font-size:15px;
+  }
+
+  .manage-lectures-hero-badges{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .manage-lectures-hero-badges span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .manage-lectures-summary-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-lectures-summary-card,
+  .manage-lectures-form-card,
+  .manage-lectures-notes-card,
+  .manage-lectures-table-card{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .manage-lectures-save-button,
+  .manage-lectures-clear-button{
+    width:100%;
+  }
+
+  .manage-lectures-form-actions{
+    flex-direction:column;
+  }
+
+  .manage-lectures-row-actions button{
+    flex:1;
+  }
+
+}
+
+
+/* =========================================================
+   <=400px
+========================================================= */
+@media (max-width:400px){
+
+  .manage-lectures-hero{
+    padding:20px 14px 48px;
+  }
+
+  .manage-lectures-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .manage-lectures-hero p{
+    font-size:14px;
+  }
+
+  .manage-lectures-shell{
+    width:min(100% - 16px,1180px);
+  }
+
+  .manage-lectures-summary-card,
+  .manage-lectures-form-card,
+  .manage-lectures-notes-card,
+  .manage-lectures-table-card{
+    padding:16px;
+  }
+
+  .manage-lectures-summary-icon,
+  .manage-lectures-notes-icon{
+    width:48px;
+    height:48px;
+  }
+
+  .manage-lectures-summary-card strong{
+    font-size:24px;
+  }
+
+  .manage-lectures-section-heading h2{
+    font-size:22px;
+  }
+
+  .manage-lectures-field input,
+  .manage-lectures-field select,
+  .manage-lectures-search-field,
+  .manage-lectures-filter-field{
+    min-height:48px;
+  }
+
+  .manage-lectures-save-button,
+  .manage-lectures-clear-button,
+  .manage-lectures-row-actions button{
+    width:100%;
+    min-height:46px;
+  }
+
+}

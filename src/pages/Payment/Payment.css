@@ -742,3 +742,385 @@
     flex-direction: column;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .payment-shell{
+    width:min(100% - 36px,1480px);
+  }
+
+  .payment-hero{
+    grid-template-columns:1fr;
+    gap:38px;
+    padding:42px 36px;
+  }
+
+  .payment-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .payment-right-column{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .payment-shell{
+    width:min(100% - 30px,1480px);
+  }
+
+  .payment-hero{
+    padding:38px 30px;
+  }
+
+  .payment-hero h1{
+    font-size:52px;
+  }
+
+  .payment-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .payment-plan-card,
+  .payment-submit-card,
+  .payment-upi-card,
+  .payment-info-card,
+  .payment-support-card{
+    padding:24px;
+  }
+
+  .payment-bottom-cta{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .payment-bottom-lock{
+    width:100%;
+    justify-content:center;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .payment-shell{
+    width:min(100% - 32px,1480px);
+  }
+
+  .payment-hero{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:42px 36px;
+  }
+
+  .payment-hero h1{
+    font-size:56px;
+    line-height:1.08;
+  }
+
+  .payment-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.8;
+  }
+
+  .payment-hero-visual{
+    min-height:270px;
+  }
+
+  .payment-wallet-mark{
+    width:145px;
+    height:145px;
+  }
+
+  .payment-wallet-mark svg{
+    width:82px;
+    height:82px;
+  }
+
+  .payment-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .payment-right-column{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .payment-plan-card,
+  .payment-submit-card,
+  .payment-upi-card,
+  .payment-info-card,
+  .payment-support-card{
+    padding:28px;
+  }
+
+  .payment-card-heading h2,
+  .payment-bottom-cta h2{
+    font-size:30px;
+  }
+
+  .payment-plan-header h3{
+    font-size:30px;
+  }
+
+  .payment-plan-header strong{
+    font-size:42px;
+  }
+
+  .payment-form input,
+  .payment-form textarea,
+  .payment-upload-field{
+    font-size:16px;
+  }
+
+  .payment-form button{
+    min-height:56px;
+    font-size:16px;
+  }
+
+  .payment-bottom-cta{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:30px;
+  }
+
+  .payment-bottom-lock{
+    width:100%;
+    justify-content:center;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .payment-shell{
+    width:min(100% - 22px,1480px);
+  }
+
+  .payment-hero{
+    padding:30px 22px;
+  }
+
+  .payment-hero h1{
+    font-size:42px;
+  }
+
+  .payment-hero p{
+    font-size:16px;
+  }
+
+  .payment-hero-visual{
+    min-height:220px;
+  }
+
+  .payment-wallet-mark{
+    width:120px;
+    height:120px;
+  }
+
+  .payment-wallet-mark svg{
+    width:66px;
+    height:66px;
+  }
+
+  .payment-wallet-base{
+    width:210px;
+  }
+
+  .payment-right-column{
+    grid-template-columns:1fr;
+  }
+
+  .payment-plan-card,
+  .payment-submit-card,
+  .payment-upi-card,
+  .payment-info-card,
+  .payment-support-card,
+  .payment-bottom-cta{
+    padding:20px;
+  }
+
+  .payment-card-heading,
+  .payment-support-card,
+  .payment-bottom-cta,
+  .payment-plan-header,
+  .payment-student-row{
+    display:grid;
+  }
+
+  .payment-plan-header strong{
+    font-size:34px;
+  }
+
+  .payment-form button,
+  .payment-support-card button{
+    width:100%;
+  }
+
+  .payment-bottom-lock{
+    width:100%;
+    justify-content:center;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .payment-shell{
+    width:min(100% - 18px,1480px);
+  }
+
+  .payment-hero{
+    padding:24px 18px;
+  }
+
+  .payment-hero h1{
+    font-size:36px;
+  }
+
+  .payment-hero p{
+    font-size:15px;
+  }
+
+  .payment-hero-chips span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .payment-hero-visual{
+    min-height:200px;
+  }
+
+  .payment-card-heading h2,
+  .payment-bottom-cta h2{
+    font-size:24px;
+  }
+
+  .payment-plan-header h3{
+    font-size:24px;
+  }
+
+  .payment-plan-header strong{
+    font-size:32px;
+  }
+
+  .payment-detail-list div{
+    grid-template-columns:1fr;
+  }
+
+  .payment-detail-list svg{
+    grid-column:1;
+    grid-row:auto;
+    margin-top:8px;
+  }
+
+  .payment-success-message,
+  .payment-status-list div{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .payment-shell{
+    width:min(100% - 14px,1480px);
+  }
+
+  .payment-hero{
+    padding:20px 14px;
+  }
+
+  .payment-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .payment-hero p{
+    font-size:14px;
+  }
+
+  .payment-hero-kicker{
+    font-size:13px;
+    padding:8px 14px;
+  }
+
+  .payment-plan-card,
+  .payment-submit-card,
+  .payment-upi-card,
+  .payment-info-card,
+  .payment-support-card,
+  .payment-bottom-cta{
+    padding:18px 16px;
+  }
+
+  .payment-card-heading>span,
+  .payment-support-card>span{
+    width:46px;
+    height:46px;
+  }
+
+  .payment-wallet-mark{
+    width:105px;
+    height:105px;
+  }
+
+  .payment-wallet-mark svg{
+    width:56px;
+    height:56px;
+  }
+
+  .payment-plan-header h3{
+    font-size:20px;
+  }
+
+  .payment-plan-header strong{
+    font-size:28px;
+  }
+
+  .payment-form input,
+  .payment-form textarea,
+  .payment-upload-field{
+    font-size:14px;
+  }
+
+  .payment-form button,
+  .payment-support-card button{
+    width:100%;
+    min-height:48px;
+    font-size:14px;
+  }
+
+  .payment-bottom-lock{
+    min-height:50px;
+    font-size:14px;
+  }
+
+}

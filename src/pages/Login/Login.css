@@ -375,3 +375,418 @@
       justify-self: center;
     }
   }
+
+  /* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .login-page{
+    padding:28px 42px;
+    gap:42px;
+    grid-template-columns:.95fr 1fr;
+  }
+
+  .login-top-brand{
+    left:42px;
+  }
+
+  .login-brand-text h1{
+    font-size:48px;
+  }
+
+  .login-brand-text p{
+    font-size:17px;
+  }
+
+  .login-card{
+    max-width:520px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .login-page{
+    grid-template-columns:1fr;
+    gap:42px;
+    padding:34px 30px;
+  }
+
+  .login-top-brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:10px;
+  }
+
+  .login-left{
+    padding-top:0;
+  }
+
+  .login-brand-text{
+    max-width:100%;
+  }
+
+  .login-brand-text h1{
+    font-size:46px;
+  }
+
+  .login-brand-text p{
+    max-width:100%;
+  }
+
+  .login-mini-card{
+    max-width:100%;
+  }
+
+  .login-card{
+    max-width:100%;
+    justify-self:center;
+  }
+
+  .login-bg-glow{
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .login-page{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:40px 36px;
+  }
+
+  .login-top-brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:10px;
+  }
+
+  .login-top-brand img{
+    width:60px;
+    height:60px;
+  }
+
+  .login-top-brand h2{
+    font-size:30px;
+  }
+
+  .login-left{
+    padding-top:0;
+  }
+
+  .login-brand-text h1{
+    font-size:56px;
+    line-height:1.08;
+  }
+
+  .login-brand-text p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .login-benefits p{
+    font-size:17px;
+  }
+
+  .login-mini-card{
+    max-width:100%;
+    font-size:16px;
+    line-height:1.8;
+    padding:22px;
+  }
+
+  .login-exam-strip{
+    gap:14px;
+  }
+
+  .login-exam-strip span{
+    font-size:14px;
+    padding:11px 18px;
+  }
+
+  .login-card{
+    max-width:640px;
+    width:100%;
+    justify-self:center;
+    padding:34px;
+  }
+
+  .login-card-header h2{
+    font-size:36px;
+  }
+
+  .login-card-header p{
+    font-size:17px;
+  }
+
+  .login-card label{
+    font-size:15px;
+  }
+
+  .login-card input{
+    min-height:56px;
+    font-size:16px;
+  }
+
+  .login-btn,
+  .google-btn{
+    min-height:56px;
+    font-size:16px;
+  }
+
+  .secure-box{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .login-page{
+    grid-template-columns:1fr;
+    padding:30px 22px;
+    gap:34px;
+  }
+
+  .login-top-brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:8px;
+  }
+
+  .login-left{
+    padding-top:0;
+  }
+
+  .login-brand-text h1{
+    font-size:42px;
+  }
+
+  .login-brand-text p{
+    font-size:16px;
+    max-width:100%;
+  }
+
+  .login-mini-card{
+    max-width:100%;
+  }
+
+  .login-card{
+    max-width:100%;
+    padding:28px 24px;
+  }
+
+  .login-bg-glow{
+    width:320px;
+    height:320px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .login-page{
+    padding:24px 18px;
+    gap:28px;
+  }
+
+  .login-top-brand{
+    gap:10px;
+  }
+
+  .login-top-brand img{
+    width:48px;
+    height:48px;
+  }
+
+  .login-top-brand h2{
+    font-size:24px;
+  }
+
+  .login-top-brand p{
+    font-size:11px;
+  }
+
+  .login-brand-text h1{
+    font-size:36px;
+    letter-spacing:-1px;
+  }
+
+  .login-brand-text p{
+    font-size:15px;
+  }
+
+  .login-benefits{
+    gap:12px;
+  }
+
+  .login-benefits p{
+    font-size:15px;
+  }
+
+  .login-mini-card{
+    padding:18px;
+    font-size:14px;
+  }
+
+  .login-exam-strip span{
+    flex:1 1 calc(50% - 8px);
+    text-align:center;
+  }
+
+  .login-card{
+    padding:22px 20px;
+    border-radius:22px;
+  }
+
+  .login-card-header h2{
+    font-size:30px;
+  }
+
+  .login-card-header p{
+    font-size:15px;
+  }
+
+  .login-card input{
+    min-height:52px;
+    font-size:15px;
+  }
+
+  .password-row{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .login-btn,
+  .google-btn{
+    min-height:52px;
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .login-page{
+    padding:18px 14px;
+  }
+
+  .login-bg-glow{
+    width:240px;
+    height:240px;
+    filter:blur(60px);
+  }
+
+  .login-top-brand img{
+    width:42px;
+    height:42px;
+  }
+
+  .login-top-brand h2{
+    font-size:20px;
+  }
+
+  .login-top-brand p{
+    font-size:10px;
+    letter-spacing:.6px;
+  }
+
+  .login-brand-text h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .login-brand-text p{
+    font-size:14px;
+  }
+
+  .login-benefits p{
+    font-size:14px;
+  }
+
+  .login-mini-card{
+    padding:16px;
+    font-size:13px;
+  }
+
+  .login-exam-strip{
+    gap:8px;
+  }
+
+  .login-exam-strip span{
+    flex:1 1 100%;
+    font-size:12px;
+    padding:10px 14px;
+  }
+
+  .login-card{
+    padding:18px 16px;
+  }
+
+  .login-card-header h2{
+    font-size:26px;
+  }
+
+  .login-card-header p{
+    font-size:14px;
+    margin-bottom:24px;
+  }
+
+  .login-card label,
+  .password-row a,
+  .remember-me{
+    font-size:13px !important;
+  }
+
+  .login-card input{
+    min-height:48px;
+    padding:14px;
+    font-size:14px;
+  }
+
+  .login-btn,
+  .google-btn{
+    min-height:48px;
+    font-size:14px;
+  }
+
+  .google-icon{
+    width:20px;
+    height:20px;
+    font-size:20px;
+  }
+
+  .register-link,
+  .secure-box{
+    font-size:13px;
+  }
+
+}

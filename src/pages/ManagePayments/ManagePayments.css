@@ -922,3 +922,369 @@
     flex: 1 1 120px;
   }
 }
+
+
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .manage-payments-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 34px 72px;
+  }
+
+  .manage-payments-hero-panel{
+    max-width:640px;
+  }
+
+  .manage-payments-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-payments-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-payments-workspace-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-payments-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-payments-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .manage-payments-hero{
+    padding:38px 28px 66px;
+  }
+
+  .manage-payments-hero h1{
+    font-size:48px;
+  }
+
+  .manage-payments-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.7;
+  }
+
+  .manage-payments-shell{
+    width:min(100% - 28px,1180px);
+  }
+
+  .manage-payments-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-payments-section-heading p{
+    text-align:left;
+  }
+
+  .manage-payments-side-stack{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .manage-payments-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 36px 70px;
+  }
+
+  .manage-payments-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .manage-payments-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .manage-payments-hero-badges{
+    gap:14px;
+  }
+
+  .manage-payments-hero-badges span{
+    font-size:14px;
+  }
+
+  .manage-payments-hero-panel{
+    padding:24px;
+  }
+
+  .manage-payments-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-payments-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-payments-summary-card{
+    padding:22px;
+  }
+
+  .manage-payments-summary-card strong{
+    font-size:32px;
+  }
+
+  .manage-payments-workspace-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-payments-side-stack{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-payments-table-card,
+  .manage-payments-activity-card,
+  .manage-payments-notes-card{
+    padding:28px;
+  }
+
+  .manage-payments-section-heading h2{
+    font-size:30px;
+  }
+
+  .manage-payments-section-heading p{
+    font-size:16px;
+    line-height:1.7;
+    text-align:left;
+  }
+
+  .manage-payments-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-payments-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .manage-payments-hero{
+    padding:30px 22px 58px;
+  }
+
+  .manage-payments-hero h1{
+    font-size:42px;
+  }
+
+  .manage-payments-hero p{
+    font-size:16px;
+  }
+
+  .manage-payments-hero-panel{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-payments-shell{
+    width:min(100% - 20px,1180px);
+  }
+
+  .manage-payments-summary-grid,
+  .manage-payments-filter-bar,
+  .manage-payments-side-stack{
+    grid-template-columns:1fr;
+  }
+
+  .manage-payments-table-card,
+  .manage-payments-activity-card,
+  .manage-payments-notes-card,
+  .manage-payments-detail-modal{
+    padding:22px;
+  }
+
+  .manage-payments-table-wrap{
+    overflow:visible;
+  }
+
+  .manage-payments-table{
+    min-width:0;
+    border:none;
+    border-radius:0;
+    gap:14px;
+    overflow:visible;
+  }
+
+  .manage-payments-table-head{
+    display:none;
+  }
+
+  .manage-payments-table-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px;
+    border:1px solid #eef0f6;
+    border-radius:18px;
+  }
+
+  .manage-payments-table-row > span:not(.manage-payments-row-actions){
+    display:grid;
+    gap:5px;
+  }
+
+  .manage-payments-table-row > span:first-child::before{
+    display:none;
+  }
+
+  .manage-payments-row-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+  .manage-payments-detail-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .manage-payments-hero{
+    padding:24px 18px 54px;
+  }
+
+  .manage-payments-hero h1{
+    font-size:36px;
+  }
+
+  .manage-payments-hero p{
+    font-size:15px;
+  }
+
+  .manage-payments-hero-badges{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .manage-payments-hero-badges span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .manage-payments-summary-grid,
+  .manage-payments-side-stack{
+    grid-template-columns:1fr;
+  }
+
+  .manage-payments-summary-card,
+  .manage-payments-table-card,
+  .manage-payments-activity-card,
+  .manage-payments-notes-card,
+  .manage-payments-detail-modal{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .manage-payments-row-actions button,
+  .manage-payments-detail-actions button{
+    width:100%;
+  }
+
+  .manage-payments-detail-actions{
+    flex-direction:column;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .manage-payments-hero{
+    padding:20px 14px 48px;
+  }
+
+  .manage-payments-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .manage-payments-hero p{
+    font-size:14px;
+  }
+
+  .manage-payments-shell{
+    width:min(100% - 16px,1180px);
+  }
+
+  .manage-payments-summary-card,
+  .manage-payments-table-card,
+  .manage-payments-activity-card,
+  .manage-payments-notes-card,
+  .manage-payments-detail-modal{
+    padding:16px;
+  }
+
+  .manage-payments-summary-icon,
+  .manage-payments-activity-icon,
+  .manage-payments-notes-icon{
+    width:48px;
+    height:48px;
+  }
+
+  .manage-payments-summary-card strong{
+    font-size:24px;
+  }
+
+  .manage-payments-section-heading h2,
+  .manage-payments-detail-heading h2{
+    font-size:22px;
+  }
+
+  .manage-payments-search-field,
+  .manage-payments-filter-field{
+    min-height:48px;
+  }
+
+  .manage-payments-approve-button,
+  .manage-payments-reject-button,
+  .manage-payments-details-button,
+  .manage-payments-detail-actions button{
+    width:100%;
+    min-height:46px;
+  }
+
+  .manage-payments-detail-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}

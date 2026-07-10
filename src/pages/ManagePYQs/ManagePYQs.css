@@ -714,3 +714,344 @@
     flex: 1 1 120px;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .manage-pyqs-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 34px 72px;
+  }
+
+  .manage-pyqs-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-pyqs-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-pyqs-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-pyqs-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-pyqs-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .manage-pyqs-hero{
+    padding:38px 28px 66px;
+  }
+
+  .manage-pyqs-hero h1{
+    font-size:48px;
+  }
+
+  .manage-pyqs-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.7;
+  }
+
+  .manage-pyqs-shell{
+    width:min(100% - 28px,1180px);
+  }
+
+  .manage-pyqs-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-pyqs-section-heading p{
+    max-width:100%;
+    text-align:left;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .manage-pyqs-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 36px 70px;
+  }
+
+  .manage-pyqs-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .manage-pyqs-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .manage-pyqs-hero-panel{
+    padding:24px;
+  }
+
+  .manage-pyqs-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-pyqs-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-pyqs-summary-card{
+    padding:22px;
+  }
+
+  .manage-pyqs-summary-card strong{
+    font-size:32px;
+  }
+
+  .manage-pyqs-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-pyqs-form-card,
+  .manage-pyqs-notes-card,
+  .manage-pyqs-table-card{
+    padding:28px;
+  }
+
+  .manage-pyqs-section-heading h2{
+    font-size:30px;
+  }
+
+  .manage-pyqs-section-heading p{
+    max-width:100%;
+    font-size:16px;
+    line-height:1.7;
+    text-align:left;
+  }
+
+  .manage-pyqs-form{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-pyqs-field-wide,
+  .manage-pyqs-form-actions{
+    grid-column:1/-1;
+  }
+
+  .manage-pyqs-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-pyqs-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .manage-pyqs-hero{
+    padding:30px 22px 58px;
+  }
+
+  .manage-pyqs-hero h1{
+    font-size:42px;
+  }
+
+  .manage-pyqs-hero p{
+    font-size:16px;
+  }
+
+  .manage-pyqs-hero-panel{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-pyqs-shell{
+    width:min(100% - 20px,1180px);
+  }
+
+  .manage-pyqs-summary-grid,
+  .manage-pyqs-filter-bar,
+  .manage-pyqs-form{
+    grid-template-columns:1fr;
+  }
+
+  .manage-pyqs-form-card,
+  .manage-pyqs-notes-card,
+  .manage-pyqs-table-card{
+    padding:22px;
+  }
+
+  .manage-pyqs-table-wrap{
+    overflow:visible;
+  }
+
+  .manage-pyqs-table{
+    min-width:0;
+    border:none;
+    border-radius:0;
+    gap:14px;
+    overflow:visible;
+  }
+
+  .manage-pyqs-table-head{
+    display:none;
+  }
+
+  .manage-pyqs-table-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px;
+    border:1px solid #eef0f6;
+    border-radius:18px;
+  }
+
+  .manage-pyqs-table-row > span:not(.manage-pyqs-row-actions){
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+  }
+
+  .manage-pyqs-table-row > span:first-child{
+    display:block;
+  }
+
+  .manage-pyqs-table-row > span:first-child::before{
+    display:none;
+  }
+
+  .manage-pyqs-row-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .manage-pyqs-hero{
+    padding:24px 18px 54px;
+  }
+
+  .manage-pyqs-hero h1{
+    font-size:36px;
+  }
+
+  .manage-pyqs-hero p{
+    font-size:15px;
+  }
+
+  .manage-pyqs-summary-grid,
+  .manage-pyqs-filter-bar{
+    grid-template-columns:1fr;
+  }
+
+  .manage-pyqs-summary-card,
+  .manage-pyqs-form-card,
+  .manage-pyqs-notes-card,
+  .manage-pyqs-table-card{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .manage-pyqs-form-actions{
+    flex-direction:column;
+  }
+
+  .manage-pyqs-save-button,
+  .manage-pyqs-clear-button{
+    width:100%;
+  }
+
+  .manage-pyqs-row-actions button{
+    flex:1 1 100%;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .manage-pyqs-hero{
+    padding:20px 14px 48px;
+  }
+
+  .manage-pyqs-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .manage-pyqs-hero p{
+    font-size:14px;
+  }
+
+  .manage-pyqs-shell{
+    width:min(100% - 16px,1180px);
+  }
+
+  .manage-pyqs-summary-card,
+  .manage-pyqs-form-card,
+  .manage-pyqs-notes-card,
+  .manage-pyqs-table-card{
+    padding:16px;
+  }
+
+  .manage-pyqs-summary-icon,
+  .manage-pyqs-notes-icon{
+    width:48px;
+    height:48px;
+  }
+
+  .manage-pyqs-summary-card strong{
+    font-size:24px;
+  }
+
+  .manage-pyqs-section-heading h2{
+    font-size:22px;
+  }
+
+  .manage-pyqs-field input,
+  .manage-pyqs-field select,
+  .manage-pyqs-search-field,
+  .manage-pyqs-filter-field{
+    min-height:48px;
+  }
+
+  .manage-pyqs-save-button,
+  .manage-pyqs-clear-button,
+  .manage-pyqs-row-actions button{
+    width:100%;
+    min-height:46px;
+  }
+
+}

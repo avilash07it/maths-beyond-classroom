@@ -335,3 +335,410 @@
       justify-self: center;
     }
   }
+
+  /* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .register-page{
+    padding:28px 42px;
+    gap:42px;
+    grid-template-columns:.95fr 1fr;
+  }
+
+  .register-top-brand{
+    left:42px;
+  }
+
+  .register-brand-text h1{
+    font-size:48px;
+  }
+
+  .register-brand-text p{
+    font-size:17px;
+  }
+
+  .register-card{
+    max-width:520px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .register-page{
+    grid-template-columns:1fr;
+    gap:42px;
+    padding:34px 30px;
+  }
+
+  .register-top-brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:10px;
+  }
+
+  .register-left{
+    padding-top:0;
+  }
+
+  .register-brand-text{
+    max-width:100%;
+  }
+
+  .register-brand-text h1{
+    font-size:46px;
+  }
+
+  .register-brand-text p{
+    max-width:100%;
+  }
+
+  .register-mini-card{
+    max-width:100%;
+  }
+
+  .register-card{
+    max-width:100%;
+    justify-self:center;
+  }
+
+  .register-bg-glow{
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .register-page{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:40px 36px;
+  }
+
+  .register-top-brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:10px;
+  }
+
+  .register-top-brand img{
+    width:60px;
+    height:60px;
+  }
+
+  .register-top-brand h2{
+    font-size:30px;
+  }
+
+  .register-left{
+    padding-top:0;
+  }
+
+  .register-brand-text h1{
+    font-size:56px;
+    line-height:1.08;
+  }
+
+  .register-brand-text p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .register-benefits p{
+    font-size:17px;
+  }
+
+  .register-mini-card{
+    max-width:100%;
+    padding:22px;
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  .register-exam-strip{
+    gap:14px;
+  }
+
+  .register-exam-strip span{
+    font-size:14px;
+    padding:11px 18px;
+  }
+
+  .register-card{
+    max-width:640px;
+    width:100%;
+    justify-self:center;
+    padding:34px;
+  }
+
+  .register-card-header h2{
+    font-size:36px;
+  }
+
+  .register-card-header p{
+    font-size:17px;
+  }
+
+  .register-card label{
+    font-size:15px;
+  }
+
+  .register-card input{
+    min-height:56px;
+    font-size:16px;
+  }
+
+  .register-btn,
+  .google-btn{
+    min-height:56px;
+    font-size:16px;
+  }
+
+  .secure-box{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .register-page{
+    grid-template-columns:1fr;
+    padding:30px 22px;
+    gap:34px;
+  }
+
+  .register-top-brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:8px;
+  }
+
+  .register-left{
+    padding-top:0;
+  }
+
+  .register-brand-text h1{
+    font-size:42px;
+  }
+
+  .register-brand-text p{
+    font-size:16px;
+    max-width:100%;
+  }
+
+  .register-mini-card{
+    max-width:100%;
+  }
+
+  .register-card{
+    max-width:100%;
+    padding:28px 24px;
+  }
+
+  .register-bg-glow{
+    width:320px;
+    height:320px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .register-page{
+    padding:24px 18px;
+    gap:28px;
+  }
+
+  .register-top-brand{
+    gap:10px;
+  }
+
+  .register-top-brand img{
+    width:48px;
+    height:48px;
+  }
+
+  .register-top-brand h2{
+    font-size:24px;
+  }
+
+  .register-top-brand p{
+    font-size:11px;
+  }
+
+  .register-brand-text h1{
+    font-size:36px;
+    letter-spacing:-1px;
+  }
+
+  .register-brand-text p{
+    font-size:15px;
+  }
+
+  .register-benefits{
+    gap:12px;
+  }
+
+  .register-benefits p{
+    font-size:15px;
+  }
+
+  .register-mini-card{
+    padding:18px;
+    font-size:14px;
+  }
+
+  .register-exam-strip span{
+    flex:1 1 calc(50% - 8px);
+    text-align:center;
+  }
+
+  .register-card{
+    padding:22px 20px;
+    border-radius:22px;
+  }
+
+  .register-card-header h2{
+    font-size:30px;
+  }
+
+  .register-card-header p{
+    font-size:15px;
+  }
+
+  .register-card input{
+    min-height:52px;
+    font-size:15px;
+  }
+
+  .register-btn,
+  .google-btn{
+    min-height:52px;
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .register-page{
+    padding:18px 14px;
+  }
+
+  .register-bg-glow{
+    width:240px;
+    height:240px;
+    filter:blur(60px);
+  }
+
+  .register-top-brand img{
+    width:42px;
+    height:42px;
+  }
+
+  .register-top-brand h2{
+    font-size:20px;
+  }
+
+  .register-top-brand p{
+    font-size:10px;
+    letter-spacing:.6px;
+  }
+
+  .register-brand-text h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .register-brand-text p{
+    font-size:14px;
+  }
+
+  .register-benefits p{
+    font-size:14px;
+  }
+
+  .register-mini-card{
+    padding:16px;
+    font-size:13px;
+  }
+
+  .register-exam-strip{
+    gap:8px;
+  }
+
+  .register-exam-strip span{
+    flex:1 1 100%;
+    font-size:12px;
+    padding:10px 14px;
+  }
+
+  .register-card{
+    padding:18px 16px;
+  }
+
+  .register-card-header h2{
+    font-size:26px;
+  }
+
+  .register-card-header p{
+    font-size:14px;
+    margin-bottom:22px;
+  }
+
+  .register-card label{
+    font-size:13px;
+  }
+
+  .register-card input{
+    min-height:48px;
+    padding:14px;
+    font-size:14px;
+  }
+
+  .register-btn,
+  .google-btn{
+    width:100%;
+    min-height:48px;
+    font-size:14px;
+  }
+
+  .google-icon{
+    font-size:20px;
+  }
+
+  .login-link,
+  .secure-box{
+    font-size:13px;
+  }
+
+}

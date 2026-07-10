@@ -771,3 +771,364 @@
     flex: 1 1 130px;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .manage-mock-tests-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 34px 72px;
+  }
+
+  .manage-mock-tests-hero-badges{
+    justify-content:flex-start;
+  }
+
+  .manage-mock-tests-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-mock-tests-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-mock-tests-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-mock-tests-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-mock-tests-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .manage-mock-tests-hero{
+    padding:38px 28px 66px;
+  }
+
+  .manage-mock-tests-hero h1{
+    font-size:48px;
+  }
+
+  .manage-mock-tests-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.7;
+  }
+
+  .manage-mock-tests-shell{
+    width:min(100% - 28px,1180px);
+  }
+
+  .manage-mock-tests-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .manage-mock-tests-section-heading p{
+    max-width:100%;
+    text-align:left;
+  }
+
+  .manage-mock-tests-form{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .manage-mock-tests-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 36px 70px;
+  }
+
+  .manage-mock-tests-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .manage-mock-tests-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .manage-mock-tests-hero-badges{
+    justify-content:flex-start;
+    gap:14px;
+  }
+
+  .manage-mock-tests-hero-badges span{
+    font-size:14px;
+  }
+
+  .manage-mock-tests-shell{
+    width:min(100% - 32px,1180px);
+  }
+
+  .manage-mock-tests-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-mock-tests-summary-card{
+    padding:22px;
+  }
+
+  .manage-mock-tests-summary-card strong{
+    font-size:32px;
+  }
+
+  .manage-mock-tests-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-mock-tests-form-card,
+  .manage-mock-tests-notes-card,
+  .manage-mock-tests-table-card{
+    padding:28px;
+  }
+
+  .manage-mock-tests-section-heading h2{
+    font-size:30px;
+  }
+
+  .manage-mock-tests-section-heading p{
+    max-width:100%;
+    text-align:left;
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .manage-mock-tests-form{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-mock-tests-field-wide,
+  .manage-mock-tests-form-actions{
+    grid-column:1/-1;
+  }
+
+  .manage-mock-tests-filter-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .manage-mock-tests-search-field{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .manage-mock-tests-hero{
+    padding:30px 22px 58px;
+  }
+
+  .manage-mock-tests-hero h1{
+    font-size:42px;
+  }
+
+  .manage-mock-tests-hero p{
+    font-size:16px;
+  }
+
+  .manage-mock-tests-shell{
+    width:min(100% - 20px,1180px);
+  }
+
+  .manage-mock-tests-summary-grid,
+  .manage-mock-tests-filter-bar,
+  .manage-mock-tests-form{
+    grid-template-columns:1fr;
+  }
+
+  .manage-mock-tests-form-card,
+  .manage-mock-tests-notes-card,
+  .manage-mock-tests-table-card{
+    padding:22px;
+  }
+
+  .manage-mock-tests-table-wrap{
+    overflow:visible;
+  }
+
+  .manage-mock-tests-table{
+    min-width:0;
+    border:none;
+    border-radius:0;
+    gap:14px;
+    overflow:visible;
+  }
+
+  .manage-mock-tests-table-head{
+    display:none;
+  }
+
+  .manage-mock-tests-table-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px;
+    border:1px solid #eef0f6;
+    border-radius:18px;
+  }
+
+  .manage-mock-tests-table-row>span:not(.manage-mock-tests-row-actions){
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .manage-mock-tests-table-row>span:first-child{
+    display:block;
+  }
+
+  .manage-mock-tests-table-row>span:first-child::before{
+    display:none;
+  }
+
+  .manage-mock-tests-row-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    padding-top:6px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .manage-mock-tests-hero{
+    padding:24px 18px 54px;
+  }
+
+  .manage-mock-tests-hero h1{
+    font-size:36px;
+  }
+
+  .manage-mock-tests-hero p{
+    font-size:15px;
+  }
+
+  .manage-mock-tests-hero-badges{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .manage-mock-tests-hero-badges span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .manage-mock-tests-summary-grid{
+    grid-template-columns:1fr;
+  }
+
+  .manage-mock-tests-summary-card,
+  .manage-mock-tests-form-card,
+  .manage-mock-tests-notes-card,
+  .manage-mock-tests-table-card{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .manage-mock-tests-form-actions{
+    flex-direction:column;
+  }
+
+  .manage-mock-tests-save-button,
+  .manage-mock-tests-clear-button{
+    width:100%;
+  }
+
+  .manage-mock-tests-row-actions button,
+  .manage-mock-tests-row-actions a{
+    flex:1;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .manage-mock-tests-hero{
+    padding:20px 14px 48px;
+  }
+
+  .manage-mock-tests-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .manage-mock-tests-hero p{
+    font-size:14px;
+  }
+
+  .manage-mock-tests-shell{
+    width:min(100% - 16px,1180px);
+  }
+
+  .manage-mock-tests-summary-card,
+  .manage-mock-tests-form-card,
+  .manage-mock-tests-notes-card,
+  .manage-mock-tests-table-card{
+    padding:16px;
+  }
+
+  .manage-mock-tests-summary-icon,
+  .manage-mock-tests-notes-icon{
+    width:48px;
+    height:48px;
+  }
+
+  .manage-mock-tests-summary-card strong{
+    font-size:24px;
+  }
+
+  .manage-mock-tests-section-heading h2{
+    font-size:22px;
+  }
+
+  .manage-mock-tests-field input,
+  .manage-mock-tests-field select,
+  .manage-mock-tests-search-field,
+  .manage-mock-tests-filter-field{
+    min-height:48px;
+  }
+
+  .manage-mock-tests-save-button,
+  .manage-mock-tests-clear-button,
+  .manage-mock-tests-row-actions button,
+  .manage-mock-tests-row-actions a{
+    width:100%;
+    min-height:46px;
+  }
+
+}

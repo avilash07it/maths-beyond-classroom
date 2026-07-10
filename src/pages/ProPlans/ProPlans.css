@@ -795,3 +795,389 @@
     flex-direction: column;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .proplans-shell{
+    width:min(100% - 36px,1510px);
+  }
+
+  .proplans-hero{
+    grid-template-columns:1fr;
+    gap:38px;
+    padding:42px 36px;
+  }
+
+  .proplans-card-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+  }
+
+  .proplans-price-card{
+    min-height:auto;
+  }
+
+  .proplans-comparison-area{
+    grid-template-columns:1fr;
+  }
+
+  .proplans-benefit-strip{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .proplans-benefit-title,
+  .proplans-benefit-item{
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .proplans-shell{
+    width:min(100% - 30px,1510px);
+  }
+
+  .proplans-hero{
+    padding:38px 30px;
+  }
+
+  .proplans-hero h1{
+    font-size:52px;
+  }
+
+  .proplans-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .proplans-section-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .proplans-section-heading p{
+    max-width:100%;
+  }
+
+  .proplans-bottom-cta{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .proplans-bottom-cta button{
+    width:100%;
+    min-width:0;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .proplans-shell{
+    width:min(100% - 32px,1510px);
+  }
+
+  .proplans-hero{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:42px 36px;
+  }
+
+  .proplans-hero h1{
+    font-size:56px;
+    line-height:1.08;
+  }
+
+  .proplans-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.8;
+  }
+
+  .proplans-crown-visual{
+    min-height:280px;
+  }
+
+  .proplans-card-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+  }
+
+  .proplans-price-card{
+    min-height:auto;
+    padding:24px;
+  }
+
+  .proplans-price-card h3{
+    font-size:24px;
+  }
+
+  .proplans-price-card > strong{
+    font-size:36px;
+  }
+
+  .proplans-feature-list div{
+    font-size:15px;
+  }
+
+  .proplans-comparison-area{
+    grid-template-columns:1fr;
+  }
+
+  .proplans-comparison-card{
+    padding:26px;
+  }
+
+  .proplans-comparison-list{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .proplans-manual-note{
+    padding:28px;
+  }
+
+  .proplans-benefit-strip{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .proplans-bottom-cta{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:30px;
+  }
+
+  .proplans-bottom-cta button{
+    width:100%;
+    min-width:0;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .proplans-shell{
+    width:min(100% - 22px,1510px);
+  }
+
+  .proplans-hero{
+    padding:30px 22px;
+  }
+
+  .proplans-hero h1{
+    font-size:42px;
+  }
+
+  .proplans-hero p{
+    font-size:16px;
+  }
+
+  .proplans-crown-visual{
+    min-height:230px;
+  }
+
+  .proplans-crown{
+    width:145px;
+    height:120px;
+  }
+
+  .proplans-crown svg{
+    width:84px;
+    height:84px;
+  }
+
+  .proplans-crown-base{
+    width:230px;
+  }
+
+  .proplans-card-grid,
+  .proplans-comparison-area,
+  .proplans-comparison-list,
+  .proplans-benefit-strip{
+    grid-template-columns:1fr;
+  }
+
+  .proplans-price-card,
+  .proplans-comparison-card,
+  .proplans-manual-note,
+  .proplans-bottom-cta{
+    padding:22px;
+  }
+
+  .proplans-manual-note,
+  .proplans-bottom-cta{
+    flex-direction:column;
+  }
+
+  .proplans-price-card-recommended{
+    transform:none;
+    padding-top:26px;
+  }
+
+  .proplans-bottom-cta button{
+    width:100%;
+    min-width:0;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .proplans-shell{
+    width:min(100% - 18px,1510px);
+  }
+
+  .proplans-hero{
+    padding:24px 18px;
+  }
+
+  .proplans-hero h1{
+    font-size:36px;
+  }
+
+  .proplans-hero p{
+    font-size:15px;
+  }
+
+  .proplans-hero-chips span{
+    width:100%;
+    justify-content:center;
+  }
+
+  .proplans-crown-visual{
+    min-height:210px;
+  }
+
+  .proplans-section-heading h2,
+  .proplans-comparison-card h2,
+  .proplans-manual-note h2,
+  .proplans-bottom-cta h2{
+    font-size:24px;
+  }
+
+  .proplans-price-card h3{
+    font-size:22px;
+  }
+
+  .proplans-price-card>strong{
+    font-size:34px;
+  }
+
+  .proplans-price-card-premium .proplans-recommended-badge{
+    position:static;
+    transform:none;
+    width:fit-content;
+    min-width:0;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+
+  .proplans-comparison-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .proplans-benefit-title,
+  .proplans-benefit-item{
+    flex-direction:column;
+    align-items:flex-start;
+    min-height:auto;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .proplans-shell{
+    width:min(100% - 14px,1510px);
+  }
+
+  .proplans-hero{
+    padding:20px 14px;
+  }
+
+  .proplans-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .proplans-hero p{
+    font-size:14px;
+  }
+
+  .proplans-hero-kicker{
+    font-size:13px;
+    padding:8px 14px;
+  }
+
+  .proplans-price-card,
+  .proplans-comparison-card,
+  .proplans-manual-note,
+  .proplans-bottom-cta{
+    padding:18px 16px;
+  }
+
+  .proplans-price-icon{
+    width:58px;
+    height:58px;
+  }
+
+  .proplans-price-icon svg{
+    width:28px;
+    height:28px;
+  }
+
+  .proplans-price-card h3{
+    font-size:20px;
+  }
+
+  .proplans-price-card>strong{
+    font-size:30px;
+  }
+
+  .proplans-feature-list div,
+  .proplans-best-for p,
+  .proplans-comparison-list div,
+  .proplans-benefit-item{
+    font-size:14px;
+  }
+
+  .proplans-comparison-heading>span,
+  .proplans-manual-note>span,
+  .proplans-benefit-title>span{
+    width:48px;
+    height:48px;
+  }
+
+  .proplans-price-card button,
+  .proplans-bottom-cta button{
+    width:100%;
+    min-height:48px;
+    font-size:14px;
+  }
+
+}
