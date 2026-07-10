@@ -708,3 +708,418 @@ color: #6d28d9;
     font-size: 42px;
   }
 }
+/* ==========================================
+   <=1200px
+========================================== */
+@media (max-width:1200px){
+
+  .topics-hero{
+    padding:48px 40px;
+    gap:40px;
+  }
+
+  .topics-hero-content{
+    max-width:100%;
+  }
+
+  .topics-hero p{
+    max-width:100%;
+  }
+
+  .topics-hero-visual{
+    width:min(440px,100%);
+    height:260px;
+  }
+
+  .topics-content{
+    padding:42px 36px 64px;
+    grid-template-columns:1fr;
+  }
+
+  .topics-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .topics-sidebar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .topics-help-card{
+    grid-column:1/-1;
+  }
+
+}
+
+
+/* ==========================================
+   <=992px
+========================================== */
+@media (max-width:992px){
+
+  .topics-hero{
+    grid-template-columns:1fr;
+    padding:40px 32px;
+  }
+
+  .topics-hero h1{
+    font-size:50px;
+  }
+
+  .topics-hero p{
+    font-size:18px;
+  }
+
+  .topics-hero-visual{
+    width:100%;
+    height:240px;
+    transform:scale(.92);
+  }
+
+  .topics-content{
+    padding:40px 28px 60px;
+  }
+
+  .topics-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .topics-sidebar{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ==========================================
+   iPad Air (820 × 1180)
+========================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .topics-hero{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 36px;
+  }
+
+  .topics-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .topics-hero p{
+    font-size:18px;
+    line-height:1.75;
+    max-width:100%;
+  }
+
+  .topics-search,
+  .topics-filter{
+    font-size:16px;
+    min-height:56px;
+  }
+
+  .topics-filter{
+    width:100%;
+    max-width:340px;
+  }
+
+  .topics-hero-visual{
+    width:100%;
+    height:260px;
+    transform:scale(.94);
+  }
+
+  .topics-content{
+    padding:42px 32px 64px;
+    grid-template-columns:1fr;
+  }
+
+  .topics-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .topic-card{
+    padding:26px;
+  }
+
+  .topic-icon{
+    width:76px;
+    height:76px;
+  }
+
+  .topic-card h3{
+    font-size:24px;
+    line-height:1.4;
+  }
+
+  .topic-card p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .topic-meta span{
+    font-size:14px;
+  }
+
+  .topic-card button{
+    font-size:15px;
+    min-height:48px;
+  }
+
+  .topics-sidebar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .topics-help-card{
+    grid-column:1/-1;
+  }
+
+  .topics-side-card,
+  .topics-help-card{
+    padding:26px;
+  }
+
+  .topics-side-card h3,
+  .topics-help-card h3{
+    font-size:24px;
+  }
+
+  .exam-filter-list button{
+    font-size:15px;
+  }
+
+  .topics-pro-card{
+    padding:30px;
+  }
+
+  .topics-pro-card h2{
+    font-size:32px;
+  }
+
+  .topics-pro-card p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+}
+
+
+/* ==========================================
+   <=768px
+========================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .topics-hero{
+    display:grid;
+    grid-template-columns:1fr;
+    align-items:start;
+    min-height:auto;
+  }
+
+  .topics-hero-content{
+    width:100%;
+  }
+
+  .topics-content{
+    margin-top:0;
+  }
+
+}
+@media (max-width:767px){
+
+  .topics-hero{
+    display:grid;
+    gap:28px;
+    padding:32px 20px;
+  }
+
+  .topics-hero h1{
+    font-size:42px;
+  }
+
+  .topics-hero p{
+    font-size:16px;
+  }
+
+  .topics-search,
+  .topics-filter{
+    width:100%;
+  }
+
+  .topics-hero-visual{
+    width:100%;
+    height:220px;
+    transform:scale(.82);
+  }
+
+  .topics-content{
+    padding:34px 18px 48px;
+  }
+
+  .topics-grid,
+  .topics-sidebar{
+    grid-template-columns:1fr;
+  }
+
+  .topic-card,
+  .topics-side-card,
+  .topics-help-card,
+  .topics-pro-card{
+    padding:22px;
+  }
+
+  .topics-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .topics-help-card,
+  .topics-pro-card{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .topics-pro-card button{
+    width:100%;
+  }
+
+}
+
+
+/* ==========================================
+   <=576px
+========================================== */
+@media (max-width:576px){
+
+  .topics-hero{
+    padding:26px 18px;
+  }
+
+  .topics-hero h1{
+    font-size:36px;
+  }
+    .topics-content{
+    margin-top:0;
+    border-radius:24px 24px 0 0;
+    padding-top:28px;
+  }
+  .topics-hero p{
+    font-size:15px;
+  }
+
+  .topics-search,
+  .topics-filter{
+    min-height:52px;
+  }
+
+  .topics-hero-visual{
+    height:180px;
+    transform:scale(.72);
+  }
+
+  .topic-card,
+  .topics-side-card,
+  .topics-help-card,
+  .topics-pro-card{
+    padding:20px;
+    border-radius:18px;
+  }
+
+  .topic-icon{
+    width:68px;
+    height:68px;
+  }
+
+  .topic-card h3{
+    font-size:22px;
+  }
+
+  .topics-pro-crown{
+    width:72px;
+    height:72px;
+    font-size:40px;
+  }
+
+}
+
+
+/* ==========================================
+   <=400px
+========================================== */
+@media (max-width:400px){
+
+  .topics-hero{
+    padding:20px 14px;
+  }
+    .topics-content{
+    margin-top:0;
+    border-radius:24px 24px 0 0;
+    padding-top:28px;
+  }
+
+  .topics-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .topics-hero p{
+    font-size:14px;
+  }
+
+  .topics-search,
+  .topics-filter{
+    min-height:48px;
+    font-size:14px;
+    padding:0 14px;
+  }
+
+  .topics-hero-visual{
+    display:none;
+  }
+
+  .topics-content{
+    padding:24px 10px 36px;
+  }
+
+  .topic-card,
+  .topics-side-card,
+  .topics-help-card,
+  .topics-pro-card{
+    padding:16px;
+  }
+
+  .topic-icon{
+    width:60px;
+    height:60px;
+  }
+
+  .topic-card h3{
+    font-size:20px;
+  }
+
+  .topic-card p{
+    font-size:14px;
+  }
+
+  .topic-meta{
+    flex-direction:column;
+    gap:6px;
+  }
+
+  .topic-card button,
+  .topics-pro-card button{
+    width:100%;
+    min-height:46px;
+  }
+
+  .topics-pro-crown{
+    width:60px;
+    height:60px;
+    font-size:34px;
+  }
+
+}

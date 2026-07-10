@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import {
   quickAccess,
     exams,
-
+  
   proPlan,
   welcomeData,
 } from "./dashboardData";
@@ -203,9 +203,7 @@ useEffect(() => {
       <div className="learning-card" key={item.id}>
         <span>{item.exam}</span>
 
-        <div className="lesson-icon">
-          <PlayCircle size={38} />
-        </div>
+      
 
         <h3>{item.title}</h3>
 
