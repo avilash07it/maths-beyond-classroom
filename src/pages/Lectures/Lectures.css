@@ -1379,6 +1379,160 @@
 
 }
 
+/* ===================================
+   iPad Air (820 × 1180)
+=================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .lectures-shell{
+    padding:32px 28px 56px;
+  }
+
+  .lectures-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:42px 38px;
+    min-height:auto;
+  }
+
+  .lectures-hero h1{
+    font-size:54px;
+    line-height:1.08;
+  }
+
+  .lectures-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .lectures-hero-stats{
+    gap:18px;
+  }
+
+  .lectures-hero-stats strong{
+    font-size:20px;
+  }
+
+  .lectures-hero-stats span{
+    font-size:14px;
+  }
+
+  .lectures-hero-visual{
+    min-height:260px;
+    transform:scale(.92);
+  }
+
+  .lecture-controls{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .lecture-search{
+    grid-column:1/-1;
+  }
+
+  .lectures-content{
+    grid-template-columns:1fr;
+  }
+
+  .lectures-sidebar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .lecture-list-card,
+  .lecture-side-card,
+  .today-live-card,
+  .lectures-info-card,
+  .lectures-pro-card{
+    padding:28px;
+  }
+
+  .lecture-section-header h2{
+    font-size:30px;
+  }
+
+  .lecture-section-header p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .lecture-row{
+    grid-template-columns:52px 52px 1fr;
+    padding:26px 24px;
+    gap:18px;
+  }
+
+  .lecture-title-block h3{
+    font-size:20px;
+    line-height:1.45;
+  }
+
+  .lecture-title-block p,
+  .lecture-title-block small{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  .lecture-meta strong{
+    font-size:18px;
+  }
+
+  .lecture-meta span{
+    font-size:15px;
+  }
+
+  .lecture-action{
+    font-size:15px;
+    padding:0 20px;
+  }
+
+  .featured-live-copy h2{
+    font-size:30px;
+  }
+
+  .featured-live-meta strong{
+    font-size:14px;
+  }
+
+  .lecture-step-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .lecture-step-card{
+    min-height:130px;
+  }
+
+  .lecture-step-card span{
+    font-size:16px;
+  }
+
+  .lecture-filter-list button{
+    font-size:15px;
+  }
+
+  .live-card-body h4{
+    font-size:22px;
+  }
+
+  .live-card-body p{
+    font-size:16px;
+  }
+
+  .live-card-body small,
+  .live-card-body em{
+    font-size:14px;
+  }
+
+  .lectures-pro-card h2{
+    font-size:32px;
+  }
+
+  .lectures-pro-card p{
+    font-size:16px;
+    line-height:1.7;
+  }
+}
+
 
 /* =========================
    <= 400px

@@ -829,3 +829,415 @@
     gap: 4px;
   }
 }
+/* ===========================
+   <= 1200px
+=========================== */
+@media (max-width:1200px){
+
+  .potd-shell{
+    width:min(100% - 40px,1480px);
+  }
+
+  .potd-hero{
+    grid-template-columns:1fr;
+    gap:42px;
+    padding:40px;
+    min-height:auto;
+  }
+
+  .potd-hero-copy{
+    max-width:100%;
+  }
+
+  .potd-hero p{
+    max-width:100%;
+  }
+
+  .potd-content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .potd-side-column{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .potd-bottom-cta{
+    grid-template-columns:110px 1fr;
+  }
+
+  .potd-bottom-cta button{
+    grid-column:1/-1;
+    width:fit-content;
+  }
+
+}
+
+
+/* ===========================
+   <= 992px
+=========================== */
+@media (max-width:992px){
+
+  .potd-shell{
+    width:min(100% - 32px,1480px);
+  }
+
+  .potd-hero{
+    padding:34px 30px;
+  }
+
+  .potd-hero-badges{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .potd-hero-visual{
+    min-height:250px;
+    transform:scale(.9);
+  }
+
+  .potd-problem-actions{
+    grid-template-columns:1fr;
+  }
+
+  .potd-problem-actions button{
+    width:100%;
+  }
+
+  .potd-bottom-cta{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:22px;
+  }
+
+  .potd-trophy-visual{
+    margin:0 auto;
+  }
+
+  .potd-bottom-cta button{
+    width:100%;
+    min-width:0;
+  }
+
+}
+
+
+/* ===========================
+   <= 768px
+=========================== */
+@media (max-width:768px){
+
+  .potd-shell{
+    width:min(100% - 24px,1480px);
+    padding-top:20px;
+  }
+
+  .potd-hero{
+    padding:28px 22px;
+  }
+
+  .potd-hero h1{
+    font-size:44px;
+  }
+
+  .potd-hero p{
+    font-size:16px;
+  }
+
+  .potd-hero-badges{
+    grid-template-columns:1fr;
+  }
+
+  .potd-hero-visual{
+    min-height:220px;
+    transform:scale(.82);
+  }
+
+  .potd-question-orb{
+    width:120px;
+    height:120px;
+    font-size:74px;
+  }
+
+  .potd-visual-base{
+    width:220px;
+  }
+
+  .potd-side-column{
+    grid-template-columns:1fr;
+  }
+
+  .potd-card-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .potd-card-heading>div{
+    flex-wrap:wrap;
+  }
+
+  .potd-problem-image{
+    padding:36px 22px 24px;
+    min-height:210px;
+  }
+
+  .potd-streak-days{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+
+  .potd-recent-row{
+    grid-template-columns:1fr 24px;
+  }
+
+  .potd-recent-date{
+    grid-column:1/-1;
+  }
+
+  .potd-topic-card,
+  .potd-support-card{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ===========================
+   <= 576px
+=========================== */
+@media (max-width:576px){
+
+  .potd-shell{
+    width:min(100% - 20px,1480px);
+    padding-bottom:36px;
+  }
+
+  .potd-hero{
+    padding:24px 18px;
+  }
+
+  .potd-hero h1{
+    font-size:36px;
+  }
+
+  .potd-hero p{
+    font-size:15px;
+  }
+
+  .potd-hero-visual{
+    min-height:180px;
+    transform:scale(.72);
+  }
+
+  .potd-problem-card,
+  .potd-streak-card,
+  .potd-recent-card,
+  .potd-side-card,
+  .potd-bottom-cta{
+    padding:20px;
+    border-radius:18px;
+  }
+
+  .potd-problem-image{
+    padding:30px 16px 18px;
+    min-height:180px;
+  }
+
+  .potd-problem-image p{
+    font-size:22px;
+  }
+
+  .potd-hint-panel,
+  .potd-streak-copy{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .potd-stat-list div{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .potd-streak-days{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+/* ===========================
+   <= 400px
+=========================== */
+@media (max-width:400px){
+
+  .potd-shell{
+    width:min(100% - 16px,1480px);
+  }
+
+  .potd-hero{
+    padding:20px 14px;
+  }
+
+  .potd-hero h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .potd-hero-kicker{
+    font-size:12px;
+    padding:8px 12px;
+  }
+
+  .potd-hero-visual{
+    display:none;
+  }
+
+  .potd-problem-card,
+  .potd-streak-card,
+  .potd-recent-card,
+  .potd-side-card,
+  .potd-bottom-cta{
+    padding:16px;
+  }
+
+  .potd-problem-image{
+    padding:24px 12px 16px;
+    min-height:160px;
+  }
+
+  .potd-problem-meta{
+    gap:8px;
+  }
+
+  .potd-problem-actions button,
+  .potd-bottom-cta button{
+    width:100%;
+    min-height:48px;
+  }
+
+  .potd-question-orb{
+    width:96px;
+    height:96px;
+    font-size:58px;
+  }
+
+  .potd-streak-days{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .potd-trophy-visual{
+    width:72px;
+    height:72px;
+  }
+
+  .potd-trophy-visual svg{
+    width:42px;
+    height:42px;
+  }
+
+}
+/* ===========================
+   iPad Air (820 × 1180)
+=========================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .potd-shell{
+    width:min(100% - 40px,1480px);
+  }
+
+  .potd-hero{
+    grid-template-columns:1fr;
+    padding:40px 36px;
+    gap:36px;
+  }
+
+  .potd-hero-copy{
+    max-width:100%;
+  }
+
+  .potd-hero h1{
+    font-size:52px;
+    line-height:1.08;
+  }
+
+  .potd-hero p{
+    max-width:100%;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .potd-hero-badges{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+  }
+
+  .potd-hero-badge{
+    padding:18px;
+  }
+
+  .potd-hero-badge strong{
+    font-size:16px;
+  }
+
+  .potd-hero-badge span{
+    font-size:13px;
+  }
+
+  .potd-hero-visual{
+    min-height:260px;
+    transform:scale(.92);
+  }
+
+  .potd-content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .potd-side-column{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .potd-card-heading h2,
+  .potd-streak-card h2,
+  .potd-recent-card h2,
+  .potd-side-card h2{
+    font-size:28px;
+  }
+
+  .potd-card-heading p,
+  .potd-problem-description p,
+  .potd-side-card p,
+  .potd-recent-row p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .potd-problem-description h3{
+    font-size:22px;
+  }
+
+  .potd-problem-meta span{
+    font-size:14px;
+  }
+
+  .potd-problem-image{
+    padding:40px 32px;
+  }
+
+  .potd-problem-actions{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .potd-problem-actions button{
+    font-size:15px;
+  }
+
+  .potd-bottom-cta{
+    grid-template-columns:100px 1fr;
+  }
+
+  .potd-bottom-cta button{
+    grid-column:1/-1;
+    width:100%;
+    margin-top:10px;
+  }
+}
