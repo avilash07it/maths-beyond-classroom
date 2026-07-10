@@ -1086,3 +1086,355 @@
     flex-direction: column;
   }
 }
+
+/* =========================
+   <= 1200px
+========================= */
+@media (max-width: 1200px) {
+
+  .lectures-shell{
+    padding:28px 28px 56px;
+  }
+
+  .lectures-hero{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:42px;
+    min-height:auto;
+  }
+
+  .lectures-hero-content{
+    max-width:100%;
+  }
+
+  .lectures-hero h1{
+    font-size:54px;
+  }
+
+  .lectures-hero p{
+    max-width:100%;
+  }
+
+  .lectures-hero-visual{
+    min-height:260px;
+  }
+
+  .lecture-controls{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .lecture-search{
+    grid-column:1/-1;
+  }
+
+  .featured-live-card{
+    grid-template-columns:76px 1fr;
+  }
+
+  .featured-live-card button{
+    grid-column:2;
+    justify-self:flex-start;
+  }
+
+  .lectures-content{
+    grid-template-columns:1fr;
+  }
+
+  .lectures-sidebar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .lectures-pro-card,
+  .today-live-card{
+    height:100%;
+  }
+
+  .lecture-row{
+    grid-template-columns:52px 52px 1fr;
+  }
+
+  .lecture-meta,
+  .lecture-action{
+    grid-column:3;
+  }
+
+  .lecture-step-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+/* =========================
+   <= 992px
+========================= */
+@media (max-width:992px){
+
+  .lectures-shell{
+    padding:24px;
+  }
+
+  .lectures-hero{
+    padding:36px;
+  }
+
+  .lectures-hero h1{
+    font-size:48px;
+  }
+
+  .lectures-hero p{
+    font-size:18px;
+  }
+
+  .lectures-hero-visual{
+    min-height:230px;
+    transform:scale(.92);
+    transform-origin:center;
+  }
+
+  .video-stage{
+    width:270px;
+  }
+ .lecture-status-pill {
+    display: none;
+  }
+  .play-tile{
+    width:150px;
+    height:105px;
+  }
+
+  .lecture-controls{
+    grid-template-columns:1fr;
+  }
+
+  .lecture-search{
+    grid-column:auto;
+  }
+
+  .featured-live-card{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .featured-live-card button{
+    grid-column:auto;
+    width:100%;
+  }
+
+  .lectures-sidebar{
+    grid-template-columns:1fr;
+  }
+
+  .lecture-row{
+    grid-template-columns:48px 48px 1fr;
+  }
+
+  .lecture-action{
+    width:max-content;
+    max-width:100%;
+  }
+
+}
+
+
+/* =========================
+   <= 768px
+========================= */
+@media (max-width:768px){
+
+  .lectures-shell{
+    padding:20px 16px 40px;
+  }
+
+  .lectures-breadcrumb{
+    flex-wrap:wrap;
+    gap:6px;
+  }
+
+  .lectures-hero{
+    padding:30px 24px;
+    gap:28px;
+  }
+
+  .lectures-hero h1{
+    font-size:42px;
+    line-height:1.08;
+  }
+
+  .lectures-hero p{
+    font-size:16px;
+  }
+   .lecture-status-pill {
+    display: none;
+  }
+  .lectures-hero-stats{
+    flex-direction:column;
+  }
+
+  .lectures-hero-stats div{
+    width:100%;
+    min-width:0;
+  }
+
+  .lectures-hero-visual{
+    min-height:200px;
+    transform:scale(.82);
+  }
+
+  /* Lecture row */
+.lecture-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+/* Number */
+.lecture-number{
+    flex-shrink:0;
+}
+
+/* Status icon */
+.lecture-status-icon{
+    flex-shrink:0;
+}
+
+/* Title block */
+.lecture-title-block{
+    flex:1;
+    min-width:180px;
+}
+
+/* Meta */
+.lecture-meta{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    min-width:90px;
+}
+
+/* Button */
+.lecture-action{
+    width:auto;
+    flex-shrink:0;
+}
+
+}
+
+
+/* =========================
+   <= 576px
+========================= */
+@media (max-width:576px){
+
+  .lectures-shell{
+    padding:18px 14px 36px;
+  }
+
+  .lectures-hero{
+    padding:24px 18px;
+  }
+
+  .lectures-hero h1{
+    font-size:36px;
+  }
+
+  .lectures-hero p{
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  .lectures-hero-visual{
+    display:none;
+  }
+   .lecture-status-pill {
+    display: none;
+  }
+
+  .lecture-list-card,
+  .featured-live-card,
+  .lecture-side-card,
+  .today-live-card,
+  .lectures-info-card,
+  .lecture-support-card,
+  .lectures-pro-card{
+    padding:18px;
+  }
+
+  .lecture-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.lecture-title-block{
+    flex:1;
+    min-width:140px;
+}
+
+.lecture-action{
+    width:auto;
+}
+
+}
+
+
+/* =========================
+   <= 400px
+========================= */
+@media (max-width:400px){
+
+  .lectures-shell{
+    padding:16px 10px 30px;
+  }
+
+  .lectures-hero{
+    padding:20px 14px;
+  }
+
+  .lectures-hero h1{
+    font-size:30px;
+  }
+
+  .lectures-kicker{
+    font-size:11px;
+  }
+
+  .lecture-controls{
+    gap:10px;
+  }
+
+  .lecture-search,
+  .lecture-controls label,
+  .lecture-controls button{
+    min-height:52px;
+    padding:0 14px;
+  }
+   .lecture-status-pill {
+    display: none;
+  }
+
+  .lecture-list-card,
+  .featured-live-card,
+  .lecture-side-card,
+  .today-live-card,
+  .lectures-info-card,
+  .lecture-support-card,
+  .lectures-pro-card{
+    padding:14px;
+  }
+
+  .lecture-row{
+    gap:8px;
+}
+
+.lecture-title-block{
+    min-width:120px;
+}
+
+.lecture-action{
+    width:100%;
+    margin-top:8px;
+}
+}

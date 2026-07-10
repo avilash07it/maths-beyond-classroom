@@ -24,9 +24,7 @@ function DashboardNavbar() {
   <NavLink to="/potd">POTD</NavLink>
 </div>
 
-      <div className="dashboard-streak">
-        🔥 12 Day Streak
-      </div>
+      
     </nav>
   );
 }

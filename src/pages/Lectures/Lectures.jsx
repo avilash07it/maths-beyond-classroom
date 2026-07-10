@@ -55,8 +55,7 @@ const fetchLectures = async () => {
     const formattedLectures = response.data.data.map((lecture) => ({
       ...lecture,
       status: lecture.isRecorded ? "Recorded" : "Live",
-      duration: "-",
-      chapter: "-",
+     
       action: lecture.isRecorded ? "Watch Now" : "Join Live",
     }));
 
@@ -227,7 +226,7 @@ if (!loading && lectures.length === 0) {
               <div className="featured-live-meta">
 <strong>{liveLecture?.exam || "-"}</strong>
 <strong>{liveLecture?.topic || "-"}</strong>
-<strong>{liveLecture?.duration || "-"}</strong>              </div>
+             </div>
             </div>
 <button
   type="button"
@@ -280,8 +279,7 @@ if (!loading && lectures.length === 0) {
 
             <p>{lecture.topic}</p>
 
-            <small>{lecture.chapter}</small>
-
+            
             {lecture.status === "Recorded" && (
               <div className="lecture-progress">
                 <span></span>
@@ -290,7 +288,7 @@ if (!loading && lectures.length === 0) {
           </div>
 
           <div className="lecture-meta">
-            <strong>{lecture.duration}</strong>
+           
             <span>{lecture.exam}</span>
           </div>
 
@@ -382,7 +380,7 @@ if (!loading && lectures.length === 0) {
                 <div>
                   <h4>{liveLecture.title}</h4>
                   <p>{liveLecture.topic}</p>
-                  <small>{liveLecture.duration}</small>
+                  
                   <em>Live class is in progress. Join before the problem set starts.</em>
                 </div>
               </div>
