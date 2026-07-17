@@ -31,6 +31,7 @@ import ManagePYQs from "./pages/ManagePYQs/ManagePYQs";
 import ManagePOTD from "./pages/ManagePOTD/ManagePOTD";
 import ManagePayments from "./pages/ManagePayments/ManagePayments";
 import ManageMockTests from "./pages/ManageMockTests/ManageMockTests";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function HomePage() {
   return (
@@ -55,27 +56,27 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/topics" element={<TopicExplorerPage />} />
-          <Route path="/lectures" element={<Lectures />} />
-          <Route path="/study-material" element={<StudyMaterial />} />
-          <Route path="/pyq-library" element={<PYQLibrary />} />
-          <Route path="/mock-tests" element={<MockTests />} />
-          <Route path="/potd" element={<POTD />} />
-          <Route path="/pro-plans" element={<ProPlans />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/manual-payment" element={<Payment />} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/topics" element={<ProtectedRoute><TopicExplorerPage /></ProtectedRoute>} />
+          <Route path="/lectures" element={<ProtectedRoute><Lectures /></ProtectedRoute>} />
+          <Route path="/study-material" element={<ProtectedRoute><StudyMaterial /></ProtectedRoute>} />
+          <Route path="/pyq-library" element={<ProtectedRoute><PYQLibrary /></ProtectedRoute>} />
+          <Route path="/mock-tests" element={<ProtectedRoute><MockTests /></ProtectedRoute>} />
+          <Route path="/potd" element={<ProtectedRoute><POTD /></ProtectedRoute>} />
+          <Route path="/pro-plans" element={<ProtectedRoute><ProPlans /></ProtectedRoute>} />
+          <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+          <Route path="/manual-payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/manage-lectures" element={<ManageLectures />} />
-          <Route path="/admin/manage-study-material" element={<ManageStudyMaterial />} />
-          <Route path="/admin/manage-pyqs" element={<ManagePYQs />} />
-          <Route path="/admin/manage-potd" element={<ManagePOTD />} />
-          <Route path="/admin/manage-payments" element={<ManagePayments />} />
-          <Route path="/admin/manage-mock-tests" element={<ManageMockTests />} />
+          <Route path="/admin-dashboard" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/admin/manage-lectures" element={<ProtectedRoute adminOnly><ManageLectures /></ProtectedRoute>} />
+          <Route path="/admin/manage-study-material" element={<ProtectedRoute adminOnly><ManageStudyMaterial /></ProtectedRoute>} />
+          <Route path="/admin/manage-pyqs" element={<ProtectedRoute adminOnly><ManagePYQs /></ProtectedRoute>} />
+          <Route path="/admin/manage-potd" element={<ProtectedRoute adminOnly><ManagePOTD /></ProtectedRoute>} />
+          <Route path="/admin/manage-payments" element={<ProtectedRoute adminOnly><ManagePayments /></ProtectedRoute>} />
+          <Route path="/admin/manage-mock-tests" element={<ProtectedRoute adminOnly><ManageMockTests /></ProtectedRoute>} />
           <Route
   path="/topics/number-theory"
-  element={<TopicDetail />}
+  element={<ProtectedRoute><TopicDetail /></ProtectedRoute>}
 />
         </Routes>
       </BrowserRouter>
