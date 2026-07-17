@@ -1,10 +1,55 @@
 import "./Register.css";
 import logo from "../../assets/mbc-logo-8.png";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../utils/api";
 
 function Register() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+
+    if (error) {
+      setError("");
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    try {
+      await api.post("/auth/register", {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      navigate("/login");
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to create account. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className="register-page">
@@ -60,19 +105,39 @@ function Register() {
           <p>Join MBC and start your learning journey.</p>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>Full Name</label>
-          <input type="text" placeholder="Enter your full name" />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter your full name"
+          />
 
           <label>Email Address</label>
-          <input type="email" placeholder="Enter your email" />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+          />
 
           <label>Password</label>
-          <input type="password" placeholder="Create a password" />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Create a password"
+          />
 
-          <button type="button" className="register-btn" onClick={() => navigate("/dashboard")}>
-            Create Account →
-          </button>
+          {error && <p className="register-error">{error}</p>}
+
+          <button type="submit" className="register-btn" disabled={isLoading}>
+  {isLoading ? "Creating Account..." : "Create Account →"}
+</button>
         </form>
 
         <div className="register-divider">

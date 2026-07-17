@@ -1,10 +1,59 @@
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../../assets/mbc-logo-8.png";
+import api from "../../utils/api";
 
 function Login() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+
+    if (error) {
+      setError("");
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    try {
+      const response = await api.post("/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      const token = response.data.data.token;
+      const user = response.data.data.user;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      navigate("/dashboard");
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to login. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className="login-page">
@@ -69,15 +118,27 @@ function Login() {
           <p>Login to continue your learning journey.</p>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>Email Address</label>
-          <input type="email" placeholder="Enter your email" />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+          />
 
           <div className="password-row">
             <label>Password</label>
             <a href="#">Forgot Password?</a>
           </div>
-          <input type="password" placeholder="Enter your password" />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+          />
 
           <div className="login-options">
             <label className="remember-me">
@@ -86,8 +147,14 @@ function Login() {
             </label>
           </div>
 
-          <button type="button" className="login-btn" onClick={() => navigate("/dashboard")}>
+          {error && <p className="login-error">{error}</p>}
+
+          <button type="submit" className="login-btn" disabled={isLoading}>
+            {isLoading ? "Logging in..." : (
+              <>
             Login →
+              </>
+            )}
           </button>
         </form>
 
