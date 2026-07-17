@@ -906,3 +906,388 @@ align-self: center;
       max-width: none;
     }
   }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .dashboard-hero,
+  .dashboard-content{
+    padding-left:42px;
+    padding-right:42px;
+  }
+
+  .dashboard-content{
+    grid-template-columns:1.8fr .95fr;
+    gap:24px;
+  }
+
+  .hero-stats-panel{
+    width:420px;
+  }
+
+  .learning-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .quick-grid,
+  .exam-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .dashboard-hero{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:32px;
+    padding:46px 30px 36px;
+  }
+
+  .hero-status-cards{
+    flex-wrap:wrap;
+  }
+
+  .hero-status-cards div{
+    flex:1 1 220px;
+    min-width:0;
+  }
+
+  .hero-stats-panel{
+    width:100%;
+  }
+
+  .dashboard-content{
+    grid-template-columns:1fr;
+    padding:32px 30px 48px;
+  }
+
+  .learning-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quick-grid,
+  .exam-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .dashboard-hero{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:36px;
+    padding:48px 36px 38px;
+  }
+
+  .dashboard-hero h1{
+    font-size:52px;
+    line-height:1.08;
+  }
+
+  .dashboard-hero p{
+    font-size:18px;
+    line-height:1.8;
+  }
+
+  .hero-status-cards{
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  .hero-status-cards div{
+    flex:1 1 calc(50% - 8px);
+    min-width:0;
+    padding:24px;
+  }
+
+  .hero-status-cards b{
+    font-size:19px;
+  }
+
+  .hero-status-cards span{
+    font-size:15px;
+  }
+
+  .hero-stats-panel{
+    width:100%;
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero-stat-card{
+    padding:22px;
+  }
+
+  .hero-stat-card h3{
+    font-size:36px;
+  }
+
+  .dashboard-content{
+    grid-template-columns:1fr;
+    padding:34px;
+    gap:24px;
+  }
+
+  .learning-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quick-grid,
+  .exam-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .dashboard-main,
+  .dashboard-sidebar{
+    padding:26px;
+  }
+
+  .side-card,
+  .pro-card,
+  .support-card{
+    padding:24px;
+  }
+
+  .section-header h2{
+    font-size:30px;
+  }
+
+  .learning-card h3,
+  .pro-card h2,
+  .support-content h3{
+    font-size:24px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .dashboard-hero{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:36px 22px 30px;
+    gap:28px;
+    min-height:auto;
+  }
+
+  .dashboard-hero h1{
+    font-size:40px;
+  }
+
+  .dashboard-hero p{
+    font-size:16px;
+  }
+
+  .hero-status-cards{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .hero-status-cards div{
+    width:100%;
+    min-width:0;
+  }
+
+  .hero-stats-panel{
+    width:100%;
+    grid-template-columns:1fr;
+  }
+
+  .dashboard-content{
+    grid-template-columns:1fr;
+    padding:26px 22px 40px;
+    gap:20px;
+  }
+
+  .learning-grid,
+  .quick-grid,
+  .exam-grid,
+  .potd-actions{
+    grid-template-columns:1fr;
+  }
+
+  .section-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+  .pro-card,
+  .support-card{
+    flex-direction:column;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .dashboard-hero{
+    padding:28px 18px;
+  }
+
+  .dashboard-hero h1{
+    font-size:34px;
+  }
+
+  .dashboard-hero p{
+    font-size:15px;
+  }
+
+  .hero-status-cards div{
+    padding:18px;
+  }
+
+  .hero-status-cards b{
+    font-size:18px;
+  }
+
+  .hero-stat-card{
+    padding:18px;
+  }
+
+  .hero-stat-card h3{
+    font-size:30px;
+  }
+
+  .dashboard-content{
+    padding:20px 18px 36px;
+  }
+
+  .dashboard-main,
+  .dashboard-sidebar,
+  .side-card,
+  .dashboard-potd-card,
+  .pro-card,
+  .support-card{
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .dashboard-sidebar .dashboard-potd-card .section-header h2{
+    max-width:none;
+    font-size:22px;
+  }
+
+  .potd-actions{
+    grid-template-columns:1fr;
+  }
+
+  .test-info{
+    gap:10px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .dashboard-hero{
+    padding:22px 14px;
+  }
+
+  .dashboard-hero h1{
+    font-size:28px;
+    line-height:1.15;
+  }
+
+  .dashboard-hero p{
+    font-size:14px;
+  }
+
+  .hero-status-cards div{
+    padding:16px;
+  }
+
+  .hero-status-cards b{
+    font-size:16px;
+  }
+
+  .hero-status-cards span{
+    font-size:13px;
+  }
+
+  .hero-stat-card{
+    padding:16px;
+    gap:12px;
+  }
+
+  .hero-stat-card span{
+    width:42px;
+    height:42px;
+    font-size:20px;
+  }
+
+  .hero-stat-card h3{
+    font-size:26px;
+  }
+
+  .dashboard-content{
+    padding:16px 14px 30px;
+  }
+
+  .dashboard-main,
+  .dashboard-sidebar,
+  .side-card,
+  .dashboard-potd-card,
+  .pro-card,
+  .support-card{
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .section-header h2{
+    font-size:20px;
+  }
+
+  .learning-card h3,
+  .pro-card h2{
+    font-size:20px;
+  }
+
+  .quick-icon,
+  .exam-icon{
+    width:48px;
+    height:48px;
+  }
+
+  .support-whatsapp-icon,
+  .pro-crown{
+    width:48px;
+    height:48px;
+    font-size:24px;
+  }
+
+  .learning-card button,
+  .view-problem-btn,
+  .potd-actions button,
+  .side-btn,
+  .pro-card button{
+    width:100%;
+    min-height:48px;
+    font-size:14px;
+  }
+
+}

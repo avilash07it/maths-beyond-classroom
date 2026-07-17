@@ -724,3 +724,342 @@
     white-space: normal;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .admin-dashboard-hero{
+    padding:36px 48px 52px;
+  }
+
+  .admin-dashboard-content{
+    width:min(100% - 40px,1180px);
+  }
+
+  .admin-dashboard-hero-shell{
+    gap:24px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .admin-dashboard-hero-shell{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .admin-dashboard-hero-panel{
+    max-width:520px;
+  }
+
+  .admin-dashboard-stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .admin-dashboard-management-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .admin-dashboard-workspace-grid,
+  .admin-dashboard-lower-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .admin-dashboard-hero{
+    padding:34px 28px 52px;
+  }
+
+  .admin-dashboard-content{
+    width:min(100% - 32px,1180px);
+  }
+
+  .admin-dashboard-hero h1{
+    font-size:50px;
+  }
+
+  .admin-dashboard-hero p{
+    max-width:100%;
+    font-size:18px;
+  }
+
+  .admin-dashboard-hero-panel{
+    max-width:100%;
+    padding:22px;
+  }
+
+  .admin-dashboard-stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .admin-dashboard-management-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .admin-dashboard-management-card{
+    min-height:220px;
+  }
+
+  .admin-dashboard-workspace-grid,
+  .admin-dashboard-lower-grid{
+    grid-template-columns:1fr;
+  }
+
+  .admin-dashboard-payment-row-head{
+    display:none;
+  }
+
+  .admin-dashboard-payment-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px;
+  }
+
+  .admin-dashboard-payment-row>span:not(.admin-dashboard-payment-actions){
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+  }
+
+  .admin-dashboard-payment-row>span:not(.admin-dashboard-payment-actions)::before{
+    content:attr(data-label);
+    font-size:12px;
+    font-weight:800;
+    color:#64748b;
+  }
+
+  .admin-dashboard-payment-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    margin-top:6px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .admin-dashboard-hero{
+    padding:30px 20px 46px;
+  }
+
+  .admin-dashboard-content{
+    width:min(100% - 24px,1180px);
+  }
+
+  .admin-dashboard-section-heading,
+  .admin-dashboard-card-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .admin-dashboard-section-heading p{
+    text-align:left;
+  }
+
+  .admin-dashboard-payment-row-head{
+    display:none;
+  }
+
+  .admin-dashboard-payment-row{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .admin-dashboard-payment-row>span:not(.admin-dashboard-payment-actions){
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .admin-dashboard-payment-row>span:not(.admin-dashboard-payment-actions)::before{
+    content:attr(data-label);
+    font-size:12px;
+    font-weight:800;
+    color:#64748b;
+  }
+
+  .admin-dashboard-payment-actions{
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .admin-dashboard-hero{
+    padding:24px 16px 40px;
+  }
+
+  .admin-dashboard-hero h1{
+    font-size:34px;
+  }
+
+  .admin-dashboard-hero p{
+    font-size:15px;
+  }
+
+  .admin-dashboard-hero-panel{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:18px;
+  }
+
+  .admin-dashboard-stats-grid,
+  .admin-dashboard-management-grid{
+    grid-template-columns:1fr;
+  }
+
+  .admin-dashboard-section-heading,
+  .admin-dashboard-management-panel,
+  .admin-dashboard-notes-card,
+  .admin-dashboard-payments-card,
+  .admin-dashboard-activity-card{
+    padding:18px;
+    border-radius:22px;
+  }
+
+  .admin-dashboard-stat-card{
+    padding:18px;
+  }
+
+  .admin-dashboard-management-card{
+    min-height:auto;
+  }
+
+  .admin-dashboard-activity-item{
+    grid-template-columns:auto 1fr;
+  }
+
+  .admin-dashboard-activity-item time{
+    grid-column:2;
+    margin-top:4px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .admin-dashboard-hero{
+    padding:20px 12px 36px;
+  }
+
+  .admin-dashboard-content{
+    width:calc(100% - 16px);
+  }
+
+  .admin-dashboard-secure-badge{
+    font-size:10px;
+    min-height:30px;
+  }
+
+  .admin-dashboard-hero h1{
+    font-size:28px;
+  }
+
+  .admin-dashboard-hero p{
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  .admin-dashboard-hero-panel{
+    padding:16px;
+    gap:12px;
+  }
+
+  .admin-dashboard-hero-panel-icon{
+    width:50px;
+    height:50px;
+  }
+
+  .admin-dashboard-section-heading,
+  .admin-dashboard-management-panel,
+  .admin-dashboard-notes-card,
+  .admin-dashboard-payments-card,
+  .admin-dashboard-activity-card{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .admin-dashboard-section-heading h2,
+  .admin-dashboard-card-heading h2,
+  .admin-dashboard-notes-card h2{
+    font-size:22px;
+  }
+
+  .admin-dashboard-stat-card{
+    flex-direction:column;
+    text-align:center;
+    gap:14px;
+  }
+
+  .admin-dashboard-stat-icon{
+    width:52px;
+    height:52px;
+  }
+
+  .admin-dashboard-stat-card strong{
+    font-size:26px;
+  }
+
+  .admin-dashboard-management-topline{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .admin-dashboard-management-topline span{
+    max-width:100%;
+  }
+
+  .admin-dashboard-payment-actions{
+    flex-direction:column;
+  }
+
+  .admin-dashboard-payment-actions button{
+    width:100%;
+  }
+
+  .admin-dashboard-activity-item{
+    gap:10px;
+  }
+
+  .admin-dashboard-activity-icon{
+    width:38px;
+    height:38px;
+  }
+
+  .admin-dashboard-activity-item h3{
+    font-size:13px;
+  }
+
+  .admin-dashboard-activity-item p,
+  .admin-dashboard-activity-item time{
+    font-size:12px;
+  }
+
+}
