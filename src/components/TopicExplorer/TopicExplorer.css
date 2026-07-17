@@ -341,3 +341,227 @@
       font-size: 14px;
     }
   }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .topic-section{
+    padding:100px 48px 24px;
+  }
+
+  .topic-grid{
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+  }
+
+  .topic-card{
+    padding:24px 16px 18px;
+  }
+
+  .topic-card h3{
+    font-size:21px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .topic-section{
+    margin-top:0;
+    padding:34px 32px 24px;
+  }
+
+  .topic-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .topic-section{
+    margin-top:0;
+    padding:36px 34px 26px;
+  }
+
+  .topic-header{
+    margin-bottom:24px;
+  }
+
+  .topic-header h2{
+    font-size:36px;
+  }
+
+  .topic-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+
+  .topic-card{
+    min-height:210px;
+    padding:24px 18px;
+  }
+
+  .topic-icon{
+    width:64px;
+    height:64px;
+    font-size:28px;
+  }
+
+  .topic-card h3{
+    font-size:22px;
+  }
+
+  .topic-card span{
+    font-size:14px;
+  }
+
+  .topic-card p{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .topic-section{
+    margin-top:0;
+    padding:30px 22px 22px;
+  }
+
+  .topic-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .topic-header h2{
+    font-size:32px;
+  }
+
+  .topic-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .topic-card{
+    min-height:0;
+    padding:20px 18px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .topic-section{
+    padding:24px 18px 20px;
+  }
+
+  .topic-header{
+    gap:8px;
+  }
+
+  .topic-header h2{
+    font-size:28px;
+  }
+
+  .topic-header a{
+    font-size:14px;
+  }
+
+  .topic-card{
+    padding:18px 16px;
+    border-radius:18px;
+  }
+
+  .topic-icon{
+    width:54px;
+    height:54px;
+    margin-bottom:14px;
+    font-size:24px;
+  }
+
+  .topic-card h3{
+    font-size:20px;
+  }
+
+  .topic-card span{
+    font-size:12px;
+  }
+
+  .topic-card p{
+    font-size:14px;
+    margin:12px 0;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .topic-section{
+    padding:20px 14px 18px;
+  }
+
+  .topic-header h2{
+    font-size:24px;
+    line-height:1.2;
+  }
+
+  .topic-header a{
+    font-size:13px;
+  }
+
+  .topic-card{
+    padding:16px 14px;
+    border-radius:16px;
+  }
+
+  .topic-icon{
+    width:46px;
+    height:46px;
+    font-size:20px;
+    margin-bottom:12px;
+  }
+
+  .topic-card h3{
+    font-size:18px;
+  }
+
+  .topic-card span{
+    padding:5px 10px;
+    font-size:11px;
+  }
+
+  .topic-card p{
+    font-size:13px;
+    margin:10px 0;
+  }
+
+  .topic-progress{
+    height:5px;
+  }
+
+}

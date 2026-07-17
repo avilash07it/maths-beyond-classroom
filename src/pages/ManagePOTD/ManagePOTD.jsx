@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, useEffect} from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {
   Archive,
@@ -14,7 +14,7 @@ import {
   ShieldCheck,
   Sparkles,
   Trash2,
-  UploadCloud,
+  
 } from "lucide-react";
 
 import "./ManagePOTD.css";
@@ -43,10 +43,10 @@ function ManagePOTD() {
   const [form, setForm] = useState(managePOTDInitialForm);
   const [editingProblemId, setEditingProblemId] = useState(null);
   const fileInputRefs = {
-    problemImage: useRef(null),
-    hintImage: useRef(null),
-    solutionImage: useRef(null),
-  };
+  problemImage: useRef(null),
+  hintImage: useRef(null),
+  solutionImage: useRef(null),
+};
 const fetchPOTDs = async () => {
   try {
     const response = await axios.get(
@@ -104,7 +104,25 @@ value: currentProblem
       },
     ];
   }, [problems]);
+const uploadToCloudinary = async (file) => {
+  const formData = new FormData();
 
+  formData.append("file", file);
+  formData.append("upload_preset", "potd_images");
+
+  try {
+    const response = await axios.post(
+      "https://api.cloudinary.com/v1_1/awz3yehg/image/upload",
+      formData
+    );
+
+    return response.data.secure_url;
+  } catch (error) {
+    console.error("Cloudinary Upload Error:", error);
+    alert("Image upload failed.");
+    return "";
+  }
+};
   const updateFormField = (field, value) => {
     setForm((currentForm) => ({
       ...currentForm,
@@ -112,16 +130,7 @@ value: currentProblem
     }));
   };
 
-  const updateImageField = (field, fileList) => {
-  const file = fileList?.[0];
-
-  if (!file) return;
-
-  updateFormField(
-    field,
-    URL.createObjectURL(file)
-  );
-};
+  
 {form.problemImage && (
   <img
     src={form.problemImage}
@@ -135,13 +144,14 @@ value: currentProblem
   };
 
   const saveProblem = async (event, statusOverride) => {
+    
   event.preventDefault();
 
   const problemPayload = {
     title: form.title,
     problemImageUrl: form.problemImage,
-    hintImageUrl: form.hintImage,
-    solutionImageUrl: form.solutionImage,
+hintImageUrl: form.hintImage,
+solutionImageUrl: form.solutionImage,
     exam: form.exam,
     topic: form.topic,
     status: statusOverride || form.status,
@@ -177,7 +187,17 @@ value: currentProblem
 
     clearForm();
   };
+const updateImageField = async (field, fileList) => {
+  const file = fileList?.[0];
 
+  if (!file) return;
+
+  const imageUrl = await uploadToCloudinary(file);
+
+  if (imageUrl) {
+    updateFormField(field, imageUrl);
+  }
+};
   const editProblem = (problem) => {
   setEditingProblemId(problem.id);
 
@@ -221,23 +241,32 @@ date: problem.createdAt || "",
     }
   };
 
-  const renderUploadField = (field, label, helper, required) => (
-    <div className="manage-potd-upload-field">
-      <input
-        ref={fileInputRefs[field]}
-        type="file"
-        accept="image/*"
-        onChange={(event) => updateImageField(field, event.target.files)}
-        aria-label={label}
-      />
-      <button type="button" onClick={() => fileInputRefs[field].current?.click()}>
-        <UploadCloud size={20} aria-hidden="true" />
-        <span>{label}</span>
-        <small>{form[field] || helper}</small>
-      </button>
-      {required && <span className="manage-potd-required-pill">Required</span>}
-    </div>
-  );
+   const renderUploadField = (field, label, helper, required) => (
+  <div className="manage-potd-upload-field">
+    <input
+      ref={fileInputRefs[field]}
+      type="file"
+      accept="image/*"
+      hidden
+      onChange={(event) =>
+        updateImageField(field, event.target.files)
+      }
+    />
+
+    <button
+      type="button"
+      onClick={() => fileInputRefs[field].current.click()}
+    >
+      {label}
+    </button>
+
+    {required && (
+      <span className="manage-potd-required-pill">
+        Required
+      </span>
+    )}
+  </div>
+);
 
   const previewItems = [
     {
@@ -381,10 +410,28 @@ date: problem.createdAt || "",
               </label>
 
               <div className="manage-potd-upload-grid">
-                {renderUploadField("problemImage", "Problem Image", "Choose problem image", true)}
-                {renderUploadField("hintImage", "Hint Image", "Choose optional hint", false)}
-                {renderUploadField("solutionImage", "Solution Image", "Choose solution image", true)}
-              </div>
+  {renderUploadField(
+    "problemImage",
+    "Problem Image",
+    "Choose problem image",
+    true
+  )}
+
+  {renderUploadField(
+    "hintImage",
+    "Hint Image",
+    "Choose optional hint",
+    false
+  )}
+
+  {renderUploadField(
+    "solutionImage",
+    "Solution Image",
+    "Choose solution image",
+    true
+  )}
+</div>
+
 
               <div className="manage-potd-form-actions">
                 <button
@@ -433,8 +480,27 @@ date: problem.createdAt || "",
                     </div>
                     <div>
                       <span>{item.label}</span>
-                      <strong>{item.value || "No image selected"}</strong>
-                      <p>{item.value ? "Mock preview placeholder" : item.helper}</p>
+                     {item.value ? (
+  <>
+    <img
+      src={item.value}
+      alt={item.label}
+      style={{
+        width: "100%",
+        maxHeight: "180px",
+        objectFit: "contain",
+        borderRadius: "10px",
+        marginTop: "10px",
+      }}
+    />
+    <p>Preview</p>
+  </>
+) : (
+  <>
+    <strong>No image selected</strong>
+    <p>{item.helper}</p>
+  </>
+)}
                     </div>
                   </article>
                 );
@@ -468,7 +534,11 @@ date: problem.createdAt || "",
                   <div className="manage-potd-table-row" role="row" key={problem.id}>
                     <span role="cell" data-label="Title">
                       <strong>{problem.title}</strong>
-                      <small>{problem.problemImage || "No problem image selected"}</small>
+<small>
+  {problem.problemImageUrl
+    ? "Image Added"
+    : "No problem image"}
+</small>
                     </span>
                     <span role="cell" data-label="Exam">{problem.exam}</span>
                     <span role="cell" data-label="Topic">{problem.topic}</span>

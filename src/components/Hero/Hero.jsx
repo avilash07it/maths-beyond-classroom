@@ -9,7 +9,7 @@ function Hero() {
     <section className="hero-section">
       <div className="hero-left">
         <div className="exam-pill">
-        SEHSS&nbsp;&nbsp; | &nbsp;&nbsp;NMTS&nbsp;&nbsp; | &nbsp;&nbsp;IOQM&nbsp;&nbsp; | &nbsp;&nbsp;RMO & BEYOND    
+        SEHSS&nbsp;&nbsp; | &nbsp;&nbsp;NMTC&nbsp;&nbsp; | &nbsp;&nbsp;IOQM&nbsp;&nbsp; | &nbsp;&nbsp;RMO & BEYOND    
         </div>
         <h1>
           Think Beyond.

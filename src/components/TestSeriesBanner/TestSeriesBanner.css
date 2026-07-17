@@ -176,3 +176,188 @@
       width: 100%;
     }
   }
+
+
+  /* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .test-banner{
+    margin:18px 48px 36px;
+    padding:24px 28px;
+  }
+
+  .banner-left h2{
+    font-size:32px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .test-banner{
+    margin:18px 32px 34px;
+    flex-direction:column;
+    text-align:center;
+    gap:24px;
+    padding:26px;
+  }
+
+  .banner-left{
+    flex-direction:column;
+    gap:18px;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .test-banner{
+    margin:18px 34px 34px;
+    flex-direction:column;
+    text-align:center;
+    gap:24px;
+    padding:28px;
+  }
+
+  .banner-left{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .banner-icon{
+    width:60px;
+    height:60px;
+  }
+
+  .banner-left h2{
+    font-size:34px;
+  }
+
+  .banner-left p{
+    font-size:17px;
+  }
+
+  .banner-btn{
+    min-height:56px;
+    padding:16px 30px;
+    font-size:16px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .test-banner{
+    margin:18px 22px 30px;
+    flex-direction:column;
+    text-align:center;
+    gap:22px;
+    padding:24px 22px;
+  }
+
+  .banner-left{
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .banner-left h2{
+    font-size:30px;
+  }
+
+  .banner-left p{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .test-banner{
+    margin:18px 18px 28px;
+    padding:22px 18px;
+    border-radius:18px;
+  }
+
+  .banner-icon{
+    width:50px;
+    height:50px;
+  }
+
+  .banner-icon svg{
+    width:40px;
+    height:40px;
+  }
+
+  .banner-left h2{
+    font-size:26px;
+    line-height:1.2;
+  }
+
+  .banner-left p{
+    font-size:14px;
+  }
+
+  .banner-btn{
+    width:100%;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .test-banner{
+    margin:16px 14px 24px;
+    padding:18px 16px;
+    border-radius:16px;
+  }
+
+  .banner-icon{
+    width:44px;
+    height:44px;
+  }
+
+  .banner-icon svg{
+    width:34px;
+    height:34px;
+  }
+
+  .banner-left h2{
+    font-size:22px;
+    line-height:1.25;
+  }
+
+  .banner-left p{
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .banner-btn{
+    width:100%;
+    min-height:48px;
+    font-size:14px;
+    padding:12px 16px;
+  }
+
+}

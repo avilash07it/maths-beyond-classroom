@@ -569,3 +569,320 @@
       height: 148px;
     }
   }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .practice-section{
+    padding:24px 48px 20px;
+    gap:24px;
+  }
+
+  .mock-card,
+  .problem-card{
+    padding:26px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .practice-section{
+    grid-template-columns:1fr;
+    padding:24px 32px;
+    gap:24px;
+  }
+
+  .mock-card{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .trophy-area{
+    width:100%;
+    margin-top:20px;
+    transform:none;
+  }
+
+  .problem-body{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .triangle-diagram{
+    justify-self:center;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .practice-section{
+    grid-template-columns:1fr;
+    padding:28px 34px;
+    gap:28px;
+  }
+
+  .mock-card,
+  .problem-card{
+    padding:30px;
+  }
+
+  .mock-card h2{
+    font-size:48px;
+  }
+
+  .problem-header h2{
+    font-size:38px;
+  }
+
+  .mock-card li,
+  .problem-text p{
+    font-size:17px;
+  }
+
+  .mock-actions button,
+  .problem-actions button{
+    min-height:56px;
+    font-size:16px;
+  }
+
+  .problem-body{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .trophy-area{
+    width:100%;
+    min-height:240px;
+    transform:none;
+  }
+
+  .premium-trophy{
+    width:210px;
+    height:210px;
+  }
+
+  .triangle-diagram{
+    justify-self:center;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .practice-section{
+    grid-template-columns:1fr;
+    padding:22px 22px;
+    gap:22px;
+  }
+
+  .mock-card,
+  .problem-card{
+    padding:22px;
+  }
+
+  .mock-card{
+    flex-direction:column;
+  }
+
+  .mock-card h2{
+    font-size:36px;
+  }
+
+  .problem-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .problem-header h2{
+    font-size:32px;
+  }
+
+  .problem-body{
+    grid-template-columns:1fr;
+  }
+
+  .mock-actions,
+  .problem-actions{
+    flex-direction:column;
+  }
+
+  .mock-actions button,
+  .problem-actions button{
+    width:100%;
+  }
+
+  .trophy-area{
+    width:100%;
+    min-height:220px;
+    margin-top:18px;
+    transform:none;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .practice-section{
+    padding:18px;
+    gap:18px;
+  }
+
+  .mock-card,
+  .problem-card{
+    padding:20px 18px;
+    border-radius:18px;
+  }
+
+  .mock-card h2{
+    font-size:30px;
+  }
+
+  .problem-header h2{
+    font-size:28px;
+  }
+
+  .problem-topic{
+    font-size:16px;
+  }
+
+  .problem-text p{
+    font-size:15px;
+  }
+
+  .premium-trophy{
+    width:170px;
+    height:170px;
+  }
+
+  .trophy-svg{
+    width:150px;
+    height:150px;
+  }
+
+  .trophy-ring{
+    width:140px;
+    height:140px;
+  }
+
+  .registered-box{
+    width:120px;
+    right:10px;
+    bottom:0;
+  }
+
+  .geometry-svg{
+    width:180px;
+    height:150px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .practice-section{
+    padding:14px;
+    gap:16px;
+  }
+
+  .mock-card,
+  .problem-card{
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .mock-label{
+    font-size:10px;
+    padding:6px 10px;
+  }
+
+  .mock-card h2{
+    font-size:24px;
+    line-height:1.15;
+  }
+
+  .problem-header h2{
+    font-size:22px;
+  }
+
+  .problem-header span{
+    font-size:10px;
+  }
+
+  .mock-card li,
+  .problem-text p{
+    font-size:14px;
+  }
+
+  .mock-actions button,
+  .problem-actions button{
+    width:100%;
+    min-height:48px;
+    font-size:14px;
+  }
+
+  .trophy-area{
+    min-height:180px;
+  }
+
+  .premium-trophy{
+    width:140px;
+    height:140px;
+  }
+
+  .trophy-svg{
+    width:125px;
+    height:125px;
+  }
+
+  .trophy-ring{
+    width:115px;
+    height:115px;
+  }
+
+  .registered-box{
+    width:105px;
+    padding:8px;
+  }
+
+  .registered-box b{
+    font-size:18px;
+  }
+
+  .registered-box span{
+    font-size:11px;
+  }
+
+  .triangle-diagram{
+    height:130px;
+  }
+
+  .geometry-svg{
+    width:150px;
+    height:125px;
+  }
+
+}

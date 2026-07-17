@@ -175,3 +175,174 @@
       flex: 0 0 auto;
     }
   }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .feature-strip{
+    width:calc(100% - 100px);
+    padding:22px 26px;
+    gap:8px;
+  }
+
+  .feature-item{
+    padding:0 16px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .feature-strip{
+    width:calc(100% - 60px);
+    grid-template-columns:repeat(2,1fr);
+    margin-top:20px;
+    padding:24px;
+    gap:0;
+  }
+
+  .feature-item{
+    padding:18px;
+    border-right:none;
+    border-bottom:1px solid rgba(15,23,42,.08);
+  }
+
+  .feature-item:nth-child(odd){
+    border-right:1px solid rgba(15,23,42,.08);
+  }
+
+  .feature-item:nth-child(3),
+  .feature-item:nth-child(4){
+    border-bottom:none;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .feature-strip{
+    width:calc(100% - 48px);
+    grid-template-columns:repeat(2,1fr);
+    padding:26px;
+    border-radius:24px;
+  }
+
+  .feature-item{
+    gap:18px;
+    padding:20px;
+  }
+
+  .feature-icon{
+    width:58px;
+    height:58px;
+  }
+
+  .feature-item h3{
+    font-size:19px;
+  }
+
+  .feature-item p{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .feature-strip{
+    width:calc(100% - 36px);
+    grid-template-columns:1fr;
+    margin-top:18px;
+    padding:20px;
+  }
+
+  .feature-item{
+    border-right:none !important;
+    border-bottom:1px solid rgba(15,23,42,.08);
+    padding:18px 0;
+  }
+
+  .feature-item:last-child{
+    border-bottom:none;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .feature-strip{
+    width:calc(100% - 24px);
+    padding:18px;
+    border-radius:20px;
+  }
+
+  .feature-item{
+    gap:14px;
+  }
+
+  .feature-icon{
+    width:50px;
+    height:50px;
+  }
+
+  .feature-item h3{
+    font-size:17px;
+  }
+
+  .feature-item p{
+    font-size:13px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .feature-strip{
+    width:calc(100% - 16px);
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .feature-item{
+    gap:12px;
+    align-items:flex-start;
+  }
+
+  .feature-icon{
+    width:46px;
+    height:46px;
+    flex-shrink:0;
+  }
+
+  .feature-item h3{
+    font-size:15px;
+    line-height:1.3;
+  }
+
+  .feature-item p{
+    font-size:12px;
+    line-height:1.5;
+  }
+
+}

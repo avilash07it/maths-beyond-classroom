@@ -158,3 +158,169 @@
     letter-spacing: 0;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .stats-bar{
+    margin:20px 48px 0;
+    padding:24px 28px;
+  }
+
+  .stat-item{
+    padding:0 18px;
+    gap:16px;
+  }
+
+  .stat-item h3{
+    font-size:42px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .stats-bar{
+    margin:18px 32px 0;
+    padding:24px;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+
+  .stat-item{
+    border-right:none;
+    padding:18px;
+    border-radius:14px;
+    background:rgba(255,255,255,.03);
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .stats-bar{
+    margin:18px 34px 0;
+    padding:26px;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+
+  .stat-item{
+    padding:20px;
+    gap:18px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,.04);
+  }
+
+  .stat-icon{
+    width:54px;
+    height:54px;
+  }
+
+  .stat-item h3{
+    font-size:42px;
+  }
+
+  .stat-item p{
+    font-size:16px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .stats-bar{
+    margin:16px 22px 0;
+    padding:22px;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .stat-item{
+    padding:0;
+    border-right:none;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .stats-bar{
+    margin:14px 18px 0;
+    padding:20px;
+  }
+
+  .stat-item{
+    gap:14px;
+  }
+
+  .stat-icon{
+    width:46px;
+    height:46px;
+  }
+
+  .stat-item h3{
+    font-size:34px;
+  }
+
+  .stat-item p{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .stats-bar{
+    margin:12px 14px 0;
+    padding:16px;
+    border-radius:14px;
+  }
+
+  .stat-item{
+    gap:10px;
+    align-items:center;
+  }
+
+  .stat-icon{
+    width:40px;
+    height:40px;
+  }
+
+  .stat-icon svg{
+    width:32px;
+    height:32px;
+  }
+
+  .stat-item h3{
+    font-size:28px;
+    letter-spacing:0;
+  }
+
+  .stat-item p{
+    font-size:13px;
+  }
+
+}

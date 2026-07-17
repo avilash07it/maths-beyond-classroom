@@ -196,3 +196,216 @@ overflow: hidden;
       padding-top: 14px;
     }
   }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .footer{
+    padding:38px 48px 24px;
+    gap:48px;
+  }
+
+  .footer-links{
+    gap:24px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .footer{
+    grid-template-columns:1fr;
+    padding:36px 32px 24px;
+    gap:36px;
+  }
+
+  .footer-brand{
+    max-width:640px;
+  }
+
+  .footer-brand p{
+    max-width:100%;
+  }
+
+  .footer-links{
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .footer{
+    grid-template-columns:1fr;
+    padding:40px 34px 26px;
+    gap:40px;
+  }
+
+  .footer-logo-img{
+    width:70px;
+    height:70px;
+  }
+
+  .footer-brand h2{
+    font-size:34px;
+  }
+
+  .footer-brand p{
+    max-width:100%;
+    font-size:17px;
+  }
+
+  .footer-links{
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+
+  .footer-links h4{
+    font-size:18px;
+  }
+
+  .footer-links a{
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .footer{
+    grid-template-columns:1fr;
+    padding:34px 24px 22px;
+    gap:30px;
+  }
+
+  .footer-logo{
+    gap:14px;
+  }
+
+  .footer-brand h2{
+    font-size:30px;
+  }
+
+  .footer-brand p{
+    max-width:100%;
+  }
+
+  .footer-links{
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .footer{
+    padding:28px 18px 20px;
+    gap:26px;
+  }
+
+  .footer-logo{
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .footer-logo-img{
+    width:58px;
+    height:58px;
+  }
+
+  .footer-brand h2{
+    font-size:24px;
+  }
+
+  .footer-brand span{
+    font-size:10px;
+  }
+
+  .footer-brand p{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  .footer-links{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .footer-links h4{
+    margin-bottom:10px;
+  }
+
+  .footer-bottom{
+    margin-top:16px;
+    padding-top:16px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .footer{
+    padding:24px 14px 18px;
+    gap:22px;
+  }
+
+  .footer-logo{
+    gap:10px;
+  }
+
+  .footer-logo-img{
+    width:48px;
+    height:48px;
+  }
+
+  .footer-brand h2{
+    font-size:20px;
+  }
+
+  .footer-brand span{
+    font-size:9px;
+    letter-spacing:.05em;
+  }
+
+  .footer-brand p{
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .footer-links h4{
+    font-size:15px;
+  }
+
+  .footer-links a{
+    font-size:13px;
+    margin-bottom:6px;
+  }
+
+  .footer-bottom{
+    font-size:12px;
+  }
+
+}

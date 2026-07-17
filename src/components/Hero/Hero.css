@@ -539,3 +539,292 @@ bottom: 115px;
     }
   }
   
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .hero-section{
+    padding:120px 48px 60px;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+  }
+
+  .hero-left h1{
+    font-size:62px;
+  }
+
+  .hero-left p{
+    font-size:19px;
+  }
+
+  .premium-math-visual{
+    width:500px;
+    height:500px;
+    right:0;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .hero-section{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:120px 34px 50px;
+  }
+
+  .hero-left{
+    text-align:center;
+  }
+
+  .hero-left p{
+    max-width:720px;
+    margin:auto;
+  }
+
+  .exam-pill{
+    display:inline-block;
+  }
+
+  .hero-actions{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .hero-right{
+    height:430px;
+    transform:none;
+  }
+
+  .premium-math-visual{
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .hero-section{
+    grid-template-columns:1fr;
+    padding:128px 42px 60px;
+    gap:42px;
+  }
+
+  .hero-left{
+    text-align:center;
+  }
+
+  .exam-pill{
+    font-size:15px;
+    padding:12px 22px;
+  }
+
+  .hero-left h1{
+    font-size:56px;
+    line-height:1.08;
+  }
+
+  .hero-left p{
+    max-width:680px;
+    margin:auto;
+    font-size:18px;
+  }
+
+  .hero-actions{
+    justify-content:center;
+    gap:16px;
+  }
+
+  .primary-action,
+  .secondary-action{
+    min-height:56px;
+    padding:16px 28px;
+    font-size:16px;
+  }
+
+  .hero-right{
+    height:470px;
+  }
+
+  .premium-math-visual{
+    width:430px;
+    height:430px;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+  }
+
+  .float-card{
+    transform:scale(.95);
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .hero-section{
+    grid-template-columns:1fr;
+    padding:118px 24px 40px;
+    gap:28px;
+  }
+
+  .hero-left{
+    text-align:center;
+  }
+
+  .hero-left h1{
+    font-size:44px;
+  }
+
+  .hero-left p{
+    font-size:17px;
+    margin:auto;
+  }
+
+  .hero-actions{
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .primary-action,
+  .secondary-action{
+    width:100%;
+    max-width:420px;
+  }
+
+  .hero-right{
+    height:340px;
+    transform:none;
+  }
+
+  .premium-math-visual{
+    width:330px;
+    height:330px;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+  }
+
+  .float-card{
+    transform:scale(.82);
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .hero-section{
+    padding:108px 18px 34px;
+  }
+
+  .exam-pill{
+    padding:9px 14px;
+    font-size:13px;
+    line-height:1.5;
+  }
+
+  .hero-left h1{
+    font-size:36px;
+  }
+
+  .hero-left p{
+    font-size:16px;
+  }
+
+  .hero-right{
+    height:280px;
+  }
+
+  .premium-math-visual{
+    width:260px;
+    height:260px;
+  }
+
+  .float-card{
+    min-width:135px;
+    padding:12px;
+    border-radius:14px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .hero-section{
+    padding:100px 14px 28px;
+  }
+
+  .exam-pill{
+    width:100%;
+    font-size:11px;
+    padding:10px;
+  }
+
+  .hero-left h1{
+    font-size:30px;
+    line-height:1.15;
+  }
+
+  .hero-left p{
+    font-size:14px;
+  }
+
+  .hero-actions{
+    gap:10px;
+  }
+
+  .primary-action,
+  .secondary-action{
+    min-height:48px;
+    font-size:14px;
+  }
+
+  .hero-right{
+    height:230px;
+  }
+
+  .premium-math-visual{
+    width:220px;
+    height:220px;
+  }
+
+  .float-card{
+    transform:scale(.72);
+    min-width:120px;
+    padding:10px;
+  }
+
+  .rank-card{
+    left:-2px;
+  }
+
+  .challenge-card,
+  .streak-card{
+    right:-2px;
+  }
+
+}

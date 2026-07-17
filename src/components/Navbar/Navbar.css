@@ -347,3 +347,243 @@ box-shadow:
     padding: 0 10px;
   }
 }
+/* ==========================================================
+   <=1200px
+========================================================== */
+@media (max-width:1200px){
+
+  .navbar{
+    padding:16px 24px;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+
+  .nav-links{
+    gap:22px;
+    font-size:14px;
+  }
+
+  .signup-btn,
+  .login-btn{
+    min-width:96px;
+    height:44px;
+    padding:0 18px;
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=992px
+========================================================== */
+@media (max-width:992px){
+
+  .navbar{
+    padding:16px 22px;
+    gap:18px;
+  }
+
+  .logo-img{
+    width:44px;
+    height:44px;
+  }
+
+  .logo-title{
+    font-size:20px;
+  }
+
+  .nav-links{
+    order:3;
+    width:100%;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+
+  .nav-links li:first-child::after{
+    bottom:-8px;
+  }
+
+}
+
+
+/* ==========================================================
+   iPad Air (820 × 1180)
+========================================================== */
+@media (min-width:768px) and (max-width:900px){
+
+  .navbar{
+    padding:18px 26px;
+    gap:18px;
+  }
+
+  .logo-img{
+    width:46px;
+    height:46px;
+  }
+
+  .logo-title{
+    font-size:22px;
+  }
+
+  .logo-subtitle{
+    font-size:10px;
+  }
+
+  .nav-links{
+    order:3;
+    width:100%;
+    justify-content:center;
+    gap:22px;
+  }
+
+  .nav-links li{
+    font-size:15px;
+  }
+
+  .signup-btn,
+  .login-btn{
+    height:46px;
+    padding:0 22px;
+    font-size:15px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=768px
+========================================================== */
+@media (max-width:768px){
+
+  .navbar{
+    top:12px;
+    width:calc(100% - 24px);
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:14px;
+  }
+
+  .logo{
+    gap:10px;
+    min-width:0;
+  }
+
+  .logo-img{
+    width:42px;
+    height:42px;
+  }
+
+  .logo-title{
+    font-size:18px;
+  }
+
+  .logo-subtitle{
+    font-size:8px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-buttons{
+    gap:8px;
+  }
+
+  .signup-btn,
+  .login-btn{
+    height:40px;
+    padding:0 14px;
+    font-size:13px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=576px
+========================================================== */
+@media (max-width:576px){
+
+  .navbar{
+    left:12px;
+    right:12px;
+    width:auto;
+    transform:none;
+    grid-template-columns:1fr;
+    padding:12px;
+  }
+
+  .logo{
+    justify-content:center;
+  }
+
+  .logo-img{
+    width:40px;
+    height:40px;
+  }
+
+  .logo-title{
+    font-size:18px;
+  }
+
+  .nav-buttons{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .signup-btn,
+  .login-btn{
+    width:100%;
+    height:40px;
+  }
+
+}
+
+
+/* ==========================================================
+   <=400px
+========================================================== */
+@media (max-width:400px){
+
+  .navbar{
+    left:8px;
+    right:8px;
+    padding:10px;
+  }
+
+  .logo{
+    gap:8px;
+  }
+
+  .logo-img{
+    width:36px;
+    height:36px;
+  }
+
+  .logo-title{
+    font-size:16px;
+  }
+
+  .logo-subtitle{
+    font-size:7px;
+    letter-spacing:.06em;
+  }
+
+  .nav-buttons{
+    grid-template-columns:1fr;
+  }
+
+  .signup-btn,
+  .login-btn{
+    height:38px;
+    font-size:13px;
+  }
+
+}
