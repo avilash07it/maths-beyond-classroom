@@ -107,7 +107,12 @@ useEffect(() => {
   selectedTopic,
   selectedType,
 ]);
-
+const featuredMaterial =
+  [...studyMaterials].sort(
+    (a, b) =>
+      new Date(b.createdAt) -
+      new Date(a.createdAt)
+  )[0];
   const resetFilters = () => {
     setQuery("");
     setSelectedExam("All Exams");
@@ -157,13 +162,21 @@ if (loading) {
 
           <div className="study-hero-visual" aria-hidden="true">
             <div className="material-flow-card">
-              <span>Exam</span>
-              <strong>IOQM</strong>
-              <span>Topic</span>
-              <strong>Geometry</strong>
-              <span>Material</span>
-              <strong>Practice Sheet 1</strong>
-            </div>
+  <span>Exam</span>
+  <strong>
+    {featuredMaterial?.exam || "No Exam"}
+  </strong>
+
+  <span>Topic</span>
+  <strong>
+    {featuredMaterial?.topic || "No Topic"}
+  </strong>
+
+  <span>Material</span>
+  <strong>
+    {featuredMaterial?.title || "No Material"}
+  </strong>
+</div>
             <span className="study-orbit orbit-one"></span>
             <span className="study-orbit orbit-two"></span>
             <span className="study-node node-one"></span>
