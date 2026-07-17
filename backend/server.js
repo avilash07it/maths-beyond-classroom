@@ -16,6 +16,7 @@ const mockTestRoutes = require("./src/routes/mocktest.routes");
 const materialRoutes = require("./src/routes/material.routes");
 const planRoutes = require("./src/routes/plan.routes");
 const supportRoutes = require("./src/routes/personalsupport.routes");
+const paymentRoutes = require("./src/routes/payment.routes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/pyqs", pyqRoutes);
@@ -25,6 +26,7 @@ app.use("/api/mock-tests", mockTestRoutes);
 app.use("/api/materials", materialRoutes);
 app.use("/api/plans", planRoutes);
 app.use("/api/support", supportRoutes);
+app.use("/api/payments", paymentRoutes);
 
 
 app.get("/api/health", (req, res) => {
