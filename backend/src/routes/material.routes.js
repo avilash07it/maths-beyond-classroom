@@ -3,13 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 const materialController = require("../controllers/material.controller");
-// const authMiddleware = require("../middleware/auth.middleware");
-// const requireAdmin = require("../middleware/admin.middleware");
+const authMiddleware = require("../middleware/auth.middleware");
+const requireAdmin = require("../middleware/admin.middleware");
 
 router.post(
   "/",
-  // authMiddleware,
-  // requireAdmin,
+  authMiddleware,
+  requireAdmin,
   materialController.createMaterial
 );
 
@@ -19,15 +19,15 @@ router.get("/:id", materialController.getMaterialById);
 
 router.put(
   "/:id",
-  // authMiddleware,
-  // requireAdmin,
+  authMiddleware,
+  requireAdmin,
   materialController.updateMaterial
 );
 
 router.delete(
   "/:id",
-  // authMiddleware,
-  // requireAdmin,
+  authMiddleware,
+  requireAdmin,
   materialController.deleteMaterial
 );
 
