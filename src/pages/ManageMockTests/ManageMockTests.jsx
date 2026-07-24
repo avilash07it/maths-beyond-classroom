@@ -126,8 +126,10 @@ const summaryCards = [
 
     setTests(response.data);
   } catch (error) {
-    console.error(error);
-  }
+  console.log("Status:", error.response?.status);
+  console.log("Backend:", error.response?.data);
+  console.error(error);
+}
 };
 
 useEffect(() => {
@@ -318,12 +320,13 @@ const editTest = (test) => {
               <label className="manage-mock-tests-field">
                 <span>Duration</span>
                 <input
-                  type="text"
-                  value={form.duration}
-                  onChange={(event) => updateFormField("duration", event.target.value)}
-                  placeholder="e.g. 90 min"
-                  required
-                />
+  type="number"
+  min="1"
+  value={form.duration}
+  onChange={(event) => updateFormField("duration", event.target.value)}
+  placeholder="90"
+  required
+/>
               </label>
 
               <label className="manage-mock-tests-field">

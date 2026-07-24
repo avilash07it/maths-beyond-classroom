@@ -128,14 +128,12 @@ useEffect(() => {
 }, [todayProblem]);
 if (loading) {
   return (
-    <PageTransition>
     <div className="potd-page">
       <DashboardNavbar />
       <main className="potd-shell">
         <h2>Loading today's problem...</h2>
       </main>
     </div>
-    </PageTransition>
   );
 }
 
@@ -169,6 +167,8 @@ if (user?.streak) {
   }
 }
   return (
+        <PageTransition>
+
     <div className="potd-page">
       <DashboardNavbar />
 
@@ -468,6 +468,8 @@ if (user?.streak) {
         </section>
       </main>
     </div>
+        </PageTransition>
+
   );
 }
 

@@ -100,12 +100,15 @@ const liveLecture =
   null;
 if (!loading && lectures.length === 0) {
   return (
-    <div className="lectures-page">
-      <DashboardNavbar />
-      <main className="lectures-shell">
-        <h2>No lectures uploaded yet.</h2>
-      </main>
-    </div>
+    <PageTransition>
+      <div className="lectures-page">
+        <DashboardNavbar />
+
+        <main className="lectures-shell">
+          <h2>No lectures uploaded yet.</h2>
+        </main>
+      </div>
+    </PageTransition>
   );
 }
 
@@ -114,16 +117,14 @@ if (!loading && lectures.length === 0) {
     setSelectedExam("All Exams");
     setSelectedTopic("All Topics");
   };
-  if (loading) {
+ if (loading) {
   return (
-    <div className="lectures-page">
-      <DashboardNavbar />
-      <main className="lectures-shell">
-        <h2>Loading lectures...</h2>
-      </main>
-    </div>
+    <PageTransition>
+      <div className="lectures-page">
+         <h2>Loading lectures...</h2>
+      </div>
+    </PageTransition>
   );
-
 }
 
   return (
