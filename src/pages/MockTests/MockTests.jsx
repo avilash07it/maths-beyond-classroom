@@ -17,14 +17,12 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PageTransition from "../../components/PageTransition";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
+import api from "../../utils/api";
 import "./MockTests.css";
 import {
-  freeMockTest,
-  isProUser,
   mockTestBenefits,
   mockTestHeroBadges,
 } from "./mockTestsData";
@@ -35,20 +33,54 @@ const statusIconMap = {
   COMPLETED: CheckCircle2,
 };
 
+const upgradeMessage = "Upgrade your plan to access this mock test.";
+
+const normalizeText = (value) => String(value || "").trim().toLowerCase();
+
+const canAccessMockTest = (test, myPlan) => {
+  if (!test?.isProOnly) {
+    return true;
+  }
+
+  if (!myPlan.isPro) {
+    return false;
+  }
+
+  const planName = normalizeText(myPlan.planName);
+  const exam = normalizeText(test.exam);
+
+  if (planName === "pro plus" || planName === "pro max") {
+    return exam === "sehss" || exam === "ioqm";
+  }
+
+  if (planName === "starter pro (sehss)") {
+    return exam === "sehss";
+  }
+
+  if (planName === "starter pro (ioqm)") {
+    return exam === "ioqm";
+  }
+
+  return false;
+};
 
 function MockTests() {
 const navigate = useNavigate();
 
 const [tests, setTests] = useState([]);
+const [myPlan, setMyPlan] = useState({
+  isPro: false,
+  planId: null,
+  planName: "",
+});
+const [accessMessage, setAccessMessage] = useState("");
 
   
 
   
 const fetchMockTests = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/mock-tests/getall"
-    );
+    const response = await api.get("/mock-tests/getall");
 
     setTests(response.data);
   } catch (error) {
@@ -56,24 +88,46 @@ const fetchMockTests = async () => {
   }
 };
 
+const fetchMyPlan = async () => {
+  try {
+    const response = await api.get("/payments/my-plan");
+    const plan = response.data?.data || response.data || {};
+
+    setMyPlan({
+      isPro: Boolean(plan.isPro),
+      planId: plan.planId ?? null,
+      planName: plan.planName || "",
+    });
+  } catch (error) {
+    console.error(error);
+    setMyPlan({
+      isPro: false,
+      planId: null,
+      planName: "",
+    });
+  }
+};
+
 useEffect(() => {
   fetchMockTests();
+  fetchMyPlan();
 }, []);
-const isProUser = false;
+const isProUser = myPlan.isPro;
 const freeMockTest = tests.find(
   (test) => test.isProOnly === false
 );
 const handleAttempt = (test) => {
-
-  if (!test.isProOnly) {
-    window.open(test.externalUrl, "_blank");
+  if (!test) {
     return;
   }
 
-  if (isProUser) {
+  if (canAccessMockTest(test, myPlan)) {
+    setAccessMessage("");
     window.open(test.externalUrl, "_blank");
   } else {
-    navigate("/pro-plans");
+    setAccessMessage(upgradeMessage);
+    alert(upgradeMessage);
+    navigate("/proplans");
   }
 };
   return (
@@ -138,9 +192,10 @@ const handleAttempt = (test) => {
     </div>
 
     <p>
-      {isProUser
-        ? "Pro access enabled."
-        : "Upgrade to Pro to unlock premium tests."}
+      {accessMessage ||
+        (isProUser
+          ? "Pro access enabled."
+          : "Upgrade to Pro to unlock premium tests.")}
     </p>
   </div>
 

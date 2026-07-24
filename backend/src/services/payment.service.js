@@ -56,6 +56,35 @@ const getAllPayments = async () => {
   });
 };
 
+const getMyPlan = async (userId) => {
+  const payment = await prisma.payment.findFirst({
+    where: {
+      userId: Number(userId),
+      status: "APPROVED",
+    },
+    include: {
+      plan: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  if (!payment) {
+    return {
+      isPro: false,
+      planId: null,
+    };
+  }
+
+  return {
+    isPro: true,
+    planId: payment.planId,
+    planName: payment.plan.name,
+    plan: payment.plan,
+  };
+};
+
 const approvePayment = async (id) => {
   return await prisma.$transaction(async (tx) => {
     const existingPayment = await tx.payment.findUnique({
@@ -123,6 +152,7 @@ const rejectPayment = async (id, paymentData) => {
 module.exports = {
   createPayment,
   getAllPayments,
+  getMyPlan,
   approvePayment,
   rejectPayment,
 };
