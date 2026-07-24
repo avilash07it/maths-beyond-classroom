@@ -127,7 +127,7 @@ const handleAttempt = (test) => {
   } else {
     setAccessMessage(upgradeMessage);
     alert(upgradeMessage);
-    navigate("/proplans");
+    navigate("/pro-plans");
   }
 };
   return (
@@ -236,8 +236,8 @@ const handleAttempt = (test) => {
             <div className="mocktest-free-meta">
               <div>
                 <Gauge size={19} />
-                <span>Difficulty</span>
-                <strong>{freeMockTest?.difficulty}</strong>
+                <span>Marks</span>
+                <strong>{freeMockTest?.marks}</strong>
               </div>
               <div>
                 <Clock3 size={19} />

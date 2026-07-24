@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../utils/api";
 import {
   CalendarClock,
   CheckCircle2,
@@ -118,9 +118,7 @@ const summaryCards = [
 
   const fetchMockTests = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/mock-tests/getall"
-    );
+    const response = await api.get("/mock-tests/getall");
 
     console.log(response.data);
 
@@ -157,15 +155,9 @@ const saveTest = async (event) => {
 
   try {
     if (editingTestId) {
-      await axios.put(
-        `http://localhost:5000/api/mock-tests/update/${editingTestId}`,
-        testPayload
-      );
+      await api.put(`/mock-tests/update/${editingTestId}`, testPayload);
     } else {
-      await axios.post(
-        "http://localhost:5000/api/mock-tests/create",
-        testPayload
-      );
+      await api.post("/mock-tests/create", testPayload);
     }
 await fetchMockTests();
 clearForm();
@@ -176,9 +168,7 @@ clearForm();
 }
 const deleteTest = async (id) => {
   try {
-    await axios.delete(
-      `http://localhost:5000/api/mock-tests/delete/${id}`
-    );
+    await api.delete(`/mock-tests/delete/${id}`);
 
     await fetchMockTests();
   } catch (error) {
