@@ -35,13 +35,34 @@ const registerUser = async (userData) => {
     isPro: user.isPro,
   };
 };
+const getCurrentUser = async (userId) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
 
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    isPro: user.isPro,
+    streak: user.streak,
+    lastVisitDate: user.lastVisitDate,
+  };
+};
 const loginUser = async (loginData) => {
   const user = await prisma.user.findUnique({
     where: {
       email: loginData.email,
     },
   });
+ 
 
   if (!user) {
     throw new Error("Invalid email or password");
@@ -55,13 +76,8 @@ const loginUser = async (loginData) => {
   if (!isPasswordValid) {
     throw new Error("Invalid email or password");
   }
-  await updateUserStreak(user.id);
-  const updatedUser = await prisma.user.findUnique({
-  where: {
-    id: user.id,
-  },
-});
 
+ 
   const token = jwt.sign(
     {
       userId: user.id,
@@ -76,13 +92,13 @@ const loginUser = async (loginData) => {
 
   return {
     token,
-   user: {
-  id: updatedUser.id,
-  name: updatedUser.name,
-  email: updatedUser.email,
-  role: updatedUser.role,
-  isPro: updatedUser.isPro,
-  streak: updatedUser.streak,
+  user: {
+  id: user.id,
+  name: user.name,
+  email: user.email,
+  role: user.role,
+  isPro: user.isPro,
+  streak: user.streak,
 },
   };
 };
@@ -90,4 +106,5 @@ const loginUser = async (loginData) => {
 module.exports = {
   registerUser,
   loginUser,
+  getCurrentUser,
 };

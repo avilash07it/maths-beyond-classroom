@@ -55,6 +55,29 @@ if (materialsData.length > 0) {
     console.error(error);
   }
 };
+const fetchCurrentUser = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.get(
+      "http://localhost:5000/api/auth/me",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    setUser(response.data.user);
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify(response.data.user)
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
 const fetchLectures = async () => {
   try {
     const response = await axios.get(
@@ -120,6 +143,7 @@ useEffect(() => {
   fetchSupport();
   fetchLectures();
   fetchTodayPOTD();
+  fetchCurrentUser();
   fetchMaterials();
   fetchMockTests();
 }, []);

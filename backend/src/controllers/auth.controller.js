@@ -18,7 +18,23 @@ const register = async (req, res) => {
     });
   }
 };
+const { getCurrentUser } = require("../services/auth.service");
 
+const getMe = async (req, res) => {
+  try {
+    const user = await getCurrentUser(req.user.userId);
+
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 const login = async (req, res) => {
   try {
     const result = await authService.loginUser(req.body);
@@ -47,5 +63,6 @@ const login = async (req, res) => {
 
 module.exports = {
   register,
+  getMe,
   login,
 };
