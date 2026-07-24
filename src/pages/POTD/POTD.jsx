@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PageTransition from "../../components/PageTransition";
+
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -126,12 +128,14 @@ useEffect(() => {
 }, [todayProblem]);
 if (loading) {
   return (
+    <PageTransition>
     <div className="potd-page">
       <DashboardNavbar />
       <main className="potd-shell">
         <h2>Loading today's problem...</h2>
       </main>
     </div>
+    </PageTransition>
   );
 }
 

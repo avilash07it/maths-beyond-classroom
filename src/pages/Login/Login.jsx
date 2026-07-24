@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../../assets/mbc-logo-8.png";
+import PageTransition from "../../components/PageTransition";
+
 import api from "../../utils/api";
 
 function Login() {
@@ -56,6 +58,7 @@ function Login() {
   };
 
   return (
+    <PageTransition>
     <main className="login-page">
       <div className="login-bg-glow"></div>
 
@@ -178,6 +181,7 @@ function Login() {
         </div>
       </section>
     </main>
+    </PageTransition>
   );
 }
 

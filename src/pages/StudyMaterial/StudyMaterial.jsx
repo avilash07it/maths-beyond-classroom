@@ -12,6 +12,8 @@ import {
   Trophy,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import PageTransition from "../../components/PageTransition";
+
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import {
   exams,
@@ -121,6 +123,7 @@ const featuredMaterial =
   };
 if (loading) {
   return (
+    <PageTransition>
     <div className="study-material-page">
       <DashboardNavbar />
 
@@ -128,6 +131,7 @@ if (loading) {
         <h2>Loading study materials...</h2>
       </main>
     </div>
+    </PageTransition>
   );
 }
   return (

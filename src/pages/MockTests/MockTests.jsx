@@ -19,6 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import PageTransition from "../../components/PageTransition";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import "./MockTests.css";
 import {
@@ -76,6 +77,7 @@ const handleAttempt = (test) => {
   }
 };
   return (
+    <PageTransition>
     <div className="mocktest-page">
       <DashboardNavbar />
 
@@ -262,6 +264,7 @@ const handleAttempt = (test) => {
         </section>
       </main>
     </div>
+    </PageTransition>
   );
 }
 

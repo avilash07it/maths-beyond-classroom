@@ -12,6 +12,8 @@ import {
 } from "./dashboardData";
 
 import DashboardNavbar from "./DashboardNavbar";
+import PageTransition from "../../components/PageTransition";
+
 
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -23,6 +25,7 @@ const [liveLecture, setLiveLecture] = useState(null);
 const [todayProblem, setTodayProblem] = useState(null);
 const [lectures, setLectures] = useState([]);
 const [upcomingMockTest, setUpcomingMockTest] = useState(null);
+
 const [latestMaterial, setLatestMaterial] = useState(null);
 const [materials, setMaterials] = useState([]);
 const [mockTests, setMockTests] = useState([]);
@@ -121,6 +124,7 @@ useEffect(() => {
   fetchMockTests();
 }, []);
   return (
+    <PageTransition>
     <div className="dashboard-page">
       <DashboardNavbar />
 
@@ -404,6 +408,7 @@ useEffect(() => {
         </aside>
       </section>
     </div>
+    </PageTransition>
   );
 }
 
