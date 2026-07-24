@@ -123,7 +123,6 @@ const featuredMaterial =
   };
 if (loading) {
   return (
-    <PageTransition>
     <div className="study-material-page">
       <DashboardNavbar />
 
@@ -131,10 +130,11 @@ if (loading) {
         <h2>Loading study materials...</h2>
       </main>
     </div>
-    </PageTransition>
   );
 }
   return (
+        <PageTransition>
+
     <div className="study-material-page">
       <DashboardNavbar />
 
@@ -353,6 +353,8 @@ const MaterialIcon = meta.Icon;
         </section>
       </main>
     </div>
+        </PageTransition>
+
   );
 }
 

@@ -1,4 +1,4 @@
-const prisma = require("../configuration/prisma"); // adjust path if needed
+const prisma = require("../configuration/prisma"); 
 
 async function updateUserStreak(userId) {
   const user = await prisma.user.findUnique({
@@ -30,7 +30,6 @@ async function updateUserStreak(userId) {
     (1000 * 60 * 60 * 24);
 
   if (difference === 0) {
-    // Already visited today.
     return;
   }
 
