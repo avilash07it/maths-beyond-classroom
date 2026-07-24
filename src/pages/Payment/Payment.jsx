@@ -18,6 +18,8 @@ import {
   Upload,
   WalletCards,
 } from "lucide-react";
+import PageTransition from "../../components/PageTransition";
+
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import "./Payment.css";
 import {
@@ -150,6 +152,7 @@ function Payment() {
   };
 
   return (
+     <PageTransition>
     <div className="payment-page">
       <DashboardNavbar />
 
@@ -394,6 +397,7 @@ function Payment() {
         )}
       </main>
     </div>
+    </PageTransition>
   );
 }
 

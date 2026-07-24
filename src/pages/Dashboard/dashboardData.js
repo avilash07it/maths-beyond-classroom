@@ -93,6 +93,6 @@ export const proPlan = {
 
 // Welcome Section
 export const welcomeData = {
-  studentName: "Arjun",
+  
   streak: "12 Day Streak",
 };

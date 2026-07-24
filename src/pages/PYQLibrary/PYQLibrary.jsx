@@ -11,6 +11,8 @@ import {
   Trophy,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import PageTransition from "../../components/PageTransition";
+
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { exams, topics } from "./pyqData";
 import "./PYQLibrary.css";
@@ -71,6 +73,7 @@ useEffect(() => {
 }, []);
 
   return (
+    <PageTransition>
     <div className="pyq-page">
       <DashboardNavbar />
 
@@ -286,7 +289,9 @@ useEffect(() => {
           </div>
         </aside>
       </section>
+
     </div>
+    </PageTransition>
   );
 }
 

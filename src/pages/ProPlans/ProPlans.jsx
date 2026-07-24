@@ -20,6 +20,8 @@ import {
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import api from "../../utils/api";
 import "./ProPlans.css";
+import PageTransition from "../../components/PageTransition";
+
 import {
   freeFeatures,
   paidFeatures,
@@ -79,6 +81,7 @@ useEffect(() => {
 }, []);
 
   return (
+    <PageTransition>
     <div className="proplans-page">
       <DashboardNavbar />
 
@@ -280,6 +283,7 @@ useEffect(() => {
         </section>
       </main>
     </div>
+    </PageTransition>
   );
 }
 

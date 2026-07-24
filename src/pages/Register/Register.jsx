@@ -1,6 +1,8 @@
 import "./Register.css";
 import logo from "../../assets/mbc-logo-8.png";
 import { FcGoogle } from "react-icons/fc";
+import PageTransition from "../../components/PageTransition";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../utils/api";
@@ -52,6 +54,7 @@ function Register() {
   };
 
   return (
+    <PageTransition>
     <main className="register-page">
       <div className="register-bg-glow"></div>
       
@@ -160,6 +163,7 @@ function Register() {
         </div>
       </section>
     </main>
+    </PageTransition>
   );
 }
 

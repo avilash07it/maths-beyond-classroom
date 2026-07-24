@@ -19,6 +19,7 @@ import {
   Sparkles,
   Target,
 } from "lucide-react";
+
 import {
   importantTopics,
   learningPath,
@@ -43,6 +44,7 @@ function TopicDetail() {
   const navigate = useNavigate();
 
   return (
+    <PageTransition>
     <div className="topic-detail-page">
       <DashboardNavbar />
 
@@ -421,6 +423,7 @@ function TopicDetail() {
         </section>
       </main>
     </div>
+    </PageTransition>
   );
 }
 

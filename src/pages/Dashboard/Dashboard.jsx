@@ -12,6 +12,8 @@ import {
 } from "./dashboardData";
 
 import DashboardNavbar from "./DashboardNavbar";
+import PageTransition from "../../components/PageTransition";
+
 
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -23,9 +25,19 @@ const [liveLecture, setLiveLecture] = useState(null);
 const [todayProblem, setTodayProblem] = useState(null);
 const [lectures, setLectures] = useState([]);
 const [upcomingMockTest, setUpcomingMockTest] = useState(null);
+
 const [latestMaterial, setLatestMaterial] = useState(null);
 const [materials, setMaterials] = useState([]);
 const [mockTests, setMockTests] = useState([]);
+const [user, setUser] = useState(null);
+
+useEffect(() => {
+  const storedUser = localStorage.getItem("user");
+
+  if (storedUser) {
+    setUser(JSON.parse(storedUser));
+  }
+}, []);
 const fetchMaterials = async () => {
   try {
     const response = await axios.get(
@@ -112,14 +124,15 @@ useEffect(() => {
   fetchMockTests();
 }, []);
   return (
+    <PageTransition>
     <div className="dashboard-page">
       <DashboardNavbar />
 
       <section className="dashboard-hero">
         <div>
-          <h1>
-            Welcome back, <span>{welcomeData.studentName}!</span> 👋
-          </h1>
+           <h1>
+  Welcome back, <span>{user?.name?.split(" ")[0] || "Student"}!</span> 👋
+</h1>
           <p>Consistency today, excellence tomorrow.</p>
 
           <div className="hero-status-cards">
@@ -181,12 +194,12 @@ useEffect(() => {
           </div>
 
           <div className="hero-stat-card">
-            <span>🔥</span>
-            <div>
-              <h3>-</h3>
-              <p>Day Streak</p>
-            </div>
-          </div>
+  <span>🔥</span>
+  <div>
+    <h3>{user?.streak ?? 0}</h3>
+    <p>Day Streak</p>
+  </div>
+</div>
         </div>
       </section>
 
@@ -395,6 +408,7 @@ useEffect(() => {
         </aside>
       </section>
     </div>
+    </PageTransition>
   );
 }
 

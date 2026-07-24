@@ -1,5 +1,7 @@
 import { topics } from "./topicsData";
 import "./TopicExplorerPage.css";
+import PageTransition from "../../components/PageTransition";
+
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -58,6 +60,7 @@ const fetchMaterials = async () => {
 }, []);
   
   return (
+    <PageTransition>
     <div className="topics-page">
       <DashboardNavbar />
 
@@ -199,6 +202,7 @@ const materialCount = materials.filter(
         </aside>
       </section>
     </div>
+    </PageTransition>
   );
 }
 

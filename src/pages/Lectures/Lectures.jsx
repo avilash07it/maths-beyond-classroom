@@ -13,8 +13,11 @@ import {
   Trophy,
   Video,
 } from "lucide-react";
+
 import { useNavigate, useLocation } from "react-router-dom";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
+import PageTransition from "../../components/PageTransition";
+
 import { exams, topics } from "./lecturesData";
 import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
@@ -124,6 +127,7 @@ if (!loading && lectures.length === 0) {
 }
 
   return (
+    <PageTransition>
     <div className="lectures-page">
       <DashboardNavbar />
 
@@ -429,6 +433,7 @@ if (!loading && lectures.length === 0) {
         </section>
       </main>
     </div>
+    </PageTransition>
   );
 }
 

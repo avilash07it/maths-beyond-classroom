@@ -1,6 +1,7 @@
 const prisma = require("../configuration/prisma");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const updateUserStreak = require("./updateUserStreak");
 
 const registerUser = async (userData) => {
   const existingUser = await prisma.user.findUnique({
@@ -54,6 +55,12 @@ const loginUser = async (loginData) => {
   if (!isPasswordValid) {
     throw new Error("Invalid email or password");
   }
+  await updateUserStreak(user.id);
+  const updatedUser = await prisma.user.findUnique({
+  where: {
+    id: user.id,
+  },
+});
 
   const token = jwt.sign(
     {
@@ -69,13 +76,14 @@ const loginUser = async (loginData) => {
 
   return {
     token,
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      isPro: user.isPro,
-    },
+   user: {
+  id: updatedUser.id,
+  name: updatedUser.name,
+  email: updatedUser.email,
+  role: updatedUser.role,
+  isPro: updatedUser.isPro,
+  streak: updatedUser.streak,
+},
   };
 };
 
