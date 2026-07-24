@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   BadgeIndianRupee,
   Check,
@@ -135,6 +135,7 @@ function ManagePayments() {
   const [requests, setRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [actionLoading, setActionLoading] = useState(null);
   const [error, setError] = useState("");
   const [filters, setFilters] = useState({
     search: "",
@@ -147,29 +148,44 @@ function ManagePayments() {
   const WorkflowIcon = managePaymentsWorkflowPanel.icon;
   const ScreenshotIcon = managePaymentsScreenshotIcon;
 
-  useEffect(() => {
-    const fetchPayments = async () => {
-      try {
+  const fetchPayments = useCallback(async ({ showLoading = true } = {}) => {
+    try {
+      if (showLoading) {
         setIsLoading(true);
-        setError("");
+      }
 
-        const response = await api.get("/payments");
-        const payments = response.data?.data || [];
+      setError("");
 
-        setRequests(payments.map(mapPaymentToRequest));
-      } catch (requestError) {
-        setRequests([]);
-        setError(
-          requestError.response?.data?.message ||
-            "Unable to load payment requests. Please try again."
-        );
-      } finally {
+      const response = await api.get("/payments");
+      const payments = response.data?.data || [];
+      const nextRequests = payments.map(mapPaymentToRequest);
+
+      setRequests(nextRequests);
+      setSelectedRequest((currentRequest) =>
+        currentRequest
+          ? nextRequests.find((request) => request.id === currentRequest.id) || null
+          : currentRequest,
+      );
+
+      return nextRequests;
+    } catch (requestError) {
+      setRequests([]);
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to load payment requests. Please try again."
+      );
+
+      return [];
+    } finally {
+      if (showLoading) {
         setIsLoading(false);
       }
-    };
-
-    fetchPayments();
+    }
   }, []);
+
+  useEffect(() => {
+    fetchPayments();
+  }, [fetchPayments]);
 
   const updateFilter = (field, value) => {
     setFilters((currentFilters) => ({
@@ -178,16 +194,48 @@ function ManagePayments() {
     }));
   };
 
-  const updateRequestStatus = (requestId, status) => {
-    setRequests((currentRequests) =>
-      currentRequests.map((request) =>
-        request.id === requestId ? { ...request, status } : request,
-      ),
-    );
+  const getRejectPayload = (request) => {
+    if (!request?.notes || request.notes === "No admin notes added.") {
+      return {};
+    }
 
-    setSelectedRequest((currentRequest) =>
-      currentRequest?.id === requestId ? { ...currentRequest, status } : currentRequest,
-    );
+    return {
+      adminNote: request.notes,
+    };
+  };
+
+  const approvePayment = async (requestId) => {
+    try {
+      setActionLoading({ id: requestId, action: "approve" });
+      setError("");
+
+      await api.patch(`/payments/${requestId}/approve`);
+      await fetchPayments({ showLoading: false });
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to approve payment. Please try again."
+      );
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const rejectPayment = async (request) => {
+    try {
+      setActionLoading({ id: request.id, action: "reject" });
+      setError("");
+
+      await api.patch(`/payments/${request.id}/reject`, getRejectPayload(request));
+      await fetchPayments({ showLoading: false });
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to reject payment. Please try again."
+      );
+    } finally {
+      setActionLoading(null);
+    }
   };
 
   const planOptions = useMemo(
@@ -373,18 +421,24 @@ function ManagePayments() {
                       <button
                         className="manage-payments-approve-button"
                         type="button"
-                        onClick={() => updateRequestStatus(request.id, "Approved")}
+                        disabled={Boolean(actionLoading)}
+                        onClick={() => approvePayment(request.id)}
                       >
                         <Check size={15} aria-hidden="true" />
-                        Approve
+                        {actionLoading?.id === request.id && actionLoading.action === "approve"
+                          ? "Approving..."
+                          : "Approve"}
                       </button>
                       <button
                         className="manage-payments-reject-button"
                         type="button"
-                        onClick={() => updateRequestStatus(request.id, "Rejected")}
+                        disabled={Boolean(actionLoading)}
+                        onClick={() => rejectPayment(request)}
                       >
                         <X size={15} aria-hidden="true" />
-                        Reject
+                        {actionLoading?.id === request.id && actionLoading.action === "reject"
+                          ? "Rejecting..."
+                          : "Reject"}
                       </button>
                       <button
                         className="manage-payments-details-button"
@@ -560,18 +614,24 @@ function ManagePayments() {
               <button
                 className="manage-payments-approve-button"
                 type="button"
-                onClick={() => updateRequestStatus(selectedRequest.id, "Approved")}
+                disabled={Boolean(actionLoading)}
+                onClick={() => approvePayment(selectedRequest.id)}
               >
                 <Check size={15} aria-hidden="true" />
-                Approve
+                {actionLoading?.id === selectedRequest.id && actionLoading.action === "approve"
+                  ? "Approving..."
+                  : "Approve"}
               </button>
               <button
                 className="manage-payments-reject-button"
                 type="button"
-                onClick={() => updateRequestStatus(selectedRequest.id, "Rejected")}
+                disabled={Boolean(actionLoading)}
+                onClick={() => rejectPayment(selectedRequest)}
               >
                 <X size={15} aria-hidden="true" />
-                Reject
+                {actionLoading?.id === selectedRequest.id && actionLoading.action === "reject"
+                  ? "Rejecting..."
+                  : "Reject"}
               </button>
             </div>
           </section>
