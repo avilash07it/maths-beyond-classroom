@@ -1,28 +1,81 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
+  BadgeIndianRupee,
   Check,
   CheckCircle2,
+  Clock3,
+  CreditCard,
   Eye,
   FileImage,
+  FileCheck2,
+  ReceiptIndianRupee,
   Search,
   ShieldCheck,
   X,
+  XCircle,
 } from "lucide-react";
 
 import "./ManagePayments.css";
+import api from "../../utils/api";
 
-import {
-  managePaymentsActivity,
-  managePaymentsAdminNotes,
-  managePaymentsHeroBadges,
-  managePaymentsPlans,
-  managePaymentsRequests,
-  managePaymentsScreenshotIcon,
-  managePaymentsSecurityPanel,
-  managePaymentsStatuses,
-  managePaymentsSummaryConfig,
-  managePaymentsWorkflowPanel,
-} from "./managePaymentsData";
+const managePaymentsStatuses = ["Pending", "Approved", "Rejected"];
+
+const managePaymentsAdminNotes = [
+  "Verify UPI payments carefully.",
+  "Confirm transaction IDs before approval.",
+  "Approved users receive Pro access.",
+  "Rejected requests require resubmission.",
+];
+
+const managePaymentsHeroBadges = [
+  "Manual UPI",
+  "Payment Verification",
+  "Pro Access",
+  "Admin Only",
+];
+
+const managePaymentsSummaryConfig = [
+  {
+    key: "pending",
+    label: "Pending Requests",
+    note: "Awaiting manual verification",
+    icon: Clock3,
+    tone: "amber",
+  },
+  {
+    key: "approved",
+    label: "Approved Payments",
+    note: "Pro access enabled",
+    icon: FileCheck2,
+    tone: "green",
+  },
+  {
+    key: "rejected",
+    label: "Rejected Payments",
+    note: "Require resubmission",
+    icon: XCircle,
+    tone: "red",
+  },
+  {
+    key: "revenue",
+    label: "Revenue Overview",
+    note: "Approved payment value",
+    icon: BadgeIndianRupee,
+    tone: "purple",
+  },
+];
+
+const managePaymentsSecurityPanel = {
+  icon: ShieldCheck,
+};
+
+const managePaymentsWorkflowPanel = {
+  icon: ReceiptIndianRupee,
+  label: "Manual UPI Queue",
+  description: "Review submitted transaction IDs and screenshot placeholders before enabling Pro access.",
+};
+
+const managePaymentsScreenshotIcon = CreditCard;
 
 const formatAmount = (amount) =>
   new Intl.NumberFormat("en-IN", {
@@ -31,9 +84,58 @@ const formatAmount = (amount) =>
     maximumFractionDigits: 0,
   }).format(amount);
 
+const formatPaymentStatus = (status) => {
+  if (!status) {
+    return "Pending";
+  }
+
+  const normalizedStatus = status.toLowerCase();
+
+  return normalizedStatus.charAt(0).toUpperCase() + normalizedStatus.slice(1);
+};
+
+const formatSubmissionDate = (date) => {
+  if (!date) {
+    return "Unknown Date";
+  }
+
+  return new Intl.DateTimeFormat("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(date));
+};
+
+const getScreenshotLabel = (screenshotUrl) => {
+  if (!screenshotUrl) {
+    return "No screenshot uploaded";
+  }
+
+  const decodedUrl = decodeURIComponent(screenshotUrl);
+  const pathWithoutQuery = decodedUrl.split("?")[0];
+  const filename = pathWithoutQuery.split("/").filter(Boolean).pop();
+
+  return filename || "Payment screenshot";
+};
+
+const mapPaymentToRequest = (payment) => ({
+  id: payment.id,
+  studentName: payment.user?.name || "Unknown Student",
+  studentEmail: payment.user?.email || "No email available",
+  plan: payment.plan?.name || "Unknown Plan",
+  amount: Number(payment.amount ?? payment.plan?.price ?? 0),
+  transactionId: payment.transactionId || "Not provided",
+  screenshotLabel: getScreenshotLabel(payment.screenshotUrl),
+  submissionDate: formatSubmissionDate(payment.createdAt),
+  status: formatPaymentStatus(payment.status),
+  notes: payment.adminNote || "No admin notes added.",
+});
+
 function ManagePayments() {
-  const [requests, setRequests] = useState(managePaymentsRequests);
+  const [requests, setRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const [filters, setFilters] = useState({
     search: "",
     plan: "All Plans",
@@ -44,6 +146,30 @@ function ManagePayments() {
   const SecurityIcon = managePaymentsSecurityPanel.icon;
   const WorkflowIcon = managePaymentsWorkflowPanel.icon;
   const ScreenshotIcon = managePaymentsScreenshotIcon;
+
+  useEffect(() => {
+    const fetchPayments = async () => {
+      try {
+        setIsLoading(true);
+        setError("");
+
+        const response = await api.get("/payments");
+        const payments = response.data?.data || [];
+
+        setRequests(payments.map(mapPaymentToRequest));
+      } catch (requestError) {
+        setRequests([]);
+        setError(
+          requestError.response?.data?.message ||
+            "Unable to load payment requests. Please try again."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPayments();
+  }, []);
 
   const updateFilter = (field, value) => {
     setFilters((currentFilters) => ({
@@ -63,6 +189,11 @@ function ManagePayments() {
       currentRequest?.id === requestId ? { ...currentRequest, status } : currentRequest,
     );
   };
+
+  const planOptions = useMemo(
+    () => ["All Plans", ...new Set(requests.map((request) => request.plan))],
+    [requests],
+  );
 
   const dateOptions = useMemo(
     () => ["All Dates", ...new Set(requests.map((request) => request.submissionDate))],
@@ -173,7 +304,7 @@ function ManagePayments() {
                 <span>Plan Filter</span>
                 <select value={filters.plan} onChange={(event) => updateFilter("plan", event.target.value)}>
                   <option>All Plans</option>
-                  {managePaymentsPlans.map((plan) => (
+                  {planOptions.slice(1).map((plan) => (
                     <option key={plan}>{plan}</option>
                   ))}
                 </select>
@@ -269,7 +400,21 @@ function ManagePayments() {
               </div>
             </div>
 
-            {filteredRequests.length === 0 && (
+            {isLoading && (
+              <div className="manage-payments-empty-state">
+                <ShieldCheck size={28} aria-hidden="true" />
+                <p>Loading payment requests...</p>
+              </div>
+            )}
+
+            {error && (
+              <div className="manage-payments-empty-state">
+                <ShieldCheck size={28} aria-hidden="true" />
+                <p>{error}</p>
+              </div>
+            )}
+
+            {!isLoading && !error && filteredRequests.length === 0 && (
               <div className="manage-payments-empty-state">
                 <ShieldCheck size={28} aria-hidden="true" />
                 <p>No payment requests match these filters.</p>
@@ -287,25 +432,52 @@ function ManagePayments() {
               </div>
 
               <div className="manage-payments-activity-list">
-                {managePaymentsActivity.map((activity) => {
-                  const ActivityIcon = activity.icon;
+                {requests.slice(0, 3).map((request) => {
+                  const ActivityIcon =
+                    request.status === "Approved"
+                      ? CheckCircle2
+                      : request.status === "Rejected"
+                        ? XCircle
+                        : Clock3;
+                  const activityTone =
+                    request.status === "Approved"
+                      ? "green"
+                      : request.status === "Rejected"
+                        ? "red"
+                        : "purple";
 
                   return (
-                    <article className="manage-payments-activity-item" key={activity.id}>
+                    <article className="manage-payments-activity-item" key={request.id}>
                       <div
-                        className={`manage-payments-activity-icon manage-payments-activity-${activity.tone}`}
+                        className={`manage-payments-activity-icon manage-payments-activity-${activityTone}`}
                         aria-hidden="true"
                       >
                         <ActivityIcon size={18} />
                       </div>
                       <div>
-                        <h3>{activity.title}</h3>
-                        <p>{activity.detail}</p>
+                        <h3>Payment {request.status}</h3>
+                        <p>{request.studentName} submitted {request.plan}.</p>
                       </div>
-                      <time>{activity.time}</time>
+                      <time>{request.submissionDate}</time>
                     </article>
                   );
                 })}
+
+                {!isLoading && !error && requests.length === 0 && (
+                  <article className="manage-payments-activity-item">
+                    <div
+                      className="manage-payments-activity-icon manage-payments-activity-purple"
+                      aria-hidden="true"
+                    >
+                      <Clock3 size={18} />
+                    </div>
+                    <div>
+                      <h3>No Payment Activity</h3>
+                      <p>Payment updates will appear here.</p>
+                    </div>
+                    <time>Now</time>
+                  </article>
+                )}
               </div>
             </section>
 

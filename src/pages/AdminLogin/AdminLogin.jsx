@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { LockKeyhole, Mail, ShieldCheck } from "lucide-react";
 import "./AdminLogin.css";
 import logo from "../../assets/mbc-logo-8.png";
-
-const ADMIN_EMAIL = "admin@mbc.com";
-const ADMIN_PASSWORD = "admin123";
+import api from "../../utils/api";
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -27,7 +25,7 @@ function AdminLogin() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const email = formData.email.trim().toLowerCase();
@@ -38,12 +36,30 @@ function AdminLogin() {
       return;
     }
 
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-      navigate("/admin-dashboard");
-      return;
-    }
+    try {
+      const response = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
-    setError("Invalid admin credentials. Please check your email and password.");
+      const token = response.data.data.token;
+      const user = response.data.data.user;
+
+      if (user.role !== "ADMIN") {
+        setError("Only administrators can access this portal.");
+        return;
+      }
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      navigate("/admin-dashboard");
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to login. Please try again."
+      );
+    }
   };
 
   return (

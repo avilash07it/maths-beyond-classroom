@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 import {
   ArrowRight,
   BadgeIndianRupee,
@@ -22,21 +24,129 @@ import {
   paymentHeroChips,
   paymentStatusSteps,
   paymentSupport,
-  selectedPaymentPlan,
   upiPaymentDetails,
 } from "./paymentData";
+import api from "../../utils/api";
 
 function Payment() {
+  const [searchParams] = useSearchParams();
+  const selectedPlanId = searchParams.get("plan");
   const [transactionId, setTransactionId] = useState("");
   const [note, setNote] = useState("");
   const [screenshotName, setScreenshotName] = useState("");
+  const [screenshotFile, setScreenshotFile] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [isPlanLoading, setIsPlanLoading] = useState(true);
+  const [planError, setPlanError] = useState("");
 
-  const paymentStatus = isSubmitted ? "Pending" : selectedPaymentPlan.status;
+  const paymentStatus = isSubmitted ? "Pending" : selectedPlan?.status || "Not Submitted";
+  const selectedPlanPrice = selectedPlan
+    ? `Rs ${selectedPlan.price}`
+    : "";
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    const fetchSelectedPlan = async () => {
+      if (!selectedPlanId) {
+        setSelectedPlan(null);
+        setPlanError("We could not find the selected plan. Please choose a plan again.");
+        setIsPlanLoading(false);
+        return;
+      }
+
+      try {
+        setIsPlanLoading(true);
+        setPlanError("");
+
+        const response = await api.get("/plans");
+        const plans = response.data?.data || [];
+        const matchingPlan = plans.find((plan) => String(plan.id) === selectedPlanId);
+
+        if (!matchingPlan) {
+          setSelectedPlan(null);
+          setPlanError("We could not find the selected plan. Please choose a plan again.");
+          return;
+        }
+
+        setSelectedPlan(matchingPlan);
+      } catch (requestError) {
+        setSelectedPlan(null);
+        setPlanError(
+          requestError.response?.data?.message ||
+            "Unable to load the selected plan. Please try again."
+        );
+      } finally {
+        setIsPlanLoading(false);
+      }
+    };
+
+    fetchSelectedPlan();
+  }, [selectedPlanId]);
+
+  const uploadToCloudinary = async (file) => {
+    const formData = new FormData();
+
+    formData.append("file", file);
+    formData.append("upload_preset", "potd_images");
+
+    const response = await axios.post(
+      "https://api.cloudinary.com/v1_1/awz3yehg/image/upload",
+      formData
+    );
+
+    return response.data.secure_url;
+  };
+
+  const handleScreenshotChange = (event) => {
+    const file = event.target.files?.[0] || null;
+
+    setScreenshotFile(file);
+    setScreenshotName(file?.name || "");
+
+    if (error) {
+      setError("");
+    }
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsSubmitted(true);
+    setError("");
+    setIsLoading(true);
+
+    if (!transactionId.trim()) {
+      setError("Please enter your transaction ID.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!screenshotFile) {
+      setError("Please upload your payment screenshot.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const screenshotUrl = await uploadToCloudinary(screenshotFile);
+
+      await api.post("/payments", {
+        planId: selectedPlan.id,
+        amount: Number(String(selectedPlan.price).replace(/[^\d.]/g, "")),
+        transactionId: transactionId.trim(),
+        screenshotUrl,
+      });
+
+      setIsSubmitted(true);
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to submit payment request. Please try again."
+      );
+      setIsSubmitted(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -44,6 +154,12 @@ function Payment() {
       <DashboardNavbar />
 
       <main className="payment-shell">
+        {isPlanLoading ? (
+          <p>Loading selected plan...</p>
+        ) : planError ? (
+          <p>{planError}</p>
+        ) : (
+          <>
         <section className="payment-hero">
           <div className="payment-hero-copy">
             <span className="payment-hero-kicker">
@@ -91,14 +207,14 @@ function Payment() {
               <div className="payment-plan-header">
                 <div>
                   <span className="payment-plan-label">Selected Plan</span>
-                  <h3>{selectedPaymentPlan.name}</h3>
+                  <h3>{selectedPlan.name}</h3>
                 </div>
-                <strong>{selectedPaymentPlan.price}</strong>
+                <strong>{selectedPlanPrice}</strong>
               </div>
 
               <div className="payment-student-row">
                 <span>Student Name</span>
-                <strong>{selectedPaymentPlan.studentName}</strong>
+                <strong>{selectedPlan.studentName}</strong>
               </div>
 
               <div className={`payment-status-pill ${isSubmitted ? "payment-status-pending" : ""}`}>
@@ -107,7 +223,7 @@ function Payment() {
               </div>
 
               <div className="payment-feature-list">
-                {selectedPaymentPlan.features.map((feature) => (
+                {(selectedPlan.features || []).map((feature) => (
                   <div key={feature}>
                     <CheckCircle2 size={17} />
                     <span>{feature}</span>
@@ -146,9 +262,7 @@ function Payment() {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={(event) =>
-                        setScreenshotName(event.target.files?.[0]?.name || "")
-                      }
+                      onChange={handleScreenshotChange}
                     />
                   </div>
                 </label>
@@ -163,9 +277,17 @@ function Payment() {
                   />
                 </label>
 
-                <button type="submit">
-                  Submit Payment Request
-                  <ArrowRight size={17} />
+                {error && <p>{error}</p>}
+
+                <button type="submit" disabled={isLoading}>
+                  {isLoading ? (
+                    "Submitting..."
+                  ) : (
+                    <>
+                      Submit Payment Request
+                      <ArrowRight size={17} />
+                    </>
+                  )}
                 </button>
               </form>
 
@@ -211,7 +333,7 @@ function Payment() {
                 </div>
                 <div>
                   <span>Amount</span>
-                  <strong>{upiPaymentDetails.amount}</strong>
+                  <strong>{selectedPlanPrice}</strong>
                 </div>
               </div>
 
@@ -268,6 +390,8 @@ function Payment() {
             <span>Manual Verification</span>
           </div>
         </section>
+          </>
+        )}
       </main>
     </div>
   );
