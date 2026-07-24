@@ -42,6 +42,21 @@ const getAllPayments = async (req, res) => {
   }
 };
 
+const getMyPlan = async (req, res) => {
+  try {
+    const plan = await paymentService.getMyPlan(req.user.userId);
+
+    res.status(200).json(plan);
+  } catch (error) {
+    console.error("Get My Plan Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const approvePayment = async (req, res) => {
   try {
     const { id } = req.params;
@@ -87,6 +102,7 @@ const rejectPayment = async (req, res) => {
 module.exports = {
   createPayment,
   getAllPayments,
+  getMyPlan,
   approvePayment,
   rejectPayment,
 };

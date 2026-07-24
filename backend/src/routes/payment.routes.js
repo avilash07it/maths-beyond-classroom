@@ -7,6 +7,8 @@ const paymentController = require("../controllers/payment.controller");
 
 router.post("/", authMiddleware, paymentController.createPayment);
 
+router.get("/my-plan", authMiddleware, paymentController.getMyPlan);
+
 router.get("/", authMiddleware, requireAdmin, paymentController.getAllPayments);
 
 router.patch(
