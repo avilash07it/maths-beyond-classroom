@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import {
   ArrowRight,
   BadgeCheck,
@@ -19,6 +18,7 @@ import {
   Trophy,
 } from "lucide-react";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
+import api from "../../utils/api";
 import "./ProPlans.css";
 import {
   freeFeatures,
@@ -39,15 +39,18 @@ const paidIcons = [Trophy, MessageCircle, HelpCircle];
 function ProPlans() {
   const navigate = useNavigate();
   const [proPlans, setProPlans] = useState([]);
+  const [myPlan, setMyPlan] = useState({
+    isPro: false,
+    planId: null,
+    planName: "",
+  });
 
   const handleChoosePlan = (planId) => {
     navigate(`/payment?plan=${planId}`);
   };
   const fetchPlans = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/plans"
-    );
+    const response = await api.get("/plans");
 
     setProPlans(
       response.data.data.filter((plan) => plan.isActive)
@@ -56,8 +59,23 @@ function ProPlans() {
     console.error(error);
   }
 };
+const fetchMyPlan = async () => {
+  try {
+    const response = await api.get("/payments/my-plan");
+    const plan = response.data?.data || response.data || {};
+
+    setMyPlan({
+      isPro: Boolean(plan.isPro),
+      planId: plan.planId ?? null,
+      planName: plan.planName || "",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 useEffect(() => {
   fetchPlans();
+  fetchMyPlan();
 }, []);
 
   return (
@@ -110,6 +128,16 @@ useEffect(() => {
           <div className="proplans-card-grid">
             {proPlans.map((plan) => {
               const Icon = accentIcons[plan.accent] || Target;
+              const isCurrentPlan =
+                myPlan.isPro && String(plan.id) === String(myPlan.planId);
+              const hasDifferentPlan =
+                myPlan.isPro && String(plan.id) !== String(myPlan.planId);
+              const isPurchaseDisabled = isCurrentPlan || hasDifferentPlan;
+              const purchaseButtonText = isCurrentPlan
+                ? "✓ Current Plan"
+                : hasDifferentPlan
+                  ? "Already Subscribed"
+                  : "Choose Plan";
 
               return (
                 <article
@@ -148,9 +176,13 @@ useEffect(() => {
                     <p>{plan.bestFor}</p>
                   </div>
 
-                  <button type="button" onClick={() => handleChoosePlan(plan.id)}>
-                    Choose Plan
-                    <ArrowRight size={17} />
+                  <button
+                    type="button"
+                    onClick={() => handleChoosePlan(plan.id)}
+                    disabled={isPurchaseDisabled}
+                  >
+                    {purchaseButtonText}
+                    {!isPurchaseDisabled && <ArrowRight size={17} />}
                   </button>
                 </article>
               );
