@@ -34,6 +34,14 @@ function POTD() {
   const [isProblemVisible, setIsProblemVisible] = useState(false);
 const [previousPotds, setPreviousPotds] = useState([]);
 const [support, setSupport] = useState(null);
+const [user, setUser] = useState(null);
+useEffect(() => {
+  const storedUser = localStorage.getItem("user");
+
+  if (storedUser) {
+    setUser(JSON.parse(storedUser));
+  }
+}, []);
 
  const navigate = useNavigate();
  const fetchHint = async () => {
@@ -136,6 +144,25 @@ if (!todayProblem) {
       </main>
     </div>
   );
+}
+const streakDays = [];
+
+if (user?.streak) {
+  for (let i = user.streak - 1; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+
+    streakDays.push({
+      label:
+        i === 0
+          ? "Today"
+          : date.toLocaleDateString("en-IN", {
+              day: "numeric",
+              month: "short",
+            }),
+      today: i === 0,
+    });
+  }
 }
   return (
     <div className="potd-page">
@@ -284,19 +311,25 @@ if (!todayProblem) {
                   <Flame size={28} />
                 </span>
                 <div>
-                  <h2>12 Day Streak</h2>
+<h2>{user?.streak ?? 0} Day Streak</h2>
                   <p>Keep it going. Return tomorrow to continue your chain.</p>
                 </div>
               </div>
               <div className="potd-streak-days">
-                {["17 May", "18 May", "19 May", "20 May", "21 May", "22 May", "Today"].map(
-                  (day, index) => (
-                    <div className={index === 6 ? "current" : ""} key={day}>
-                      {index === 6 ? <Flame size={18} /> : <CheckCircle2 size={18} />}
-                      <span>{day}</span>
-                    </div>
-                  )
-                )}
+                {streakDays.map((day) => (
+  <div
+    className={day.today ? "current" : ""}
+    key={day.label}
+  >
+    {day.today ? (
+      <Flame size={18} />
+    ) : (
+      <CheckCircle2 size={18} />
+    )}
+
+    <span>{day.label}</span>
+  </div>
+))}
               </div>
             </article>
 
