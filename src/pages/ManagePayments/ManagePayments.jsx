@@ -125,6 +125,7 @@ const mapPaymentToRequest = (payment) => ({
   plan: payment.plan?.name || "Unknown Plan",
   amount: Number(payment.amount ?? payment.plan?.price ?? 0),
   transactionId: payment.transactionId || "Not provided",
+  screenshotUrl: payment.screenshotUrl || "",
   screenshotLabel: getScreenshotLabel(payment.screenshotUrl),
   submissionDate: formatSubmissionDate(payment.createdAt),
   status: formatPaymentStatus(payment.status),
@@ -641,7 +642,9 @@ function ManagePayments() {
   )}
 </div>
 
-            <div className="manage-payments-submission-note">
+</div>
+
+<div className="manage-payments-submission-note">
               <span>Submission Notes</span>
               <p>{selectedRequest.notes}</p>
             </div>

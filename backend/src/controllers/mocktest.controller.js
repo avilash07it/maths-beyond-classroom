@@ -17,6 +17,15 @@ const getAllMockTests = async (req, res) => {
   }
 };
 
+const getAllMockTestsForAdmin = async (req, res) => {
+  try {
+    const mocktests = await mocktestService.getAllMockTestsForAdmin();
+    res.status(200).json(mocktests);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const getMockTestById = async (req, res) => {
   try {
     const mocktest = await mocktestService.getMockTestById(req.params.id);
@@ -62,6 +71,7 @@ const startMockTest = async (req, res) => {
 module.exports = {
   createMockTest,
   getAllMockTests,
+  getAllMockTestsForAdmin,
   getMockTestById,
   updateMockTest,
   deleteMockTest,

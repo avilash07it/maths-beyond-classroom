@@ -8,7 +8,7 @@ router.post("/",authMiddleware,requireAdmin,potdController.createPOTD);
 router.get("/",potdController.getAllPOTDs);
 router.get("/today", potdController.getTodayPOTD);
 router.get("/:id/hint", potdController.getHint);
-router.get("/:id/solution", potdController.getSolution);
+router.get("/:id/solution", authMiddleware, potdController.getSolution);
 router.get("/:id",potdController.getPOTDById);
 
 router.delete("/:id",authMiddleware,requireAdmin,potdController.deletePOTD);

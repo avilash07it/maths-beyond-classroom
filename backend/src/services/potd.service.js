@@ -78,7 +78,23 @@ const getHint = async (id) => {
     },
   });
 };
-const getSolution = async (id) => {
+const getSolution = async (userId, id) => {
+  const approvedPayment = await prisma.payment.findFirst({
+    where: {
+      userId: Number(userId),
+      status: "APPROVED",
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  if (!approvedPayment) {
+    const error = new Error("Pro access required");
+    error.statusCode = 403;
+    throw error;
+  }
+
   return await prisma.pOTD.findUnique({
     where: {
       id: Number(id),

@@ -43,7 +43,7 @@ function PYQLibrary() {
         selectedTopic === "All Topics" || set.topic === selectedTopic;
       const matchesSearch =
         !searchTerm ||
-        `${set.exam} ${set.examName} ${set.year} ${set.topic} ${set.difficulty}`
+        `${set.title} ${set.exam} ${set.topic} ${set.year} ${set.status} ${set.pdfUrl}`
           .toLowerCase()
           .includes(searchTerm);
 
@@ -169,7 +169,7 @@ useEffect(() => {
 
                   <div className="pyq-row-title">
                     <h3>{set.title}</h3>
-                    <p>{set.examName}</p>
+                    <p>{set.exam}</p>
                   </div>
 
                   <div className="pyq-meta-block">
@@ -178,13 +178,13 @@ useEffect(() => {
                   </div>
 
                   <div className="pyq-meta-block">
-                    <span>Questions</span>
-                    <strong>{set.questions}</strong>
+                    <span>Year</span>
+                    <strong>{set.year || "-"}</strong>
                   </div>
 
                   <div className="pyq-meta-block">
-                    <span>Difficulty</span>
-                    <strong>{set.difficulty}</strong>
+                    <span>Status</span>
+                    <strong>{set.status}</strong>
                   </div>
 
                   <div className="pyq-actions">

@@ -36,6 +36,10 @@ const getAllMockTests = async () => {
   });
 };
 
+const getAllMockTestsForAdmin = async () => {
+  return await prisma.mockTest.findMany();
+};
+
 const getMockTestById = async (id) => {
   return await prisma.mockTest.findUnique({
     where: {
@@ -125,11 +129,19 @@ const startMockTest = async (userId, mockTestId) => {
 
   const planName = approvedPayment.plan.name;
 
-  const allowed =
-    planName === "Pro Plus" ||
-    planName === "Pro Max" ||
-    (planName === "Starter Pro (SEHSS)" && mockTest.exam === "SEHSS") ||
-    (planName === "Starter Pro (IOQM)" && mockTest.exam === "IOQM");
+  const exam = mockTest.exam;
+
+const allowed =
+  planName === "Pro Max" ||
+
+  (planName === "Pro Plus" &&
+    (exam === "IOQM" || exam === "SEHSS")) ||
+
+  (planName === "Starter Pro (IOQM)" &&
+    exam === "IOQM") ||
+
+  (planName === "Starter Pro (SEHSS)" &&
+    exam === "SEHSS");
 
   if (!allowed) {
     throw new Error("Upgrade your plan to access this mock test.");
@@ -143,6 +155,7 @@ const startMockTest = async (userId, mockTestId) => {
 module.exports = {
   createMockTest,
   getAllMockTests,
+  getAllMockTestsForAdmin,
   getMockTestById,
   updateMockTest,
   deleteMockTest,

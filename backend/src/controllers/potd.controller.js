@@ -126,7 +126,7 @@ const getSolution = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const solution = await potdService.getSolution(id);
+    const solution = await potdService.getSolution(req.user.userId, id);
 
     res.status(200).json({
       success: true,
@@ -135,7 +135,7 @@ const getSolution = async (req, res) => {
   } catch (error) {
     console.error("Get Solution Error:", error);
 
-    res.status(500).json({
+    res.status(error.statusCode || 500).json({
       success: false,
       message: error.message,
     });

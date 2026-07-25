@@ -6,6 +6,7 @@ const requireAdmin=require("../middleware/admin.middleware");
 
 router.post('/create',authMiddleware,requireAdmin,mocktestController.createMockTest); 
 router.get('/getall',mocktestController.getAllMockTests); 
+router.get('/admin/getall',authMiddleware,requireAdmin,mocktestController.getAllMockTestsForAdmin);
 router.get('/get/:id',mocktestController.getMockTestById); 
 router.post(
   "/start/:id",
