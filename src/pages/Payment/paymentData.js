@@ -1,21 +1,7 @@
-export const selectedPaymentPlan = {
-  id: "pro-plus",
-  name: "Pro Plus",
-  price: "\u20b9799",
-  studentName: "Arjun Sharma",
-  status: "Not Submitted",
-  features: [
-    "Curated SEHSS Test Series",
-    "Curated IOQM Test Series",
-    "Additional Content for SEHSS & IOQM",
-    "Personal Academic Support",
-    "Access to Premium Discussion Groups",
-  ],
-};
 
 export const upiPaymentDetails = {
-  upiId: "mathsbeyondclassroom@upi",
-  phone: "+91 98765 43210",
+  upiId: "ajsm1109@ybl",
+  phone: "+91 7296931110",
   amount: "\u20b9799",
   note:
     "After payment, submit your transaction ID or screenshot for admin verification.",

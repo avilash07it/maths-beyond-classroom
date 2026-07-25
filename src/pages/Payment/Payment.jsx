@@ -19,7 +19,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import PageTransition from "../../components/PageTransition";
-
+import upiQR from "../../assets/upi.png";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import "./Payment.css";
 import {
@@ -318,11 +318,16 @@ function Payment() {
                 </div>
               </div>
 
-              <div className="payment-qr-placeholder">
-                <QrCode size={74} />
-                <span>QR Code Placeholder</span>
-              </div>
-
+            <div className="payment-qr-placeholder">
+  <img
+    src={upiQR}
+    alt="UPI QR Code"
+    style={{
+      width: "220px",
+      borderRadius: "12px"
+    }}
+  />
+</div>
               <div className="payment-detail-list">
                 <div>
                   <span>UPI ID</span>

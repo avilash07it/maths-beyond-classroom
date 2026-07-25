@@ -670,8 +670,10 @@ function ManagePayments() {
                   : "Reject"}
               </button>
             </div>
+            </div>
           </section>
         </div>
+        
       )}
     </main>
   );
