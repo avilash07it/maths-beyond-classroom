@@ -18,13 +18,42 @@ const createMockTest = async (mockTestData) => {
 };
 
 const getAllMockTests = async () => {
-  return await prisma.mockTest.findMany();
+  return await prisma.mockTest.findMany({
+    select: {
+      id: true,
+      title: true,
+      exam: true,
+      topic: true,
+      platform: true,
+      duration: true,
+      marks: true,
+      questions: true,
+      status: true,
+      isProOnly: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
 };
 
 const getMockTestById = async (id) => {
   return await prisma.mockTest.findUnique({
     where: {
       id: Number(id),
+    },
+    select: {
+      id: true,
+      title: true,
+      exam: true,
+      topic: true,
+      platform: true,
+      duration: true,
+      marks: true,
+      questions: true,
+      status: true,
+      isProOnly: true,
+      createdAt: true,
+      updatedAt: true,
     },
   });
 };
@@ -57,10 +86,65 @@ const deleteMockTest = async (id) => {
   });
 };
 
+const startMockTest = async (userId, mockTestId) => {
+  // Find the mock test
+  const mockTest = await prisma.mockTest.findUnique({
+    where: {
+      id: Number(mockTestId),
+    },
+  });
+
+  if (!mockTest) {
+    throw new Error("Mock test not found.");
+  }
+
+  // Free mock test → allow immediately
+  if (!mockTest.isProOnly) {
+    return {
+      externalUrl: mockTest.externalUrl,
+    };
+  }
+
+  // Find the latest approved payment
+  const approvedPayment = await prisma.payment.findFirst({
+    where: {
+      userId,
+      status: "APPROVED",
+    },
+    include: {
+      plan: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  if (!approvedPayment) {
+    throw new Error("Upgrade your plan to access this mock test.");
+  }
+
+  const planName = approvedPayment.plan.name;
+
+  const allowed =
+    planName === "Pro Plus" ||
+    planName === "Pro Max" ||
+    (planName === "Starter Pro (SEHSS)" && mockTest.exam === "SEHSS") ||
+    (planName === "Starter Pro (IOQM)" && mockTest.exam === "IOQM");
+
+  if (!allowed) {
+    throw new Error("Upgrade your plan to access this mock test.");
+  }
+
+  return {
+    externalUrl: mockTest.externalUrl,
+  };
+};
+
 module.exports = {
   createMockTest,
   getAllMockTests,
   getMockTestById,
   updateMockTest,
   deleteMockTest,
+  startMockTest,
 };

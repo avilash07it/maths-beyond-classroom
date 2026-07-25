@@ -117,18 +117,37 @@ const freeMockTest = tests.find(
   (test) => test.isProOnly === false
 );
 const proMockTests = tests.filter((test) => test.isProOnly);
-const handleAttempt = (test) => {
+const handleAttempt = async (test) => {
   if (!test) {
     return;
   }
 
-  if (canAccessMockTest(test, myPlan)) {
-    setAccessMessage("");
-    window.open(test.externalUrl, "_blank");
-  } else {
+  if (!canAccessMockTest(test, myPlan)) {
     setAccessMessage(upgradeMessage);
     alert(upgradeMessage);
     navigate("/pro-plans");
+    return;
+  }
+
+  try {
+    setAccessMessage("");
+
+    const response = await api.post(`/mock-tests/start/${test.id}`);
+
+    window.open(response.data.externalUrl, "_blank");
+  } catch (error) {
+    console.error(error);
+
+    const message =
+      error.response?.data?.error ||
+      "Unable to launch mock test.";
+
+    setAccessMessage(message);
+    alert(message);
+
+    if (message === upgradeMessage) {
+      navigate("/pro-plans");
+    }
   }
 };
   return (

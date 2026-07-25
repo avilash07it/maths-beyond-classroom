@@ -7,6 +7,11 @@ const requireAdmin=require("../middleware/admin.middleware");
 router.post('/create',authMiddleware,requireAdmin,mocktestController.createMockTest); 
 router.get('/getall',mocktestController.getAllMockTests); 
 router.get('/get/:id',mocktestController.getMockTestById); 
+router.post(
+  "/start/:id",
+  authMiddleware,
+  mocktestController.startMockTest
+);
 router.put('/update/:id',authMiddleware,requireAdmin,mocktestController.updateMockTest);
 router.delete('/delete/:id',authMiddleware,requireAdmin,mocktestController.deleteMockTest);
 

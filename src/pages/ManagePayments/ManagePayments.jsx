@@ -412,10 +412,22 @@ function ManagePayments() {
                       </span>
                     </span>
                     <span role="cell" data-label="Screenshot">
-                      <span className="manage-payments-screenshot-pill">
-                        <FileImage size={15} aria-hidden="true" />
-                        Placeholder
-                      </span>
+                    {request.screenshotUrl ? (
+  <a
+    href={request.screenshotUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="manage-payments-screenshot-pill"
+  >
+    <FileImage size={15} aria-hidden="true" />
+    View
+  </a>
+) : (
+  <span className="manage-payments-screenshot-pill">
+    <FileImage size={15} aria-hidden="true" />
+    No Screenshot
+  </span>
+)}
                     </span>
                     <span className="manage-payments-row-actions" role="cell" data-label="Actions">
                       <button
@@ -599,11 +611,35 @@ function ManagePayments() {
               </div>
 
               <div className="manage-payments-screenshot-preview">
-                <ScreenshotIcon size={48} aria-hidden="true" />
-                <strong>Screenshot Preview Placeholder</strong>
-                <span>{selectedRequest.screenshotLabel}</span>
-              </div>
-            </div>
+  {selectedRequest.screenshotUrl ? (
+    <>
+      <img
+        src={selectedRequest.screenshotUrl}
+        alt="Payment Screenshot"
+        style={{
+          maxWidth: "100%",
+          borderRadius: "12px",
+          marginBottom: "12px",
+        }}
+      />
+
+      <strong>Payment Screenshot</strong>
+
+      <a
+        href={selectedRequest.screenshotUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Open Full Image
+      </a>
+    </>
+  ) : (
+    <>
+      <ScreenshotIcon size={48} />
+      <strong>No Screenshot Uploaded</strong>
+    </>
+  )}
+</div>
 
             <div className="manage-payments-submission-note">
               <span>Submission Notes</span>

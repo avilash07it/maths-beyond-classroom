@@ -44,10 +44,26 @@ const deleteMockTest = async (req, res) => {
   }
 };
 
+const startMockTest = async (req, res) => {
+  try {
+    const result = await mocktestService.startMockTest(
+      req.user.userId,
+      req.params.id
+    );
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   createMockTest,
   getAllMockTests,
   getMockTestById,
   updateMockTest,
-  deleteMockTest
+  deleteMockTest,
+  startMockTest,
 };

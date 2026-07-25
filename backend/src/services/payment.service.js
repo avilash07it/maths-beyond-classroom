@@ -27,7 +27,7 @@ const createPayment = async (userId, paymentData) => {
     data: {
       userId: Number(userId),
       planId: paymentData.planId,
-      amount: paymentData.amount,
+      amount: plan.price,
       transactionId: paymentData.transactionId,
       screenshotUrl: paymentData.screenshotUrl,
       status: "PENDING",
