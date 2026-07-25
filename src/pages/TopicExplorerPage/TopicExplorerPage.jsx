@@ -5,7 +5,7 @@ import PageTransition from "../../components/PageTransition";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../utils/api";
 import { useEffect, useState } from "react";
 
 
@@ -18,9 +18,7 @@ function TopicExplorerPage() {
 const [materials, setMaterials] = useState([]);
 const fetchLectures = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/lectures"
-    );
+    const response = await api.get("/lectures");
 
     setLectures(response.data.data);
   } catch (error) {
@@ -29,9 +27,7 @@ const fetchLectures = async () => {
 };
 const fetchMaterials = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/materials"
-    );
+    const response = await api.get("/materials");
 
     setMaterials(response.data.data);
   } catch (error) {
@@ -42,9 +38,7 @@ const fetchMaterials = async () => {
 
   const fetchSupport = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/support"
-      );
+      const response = await api.get("/support");
 
       setSupport(response.data.data[0]);
       console.log(response.data.data[0]);

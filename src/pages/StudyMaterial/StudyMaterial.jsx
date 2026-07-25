@@ -21,7 +21,7 @@ import {
   topics,
 } from "./studyMaterialData";
 
-import axios from "axios";
+import api from "../../utils/api";
 import { useEffect, useMemo, useState } from "react";
 import "./StudyMaterial.css";
 
@@ -54,9 +54,7 @@ function StudyMaterial() {
   const navigate = useNavigate();
 const fetchMaterials = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/materials"
-    );
+    const response = await api.get("/materials");
 
     const reverseTypeMap = {
       NOTES: "Notes",

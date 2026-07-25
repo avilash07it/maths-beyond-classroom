@@ -1,7 +1,7 @@
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import api from "../../utils/api";
 
 import {
   quickAccess,
@@ -40,9 +40,7 @@ useEffect(() => {
 }, []);
 const fetchMaterials = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/materials"
-    );
+    const response = await api.get("/materials");
 
    const materialsData = response.data.data;
 
@@ -57,16 +55,7 @@ if (materialsData.length > 0) {
 };
 const fetchCurrentUser = async () => {
   try {
-    const token = localStorage.getItem("token");
-
-    const response = await axios.get(
-      "http://localhost:5000/api/auth/me",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await api.get("/auth/me");
 
     setUser(response.data.user);
 
@@ -80,9 +69,7 @@ const fetchCurrentUser = async () => {
 };
 const fetchLectures = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/lectures"
-    );
+    const response = await api.get("/lectures");
 
     const lecturesData = response.data.data;
 
@@ -99,9 +86,7 @@ setLiveLecture(live || null);
 };
 const fetchTodayPOTD = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/potd/today"
-    );
+    const response = await api.get("/potd/today");
 console.log("POTD:", response.data);
     setTodayProblem(response.data.data);
   } catch (error) {
@@ -110,9 +95,7 @@ console.log("POTD:", response.data);
 };
 const fetchMockTests = async () => {
   try {
-    const response = await axios.get(
- "http://localhost:5000/api/mock-tests/getall"
-    );
+    const response = await api.get("/mock-tests/getall");
 
 const tests = response.data;
 
@@ -129,9 +112,7 @@ console.log("Mock Tests:", response.data);
 };
 const fetchSupport = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/support"
-    );
+    const response = await api.get("/support");
 
     setSupport(response.data.data[0]);
     console.log("Support:", response.data.data[0]);

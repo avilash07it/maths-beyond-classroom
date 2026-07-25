@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../utils/api";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -59,9 +59,7 @@ function PYQLibrary() {
 
   const fetchPYQs = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/pyqs"
-    );
+    const response = await api.get("/pyqs");
 console.log(response.data.data);
     setPyqSets(response.data.data);
   } catch (error) {

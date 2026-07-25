@@ -19,7 +19,11 @@ const authMiddleware = async (req, res, next) => {
 
 req.user = decoded;
 
-await updateUserStreak(decoded.userId);
+try {
+  await updateUserStreak(decoded.userId);
+} catch (streakError) {
+  console.error(streakError);
+}
 
 next();
   } catch (error) {

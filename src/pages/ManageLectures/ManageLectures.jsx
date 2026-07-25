@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import axios from "axios";
 import { useEffect } from "react";
 import {
   BadgeCheck,
@@ -22,6 +21,7 @@ import {
 } from "lucide-react";
 
 import "./ManageLectures.css";
+import api from "../../utils/api";
 
 import {
   manageLecturesAdminNotes,
@@ -43,9 +43,7 @@ function ManageLectures() {
   const [editingLectureId, setEditingLectureId] = useState(null);
   const fetchLectures = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/lectures"
-    );
+    const response = await api.get("/lectures");
 
     const formattedLectures = response.data.data.map((lecture) => ({
   ...lecture,
@@ -159,15 +157,9 @@ useEffect(() => {
 
   try {
     if (editingLectureId) {
-      await axios.put(
-        `http://localhost:5000/api/lectures/${editingLectureId}`,
-        lecturePayload
-      );
+      await api.put(`/lectures/${editingLectureId}`, lecturePayload);
     } else {
-      await axios.post(
-        "http://localhost:5000/api/lectures",
-        lecturePayload
-      );
+      await api.post("/lectures", lecturePayload);
     }
 
     fetchLectures();
@@ -195,9 +187,7 @@ status: "-",
 
   const deleteLecture = async (lectureId) => {
   try {
-    await axios.delete(
-      `http://localhost:5000/api/lectures/${lectureId}`
-    );
+    await api.delete(`/lectures/${lectureId}`);
 
     fetchLectures();
 

@@ -116,6 +116,7 @@ const isProUser = myPlan.isPro;
 const freeMockTest = tests.find(
   (test) => test.isProOnly === false
 );
+const proMockTests = tests.filter((test) => test.isProOnly);
 const handleAttempt = (test) => {
   if (!test) {
     return;
@@ -175,86 +176,44 @@ const handleAttempt = (test) => {
               </span>
               <div>
                 <span className="mocktest-free-label">Free Access</span>
-                <h2>{freeMockTest?.title}</h2>
-<p>
-  Free mock test available for all students.
-</p>
+                {freeMockTest ? (
+                  <>
+                    <h2>{freeMockTest.title}</h2>
+                    <p>
+                      Free mock test available for all students.
+                    </p>
+                  </>
+                ) : (
+                  <p>No free mock tests available yet.</p>
+                )}
               </div>
             </div>
-{tests.length === 0 && (
-  <p>No mock tests available.</p>
-)}
-<section className="mocktest-series-area">
-  <div className="mocktest-section-heading">
-    <div>
-      <span>Mock Tests</span>
-      <h2>Available Mock Tests</h2>
-    </div>
+            {freeMockTest && (
+              <>
+                <div className="mocktest-free-meta">
+                  <div>
+                    <Gauge size={19} />
+                    <span>Marks</span>
+                    <strong>{freeMockTest.marks}</strong>
+                  </div>
+                  <div>
+                    <Clock3 size={19} />
+                    <span>Duration</span>
+                    <strong>{freeMockTest.duration}</strong>
+                  </div>
+                  <div>
+                    <FileQuestion size={19} />
+                    <span>Questions</span>
+                    <strong>{freeMockTest.questions}</strong>
+                  </div>
+                </div>
 
-    <p>
-      {accessMessage ||
-        (isProUser
-          ? "Pro access enabled."
-          : "Upgrade to Pro to unlock premium tests.")}
-    </p>
-  </div>
-
-  <div className="mocktest-test-grid">
-    {tests
-      .filter((test) => test.isProOnly)
-      .map((test) => (
-        <button
-          key={test.id}
-          className="mocktest-test-card"
-          onClick={() => handleAttempt(test)}
-        >
-          <div className="mocktest-test-topline">
-            <span className="mocktest-lock-badge">
-              <Lock size={13} />
-              PRO
-            </span>
-          </div>
-
-          <h4>{test.title}</h4>
-
-          <div className="mocktest-test-meta">
-            <span>{test.exam}</span>
-            <span>{test.topic}</span>
-            <span>{test.duration} min</span>
-          </div>
-
-          <div className="mocktest-card-cta">
-            {isProUser
-              ? "Attempt Test"
-              : "Unlock With Pro"}
-            <ArrowRight size={16} />
-          </div>
-        </button>
-      ))}
-  </div>
-</section>
-            <div className="mocktest-free-meta">
-              <div>
-                <Gauge size={19} />
-                <span>Marks</span>
-                <strong>{freeMockTest?.marks}</strong>
-              </div>
-              <div>
-                <Clock3 size={19} />
-                <span>Duration</span>
-                <strong>{freeMockTest?.duration}</strong>
-              </div>
-              <div>
-                <FileQuestion size={19} />
-                <span>Questions</span>
-                <strong>{freeMockTest?.questions}</strong>
-              </div>
-            </div>
-
-            <button type="button" onClick={() => handleAttempt(freeMockTest)}>
-              Attempt Now
-              <ArrowRight size={17} />
-            </button>
+                <button type="button" onClick={() => handleAttempt(freeMockTest)}>
+                  Attempt Now
+                  <ArrowRight size={17} />
+                </button>
+              </>
+            )}
           </article>
 
           <article className="mocktest-pro-banner">
@@ -271,10 +230,53 @@ const handleAttempt = (test) => {
                 <span>Performance Tracking</span>
                 <span>Personal Support</span>
               </div>
-              <button type="button" onClick={() => navigate("/pro-plans")}>
-                View Pro Plans
-                <ArrowRight size={17} />
-              </button>
+              <section className="mocktest-series-area">
+                <div className="mocktest-section-heading">
+                  <div>
+                    <span>Mock Tests</span>
+                    <h2>Available Mock Tests</h2>
+                  </div>
+
+                  <p>
+                    {accessMessage ||
+                      (isProUser
+                        ? "Pro access enabled."
+                        : "Upgrade to Pro to unlock premium tests.")}
+                  </p>
+                </div>
+
+                <div className="mocktest-test-grid">
+                  {proMockTests.map((test) => (
+                    <button
+                      key={test.id}
+                      className="mocktest-test-card"
+                      onClick={() => handleAttempt(test)}
+                    >
+                      <div className="mocktest-test-topline">
+                        <span className="mocktest-lock-badge">
+                          <Lock size={13} />
+                          PRO
+                        </span>
+                      </div>
+
+                      <h4>{test.title}</h4>
+
+                      <div className="mocktest-test-meta">
+                        <span>{test.exam}</span>
+                        <span>{test.topic}</span>
+                        <span>{test.duration} min</span>
+                      </div>
+
+                      <div className="mocktest-card-cta">
+                        {isProUser
+                          ? "Attempt Test"
+                          : "Unlock With Pro"}
+                        <ArrowRight size={16} />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </section>
             </div>
           </article>
         </section>

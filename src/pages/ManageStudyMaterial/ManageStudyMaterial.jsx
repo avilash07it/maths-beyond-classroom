@@ -26,7 +26,7 @@ import {
   manageStudyMaterialTypes,
 } from "./manageStudyMaterialData";
 
-import axios from "axios";
+import api from "../../utils/api";
 import { useEffect } from "react";
 
 function ManageStudyMaterial() {
@@ -35,9 +35,7 @@ const [materials, setMaterials] = useState([]);
   const [editingMaterialId, setEditingMaterialId] = useState(null);
   const fetchMaterials = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/materials"
-    );
+    const response = await api.get("/materials");
 const reverseTypeMap = {
   NOTES: "Study Notes",
   ASSIGNMENT: "Assignments",
@@ -166,15 +164,9 @@ const payload = {
 
   try {
     if (editingMaterialId) {
-      await axios.put(
-        `http://localhost:5000/api/materials/${editingMaterialId}`,
-        payload
-      );
+      await api.put(`/materials/${editingMaterialId}`, payload);
     } else {
-      await axios.post(
-        "http://localhost:5000/api/materials",
-        payload
-      );
+      await api.post("/materials", payload);
     }
 
     fetchMaterials();
@@ -198,9 +190,7 @@ status: "Published",
 
   const deleteMaterial = async (materialId) => {
   try {
-    await axios.delete(
-      `http://localhost:5000/api/materials/${materialId}`
-    );
+    await api.delete(`/materials/${materialId}`);
 
     fetchMaterials();
 

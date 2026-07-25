@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
 import {
   Archive,
   CheckCircle2,
@@ -24,6 +23,7 @@ import {
   managePYQsTopics,
   managePYQsYears,
 } from "./managePYQsData";
+import api from "../../utils/api";
 
 function ManagePYQs() {
 const [pyqs, setPyqs] = useState([]);
@@ -38,9 +38,7 @@ const [pyqs, setPyqs] = useState([]);
   });
 const fetchPYQs = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/pyqs"
-    );
+    const response = await api.get("/pyqs");
 
     setPyqs(response.data.data);
   } catch (error) {
@@ -132,15 +130,9 @@ const matchesYear =
     };
 try {
   if (editingPYQId) {
-    await axios.put(
-      `http://localhost:5000/api/pyqs/${editingPYQId}`,
-      pyqPayload
-    );
+    await api.put(`/pyqs/${editingPYQId}`, pyqPayload);
   } else {
-    await axios.post(
-      "http://localhost:5000/api/pyqs",
-      pyqPayload
-    );
+    await api.post("/pyqs", pyqPayload);
   }
 
   await fetchPYQs();
@@ -178,9 +170,7 @@ try {
 
  const deletePYQ = async (pyqId) => {
   try {
-    await axios.delete(
-      `http://localhost:5000/api/pyqs/${pyqId}`
-    );
+    await api.delete(`/pyqs/${pyqId}`);
 
     await fetchPYQs();
 

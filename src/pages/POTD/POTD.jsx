@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../utils/api";
 import PageTransition from "../../components/PageTransition";
 
 import { useNavigate } from "react-router-dom";
@@ -48,9 +48,7 @@ useEffect(() => {
  const navigate = useNavigate();
  const fetchHint = async () => {
   try {
-    const response = await axios.get(
-      `http://localhost:5000/api/potd/${selectedProblem.id}/hint`
-    );
+    const response = await api.get(`/potd/${selectedProblem.id}/hint`);
 
     setHintData(response.data.data);
     setIsHintVisible(true);
@@ -62,9 +60,7 @@ useEffect(() => {
 
 const fetchPOTDs = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/potd"
-    );
+    const response = await api.get("/potd");
 console.log(response.data.data[0]);
 
     const potds = response.data.data;
@@ -90,9 +86,7 @@ console.log(previousProblems);
 };
 const fetchTodayPOTD = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/potd/today"
-    );
+    const response = await api.get("/potd/today");
 
     setTodayProblem(response.data.data);
     setSelectedProblem(response.data.data);
@@ -111,9 +105,7 @@ useEffect(() => {
 
   const fetchSupport = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/support"
-    );
+    const response = await api.get("/support");
 
     setSupport(response.data.data[0]);
   } catch (error) {

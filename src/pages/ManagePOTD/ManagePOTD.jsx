@@ -1,5 +1,4 @@
 import { useMemo, useState, useEffect, useRef } from "react";
-import axios from "axios";
 import {
   Archive,
   CalendarDays,
@@ -27,6 +26,7 @@ import {
   managePOTDStatuses,
   managePOTDTopics,
 } from "./managePOTDData";
+import api from "../../utils/api";
 
 const formatDisplayDate = (date) => {
   if (!date) return "N/A";
@@ -49,9 +49,7 @@ function ManagePOTD() {
 };
 const fetchPOTDs = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/potd"
-    );
+    const response = await api.get("/potd");
 
     setProblems(response.data.data);
 
@@ -111,12 +109,16 @@ const uploadToCloudinary = async (file) => {
   formData.append("upload_preset", "potd_images");
 
   try {
-    const response = await axios.post(
+    const response = await fetch(
       "https://api.cloudinary.com/v1_1/awz3yehg/image/upload",
-      formData
+      {
+        method: "POST",
+        body: formData,
+      }
     );
+    const data = await response.json();
 
-    return response.data.secure_url;
+    return data.secure_url;
   } catch (error) {
     console.error("Cloudinary Upload Error:", error);
     alert("Image upload failed.");
@@ -161,17 +163,11 @@ solutionImageUrl: form.solutionImage,
 
     if (editingProblemId) {
 
-      await axios.put(
-        `http://localhost:5000/api/potd/${editingProblemId}`,
-        problemPayload
-      );
+      await api.put(`/potd/${editingProblemId}`, problemPayload);
 
     } else {
 
-      await axios.post(
-        "http://localhost:5000/api/potd",
-        problemPayload
-      );
+      await api.post("/potd", problemPayload);
 
     }
 
@@ -217,9 +213,7 @@ date: problem.createdAt || "",
   const deleteProblem = async (problemId) => {
   try {
 
-    await axios.delete(
-      `http://localhost:5000/api/potd/${problemId}`
-    );
+    await api.delete(`/potd/${problemId}`);
 
    await fetchPOTDs();
 

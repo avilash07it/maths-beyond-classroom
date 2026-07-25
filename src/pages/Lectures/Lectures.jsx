@@ -19,7 +19,7 @@ import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import PageTransition from "../../components/PageTransition";
 
 import { exams, topics } from "./lecturesData";
-import axios from "axios";
+import api from "../../utils/api";
 import { useEffect, useMemo, useState } from "react";
 import "./Lectures.css";
 
@@ -51,9 +51,7 @@ const lectureSteps = [
   );
 const fetchLectures = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5000/api/lectures"
-    );
+    const response = await api.get("/lectures");
 
     const formattedLectures = response.data.data.map((lecture) => ({
       ...lecture,
