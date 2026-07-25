@@ -1,5 +1,6 @@
 import "./TopicDetail.css";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
+import PageTransition from "../../components/PageTransition";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,

@@ -216,8 +216,8 @@ function Payment() {
               </div>
 
               <div className="payment-student-row">
-                <span>Student Name</span>
-                <strong>{selectedPlan.studentName}</strong>
+                <span>Best For</span>
+                <strong>{selectedPlan.bestFor}</strong>
               </div>
 
               <div className={`payment-status-pill ${isSubmitted ? "payment-status-pending" : ""}`}>

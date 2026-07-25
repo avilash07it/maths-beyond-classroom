@@ -80,6 +80,8 @@ useEffect(() => {
   fetchMyPlan();
 }, []);
 
+const bestValuePlan = proPlans.find((plan) => plan.recommended) || proPlans[0];
+
   return (
     <PageTransition>
     <div className="proplans-page">
@@ -276,7 +278,7 @@ useEffect(() => {
             <h2>Start with the right plan for your exam goal.</h2>
             <p>Choose IOQM, SEHSS, or the combo plan and continue with manual payment approval.</p>
           </div>
-          <button type="button" onClick={() => navigate("/payment")}>
+          <button type="button" onClick={() => bestValuePlan && handleChoosePlan(bestValuePlan.id)}>
             Choose Best Value
             <ArrowRight size={17} />
           </button>

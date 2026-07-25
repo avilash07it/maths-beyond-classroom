@@ -118,7 +118,7 @@ const summaryCards = [
 
   const fetchMockTests = async () => {
   try {
-    const response = await api.get("/mock-tests/getall");
+    const response = await api.get("/mock-tests/admin/getall");
 
     console.log(response.data);
 
@@ -152,7 +152,7 @@ const saveTest = async (event) => {
     questions: Number(form.questions),
     marks: Number(form.marks),
     status: form.status,
-    isProOnly: form.isProOnly,
+    isProOnly: Boolean(form.isProOnly),
   };
 
   try {
@@ -350,6 +350,17 @@ const editTest = (test) => {
                   {manageMockTestStatuses.map((status) => (
                     <option key={status}>{status}</option>
                   ))}
+                </select>
+              </label>
+
+              <label className="manage-mock-tests-field">
+                <span>Access</span>
+                <select
+                  value={form.isProOnly ? "Pro" : "Free"}
+                  onChange={(event) => updateFormField("isProOnly", event.target.value === "Pro")}
+                >
+                  <option>Free</option>
+                  <option>Pro</option>
                 </select>
               </label>
 

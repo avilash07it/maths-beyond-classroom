@@ -1,20 +1,9 @@
 import {
   ArrowRight,
-  BarChart3,
-  CalendarClock,
-  CheckCircle2,
-  Clock3,
-  Crown,
+  Clock,
   FileQuestion,
-  Flame,
-  Gauge,
   Lock,
-  PlayCircle,
-  ShieldCheck,
-  Sparkles,
-  Target,
   Trophy,
-  Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,16 +11,6 @@ import PageTransition from "../../components/PageTransition";
 import DashboardNavbar from "../Dashboard/DashboardNavbar";
 import api from "../../utils/api";
 import "./MockTests.css";
-import {
-  mockTestBenefits,
-  mockTestHeroBadges,
-} from "./mockTestsData";
-
-const statusIconMap = {
-  LIVE: Flame,
-  UPCOMING: CalendarClock,
-  COMPLETED: CheckCircle2,
-};
 
 const upgradeMessage = "Upgrade your plan to access this mock test.";
 
@@ -116,7 +95,46 @@ const isProUser = myPlan.isPro;
 const freeMockTest = tests.find(
   (test) => test.isProOnly === false
 );
-const proMockTests = tests.filter((test) => test.isProOnly);
+const freeTestCount = tests.filter((test) => test.isProOnly === false).length;
+const premiumTestCount = tests.filter((test) => test.isProOnly).length;
+const supportedExamCount = new Set(
+  tests.map((test) => test.exam).filter(Boolean)
+).size;
+
+const formatDuration = (duration) => {
+  if (!duration) {
+    return "TBA";
+  }
+
+  const value = String(duration);
+
+  return value.toLowerCase().includes("min") ? value : `${value} min`;
+};
+
+const getAccessBadge = (test) => {
+  if (!test?.isProOnly) {
+    return "FREE";
+  }
+
+  const planName = normalizeText(myPlan.planName);
+
+  if (canAccessMockTest(test, myPlan)) {
+    if (planName === "pro max") {
+      return "PRO MAX";
+    }
+
+    if (planName === "pro plus") {
+      return "PRO PLUS";
+    }
+
+    return "STARTER";
+  }
+
+  const exam = normalizeText(test.exam);
+
+  return exam === "sehss" || exam === "ioqm" ? "STARTER" : "PRO PLUS";
+};
+
 const handleAttempt = async (test) => {
   if (!test) {
     return;
@@ -158,170 +176,119 @@ const handleAttempt = async (test) => {
       <main className="mocktest-shell">
         <section className="mocktest-hero">
           <div className="mocktest-hero-copy">
-            <span className="mocktest-hero-kicker">
-              <Trophy size={17} />
-              Test Series Hub
-            </span>
-            <h1>
-              Mock Tests <span>& Test Series</span>
-            </h1>
-            <p>Practice under exam conditions and track your preparation.</p>
+            <h1>Mock Tests &amp; Test Series</h1>
+            <p>
+              Practice under real exam conditions.
+              <br />
+              Improve speed, accuracy and confidence.
+            </p>
 
-            <div className="mocktest-hero-badges">
-              {mockTestHeroBadges.map((badge) => (
-                <span key={badge}>{badge}</span>
-              ))}
+            <div className="mocktest-hero-actions">
+              <button
+                type="button"
+                className="mocktest-primary-btn"
+                onClick={() => handleAttempt(freeMockTest)}
+                disabled={!freeMockTest}
+              >
+                Attempt Free Test
+                <ArrowRight size={17} />
+              </button>
+              <button
+                type="button"
+                className="mocktest-secondary-btn"
+                onClick={() => navigate("/pro-plans")}
+              >
+                Explore Pro Plans
+              </button>
             </div>
-          </div>
-
-          <div className="mocktest-hero-visual" aria-hidden="true">
-            <div className="mocktest-orbit mocktest-orbit-one"></div>
-            <div className="mocktest-orbit mocktest-orbit-two"></div>
-            <div className="mocktest-trophy-platform"></div>
-            <div className="mocktest-trophy-mark">
-              <Trophy size={90} />
-            </div>
-            <span className="mocktest-float mocktest-float-one">30</span>
-            <span className="mocktest-float mocktest-float-two">π</span>
-            <span className="mocktest-float mocktest-float-three">%</span>
           </div>
         </section>
 
-        <section className="mocktest-top-grid">
-          <article className="mocktest-free-card">
-            <div className="mocktest-free-content">
-              <span className="mocktest-free-icon">
-                <PlayCircle size={28} />
-              </span>
-              <div>
-                <span className="mocktest-free-label">Free Access</span>
-                {freeMockTest ? (
-                  <>
-                    <h2>{freeMockTest.title}</h2>
-                    <p>
-                      Free mock test available for all students.
-                    </p>
-                  </>
-                ) : (
-                  <p>No free mock tests available yet.</p>
-                )}
-              </div>
-            </div>
-            {freeMockTest && (
-              <>
-                <div className="mocktest-free-meta">
-                  <div>
-                    <Gauge size={19} />
-                    <span>Marks</span>
-                    <strong>{freeMockTest.marks}</strong>
-                  </div>
-                  <div>
-                    <Clock3 size={19} />
-                    <span>Duration</span>
-                    <strong>{freeMockTest.duration}</strong>
-                  </div>
-                  <div>
-                    <FileQuestion size={19} />
-                    <span>Questions</span>
-                    <strong>{freeMockTest.questions}</strong>
-                  </div>
-                </div>
-
-                <button type="button" onClick={() => handleAttempt(freeMockTest)}>
-                  Attempt Now
-                  <ArrowRight size={17} />
-                </button>
-              </>
-            )}
+        <section className="mocktest-stats-grid" aria-label="Mock test statistics">
+          <article className="mocktest-stat-card">
+            <span>Available Tests</span>
+            <strong>{tests.length}</strong>
           </article>
-
-          <article className="mocktest-pro-banner">
-            <span className="mocktest-pro-crown">
-              <Crown size={34} />
-            </span>
-            <div>
-              <span className="mocktest-pro-label">Pro Access</span>
-              <h2>Unlock Full Test Series</h2>
-              <p>Get structured test access with tracking and mentor support.</p>
-              <div className="mocktest-pro-pills">
-                <span>Topic-wise Tests</span>
-                <span>Full-Length Mock Tests</span>
-                <span>Performance Tracking</span>
-                <span>Personal Support</span>
-              </div>
-              <section className="mocktest-series-area">
-                <div className="mocktest-section-heading">
-                  <div>
-                    <span>Mock Tests</span>
-                    <h2>Available Mock Tests</h2>
-                  </div>
-
-                  <p>
-                    {accessMessage ||
-                      (isProUser
-                        ? "Pro access enabled."
-                        : "Upgrade to Pro to unlock premium tests.")}
-                  </p>
-                </div>
-
-                <div className="mocktest-test-grid">
-                  {proMockTests.map((test) => (
-                    <button
-                      key={test.id}
-                      className="mocktest-test-card"
-                      onClick={() => handleAttempt(test)}
-                    >
-                      <div className="mocktest-test-topline">
-                        <span className="mocktest-lock-badge">
-                          <Lock size={13} />
-                          PRO
-                        </span>
-                      </div>
-
-                      <h4>{test.title}</h4>
-
-                      <div className="mocktest-test-meta">
-                        <span>{test.exam}</span>
-                        <span>{test.topic}</span>
-                        <span>{test.duration} min</span>
-                      </div>
-
-                      <div className="mocktest-card-cta">
-                        {isProUser
-                          ? "Attempt Test"
-                          : "Unlock With Pro"}
-                        <ArrowRight size={16} />
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </section>
-            </div>
+          <article className="mocktest-stat-card">
+            <span>Free Tests</span>
+            <strong>{freeTestCount}</strong>
+          </article>
+          <article className="mocktest-stat-card">
+            <span>Premium Tests</span>
+            <strong>{premiumTestCount}</strong>
+          </article>
+          <article className="mocktest-stat-card">
+            <span>Supported Exams</span>
+            <strong>{supportedExamCount}</strong>
           </article>
         </section>
 
-       
-
-        <section className="mocktest-benefits-area">
-          <div className="mocktest-section-heading compact">
+        <section className="mocktest-series-area">
+          <div className="mocktest-section-heading">
             <div>
-              <span>Why Practice</span>
-              <h2>Why Practice With Mock Tests</h2>
+              <span>Practice Library</span>
+              <h2>Available Mock Tests</h2>
             </div>
+
+            <p>
+              {accessMessage ||
+                (isProUser
+                  ? "Your current plan access is active."
+                  : "Free and premium tests are listed together.")}
+            </p>
           </div>
 
-          <div className="mocktest-benefit-grid">
-            {mockTestBenefits.map((benefit, index) => {
-              const icons = [ShieldCheck, Clock3, BarChart3, Sparkles];
-              const Icon = icons[index] || ShieldCheck;
+          <div className="mocktest-test-grid">
+            {tests.map((test) => {
+              const isAccessible = canAccessMockTest(test, myPlan);
+              const accessBadge = getAccessBadge(test);
 
               return (
-                <article className="mocktest-benefit-card" key={benefit.title}>
-                  <span>
-                    <Icon size={24} />
-                  </span>
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.description}</p>
+                <article className="mocktest-test-card" key={test.id}>
+                  <div className="mocktest-test-topline">
+                    <span className={`mocktest-access-badge ${accessBadge.toLowerCase().replaceAll(" ", "-")}`}>
+                      {isAccessible ? (
+                        <Trophy size={13} />
+                      ) : (
+                        <Lock size={13} />
+                      )}
+                      {accessBadge}
+                    </span>
+                    <span className="mocktest-status-badge">
+                      {test.status || "Live"}
+                    </span>
+                  </div>
+
+                  <div className="mocktest-card-body">
+                    <h3>{test.title}</h3>
+                    <p>{test.topic || "Full Syllabus"}</p>
+                  </div>
+
+                  <div className="mocktest-test-details">
+                    <div>
+                      <Clock size={17} />
+                      <span>Duration</span>
+                      <strong>{formatDuration(test.duration)}</strong>
+                    </div>
+                    <div>
+                      <FileQuestion size={17} />
+                      <span>Questions</span>
+                      <strong>{test.questions || "TBA"}</strong>
+                    </div>
+                    <div>
+                      <Trophy size={17} />
+                      <span>Marks</span>
+                      <strong>{test.marks || "TBA"}</strong>
+                    </div>
+                  </div>
+
+                  <div className="mocktest-card-footer">
+                    <span>{test.exam || "Exam"}</span>
+                    <button type="button" onClick={() => handleAttempt(test)}>
+                      {isAccessible ? "Attempt Test" : "Upgrade"}
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
                 </article>
               );
             })}
@@ -329,12 +296,9 @@ const handleAttempt = async (test) => {
         </section>
 
         <section className="mocktest-bottom-cta">
-          <div>
-            <h2>Simulate. Analyze. Improve.</h2>
-            <p>Start with the free mock test, then unlock the full test series when you are ready.</p>
-          </div>
+          <h2>Need access to every mock test?</h2>
           <button type="button" onClick={() => navigate("/pro-plans")}>
-            Explore Pro Test Series
+            Upgrade to Pro
             <ArrowRight size={17} />
           </button>
         </section>
