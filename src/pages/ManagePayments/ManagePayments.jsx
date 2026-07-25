@@ -609,7 +609,7 @@ function ManagePayments() {
                   <span>Status</span>
                   <strong>{selectedRequest.status}</strong>
                 </div>
-              </div>
+             
 
               <div className="manage-payments-screenshot-preview">
   {selectedRequest.screenshotUrl ? (
