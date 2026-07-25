@@ -92,10 +92,19 @@ useEffect(() => {
   selectedExam,
   selectedTopic,
 ]);
-const liveLecture =
-  lectures.find((lecture) => lecture.status === "Live") ??
-  lectures[0] ??
-  null;
+const liveLecture = useMemo(() => {
+  const liveLectures = lectures.filter(
+    (lecture) => lecture.status === "Live"
+  );
+
+  if (liveLectures.length > 0) {
+    return liveLectures[liveLectures.length - 1]; // Last Live Lecture
+  }
+
+  return lectures.length > 0
+    ? lectures[lectures.length - 1] // Last lecture if no live lectures exist
+    : null;
+}, [lectures]);
 if (!loading && lectures.length === 0) {
   return (
     <PageTransition>
@@ -175,17 +184,9 @@ if (!loading && lectures.length === 0) {
         </section>
 
         <section className="lecture-controls" aria-label="Lecture filters">
-          <div className="lecture-search">
-            <Search size={20} />
-            <input
-              type="text"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search lectures, exams or topics..."
-            />
-          </div>
+        
 
-          <label>
+          <label className="exam-filter">
             <Trophy size={19} />
             <select
               value={selectedExam}
@@ -228,11 +229,13 @@ if (!loading && lectures.length === 0) {
 <h2>{liveLecture?.title || "No live lecture available"}</h2>
               <div className="featured-live-meta">
 <strong>{liveLecture?.exam || "-"}</strong>
-<strong>{liveLecture?.topic || "-"}</strong>
+<p>{liveLecture?.topic || "-"}</p>
              </div>
             </div>
+
 <button
   type="button"
+  disabled={!liveLecture}
   onClick={() => {
     if (liveLecture?.youtubeUrl) {
       window.open(liveLecture.youtubeUrl, "_blank");
@@ -241,6 +244,7 @@ if (!loading && lectures.length === 0) {
 >
   Join Live
 </button>
+
           </div>
         </section>
 
@@ -381,9 +385,8 @@ if (!loading && lectures.length === 0) {
                   <Radio size={34} />
                 </div>
                 <div>
-                  <h4>{liveLecture.title}</h4>
-                  <p>{liveLecture.topic}</p>
-                  
+<h2>{liveLecture?.title || "No live lecture available"}</h2>
+<p>{liveLecture?.topic || "-"}</p>                  
                   <em>Live class is in progress. Join before the problem set starts.</em>
                 </div>
               </div>

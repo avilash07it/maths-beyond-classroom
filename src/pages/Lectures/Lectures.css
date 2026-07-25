@@ -18,6 +18,14 @@
   color: #6d28d9;
   font-weight: 700;
 }
+.exam-filter {
+    width: 250px;
+}
+
+.exam-filter select {
+    width: 120%;
+}
+
 
 .lectures-breadcrumb strong {
   color: #111827;
@@ -248,12 +256,14 @@
   top: 18%;
 }
 
-.lecture-controls {
-  margin-top: 34px;
-  display: grid;
-  grid-template-columns: minmax(260px, 1fr) 230px 230px 180px;
-  gap: 16px;
-  align-items: center;
+
+.lecture-controls{
+    margin-top:28px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
 }
 
 .lecture-search,

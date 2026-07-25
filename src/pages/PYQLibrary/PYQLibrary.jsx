@@ -86,15 +86,7 @@ useEffect(() => {
             preparation by topic with guided solutions and focused practice.
           </p>
 
-          <div className="pyq-search-wrap">
-            <Search size={20} />
-            <input
-              type="text"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search for exams, years or topics..."
-            />
-          </div>
+          
 
           <div className="pyq-hero-filters">
             <label>

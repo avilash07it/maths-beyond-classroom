@@ -189,17 +189,9 @@ if (loading) {
         </section>
 
         <section className="study-controls" aria-label="Study material filters">
-          <div className="study-search">
-            <Search size={20} />
-            <input
-              type="text"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search study material by title, topic or keyword..."
-            />
-          </div>
+         
 
-          <label>
+          <label className="exam-filter">
             <Trophy size={19} />
             <select
               value={selectedExam}

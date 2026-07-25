@@ -178,7 +178,7 @@ useEffect(() => {
             <span>📖</span>
             <div>
               <h3>{lectures.length}</h3>
-              <p>Lectures Watched</p>
+              <p>Lectures</p>
             </div>
           </div>
 
@@ -186,7 +186,7 @@ useEffect(() => {
             <span>📄</span>
             <div>
              <h3>{materials.length}</h3>
-              <p>Materials Read</p>
+              <p>Materials</p>
             </div>
           </div>
 
@@ -194,7 +194,7 @@ useEffect(() => {
             <span>🎯</span>
             <div>
 <h3>{mockTests.length}</h3>
-              <p>Tests Attempted</p>
+              <p>Tests</p>
             </div>
           </div>
 

@@ -66,19 +66,9 @@ const fetchMaterials = async () => {
 
           <p>Choose a topic and begin your Olympiad journey.</p>
 
-          <input
-            className="topics-search"
-            type="text"
-            placeholder="Search topics, lectures, PYQs..."
-          />
+         
 
-          <select className="topics-filter">
-            <option>IOQM</option>
-            <option>RMO</option>
-            <option>NMTC</option>
-            <option>SEHSS</option>
-            <option>CBSE IX & X</option>
-          </select>
+       
         </div>
 
         <div className="topics-hero-visual">
