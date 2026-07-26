@@ -23,6 +23,8 @@ import POTD from "./pages/POTD/POTD";
 import ProPlans from "./pages/ProPlans/ProPlans";
 import MockTests from "./pages/MockTests/MockTests";
 import Payment from "./pages/Payment/Payment";
+import About from "./pages/About/About";
+import Books from "./pages/Books/Books";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import ManageLectures from "./pages/ManageLectures/ManageLectures";
@@ -66,6 +68,8 @@ function App() {
           <Route path="/pro-plans" element={<ProtectedRoute><ProPlans /></ProtectedRoute>} />
           <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
           <Route path="/manual-payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+          <Route path="/books" element={<ProtectedRoute><Books /></ProtectedRoute>} />
+          <Route path="/about" element={<About />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/manage-lectures" element={<ProtectedRoute adminOnly><ManageLectures /></ProtectedRoute>} />

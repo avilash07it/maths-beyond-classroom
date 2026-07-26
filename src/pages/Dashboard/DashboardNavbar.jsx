@@ -45,6 +45,7 @@ const handleLogout = () => {
   <NavLink to="/study-material">Study Material</NavLink>
   <NavLink to="/pyq-library">PYQ Library</NavLink>
   <NavLink to="/mock-tests">Mock Tests</NavLink>
+  <NavLink to="/books">Books</NavLink>
   <NavLink to="/potd">POTD</NavLink>
 </div>
 <button

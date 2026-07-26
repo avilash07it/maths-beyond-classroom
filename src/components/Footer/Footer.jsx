@@ -30,7 +30,7 @@ function Footer() {
           <a href="/topics">Topics</a>
           <a href="/mock-tests">Mock Tests</a>
           <a href="/pyq-library">PYQs</a>
-          <a>Leaderboard</a>
+          <a href="/books">Books</a>
         </div>
 
         <div>

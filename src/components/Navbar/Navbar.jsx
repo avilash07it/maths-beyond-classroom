@@ -25,8 +25,8 @@ function Navbar() {
         <li onClick={() => navigate("/topics")}>Topics</li>
         <li onClick={() => navigate("/mock-tests")}>Mock Tests</li>
         <li onClick={() => navigate("/pyq-library")}>PYQs</li>
-        <li>Leaderboard</li>
-        <li>About Us</li>
+        <li onClick={() => navigate("/books")}>Books</li>
+        <li onClick={() => navigate("/about")}>About Us</li>
       </ul>
 
       <div className="nav-buttons">

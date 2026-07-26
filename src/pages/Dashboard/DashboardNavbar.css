@@ -81,11 +81,11 @@
 .dashboard-links {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .dashboard-links a {
-  padding: 10px 14px;
+  padding: 10px 13px;
   border-radius: 12px;
 
   text-decoration: none;
