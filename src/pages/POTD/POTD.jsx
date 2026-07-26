@@ -84,6 +84,18 @@ console.log(previousProblems);
     console.error(error);
   }
 };
+const handleContinuePractice = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  setSelectedProblem(todayProblem);
+  setIsProblemVisible(false);
+  setIsHintVisible(false);
+  setHintData(null);
+};
+
 const fetchTodayPOTD = async () => {
   try {
     const response = await api.get("/potd/today");
@@ -453,10 +465,10 @@ if (user?.streak) {
             <h2>Build consistency with one problem every day.</h2>
             <p>Solve daily problems and strengthen your path to Olympiad confidence.</p>
           </div>
-          <button type="button" onClick={() => navigate("/potd")}>
-            Continue Daily Practice
-            <ArrowRight size={17} />
-          </button>
+        <button type="button" onClick={handleContinuePractice}>
+  Continue Daily Practice
+  <ArrowRight size={17} />
+</button>
         </section>
       </main>
     </div>

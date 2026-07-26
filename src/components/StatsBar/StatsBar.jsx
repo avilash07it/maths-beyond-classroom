@@ -11,22 +11,22 @@ function StatsBar() {
   const stats = [
     {
       icon: <BookOpen size={42} strokeWidth={2} />,
-      number: "10,000+",
+      number: "1000+",
       label: "Problems",
     },
     {
       icon: <NotebookPen size={42} strokeWidth={2} />,
-      number: "500+",
+      number: "50+",
       label: "Topic Notes",
     },
     {
       icon: <FileText size={42} strokeWidth={2} />,
-      number: "300+",
+      number: "30+",
       label: "PYQ Papers",
     },
     {
       icon: <Trophy size={42} strokeWidth={2} />,
-      number: "120+",
+      number: "400+",
       label: "Olympiad Selections",
     },
   ];
