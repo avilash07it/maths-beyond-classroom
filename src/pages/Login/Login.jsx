@@ -88,8 +88,6 @@ function Login() {
 
         <div className="login-benefits">
           <div>
-            <span>✦</span>
-            <p>Live classes updated daily</p>
           </div>
           <div>
             <span>✦</span>
