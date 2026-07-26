@@ -15,6 +15,27 @@ hintImageUrl: potdData.hintImageUrl,
     return potd;
 };
 const getAllPOTDs = async () => {
+  const potds = await prisma.pOTD.findMany({
+    where: {
+      status: "Published",
+    },
+    select: {
+      id: true,
+      title: true,
+      problemImageUrl: true,
+      hintImageUrl: true,
+      exam: true,
+      topic: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+
+  return potds;
+};
+
+const getAllPOTDsForAdmin = async () => {
   const potds = await prisma.pOTD.findMany();
 
   return potds;
@@ -25,7 +46,22 @@ const getPOTDById = async (id) => {
     where: {
       id: Number(id),
     },
+    select: {
+      id: true,
+      title: true,
+      problemImageUrl: true,
+      hintImageUrl: true,
+      exam: true,
+      topic: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+    },
   });
+
+  if (potd?.status !== "Published") {
+    return null;
+  }
 
   return potd;
 };
@@ -63,15 +99,27 @@ const getTodayPOTD = async () => {
     where: {
       status: "Published",
     },
+    select: {
+      id: true,
+      title: true,
+      problemImageUrl: true,
+      hintImageUrl: true,
+      exam: true,
+      topic: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+    },
     orderBy: {
       createdAt: "desc",
     },
   });
 };
 const getHint = async (id) => {
-  return await prisma.pOTD.findUnique({
+  return await prisma.pOTD.findFirst({
     where: {
       id: Number(id),
+      status: "Published",
     },
     select: {
       hintImageUrl: true,
@@ -95,9 +143,10 @@ const getSolution = async (userId, id) => {
     throw error;
   }
 
-  return await prisma.pOTD.findUnique({
+  return await prisma.pOTD.findFirst({
     where: {
       id: Number(id),
+      status: "Published",
     },
     select: {
       solutionImageUrl: true,
@@ -108,6 +157,7 @@ const getSolution = async (userId, id) => {
 module.exports = {
   createPOTD,
   getAllPOTDs,
+  getAllPOTDsForAdmin,
   getPOTDById,
   deletePOTD,
   updatePOTD,

@@ -41,7 +41,6 @@ const fetchMaterials = async () => {
       const response = await api.get("/support");
 
       setSupport(response.data.data[0]);
-      console.log(response.data.data[0]);
     } catch (error) {
       console.error(error);
     }
@@ -113,8 +112,6 @@ const materialCount = materials.filter(
 
                   <div className="topic-meta">
                    <span>{lectureCount} Lectures</span>
-
-<span>{materialCount} Notes</span>
                   </div>
 
 <button

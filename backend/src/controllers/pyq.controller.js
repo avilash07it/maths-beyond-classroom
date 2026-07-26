@@ -39,6 +39,24 @@ const getAllPYQs = async (req, res) => {
     });
   }
 };
+const getAllPYQsForAdmin = async (req, res) => {
+  try {
+    const pyqs = await pyqService.getAllPYQsForAdmin();
+
+    res.status(200).json({
+      success: true,
+      count: pyqs.length,
+      data: pyqs,
+    });
+  } catch (error) {
+    console.error("Get PYQs Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 const getPYQById = async (req, res) => {
   try {
     const pyq = await pyqService.getPYQById(req.params.id);
@@ -105,6 +123,7 @@ const deletePYQ = async (req, res) => {
 module.exports = {
   createPYQ,
   getAllPYQs,
+  getAllPYQsForAdmin,
   getPYQById,
   updatePYQ,
   deletePYQ,

@@ -16,6 +16,13 @@ import PageTransition from "../../components/PageTransition";
 
 
 import { FaWhatsapp } from "react-icons/fa";
+import {
+  BookOpenCheck,
+  ClipboardList,
+  FileText,
+  Flame,
+  Lightbulb,
+} from "lucide-react";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -30,6 +37,10 @@ const [latestMaterial, setLatestMaterial] = useState(null);
 const [materials, setMaterials] = useState([]);
 const [mockTests, setMockTests] = useState([]);
 const [user, setUser] = useState(null);
+const learningLayoutClass =
+  lectures.length === 0
+    ? "learning-grid learning-grid-empty"
+    : `learning-grid learning-count-${Math.min(lectures.length, 3)}`;
 
 useEffect(() => {
   const storedUser = localStorage.getItem("user");
@@ -176,6 +187,7 @@ useEffect(() => {
         <div className="hero-stats-panel">
           <div className="hero-stat-card">
             <span>📖</span>
+            <span className="hero-stat-icon"><BookOpenCheck size={30} /></span>
             <div>
               <h3>{lectures.length}</h3>
               <p>Lectures</p>
@@ -184,6 +196,7 @@ useEffect(() => {
 
           <div className="hero-stat-card">
             <span>📄</span>
+            <span className="hero-stat-icon"><FileText size={30} /></span>
             <div>
              <h3>{materials.length}</h3>
               <p>Materials</p>
@@ -192,6 +205,7 @@ useEffect(() => {
 
           <div className="hero-stat-card">
             <span>🎯</span>
+            <span className="hero-stat-icon"><ClipboardList size={30} /></span>
             <div>
 <h3>{mockTests.length}</h3>
               <p>Tests</p>
@@ -200,6 +214,7 @@ useEffect(() => {
 
           <div className="hero-stat-card">
   <span>🔥</span>
+  <span className="hero-stat-icon"><Flame size={30} /></span>
   <div>
     <h3>{user?.streak ?? 0}</h3>
     <p>Day Streak</p>
@@ -215,11 +230,20 @@ useEffect(() => {
             <a href="/lectures">View all →</a>
           </div>
 
-       <div className="learning-grid">
+       <div className={learningLayoutClass}>
   {lectures.length > 0 ? (
     lectures.map((item) => (
       <div className="learning-card" key={item.id}>
-        <span>{item.exam}</span>
+        <div className="learning-card-top">
+          <span className="learning-topic-icon">
+            <Lightbulb size={20} />
+          </span>
+
+          <div className="learning-badges">
+            <span>{item.exam}</span>
+            <span>{item.topic}</span>
+          </div>
+        </div>
 
       
 
@@ -227,7 +251,7 @@ useEffect(() => {
 
         <p>Lecture {item.lectureNumber}</p>
 
-        <small>{item.topic}</small>
+        <small>{item.isRecorded ? "Recorded lecture" : "Live session"}</small>
 
         <button
           onClick={() => window.open(item.youtubeUrl, "_blank")}

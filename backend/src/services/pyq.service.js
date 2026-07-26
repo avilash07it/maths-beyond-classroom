@@ -17,6 +17,7 @@ const createPYQ = async (pyqData) => {
 const getAllPYQs = async (filters) => {
   const pyqs = await prisma.pYQ.findMany({
     where: {
+      status: "Published",
       ...(filters.exam && { exam: filters.exam }),
       ...(filters.topic && { topic: filters.topic }),
       
@@ -25,10 +26,16 @@ const getAllPYQs = async (filters) => {
 
   return pyqs;
 };
+const getAllPYQsForAdmin = async () => {
+  const pyqs = await prisma.pYQ.findMany();
+
+  return pyqs;
+};
 const getPYQById = async (id) => {
-  const pyq = await prisma.pYQ.findUnique({
+  const pyq = await prisma.pYQ.findFirst({
     where: {
       id: Number(id),
+      status: "Published",
     },
   });
 
@@ -63,6 +70,7 @@ const deletePYQ = async (id) => {
 module.exports = {
   createPYQ,
   getAllPYQs,
+  getAllPYQsForAdmin,
   getPYQById,
   updatePYQ,
   deletePYQ,

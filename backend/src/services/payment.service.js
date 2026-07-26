@@ -11,6 +11,12 @@ const createPayment = async (userId, paymentData) => {
     throw new Error("Plan not found");
   }
 
+  if (!plan.isActive) {
+    const error = new Error("Selected plan is inactive");
+    error.statusCode = 400;
+    throw error;
+  }
+
   const pendingPayment = await prisma.payment.findFirst({
     where: {
       userId: Number(userId),

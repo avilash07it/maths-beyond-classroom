@@ -38,7 +38,7 @@ const [pyqs, setPyqs] = useState([]);
   });
 const fetchPYQs = async () => {
   try {
-    const response = await api.get("/pyqs");
+    const response = await api.get("/pyqs/admin/getall");
 
     setPyqs(response.data.data);
   } catch (error) {
@@ -145,17 +145,6 @@ try {
   };
 
   const editPYQ = (pyq) => {
-    console.log("EDIT CLICKED");
-  console.log(pyq);
-   console.log("FORM SET", {
-    title: pyq.title,
-    exam: pyq.exam,
-    topic: pyq.topic,
-    year: pyq.year,
-    pdfUrl: pyq.pdfUrl,
-    status: pyq.status,
-  });
-
     setEditingPYQId(pyq.id);
     setForm(
      {

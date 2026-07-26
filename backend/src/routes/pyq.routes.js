@@ -7,6 +7,7 @@ const authMiddleware = require("../middleware/auth.middleware");
 const requireAdmin = require("../middleware/admin.middleware");
 
 router.post("/", authMiddleware, requireAdmin, pyqController.createPYQ);
+router.get("/admin/getall", authMiddleware, requireAdmin, pyqController.getAllPYQsForAdmin);
 router.get("/", pyqController.getAllPYQs);
 router.get("/:id", pyqController.getPYQById);
 router.put("/:id", authMiddleware, requireAdmin, pyqController.updatePYQ);

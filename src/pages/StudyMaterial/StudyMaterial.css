@@ -229,6 +229,16 @@
   gap:14px;
   flex-wrap:wrap;
 }
+
+.study-controls label {
+  flex: 1 1 220px;
+  max-width: 290px;
+}
+
+.study-controls button {
+  flex: 0 0 auto;
+}
+
 .study-search,
 .study-controls label,
 .study-controls button {
@@ -272,6 +282,17 @@
   cursor: pointer;
   color: #111827;
   font-weight: 800;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.study-controls button:hover,
+.study-controls label:hover {
+  border-color: rgba(124, 58, 237, 0.24);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
+}
+
+.study-controls button:hover {
+  transform: translateY(-2px);
 }
 
 .study-material-content {
@@ -463,6 +484,12 @@
   color: var(--material-accent, #6d28d9);
   font-weight: 800;
   cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.material-card button:hover,
+.study-pro-card button:hover {
+  transform: translateY(-2px);
 }
 
 .materials-empty-state {
@@ -620,6 +647,117 @@
   margin: 0;
   color: #64748b;
   line-height: 1.5;
+}
+
+.study-material-shell {
+  padding-inline: max(42px, calc((100vw - 1240px) / 2));
+}
+
+.study-material-breadcrumb {
+  line-height: 1.4;
+}
+
+.study-material-hero {
+  gap: 42px;
+}
+
+.study-hero-content {
+  min-width: 0;
+}
+
+.study-material-hero h1 {
+  max-width: 620px;
+}
+
+.study-material-hero p {
+  color: #dbe4f0;
+}
+
+.study-stat-chips {
+  align-items: center;
+}
+
+.study-stat-chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+}
+
+.material-flow-card strong {
+  line-height: 1.35;
+}
+
+.study-material-content {
+  align-items: start;
+}
+
+.materials-panel,
+.study-side-card,
+.study-reminder-card {
+  border-radius: 18px;
+  box-shadow: 0 16px 42px rgba(15, 23, 42, 0.055);
+}
+
+.materials-header {
+  align-items: center;
+}
+
+.materials-header h2 {
+  line-height: 1.2;
+}
+
+.materials-header p {
+  line-height: 1.65;
+}
+
+.materials-grid {
+  align-items: stretch;
+}
+
+.material-card {
+  min-width: 0;
+  min-height: 325px;
+}
+
+.material-card h3 {
+  min-height: 52px;
+}
+
+.material-tags strong {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: var(--material-soft);
+  line-height: 1;
+}
+
+.material-meta-row {
+  align-items: center;
+}
+
+.study-material-sidebar {
+  gap: 22px;
+}
+
+.study-side-card,
+.study-pro-card,
+.study-reminder-card {
+  height: 100%;
+}
+
+.organization-steps div {
+  min-height: 62px;
+}
+
+.study-pro-card {
+  border-radius: 22px;
+}
+
+.study-pro-card button {
+  min-height: 48px;
+}
+
+.study-reminder-card {
+  min-height: 106px;
 }
 
 @media (max-width: 1180px) {

@@ -5,6 +5,7 @@ const authMiddleware=require("../middleware/auth.middleware");
 const requireAdmin=require("../middleware/admin.middleware");
 
 router.post("/",authMiddleware,requireAdmin,potdController.createPOTD);
+router.get("/admin/getall",authMiddleware,requireAdmin,potdController.getAllPOTDsForAdmin);
 router.get("/",potdController.getAllPOTDs);
 router.get("/today", potdController.getTodayPOTD);
 router.get("/:id/hint", potdController.getHint);

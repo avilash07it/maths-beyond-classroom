@@ -33,7 +33,6 @@ function PYQLibrary() {
   const navigate = useNavigate();
 
   const filteredSets = useMemo(() => {
-    console.log("pyqSets state:", pyqSets);
     const searchTerm = query.trim().toLowerCase();
 
     return pyqSets.filter((set) => {
@@ -60,7 +59,6 @@ function PYQLibrary() {
   const fetchPYQs = async () => {
   try {
     const response = await api.get("/pyqs");
-console.log(response.data.data);
     setPyqSets(response.data.data);
   } catch (error) {
     console.error("Fetch Error:", error);

@@ -12,6 +12,13 @@ const register = async (req, res) => {
   } catch (error) {
     console.error("Register Error:", error);
 
+    if (error.message === "User already exists") {
+      return res.status(409).json({
+        success: false,
+        message: error.message,
+      });
+    }
+
     res.status(500).json({
       success: false,
       message: error.message,

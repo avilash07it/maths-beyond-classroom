@@ -33,6 +33,23 @@ const getAllPOTDs=async(req,res)=>{
         });
     }
 };
+const getAllPOTDsForAdmin=async(req,res)=>{
+    try{
+        const potds=await potdService.getAllPOTDsForAdmin();
+        res.status(200).json({
+            success: true,
+            count: potds.length,
+            message: "POTDs retrieved successfully",
+            data: potds
+        });
+    } catch(error){
+        console.error("Get All POTDs Error:",error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
 const getPOTDById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -141,4 +158,4 @@ const getSolution = async (req, res) => {
     });
   }
 };
-module.exports={createPOTD, getAllPOTDs, getPOTDById, deletePOTD, updatePOTD, getTodayPOTD, getHint, getSolution};
+module.exports={createPOTD, getAllPOTDs, getAllPOTDsForAdmin, getPOTDById, deletePOTD, updatePOTD, getTodayPOTD, getHint, getSolution};

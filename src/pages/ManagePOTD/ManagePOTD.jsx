@@ -49,7 +49,7 @@ function ManagePOTD() {
 };
 const fetchPOTDs = async () => {
   try {
-    const response = await api.get("/potd");
+    const response = await api.get("/potd/admin/getall");
 
     setProblems(response.data.data);
 
