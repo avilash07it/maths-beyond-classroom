@@ -401,7 +401,6 @@
   align-content: start;
 }
 
-.lecture-list-card,
 .lecture-side-card,
 .today-live-card,
 .lectures-info-card,
@@ -414,6 +413,17 @@
 
 .lecture-list-card {
   padding: 24px;
+   background:  radial-gradient(circle at 80% 20%, rgba(168,85,247,.45), transparent 45%),
+  radial-gradient(circle at 10% 100%, rgba(79,70,229,.25), transparent 50%),
+  linear-gradient(
+      135deg,
+      #120c33 0%,
+      #1d1247 40%,
+      #2a1760 100%
+  );
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
 }
 
 .lecture-section-header {
@@ -436,11 +446,12 @@
 
 .lecture-section-header h2 {
   font-size: 24px;
+  color:white
 }
 
 .lecture-section-header p {
   margin: 8px 0 0;
-  color: #475569;
+  color: #ffffff;
 }
 
 .lecture-section-header span {

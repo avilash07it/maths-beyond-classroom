@@ -69,27 +69,7 @@ box-shadow:
   gap: 12px;
 }
 
-/*.logo::before {
-  content: "M";
-  display: inline-grid;
-  place-items: center;
 
-  width: 42px;
-  height: 42px;
-  margin-right: 10px;
-
-  border-radius: 12px;
-
-  background: linear-gradient(135deg, #7c3aed, #a855f7, #2563eb);
-
-  color: white;
-
-  font-family: var(--font-heading);
-  font-weight: 800;
-
-  box-shadow:
-    0 0 25px rgba(139,92,246,0.45);
-}*/
 
 .logo-img {
   width: 47px;

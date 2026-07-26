@@ -363,18 +363,30 @@
   padding: 18px;
   border-radius: 20px;
 
-  background: white;
+background:
+  radial-gradient(circle at 80% 20%, rgba(168,85,247,.45), transparent 45%),
+  radial-gradient(circle at 10% 100%, rgba(79,70,229,.25), transparent 50%),
+  linear-gradient(
+      135deg,
+      #120c33 0%,
+      #1d1247 40%,
+      #2a1760 100%
+  );
 
   border: 1px solid #e5e7eb;
 
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
 }
 
-.topics-side-card h3,
+.topics-side-card h3{
+  margin: 0 0 16px;
+  font-size: 20px;
+  color: #ffffff;
+}
 .topics-help-card h3 {
   margin: 0 0 16px;
   font-size: 20px;
-  color: #0f172a;
+  color: #000000;
 }
 
 .exam-filter-list {

@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./DashboardNavbar.css";
 import logo from "../../assets/mbc-logo-8.png";
 import { useEffect, useState } from "react";
 
 function DashboardNavbar() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
 useEffect(() => {
   const storedUser = localStorage.getItem("user");
@@ -13,6 +14,15 @@ useEffect(() => {
     setUser(JSON.parse(storedUser));
   }
 }, []);
+const handleLogout = () => {
+  localStorage.removeItem("user");
+
+  localStorage.removeItem("token");
+
+  setUser(null);
+
+  navigate("/");
+};
   return (
     <nav className="dashboard-navbar">
       <div className="dashboard-logo">
@@ -37,6 +47,12 @@ useEffect(() => {
   <NavLink to="/mock-tests">Mock Tests</NavLink>
   <NavLink to="/potd">POTD</NavLink>
 </div>
+<button
+  className="login-btn dashboard-logout-btn"
+  onClick={handleLogout}
+>
+  Logout
+</button>
 
       
     </nav>

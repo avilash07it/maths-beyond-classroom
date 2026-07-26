@@ -161,7 +161,20 @@ align-self: center;
   background: linear-gradient(180deg, #f8f7ff 0%, #ffffff 45%, #f8fafc 100%);
   }
   
-  .dashboard-main,
+  .dashboard-main{
+   background:
+  radial-gradient(circle at 80% 20%, rgba(127, 66, 184, 0.45), transparent 45%),
+  radial-gradient(circle at 10% 100%, rgba(79,70,229,.25), transparent 50%),
+  linear-gradient(
+      135deg,
+      #120c33 0%,
+      #130b32 40%,
+      #1b0e3e 100%
+  );
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.06);
+  }
   .dashboard-sidebar {
     background: white;
     border-radius: 24px;
@@ -177,11 +190,12 @@ align-self: center;
   
   .section-header h2 {
     margin: 0;
+    color: #ffffff;
     font-size: 22px;
   }
   
   .section-header a {
-    color: #5b21b6;
+    color: #ffffff;
     font-weight: 700;
     text-decoration: none;
   }
