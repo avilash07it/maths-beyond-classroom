@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, BellRing, Check, Clock3, LockKeyhole, X } from "lucide-react";
-
+import axios from "axios";
 import "./AdminDashboard.css";
 
 import {
@@ -9,12 +9,19 @@ import {
   adminDashboardPayments,
   adminDashboardReminders,
   adminDashboardSecurity,
-  adminDashboardStats,
 } from "./adminDashboardData";
 
 function AdminDashboard() {
   const [payments, setPayments] = useState(adminDashboardPayments);
   const SecurityIcon = adminDashboardSecurity.icon;
+  const [stats, setStats] = useState({
+  lectures: 0,
+  materials: 0,
+  pyqs: 0,
+  mockTests: 0,
+  potds: 0,
+  students: 0,
+});
 
   const updatePaymentStatus = (paymentId, status) => {
     setPayments((currentPayments) =>
@@ -23,6 +30,42 @@ function AdminDashboard() {
       ),
     );
   };
+  const fetchDashboardStats = async () => {
+  try {
+    const [
+  lectures,
+  materials,
+  pyqs,
+  mockTests,
+  potds,
+] = await Promise.all([
+  axios.get("http://localhost:5000/api/lectures"),
+  axios.get("http://localhost:5000/api/materials"),
+  axios.get("http://localhost:5000/api/pyqs"),
+  axios.get("http://localhost:5000/api/mock-tests/getall"),
+  axios.get("http://localhost:5000/api/potd"),
+]);
+    console.log("Lectures:", lectures.data);
+console.log("Materials:", materials.data);
+console.log("PYQs:", pyqs.data);
+console.log("Mock Tests:", mockTests.data);
+console.log("POTD:", potds.data);
+
+  setStats({
+  lectures: lectures.data.data.length,
+  materials: materials.data.data.length,
+  pyqs: pyqs.data.data.length,
+  mockTests: mockTests.data.length,
+  potds: potds.data.data.length,
+  students:0
+});
+  } catch (error) {
+    console.error(error);
+  }
+};
+useEffect(() => {
+  fetchDashboardStats();
+}, []);
 
   return (
     <main className="admin-dashboard-page">
@@ -55,29 +98,52 @@ function AdminDashboard() {
             <span>Platform Overview</span>
             <h2>Today&apos;s control room</h2>
           </div>
-          <p>Dummy data for MVP layout and future backend connection.</p>
         </div>
 
         <section className="admin-dashboard-stats-grid" aria-label="Overview stats">
-          {adminDashboardStats.map((stat) => {
-            const StatIcon = stat.icon;
-
-            return (
-              <article
-                className={`admin-dashboard-stat-card admin-dashboard-tone-${stat.tone}`}
-                key={stat.label}
-              >
-                <div className="admin-dashboard-stat-icon" aria-hidden="true">
-                  <StatIcon size={25} />
-                </div>
-                <div>
-                  <span>{stat.label}</span>
-                  <strong>{stat.value}</strong>
-                  <p>{stat.note}</p>
-                </div>
-              </article>
-            );
-          })}
+         {[
+  {
+    label: "Lectures",
+    value: stats.lectures,
+    note: "Uploaded",
+  },
+  {
+    label: "Study Materials",
+    value: stats.materials,
+    note: "Available",
+  },
+  {
+    label: "PYQs",
+    value: stats.pyqs,
+    note: "Uploaded",
+  },
+  {
+    label: "Mock Tests",
+    value: stats.mockTests,
+    note: "Created",
+  },
+  {
+    label: "POTDs",
+    value: stats.potds,
+    note: "Published",
+  },
+  {
+    label: "Students",
+    value: stats.students,
+    note: "Registered",
+  },
+].map((stat) => (
+  <article
+    className="admin-dashboard-stat-card"
+    key={stat.label}
+  >
+    <div>
+      <span>{stat.label}</span>
+      <strong>{stat.value}</strong>
+      <p>{stat.note}</p>
+    </div>
+  </article>
+))}
         </section>
 
         <div className="admin-dashboard-workspace-grid">

@@ -13,50 +13,6 @@ import {
   UploadCloud,
 } from "lucide-react";
 
-export const adminDashboardStats = [
-  {
-    label: "Total Lectures",
-    value: "124",
-    note: "18 updated this month",
-    tone: "purple",
-    icon: BookOpen,
-  },
-  {
-    label: "Study Materials",
-    value: "86",
-    note: "PDFs and worksheets",
-    tone: "green",
-    icon: FileText,
-  },
-  {
-    label: "PYQ Resources",
-    value: "342",
-    note: "Topic-wise questions",
-    tone: "orange",
-    icon: FileQuestion,
-  },
-  {
-    label: "Active Mock Tests",
-    value: "12",
-    note: "Across Olympiad tracks",
-    tone: "blue",
-    icon: ClipboardList,
-  },
-  {
-    label: "Pending Payments",
-    value: "7",
-    note: "Manual UPI checks",
-    tone: "gold",
-    icon: CreditCard,
-  },
-  {
-    label: "POTD Updated",
-    value: "Today",
-    note: "Geometry challenge live",
-    tone: "violet",
-    icon: Flame,
-  },
-];
 
 export const adminDashboardManagementCards = [
   {
