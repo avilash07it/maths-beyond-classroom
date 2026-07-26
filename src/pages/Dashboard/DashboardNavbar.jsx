@@ -35,10 +35,7 @@ const handleLogout = () => {
         </div>
       </div>
 
-      <div className="dashboard-links">
-        <div className="dashboard-streak">
-  🔥 {user?.streak ?? 0} Day{user?.streak === 1 ? "" : "s"}
-</div>
+ <div className="dashboard-links">
   <NavLink to="/dashboard">Dashboard</NavLink>
   <NavLink to="/topics">Topics</NavLink>
   <NavLink to="/lectures">Lectures</NavLink>
@@ -48,13 +45,19 @@ const handleLogout = () => {
   <NavLink to="/books">Books</NavLink>
   <NavLink to="/potd">POTD</NavLink>
 </div>
-<button
-  className="login-btn dashboard-logout-btn"
-  onClick={handleLogout}
->
-  Logout
-</button>
 
+<div className="dashboard-user-actions">
+  <div className="dashboard-streak">
+    🔥 {user?.streak ?? 0} Day{user?.streak === 1 ? "" : "s"}
+  </div>
+
+  <button
+    className="dashboard-logout-btn"
+    onClick={handleLogout}
+  >
+    Logout
+  </button>
+</div>
       
     </nav>
   );

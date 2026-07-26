@@ -1,44 +1,51 @@
-.dashboard-navbar {
-  height: 88px;
-  padding: 0 40px;
+.dashboard-navbar{
+  height:88px;
+  padding:0 40px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:flex;
+  align-items:center;
 
   background:
-    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.12), transparent 35%),
-    rgba(5, 7, 26, 0.96);
+    radial-gradient(circle at 50% 0%, rgba(124,58,237,.12), transparent 35%),
+    rgba(5,7,26,.96);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
 
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 
 .dashboard-logout-btn{
-  appearance:none;
-  border:none;
-  outline:none;
+  height:44px;
+  padding:0 20px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:999px;
+
   background:transparent;
+  color:white;
 
-  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.25);
 
-  border-radius:12px;
-
-  color:#f8fafc;
-
-  font-size:15px;
-  font-weight:550;
   font-family:var(--font-heading);
+  font-size:15px;
+  font-weight:600;
 
   cursor:pointer;
-  transition:.25s ease;
+  transition:.25s;
 
-  flex:0 0 auto;
+  white-space:nowrap;
+}
+
+.dashboard-logout-btn:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.45);
 }
 
 .dashboard-logout-btn:hover{
@@ -50,10 +57,12 @@
     flex:0 0 auto;
 }
 
-.dashboard-logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.dashboard-logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  flex-shrink:0;
 }
 
 .dashboard-logo img {
@@ -78,10 +87,24 @@
   letter-spacing: 1.1px;
 }
 
-.dashboard-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.dashboard-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  flex:1;
+
+  gap:12px;
+
+  margin:0 32px;
+}
+
+.dashboard-user-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  flex-shrink:0;
 }
 
 .dashboard-links a {
@@ -115,10 +138,10 @@
 }
 
 .dashboard-streak {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
   padding: 10px 18px;
 
   border-radius: 999px;
@@ -143,6 +166,12 @@
   }
 
   .dashboard-links {
+     display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex:1;        
+  gap:12px;
     order: 3;
     width: 100%;
     gap: 10px;

@@ -71,20 +71,6 @@ function Books() {
               </button>
             </div>
 
-            <div className="books-hero-panel" aria-label="Book collection summary">
-              <div>
-                <strong>{books.length}</strong>
-                <span>Curated books</span>
-              </div>
-              <div>
-                <strong>IOQM</strong>
-                <span>Foundation to advanced</span>
-              </div>
-              <div>
-                <strong>RMO</strong>
-                <span>Proof-first practice</span>
-              </div>
-            </div>
           </section>
 
           <section className="books-section" id="books-grid">
