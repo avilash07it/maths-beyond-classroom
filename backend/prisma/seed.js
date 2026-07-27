@@ -1,8 +1,20 @@
 require("dotenv").config();
 
 const prisma = require("../src/configuration/prisma");
+const bcrypt = require("bcryptjs");
 
 async function main() {
+
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  
+  if (!adminEmail || !adminPassword) {
+    throw new Error(
+      "ADMIN_EMAIL and ADMIN_PASSWORD must be set in the environment."
+    );
+  }
+  
+  const hashedPassword = await bcrypt.hash(adminPassword, 10);
   // ----------------------------
   // Personal Support
   // ----------------------------
@@ -24,7 +36,24 @@ async function main() {
       isActive: true,
     },
   });
-
+// ----------------------------
+// Admin User
+// ----------------------------
+await prisma.user.upsert({
+  where: {
+    email: adminEmail,
+  },
+  update: {
+    password: hashedPassword,
+  },
+    create: {
+    name: "Administrator",
+    email: adminEmail,
+    password: hashedPassword,
+    role: "ADMIN",
+    isPro: true,
+  },
+});
   // Remove existing plans
   await prisma.plan.deleteMany();
 
