@@ -55,11 +55,17 @@ await prisma.user.upsert({
   },
 });
   // Remove existing plans
-  await prisma.plan.deleteMany();
+  
+  //await prisma.plan.deleteMany();
 
-  // ----------------------------
-  // Plans
-  // ----------------------------
+ // ----------------------------
+// Plans
+// ----------------------------
+
+// Check if plans already exist
+const existingPlans = await prisma.plan.count();
+
+if (existingPlans === 0) {
   await prisma.plan.createMany({
     data: [
       {
@@ -73,7 +79,7 @@ await prisma.user.upsert({
           "Curated SEHSS Test Series",
           "Additional SEHSS Study Resources",
           "Personal Academic Support",
-          "Access to Premium Discussion Groups"
+          "Access to Premium Discussion Groups",
         ],
         bestFor:
           "Students targeting SEHSS and strengthening school mathematics foundations.",
@@ -93,7 +99,7 @@ await prisma.user.upsert({
           "Curated IOQM Test Series",
           "Additional IOQM Study Resources",
           "Personal Academic Support",
-          "Access to Premium Discussion Groups"
+          "Access to Premium Discussion Groups",
         ],
         bestFor: "Students preparing specifically for IOQM.",
         badge: null,
@@ -113,7 +119,7 @@ await prisma.user.upsert({
           "Curated IOQM Test Series",
           "Additional Content for SEHSS & IOQM",
           "Personal Academic Support",
-          "Access to Premium Discussion Groups"
+          "Access to Premium Discussion Groups",
         ],
         bestFor:
           "Students simultaneously preparing for school examinations and Olympiad mathematics.",
@@ -136,7 +142,7 @@ await prisma.user.upsert({
           "Advanced Problem-Solving Approaches and Shortcuts",
           "Detailed Performance Analytics",
           "AI-Powered Learning Features",
-          "Extended Support for Higher Olympiad Levels (RMO and Beyond)"
+          "Extended Support for Higher Olympiad Levels (RMO and Beyond)",
         ],
         bestFor:
           "Students aiming for top ranks in IOQM, RMO, and advanced mathematics competitions.",
@@ -147,6 +153,11 @@ await prisma.user.upsert({
       },
     ],
   });
+
+  console.log("✅ Plans seeded.");
+} else {
+  console.log("ℹ️ Plans already exist. Skipping plan seed.");
+}
 
   console.log("✅ Database seeded successfully.");
 }
