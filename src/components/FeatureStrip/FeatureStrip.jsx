@@ -12,7 +12,7 @@ function FeatureStrip() {
     {
       icon: <FileQuestion size={30} strokeWidth={2.3} />,
       title: "Past Year Questions",
-      text: "10K+ Questions",
+      text: "1K+ Questions",
       color: "orange",
     },
     {

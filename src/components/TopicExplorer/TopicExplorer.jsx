@@ -2,15 +2,15 @@ import "./TopicExplorer.css";
 
 function TopicExplorer() {
   const topics = [
-    { icon: "√x", title: "Algebra", problems: "320 Problems", color: "green", progress: 0 },
+    { icon: "√x", title: "Algebra", problems: "300 Problems", color: "green", progress: 0 },
   
-    { icon: "◼●", title: "Geometry", problems: "280 Problems", color: "purple", progress: 0 },
+    { icon: "◼●", title: "Geometry", problems: "250 Problems", color: "purple", progress: 0 },
   
-    { icon: "#", title: "Number Theory", problems: "250 Problems", color: "orange", progress: 0 },
+    { icon: "#", title: "Number Theory", problems: "200 Problems", color: "orange", progress: 0 },
   
-    { icon: "△", title: "Combinatorics", problems: "210 Problems", color: "yellow", progress: 0 },
+    { icon: "△", title: "Combinatorics", problems: "100 Problems", color: "yellow", progress: 0 },
   
-    { icon: "∞", title: "Advanced", problems: "70 Problems", color: "blue", progress: 0 },
+    { icon: "∞", title: "Advanced", problems: "50 Problems", color: "blue", progress: 0 },
   ];
 
   return (

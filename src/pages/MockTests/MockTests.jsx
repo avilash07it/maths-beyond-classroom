@@ -234,7 +234,7 @@ const handleAttempt = async (test) => {
               {accessMessage ||
                 (isProUser
                   ? "Your current plan access is active."
-                  : "Free and premium tests are listed together.")}
+                  : "Test Series")}
             </p>
           </div>
 

@@ -22,7 +22,7 @@ function StatsBar() {
     {
       icon: <FileText size={42} strokeWidth={2} />,
       number: "30+",
-      label: "PYQ Papers",
+      label: "Sample Papers",
     },
     {
       icon: <Trophy size={42} strokeWidth={2} />,

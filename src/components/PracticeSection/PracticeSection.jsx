@@ -94,7 +94,7 @@ function PracticeSection() {
           </div>
 
           <div className="registered-box">
-            <b>1200+</b>
+            <b>120+</b>
             <span>Students Registered</span>
           </div>
         </div>

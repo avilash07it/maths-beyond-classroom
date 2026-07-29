@@ -20,7 +20,7 @@ const createMockTest = async (mockTestData) => {
 const getAllMockTests = async () => {
   return await prisma.mockTest.findMany({
     where: {
-      status: "Published",
+      status: "Live",
     },
     select: {
       id: true,
@@ -47,7 +47,7 @@ const getMockTestById = async (id) => {
   return await prisma.mockTest.findFirst({
     where: {
       id: Number(id),
-      status: "Published",
+      status: "Live",
     },
     select: {
       id: true,
@@ -106,7 +106,7 @@ const startMockTest = async (userId, mockTestId) => {
     throw new Error("Mock test not found.");
   }
 
-  if (mockTest.status !== "Published") {
+  if (mockTest.status !== "Live") {
     throw new Error("Mock test not found.");
   }
 

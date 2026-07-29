@@ -92,41 +92,45 @@ const fetchMaterials = async () => {
           </div>
 
           <div className="topics-grid">
-            {topics.map((topic) => {
-              const TopicIcon = topic.icon;
-const lectureCount = lectures.filter(
-  (lecture) => lecture.topic === topic.title
-).length;
+  {topics.map((topic) => {
+    const TopicIcon = topic.icon;
 
-const materialCount = materials.filter(
-  (material) => material.topic === topic.title
-).length;
-              return (
-                <div className={`topic-card ${topic.color}`} key={topic.title}>
-                  <div className="topic-icon">
-                    <TopicIcon size={38} />
-                  </div>
+    const lectureCount = lectures.filter(
+      (lecture) => lecture.topic === topic.title
+    ).length;
 
-                  <h3>{topic.title}</h3>
-                  <p>{topic.description}</p>
+    const materialCount = materials.filter(
+      (material) => material.topic === topic.title
+    ).length;
 
-                  <div className="topic-meta">
-                   <span>{lectureCount} Lectures</span>
-                  </div>
+    return (
+      <div
+        className={`topics-topic-card ${topic.color}`}
+        key={topic.title}
+      >
+        <div className="topics-topic-icon">
+          <TopicIcon size={38} />
+        </div>
 
-<button
-  onClick={() =>
-    navigate(
-      `/lectures?topic=${encodeURIComponent(topic.title)}`
-    )
-  }
->
-  View Lectures →
-</button>           
-     </div>
-              );
-            })}
-          </div>
+        <h3>{topic.title}</h3>
+        <p>{topic.description}</p>
+
+        <div className="topics-topic-meta">
+          <span>{lectureCount} Lectures</span>
+        </div>
+
+        <button
+          onClick={() =>
+            navigate(`/lectures?topic=${encodeURIComponent(topic.title)}`)
+          }
+        >
+          View Lectures →
+        </button>
+      </div>
+    );
+  })}
+</div>
+            
           <div className="topics-pro-card">
   <div>
     <span className="topics-pro-label">GO PRO</span>
