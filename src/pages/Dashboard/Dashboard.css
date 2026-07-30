@@ -145,11 +145,11 @@ align-self: center;
   }
   
   .hero-stat-card p {
-    margin-top: 4px;
+    font-size:13px;
+    margin-top:2px;
   
     font-family: "Inter", sans-serif;
   
-    font-size: 14px;
     color: #cbd5e1;
   }
   
@@ -1265,12 +1265,16 @@ align-self: center;
   }
 
   .dashboard-hero h1{
-    font-size:40px;
-  }
+    font-size:32px;
+    line-height:1.15;
+    margin-bottom:10px;
+}
 
-  .dashboard-hero p{
-    font-size:16px;
-  }
+.dashboard-hero p{
+  font-size:15px;
+  line-height:1.5;
+  max-width:340px;
+}
 
   .hero-status-cards{
     flex-direction:column;
@@ -1284,8 +1288,9 @@ align-self: center;
 
   .hero-stats-panel{
     width:100%;
-    grid-template-columns:1fr;
-  }
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
 
   .dashboard-content{
     grid-template-columns:1fr;
@@ -1320,8 +1325,8 @@ align-self: center;
 @media (max-width:576px){
 
   .dashboard-hero{
-    padding:28px 18px;
-  }
+    padding:20px 18px 16px;
+}
 
   .dashboard-hero h1{
     font-size:34px;
@@ -1480,9 +1485,9 @@ align-self: center;
     linear-gradient(180deg, #05071a 0%, #07091f 430px, #f8fafc 430px, #ffffff 100%);
 }
 
-.dashboard-hero {
-  min-height: 390px;
-  padding: 76px max(48px, calc((100vw - 1390px) / 2)) 86px;
+  .dashboard-hero {
+    min-height: 300px;
+    padding: 58px max(48px, calc((100vw - 1390px) / 2)) 52px;
   align-items: flex-start;
 }
 
@@ -1534,8 +1539,9 @@ align-self: center;
 }
 
 .hero-stat-card {
-  min-height: 136px;
-  padding: 26px;
+  min-height:90px;
+  padding:16px;
+  gap:12px;
   border-radius: var(--dash-radius);
   background:
     radial-gradient(circle at 18% 20%, rgba(168, 85, 247, 0.18), transparent 32%),
@@ -1543,15 +1549,16 @@ align-self: center;
 }
 
 .hero-stat-card span {
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  font-size: 30px;
+  width:46px;
+    height:46px;
+    border-radius:14px;
+    font-size:22px;
   box-shadow: 0 16px 34px rgba(124, 58, 237, 0.18);
 }
 
 .hero-stat-card h3 {
-  font-size: 40px;
+  font-size:22px;
+    margin:0;
   line-height: 1;
 }
 
