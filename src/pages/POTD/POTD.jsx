@@ -132,23 +132,43 @@ useEffect(() => {
 }, [todayProblem]);
 if (loading) {
   return (
-    <div className="potd-page">
-      <DashboardNavbar />
-      <main className="potd-shell">
-        <h2>Loading today's problem...</h2>
-      </main>
-    </div>
+    <PageTransition>
+      <div className="potd-page premium-loading-page">
+        <DashboardNavbar />
+        <main className="potd-shell premium-loading-shell">
+          <section className="premium-page-loader" aria-busy="true">
+            <span className="premium-loader-bar" />
+            <div className="premium-loader-copy">
+              <span>Daily Challenge</span>
+              <h2>Loading today's problem...</h2>
+            </div>
+            <div className="premium-loader-grid">
+              <span />
+              <span />
+              <span />
+            </div>
+          </section>
+        </main>
+      </div>
+    </PageTransition>
   );
 }
 
 if (!todayProblem) {
   return (
-    <div className="potd-page">
-      <DashboardNavbar />
-      <main className="potd-shell">
-        <h2>No POTD Published Yet</h2>
-      </main>
-    </div>
+    <PageTransition>
+      <div className="potd-page premium-loading-page">
+        <DashboardNavbar />
+        <main className="potd-shell premium-loading-shell">
+          <section className="premium-page-loader">
+            <div className="premium-loader-copy">
+              <span>Daily Challenge</span>
+              <h2>No POTD Published Yet</h2>
+            </div>
+          </section>
+        </main>
+      </div>
+    </PageTransition>
   );
 }
 const streakDays = [];

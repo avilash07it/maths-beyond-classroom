@@ -451,3 +451,162 @@
     font-size: 24px;
   }
 }
+
+/* About page balance refinements */
+.about-hero-panel {
+  align-self: stretch;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.about-equation-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-equation-card::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 92px;
+  height: 92px;
+  border-radius: 28px;
+  border: 1px solid rgba(196, 181, 253, 0.18);
+  transform: rotate(14deg);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.about-topic-grid span {
+  min-height: 54px;
+}
+
+.about-mission {
+  align-items: center;
+}
+
+.about-section-label {
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #f5f3ff;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+.about-mission .about-section-label,
+.about-vision .about-section-label {
+  align-self: start;
+}
+
+.about-offer-grid,
+.about-choice-grid {
+  align-items: stretch;
+}
+
+.about-feature-card,
+.about-choice-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-feature-card {
+  min-height: 218px;
+}
+
+.about-feature-card p,
+.about-choice-card p {
+  margin-top: 10px;
+}
+
+.about-kota-card {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+}
+
+.about-kota-card::after {
+  content: "";
+  position: absolute;
+  right: 34px;
+  bottom: -32px;
+  width: 210px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.12), transparent 68%);
+  pointer-events: none;
+}
+
+.about-choice-card {
+  min-height: 194px;
+}
+
+.about-bottom-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-bottom-cta::after {
+  content: "";
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(196, 181, 253, 0.12);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.14), transparent 64%);
+  pointer-events: none;
+}
+
+.about-bottom-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1180px) {
+  .about-hero-panel {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+    grid-template-rows: none;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-shell {
+    padding-bottom: 42px;
+  }
+
+  .about-hero {
+    gap: 18px;
+  }
+
+  .about-hero-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .about-equation-card {
+    min-height: 148px;
+    padding: 22px;
+  }
+
+  .about-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-topic-grid span {
+    min-height: 44px;
+  }
+
+  .about-mission,
+  .about-section,
+  .about-kota-card,
+  .about-vision,
+  .about-bottom-cta {
+    margin-top: 18px;
+  }
+
+  .about-feature-card,
+  .about-choice-card {
+    min-height: 0;
+  }
+}

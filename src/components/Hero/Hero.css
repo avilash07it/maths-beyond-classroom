@@ -875,14 +875,14 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:285px;
+    height:312px;
     margin-top:2px;
     overflow:visible;
   }
 
   .premium-math-visual{
-    width:min(280px, 74vw);
-    height:min(280px, 74vw);
+    width:min(306px, 76vw);
+    height:min(306px, 76vw);
     top:0;
     animation:floatVisualMobile 8s ease-in-out infinite;
   }
@@ -940,12 +940,12 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:250px;
+    height:266px;
   }
 
   .premium-math-visual{
-    width:min(238px, 72vw);
-    height:min(238px, 72vw);
+    width:min(258px, 74vw);
+    height:min(258px, 74vw);
   }
 
   .float-card{

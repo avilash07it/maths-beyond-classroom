@@ -127,8 +127,23 @@ if (!loading && lectures.length === 0) {
  if (loading) {
   return (
     <PageTransition>
-      <div className="lectures-page">
-         <h2>Loading lectures...</h2>
+      <div className="lectures-page premium-loading-page">
+        <DashboardNavbar />
+
+        <main className="lectures-shell premium-loading-shell">
+          <section className="premium-page-loader" aria-busy="true">
+            <span className="premium-loader-bar" />
+            <div className="premium-loader-copy">
+              <span>Preparing Library</span>
+              <h2>Loading lectures...</h2>
+            </div>
+            <div className="premium-loader-grid">
+              <span />
+              <span />
+              <span />
+            </div>
+          </section>
+        </main>
       </div>
     </PageTransition>
   );

@@ -121,13 +121,26 @@ const featuredMaterial =
   };
 if (loading) {
   return (
-    <div className="study-material-page">
-      <DashboardNavbar />
+    <PageTransition>
+      <div className="study-material-page premium-loading-page">
+        <DashboardNavbar />
 
-      <main className="study-material-shell">
-        <h2>Loading study materials...</h2>
-      </main>
-    </div>
+        <main className="study-material-shell premium-loading-shell">
+          <section className="premium-page-loader" aria-busy="true">
+            <span className="premium-loader-bar" />
+            <div className="premium-loader-copy">
+              <span>Syncing Resources</span>
+              <h2>Loading study materials...</h2>
+            </div>
+            <div className="premium-loader-grid">
+              <span />
+              <span />
+              <span />
+            </div>
+          </section>
+        </main>
+      </div>
+    </PageTransition>
   );
 }
   return (
