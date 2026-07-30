@@ -842,11 +842,11 @@ bottom: 115px;
 @media (max-width:768px){
 
   .hero-section{
-    padding:112px 22px 28px;
-    gap:12px;
+    padding:165px 22px 28px;
+    gap:18px;
     min-height:auto;
     align-items:start;
-  }
+}
 
   .hero-left h1{
     font-size:clamp(34px, 8.2vw, 42px);
@@ -865,9 +865,9 @@ bottom: 115px;
   }
 
   .hero-actions{
-    margin-top:22px;
+    margin-top:18px;
     gap:10px;
-  }
+}
 
   .primary-action,
   .secondary-action{
@@ -875,14 +875,14 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:312px;
-    margin-top:2px;
+    height:285px;
+    margin-top:0;
     overflow:visible;
-  }
+}
 
-  .premium-math-visual{
-    width:min(306px, 76vw);
-    height:min(306px, 76vw);
+.premium-math-visual{
+  width:min(285px,72vw);
+  height:min(285px,72vw);
     top:0;
     animation:floatVisualMobile 8s ease-in-out infinite;
   }

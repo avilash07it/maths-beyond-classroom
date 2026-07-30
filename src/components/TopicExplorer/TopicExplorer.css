@@ -579,10 +579,10 @@
 }
 
 .topic-card{
-  height:205px;
-  min-height:205px;
+  height:178px;
+    min-height:178px;
 
-  padding:16px 12px;
+    padding:14px 12px 10px;
 
   border-radius:18px;
 
@@ -590,8 +590,8 @@
 }
 
 .topic-icon{
-  width:46px;
-  height:46px;
+  width:42px;
+  height:42px;
 
   margin-bottom:8px;
 
@@ -599,12 +599,12 @@
 }
 
 .topic-card h3{
-  font-size:18px;
+  font-size:17px;
   line-height:1.15;
 }
 
 .topic-card span{
-  margin-top:6px;
+  margin-top:4px;
 
   padding:4px 8px;
 
@@ -612,7 +612,7 @@
 }
 
 .topic-card p{
-  margin:8px 0;
+  margin:6px 0;
 
   min-height:auto;
 
@@ -620,8 +620,8 @@
 }
 
   .topic-progress{
-    height:5px;
-    margin-top:0;
+    height:4px;
+    margin-top:6px;
   }
 }
 
