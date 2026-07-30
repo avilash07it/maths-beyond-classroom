@@ -837,3 +837,118 @@ bottom: 115px;
   }
 
 }
+
+/* Mobile homepage refinement */
+@media (max-width:768px){
+
+  .hero-section{
+    padding:112px 22px 28px;
+    gap:12px;
+    min-height:auto;
+    align-items:start;
+  }
+
+  .hero-left h1{
+    font-size:clamp(34px, 8.2vw, 42px);
+    line-height:1.1;
+    margin-bottom:14px;
+  }
+
+  .hero-left p{
+    max-width:34rem;
+    font-size:16px;
+    line-height:1.58;
+  }
+
+  .exam-pill{
+    margin-bottom:16px;
+  }
+
+  .hero-actions{
+    margin-top:22px;
+    gap:10px;
+  }
+
+  .primary-action,
+  .secondary-action{
+    min-height:48px;
+  }
+
+  .hero-right{
+    height:285px;
+    margin-top:2px;
+    overflow:visible;
+  }
+
+  .premium-math-visual{
+    width:min(280px, 74vw);
+    height:min(280px, 74vw);
+    top:0;
+    animation:floatVisualMobile 8s ease-in-out infinite;
+  }
+
+  .float-card{
+    min-width:124px;
+    max-width:138px;
+    padding:10px 11px;
+    gap:8px;
+    border-radius:14px;
+    transform:scale(.78);
+  }
+
+  .float-card b{
+    font-size:12px;
+  }
+
+  .float-card span{
+    margin-top:2px;
+    font-size:11px;
+    line-height:1.35;
+  }
+
+  .rank-card{
+    left:0;
+    top:72px;
+  }
+
+  .challenge-card{
+    right:0;
+    top:24px;
+  }
+
+  .streak-card{
+    right:0;
+    bottom:22px;
+  }
+}
+
+@keyframes floatVisualMobile{
+  0%,100%{
+    transform:translateX(-50%) translateY(0);
+  }
+
+  50%{
+    transform:translateX(-50%) translateY(-8px);
+  }
+}
+
+@media (max-width:400px){
+
+  .hero-section{
+    padding:104px 14px 24px;
+    gap:10px;
+  }
+
+  .hero-right{
+    height:250px;
+  }
+
+  .premium-math-visual{
+    width:min(238px, 72vw);
+    height:min(238px, 72vw);
+  }
+
+  .float-card{
+    transform:scale(.68);
+  }
+}

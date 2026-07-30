@@ -1,6 +1,7 @@
 import "./App.css";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -50,39 +51,49 @@ function HomePage() {
   );
 }
 
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/topics" element={<ProtectedRoute><TopicExplorerPage /></ProtectedRoute>} />
+        <Route path="/lectures" element={<ProtectedRoute><Lectures /></ProtectedRoute>} />
+        <Route path="/study-material" element={<ProtectedRoute><StudyMaterial /></ProtectedRoute>} />
+        <Route path="/pyq-library" element={<ProtectedRoute><PYQLibrary /></ProtectedRoute>} />
+        <Route path="/mock-tests" element={<ProtectedRoute><MockTests /></ProtectedRoute>} />
+        <Route path="/potd" element={<ProtectedRoute><POTD /></ProtectedRoute>} />
+        <Route path="/pro-plans" element={<ProtectedRoute><ProPlans /></ProtectedRoute>} />
+        <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+        <Route path="/manual-payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin-dashboard" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
+        <Route path="/admin/manage-lectures" element={<ProtectedRoute adminOnly><ManageLectures /></ProtectedRoute>} />
+        <Route path="/admin/manage-study-material" element={<ProtectedRoute adminOnly><ManageStudyMaterial /></ProtectedRoute>} />
+        <Route path="/admin/manage-pyqs" element={<ProtectedRoute adminOnly><ManagePYQs /></ProtectedRoute>} />
+        <Route path="/admin/manage-potd" element={<ProtectedRoute adminOnly><ManagePOTD /></ProtectedRoute>} />
+        <Route path="/admin/manage-payments" element={<ProtectedRoute adminOnly><ManagePayments /></ProtectedRoute>} />
+        <Route path="/admin/manage-mock-tests" element={<ProtectedRoute adminOnly><ManageMockTests /></ProtectedRoute>} />
+        <Route
+          path="/topics/number-theory"
+          element={<ProtectedRoute><TopicDetail /></ProtectedRoute>}
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/topics" element={<ProtectedRoute><TopicExplorerPage /></ProtectedRoute>} />
-          <Route path="/lectures" element={<ProtectedRoute><Lectures /></ProtectedRoute>} />
-          <Route path="/study-material" element={<ProtectedRoute><StudyMaterial /></ProtectedRoute>} />
-          <Route path="/pyq-library" element={<ProtectedRoute><PYQLibrary /></ProtectedRoute>} />
-          <Route path="/mock-tests" element={<ProtectedRoute><MockTests /></ProtectedRoute>} />
-          <Route path="/potd" element={<ProtectedRoute><POTD /></ProtectedRoute>} />
-          <Route path="/pro-plans" element={<ProtectedRoute><ProPlans /></ProtectedRoute>} />
-          <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
-          <Route path="/manual-payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-dashboard" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
-          <Route path="/admin/manage-lectures" element={<ProtectedRoute adminOnly><ManageLectures /></ProtectedRoute>} />
-          <Route path="/admin/manage-study-material" element={<ProtectedRoute adminOnly><ManageStudyMaterial /></ProtectedRoute>} />
-          <Route path="/admin/manage-pyqs" element={<ProtectedRoute adminOnly><ManagePYQs /></ProtectedRoute>} />
-          <Route path="/admin/manage-potd" element={<ProtectedRoute adminOnly><ManagePOTD /></ProtectedRoute>} />
-          <Route path="/admin/manage-payments" element={<ProtectedRoute adminOnly><ManagePayments /></ProtectedRoute>} />
-          <Route path="/admin/manage-mock-tests" element={<ProtectedRoute adminOnly><ManageMockTests /></ProtectedRoute>} />
-          <Route
-  path="/topics/number-theory"
-  element={<ProtectedRoute><TopicDetail /></ProtectedRoute>}
-/>
-        </Routes>
+        <AnimatedRoutes />
       </BrowserRouter>
     </div>
   );

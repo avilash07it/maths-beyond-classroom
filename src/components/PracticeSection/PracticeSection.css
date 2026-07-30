@@ -886,3 +886,47 @@
   }
 
 }
+
+/* Mobile homepage refinement */
+@media (max-width:768px){
+
+  .practice-section{
+    padding:16px 22px;
+    gap:16px;
+  }
+
+  .mock-card,
+  .problem-card{
+    padding:18px;
+    border-radius:17px;
+  }
+
+  .mock-card h2{
+    margin:10px 0 12px;
+  }
+
+  .mock-actions{
+    margin-top:18px;
+  }
+
+  .problem-topic{
+    margin:10px 0 12px;
+  }
+
+  .problem-body{
+    gap:16px;
+  }
+
+  .trophy-area{
+    min-height:176px;
+    margin-top:8px;
+  }
+}
+
+@media (max-width:400px){
+
+  .practice-section{
+    padding:12px 14px;
+    gap:12px;
+  }
+}

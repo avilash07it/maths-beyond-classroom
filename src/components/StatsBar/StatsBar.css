@@ -324,3 +324,40 @@
   }
 
 }
+
+/* Mobile homepage refinement */
+@media (max-width:768px){
+
+  .stats-bar{
+    margin:12px 22px 0;
+    padding:16px 18px;
+    gap:12px;
+    border-radius:15px;
+  }
+
+  .stat-item{
+    gap:12px;
+  }
+
+  .stat-icon{
+    width:42px;
+    height:42px;
+  }
+
+  .stat-item h3{
+    font-size:32px;
+    line-height:1;
+  }
+
+  .stat-item p{
+    font-size:14px;
+  }
+}
+
+@media (max-width:400px){
+
+  .stats-bar{
+    margin:10px 14px 0;
+    padding:14px;
+  }
+}

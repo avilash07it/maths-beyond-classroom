@@ -361,3 +361,43 @@
   }
 
 }
+
+/* Mobile homepage refinement */
+@media (max-width:768px){
+
+  .test-banner{
+    margin:14px 22px 22px;
+    padding:18px;
+    gap:16px;
+    border-radius:17px;
+  }
+
+  .banner-left{
+    gap:12px;
+  }
+
+  .banner-icon{
+    width:46px;
+    height:46px;
+  }
+
+  .banner-left h2{
+    font-size:26px;
+  }
+
+  .banner-left p{
+    line-height:1.5;
+  }
+
+  .banner-btn{
+    min-height:48px;
+  }
+}
+
+@media (max-width:400px){
+
+  .test-banner{
+    margin:12px 14px 20px;
+    padding:16px;
+  }
+}
