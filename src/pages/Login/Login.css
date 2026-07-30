@@ -601,6 +601,10 @@
     height:320px;
   }
 
+  .login-left{
+    display:none;
+}
+
 }
 
 

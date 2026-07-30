@@ -445,8 +445,9 @@
   }
 
   .register-left{
-    padding-top:0;
-  }
+    display:none;
+}
+  
 
   .register-brand-text h1{
     font-size:56px;
