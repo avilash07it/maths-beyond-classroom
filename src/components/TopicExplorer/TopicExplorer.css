@@ -574,41 +574,50 @@
   }
 
   .topic-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:12px;
-  }
+}
 
-  .topic-card{
-    min-height:182px;
-    padding:14px 16px 13px;
-    border-radius:17px;
-    justify-content:center;
-  }
+.topic-card{
+  height:205px;
+  min-height:205px;
 
-  .topic-icon{
-    width:48px;
-    height:48px;
-    margin-bottom:10px;
-    font-size:22px;
-  }
+  padding:16px 12px;
 
-  .topic-card h3{
-    font-size:20px;
-    line-height:1.15;
-  }
+  border-radius:18px;
 
-  .topic-card span{
-    margin-top:7px;
-    padding:5px 10px;
-    font-size:12px;
-  }
+  justify-content:flex-start;
+}
 
-  .topic-card p{
-    margin:8px 0 7px;
-    min-height:36px;
-    display:grid;
-    place-items:center;
-    font-size:14px;
-  }
+.topic-icon{
+  width:46px;
+  height:46px;
+
+  margin-bottom:8px;
+
+  font-size:20px;
+}
+
+.topic-card h3{
+  font-size:18px;
+  line-height:1.15;
+}
+
+.topic-card span{
+  margin-top:6px;
+
+  padding:4px 8px;
+
+  font-size:11px;
+}
+
+.topic-card p{
+  margin:8px 0;
+
+  min-height:auto;
+
+  font-size:13px;
+}
 
   .topic-progress{
     height:5px;
@@ -630,4 +639,11 @@
     min-height:170px;
     padding:13px 14px 12px;
   }
+}
+@media (max-width:768px){
+
+  .topic-grid .topic-card:nth-child(5){
+      display:none;
+  }
+
 }
