@@ -842,7 +842,7 @@ bottom: 115px;
 @media (max-width:768px){
 
   .hero-section{
-    padding:165px 22px 28px;
+    padding:210px 22px 28px;
     gap:18px;
     min-height:auto;
     align-items:start;
@@ -920,6 +920,15 @@ bottom: 115px;
     right:0;
     bottom:22px;
   }
+
+  .hero-left{
+    padding-top:0;
+    overflow:visible;
+}
+
+.hero-left h1{
+    overflow:visible;
+}
 }
 
 @keyframes floatVisualMobile{
