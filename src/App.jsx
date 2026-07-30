@@ -68,7 +68,7 @@ function App() {
           <Route path="/pro-plans" element={<ProtectedRoute><ProPlans /></ProtectedRoute>} />
           <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
           <Route path="/manual-payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
-          <Route path="/books" element={<ProtectedRoute><Books /></ProtectedRoute>} />
+          <Route path="/books" element={<Books />} />
           <Route path="/about" element={<About />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />

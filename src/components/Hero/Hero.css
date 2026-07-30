@@ -679,8 +679,8 @@ bottom: 115px;
 
   .hero-section{
     grid-template-columns:1fr;
-    padding:118px 24px 40px;
-    gap:28px;
+    padding:150px 24px 44px;
+    gap:32px;
   }
 
   .hero-left{
@@ -700,6 +700,9 @@ bottom: 115px;
     justify-content:center;
     flex-direction:column;
     align-items:center;
+    gap:14px;
+    width:100%;
+    margin-top:30px;
   }
 
   .primary-action,
@@ -709,13 +712,15 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:340px;
+    height:360px;
     transform:none;
+    width:100%;
+    overflow:visible;
   }
 
   .premium-math-visual{
-    width:330px;
-    height:330px;
+    width:min(360px, 82vw);
+    height:min(360px, 82vw);
     left:50%;
     right:auto;
     transform:translateX(-50%);
@@ -734,7 +739,8 @@ bottom: 115px;
 @media (max-width:576px){
 
   .hero-section{
-    padding:108px 18px 34px;
+    padding:190px 18px 38px;
+    gap:26px;
   }
 
   .exam-pill{
@@ -752,18 +758,20 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:280px;
+    height:330px;
   }
 
   .premium-math-visual{
-    width:260px;
-    height:260px;
+    width:min(300px, 78vw);
+    height:min(300px, 78vw);
   }
 
   .float-card{
-    min-width:135px;
-    padding:12px;
+    min-width:128px;
+    max-width:142px;
+    padding:11px;
     border-radius:14px;
+    font-size:24px;
   }
 
 }
@@ -775,7 +783,8 @@ bottom: 115px;
 @media (max-width:400px){
 
   .hero-section{
-    padding:100px 14px 28px;
+    padding:202px 14px 32px;
+    gap:22px;
   }
 
   .exam-pill{
@@ -804,12 +813,12 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:230px;
+    height:300px;
   }
 
   .premium-math-visual{
-    width:220px;
-    height:220px;
+    width:min(260px, 76vw);
+    height:min(260px, 76vw);
   }
 
   .float-card{
