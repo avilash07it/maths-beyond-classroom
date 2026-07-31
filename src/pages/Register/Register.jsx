@@ -2,7 +2,7 @@ import "./Register.css";
 import logo from "../../assets/mbc-logo-8.png";
 import { FcGoogle } from "react-icons/fc";
 import PageTransition from "../../components/PageTransition";
-
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../utils/api";
@@ -29,7 +29,9 @@ function Register() {
       setError("");
     }
   };
-
+ const handleUnavailableFeature = () => {
+  toast.success("This feature is not available in this version. It will be available soon.");
+};
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
@@ -149,10 +151,15 @@ function Register() {
           <span></span>
         </div>
 
-        <button className="google-btn" type="button">
-          <FcGoogle className="google-icon" />
-          Continue with Google
-        </button>
+       <button
+  className="google-btn"
+  type="button"
+  onClick={handleUnavailableFeature}
+>
+  <FcGoogle className="google-icon" />
+  Continue with Google
+</button>
+         
 
         <p className="login-link">
           Already have an account? <a href="/login">Login</a>

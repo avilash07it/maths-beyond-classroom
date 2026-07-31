@@ -769,7 +769,17 @@
   .remember-me{
     font-size:13px !important;
   }
+.forgot-password-link {
+  color: #5b6ee1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
 
+.forgot-password-link:hover {
+  color: #3949ab;
+  text-decoration: underline;
+}
   .login-card input{
     min-height:48px;
     padding:14px;

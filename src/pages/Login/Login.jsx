@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../../assets/mbc-logo-8.png";
 import PageTransition from "../../components/PageTransition";
-
+import toast from "react-hot-toast";
 import api from "../../utils/api";
+import { Link } from "react-router-dom";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -28,7 +30,11 @@ function Login() {
       setError("");
     }
   };
-
+  const handleUnavailableFeature = () => {
+  toast.success(
+    "This feature is not available in this version. It will be available soon."
+  );
+};
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
@@ -131,7 +137,17 @@ function Login() {
 
           <div className="password-row">
             <label>Password</label>
-            <a href="#">Forgot Password?</a>
+
+<Link
+  to="#"
+  className="forgot-password-link"
+  onClick={(e) => {
+    e.preventDefault();
+    handleUnavailableFeature();
+  }}
+>
+  Forgot Password?
+</Link>
           </div>
           <input
             type="password"
@@ -165,8 +181,12 @@ function Login() {
           <span></span>
         </div>
 
-        <button className="google-btn" type="button">
-  <FcGoogle className="google-icon" />
+<button
+  className="google-btn"
+  type="button"
+  onClick={handleUnavailableFeature}
+>
+<FcGoogle className="google-icon" />
   Continue with Google
 </button>
 
