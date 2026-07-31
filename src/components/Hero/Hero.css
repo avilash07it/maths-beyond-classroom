@@ -575,8 +575,10 @@ bottom: 115px;
   .hero-section{
     grid-template-columns:1fr;
     gap:40px;
-    padding:120px 34px 50px;
-  }
+
+    /* allow space for wrapped navbar */
+    padding:200px 34px 50px;
+}
 
   .hero-left{
     text-align:center;
@@ -944,8 +946,12 @@ bottom: 115px;
 @media (max-width:400px){
 
   .hero-section{
-    padding:104px 14px 24px;
-    gap:10px;
+    padding-top:200px;
+    padding-right:14px;
+    padding-bottom:24px;
+    padding-left:14px;
+
+    gap:14px;
   }
 
   .hero-right{
@@ -953,11 +959,18 @@ bottom: 115px;
   }
 
   .premium-math-visual{
-    width:min(258px, 74vw);
-    height:min(258px, 74vw);
+    width:min(258px,74vw);
+    height:min(258px,74vw);
   }
 
   .float-card{
     transform:scale(.68);
   }
+}
+@media (min-width:900px) and (max-width:992px){
+
+  .hero-section{
+      padding-top:190px;
+  }
+
 }
