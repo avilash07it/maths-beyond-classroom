@@ -93,7 +93,7 @@
   align-items:center;
 
   flex:1;
-
+ min-width: 0;
   gap:12px;
 
   margin:0 32px;
@@ -104,8 +104,9 @@
   align-items:center;
   gap:14px;
 
-  flex-shrink:0;
-}
+ flex-shrink:0;
+    margin-left:16px;
+  }
 
 .dashboard-links a {
   padding: 10px 13px;
@@ -156,178 +157,33 @@
   box-shadow: 0 8px 20px rgba(124, 58, 237, 0.15);
 }
 
-@media (max-width: 1180px) {
-  .dashboard-navbar {
-    height: auto;
-    min-height: 88px;
-    padding: 14px 24px;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .dashboard-links {
-     display:flex;
-  align-items:center;
-  justify-content:center;
-
-  flex:1;        
-  gap:12px;
-    order: 3;
-    width: 100%;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-  }
-
-  .dashboard-links::-webkit-scrollbar {
-    display: none;
-  }
-
-  .dashboard-links a {
-    flex: 0 0 auto;
-    padding: 9px 12px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 520px) {
-  .dashboard-navbar {
-    padding: 12px 16px;
-  }
-
-  .dashboard-logo {
-    gap: 10px;
-    min-width: 0;
-  }
-
-  .dashboard-logo img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .dashboard-logo h3 {
-    font-size: 19px;
-  }
-
-  .dashboard-logo span {
-    font-size: 9px;
-    letter-spacing: 0.7px;
-  }
-
-  .dashboard-streak {
-    font-size: 13px;
-  }
-}
-/* ==========================================================
-   <=1200px
-========================================================== */
-@media (max-width:1200px){
-
-  .dashboard-navbar{
-    min-height:88px;
-    height:auto;
-    padding:16px 36px;
-    gap:18px;
-    flex-wrap:wrap;
-  }
-
-  .dashboard-links{
-    order:3;
-    width:100%;
-    gap:12px;
-    overflow-x:auto;
-    scrollbar-width:none;
-    padding-bottom:4px;
-  }
-
-  .dashboard-links::-webkit-scrollbar{
-    display:none;
-  }
-
-  .dashboard-links a{
-    flex:0 0 auto;
-  }
-
-}
-
 
 /* ==========================================================
    <=992px
 ========================================================== */
-@media (max-width:992px){
+
+@media (max-width:1400px){
 
   .dashboard-navbar{
-    padding:16px 30px;
-  }
-
-  .dashboard-logo img{
-    width:56px;
-    height:56px;
-  }
-
-  .dashboard-logo h3{
-    font-size:22px;
-  }
-
-  .dashboard-links{
-    gap:10px;
-  }
-
-  .dashboard-links a{
-    padding:10px 14px;
-    font-size:14px;
-  }
-
+    .dashboard-links{
+  justify-content:flex-start;
 }
+    height:auto;
+    min-height:88px;
 
-
-/* ==========================================================
-   iPad Air (820 × 1180)
-========================================================== */
-@media (min-width:768px) and (max-width:900px){
-
-  .dashboard-navbar{
-    min-height:92px;
-    padding:18px 32px;
-  }
-
-  .dashboard-logo img{
-    width:58px;
-    height:58px;
-  }
-
-  .dashboard-logo h3{
-    font-size:24px;
-  }
-
-  .dashboard-logo span{
-    font-size:11px;
-  }
-
-  .dashboard-links{
-    gap:12px;
-  }
-
-  .dashboard-links a{
-    padding:10px 16px;
-    font-size:15px;
-    white-space:nowrap;
-  }
-
-}
-
-
-/* ==========================================================
-   <=768px
-========================================================== */
-@media (max-width:768px){
-
-  .dashboard-navbar{
     padding:14px 22px;
+
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+
+    row-gap:14px;
   }
 
   .dashboard-logo{
+    flex:1;
+    min-width:0;
     gap:12px;
   }
 
@@ -344,25 +200,76 @@
     font-size:10px;
   }
 
-  .dashboard-links{
+  .dashboard-user-actions{
+    order:2;
+    display:flex;
+    align-items:center;
     gap:10px;
+    margin-left:auto;
+  }
+
+  .dashboard-streak{
+    padding:8px 14px;
+    font-size:13px;
+  }
+
+  .dashboard-logout-btn{
+    height:40px;
+    padding:0 16px;
+    font-size:13px;
+  }
+
+  .dashboard-links{
+    order:3;
+    flex:0 0 100%;
+    width:100%;
+    margin:0;
+
+    display:flex;
+    overflow-x:auto;
+    gap:10px;
+    padding-bottom:4px;
+
+    scrollbar-width:none;
+  }
+
+  .dashboard-links::-webkit-scrollbar{
+    display:none;
   }
 
   .dashboard-links a{
+    flex:0 0 auto;
+    white-space:nowrap;
+
     padding:9px 13px;
     font-size:14px;
   }
-
 }
-
-
 /* ==========================================================
    <=576px
 ========================================================== */
 @media (max-width:576px){
 
   .dashboard-navbar{
+    height:auto;
+    min-height:88px;
+
     padding:12px 18px;
+
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+
+    row-gap:14px;
+  }
+
+  /* ---------- Top Row ---------- */
+
+  .dashboard-logo{
+    flex:1;
+    min-width:0;
+    gap:10px;
   }
 
   .dashboard-logo img{
@@ -379,30 +286,71 @@
     letter-spacing:.8px;
   }
 
+  .dashboard-user-actions{
+    order:2;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-left:auto;
+  }
+
+  .dashboard-streak{
+    padding:8px 14px;
+    font-size:13px;
+  }
+
+  .dashboard-logout-btn{
+    height:40px;
+    padding:0 16px;
+    font-size:13px;
+  }
+
+  /* ---------- Second Row ---------- */
+
   .dashboard-links{
-    gap:8px;
+
+    order:3;
+
+    flex:0 0 100%;
+    width:100%;
+
+    margin:0;
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:10px;
+
+    padding-bottom:4px;
+
+    scrollbar-width:none;
+  }
+
+  .dashboard-links::-webkit-scrollbar{
+    display:none;
   }
 
   .dashboard-links a{
+
+    flex:0 0 auto;
+
+    white-space:nowrap;
+
     padding:8px 12px;
+
     font-size:13px;
-    border-radius:10px;
   }
 
 }
 
 
-/* ==========================================================
-   <=400px
-========================================================== */
 @media (max-width:400px){
 
   .dashboard-navbar{
     padding:10px 14px;
-  }
-
-  .dashboard-logo{
-    gap:8px;
   }
 
   .dashboard-logo img{
@@ -416,15 +364,16 @@
 
   .dashboard-logo span{
     font-size:8px;
-    letter-spacing:.6px;
   }
 
-  .dashboard-links{
-    gap:8px;
+  .dashboard-streak{
+    font-size:12px;
+    padding:7px 12px;
   }
 
-  .dashboard-links a{
-    padding:8px 10px;
+  .dashboard-logout-btn{
+    height:38px;
+    padding:0 14px;
     font-size:12px;
   }
 
