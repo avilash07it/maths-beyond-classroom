@@ -25,27 +25,32 @@
     opacity: 0.2;
     z-index: 0;
   }
-  
-  .hero-section::after {
-    content: "";
-    position: absolute;
-    right: 195px;
-bottom: 115px;
-    width: 380px;
-    height: 95px;
-    border-radius: 50%;
-    border: 1px solid rgba(168, 85, 247, 0.35);
-    background: radial-gradient(
-      circle,
-      rgba(124, 58, 237, 0.12),
-      transparent 65%
+.premium-math-visual::after{
+    content:"";
+
+    position:absolute;
+
+      left:auto;
+    margin:auto;
+    bottom:35px;
+
+
+    width:70%;
+    height:80px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        ellipse,
+        rgba(124,58,237,.28),
+        transparent 70%
     );
-    box-shadow:
-      0 0 0 18px rgba(124, 58, 237, 0.06),
-      0 0 0 42px rgba(124, 58, 237, 0.03),
-      0 0 80px rgba(124, 58, 237, 0.25);
-    pointer-events: none;
-  }
+
+    filter:blur(18px);
+
+    z-index:-1;
+}
+
   
   .hero-left {
     position: relative;
@@ -126,22 +131,27 @@ bottom: 115px;
     border: 1px solid rgba(34, 211, 238, 0.22);
   }
   
-  .hero-right {
-    position: relative;
-    height: 520px;
-    z-index: 2;
-    transform: translateY(-28px);
-  }
-  .premium-math-visual {
-    position: absolute;
-    right: 30px;
-    top: -35px;
-    width: 570px;
-    height: 570px;
-    z-index: 1;
-    pointer-events: none;
-    animation: floatVisual 8s ease-in-out infinite;
-  }
+  .hero-right{
+    position:relative;
+    height:560px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:2;
+
+    transform:none;
+}
+ .premium-math-visual{
+    position:relative;
+
+    width:min(570px,100%);
+    aspect-ratio:1;
+
+    margin:auto;
+
+    animation:floatVisual 8s ease-in-out infinite;
+}
   
   .math-network-svg {
     width: 100%;
@@ -325,22 +335,20 @@ bottom: 115px;
     line-height: 1.5;
   }
   
-  .rank-card {
-    top: 105px;
-    left: 35px;
-  }
-  
-  .challenge-card {
-    top: 60px;
-    right: 18px;
-  }
-  
-  .streak-card {
-    right: 18px;
-    bottom: 118px;
-    z-index: 4;
-  }
-  
+.rank-card{
+    top:48%;
+    left:8%;
+}
+
+.challenge-card{
+    top:12%;
+    right:8%;
+}
+
+.streak-card{
+    bottom:10%;
+    right:10%;
+}
   .network-line {
     stroke-dasharray: 420;
     stroke-dashoffset: 420;
@@ -414,131 +422,10 @@ bottom: 115px;
   }
 }
 
-  @media (max-width: 900px) {
-    .hero-section {
-      grid-template-columns: 1fr;
-      padding: 118px 24px 40px;
-      gap: 24px;
-    }
-  
-    .hero-left h1 {
-      font-size: 46px;
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
 
-    .hero-left p {
-      font-size: 18px;
-      line-height: 1.7;
-    }
-  
-    .hero-right {
-      height: 340px;
-    }
-  
-    .float-card {
-      transform: scale(0.85);
-    }
-    .premium-math-visual {
-      width: 340px;
-      height: 340px;
-      right: 0;
-    }
 
-    .challenge-card,
-.streak-card {
-  min-width: 155px;
-}
-  }
 
-  @media (max-width: 520px) {
-    .hero-section {
-      min-height: 0;
-      padding: 152px 18px 30px;
-      gap: 16px;
-    }
 
-    .hero-left h1 {
-      font-size: 36px;
-      line-height: 1.12;
-      letter-spacing: 0;
-      margin-bottom: 18px;
-    }
-
-    .hero-left p {
-      font-size: 16px;
-      line-height: 1.62;
-    }
-
-    .exam-pill {
-      margin-bottom: 18px;
-      padding: 9px 12px;
-      font-size: 13px;
-    }
-
-    .hero-actions {
-      margin-top: 24px;
-      flex-direction: column;
-      gap: 12px;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    .primary-action,
-    .secondary-action {
-      width: 100%;
-      max-width: 100%;
-      padding: 14px 18px;
-    }
-
-    .hero-right {
-      height: 250px;
-      transform: none;
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    .premium-math-visual {
-      width: 250px;
-      height: 250px;
-      right: 50%;
-      top: 0;
-      transform: translateX(50%);
-    }
-
-    .float-card {
-      min-width: 132px;
-      max-width: 140px;
-      padding: 12px;
-      border-radius: 14px;
-      gap: 8px;
-    }
-
-    .float-card b {
-      font-size: 13px;
-    }
-
-    .float-card span {
-      font-size: 12px;
-    }
-
-    .rank-card {
-      left: 8px;
-      top: 82px;
-    }
-
-    .challenge-card {
-      right: 8px;
-      top: 30px;
-    }
-
-    .streak-card {
-      right: 8px;
-      bottom: 28px;
-    }
-  }
-  
 /* ==========================================================
    <=1200px
 ========================================================== */
@@ -575,8 +462,8 @@ bottom: 115px;
   .hero-section{
     grid-template-columns:1fr;
     gap:40px;
-    padding:120px 34px 50px;
-  }
+    padding:170px 34px 50px;
+}  
 
   .hero-left{
     text-align:center;
@@ -597,7 +484,7 @@ bottom: 115px;
   }
 
   .hero-right{
-    height:430px;
+    height:520px;
     transform:none;
   }
 
@@ -605,68 +492,6 @@ bottom: 115px;
     left:50%;
     right:auto;
     transform:translateX(-50%);
-  }
-
-}
-
-
-/* ==========================================================
-   iPad Air (820 × 1180)
-========================================================== */
-@media (min-width:768px) and (max-width:900px){
-
-  .hero-section{
-    grid-template-columns:1fr;
-    padding:128px 42px 60px;
-    gap:42px;
-  }
-
-  .hero-left{
-    text-align:center;
-  }
-
-  .exam-pill{
-    font-size:15px;
-    padding:12px 22px;
-  }
-
-  .hero-left h1{
-    font-size:56px;
-    line-height:1.08;
-  }
-
-  .hero-left p{
-    max-width:680px;
-    margin:auto;
-    font-size:18px;
-  }
-
-  .hero-actions{
-    justify-content:center;
-    gap:16px;
-  }
-
-  .primary-action,
-  .secondary-action{
-    min-height:56px;
-    padding:16px 28px;
-    font-size:16px;
-  }
-
-  .hero-right{
-    height:470px;
-  }
-
-  .premium-math-visual{
-    width:430px;
-    height:430px;
-    left:50%;
-    right:auto;
-    transform:translateX(-50%);
-  }
-
-  .float-card{
-    transform:scale(.95);
   }
 
 }
@@ -675,289 +500,109 @@ bottom: 115px;
 /* ==========================================================
    <=768px
 ========================================================== */
+
 @media (max-width:768px){
 
-  .hero-section{
-    grid-template-columns:1fr;
-    padding:150px 24px 44px;
-    gap:32px;
-  }
+.hero-section{
+    padding:180px 22px 40px;
+    gap:24px;
+}
 
-  .hero-left{
-    text-align:center;
-  }
-
-  .hero-left h1{
-    font-size:44px;
-  }
-
-  .hero-left p{
-    font-size:17px;
-    margin:auto;
-  }
-
-  .hero-actions{
-    justify-content:center;
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
+.exam-pill{
     width:100%;
-    margin-top:30px;
-  }
-
-  .primary-action,
-  .secondary-action{
-    width:100%;
-    max-width:420px;
-  }
-
-  .hero-right{
-    height:360px;
-    transform:none;
-    width:100%;
-    overflow:visible;
-  }
-
-  .premium-math-visual{
-    width:min(360px, 82vw);
-    height:min(360px, 82vw);
-    left:50%;
-    right:auto;
-    transform:translateX(-50%);
-  }
-
-  .float-card{
-    transform:scale(.82);
-  }
-
-}
-
-
-/* ==========================================================
-   <=576px
-========================================================== */
-@media (max-width:576px){
-
-  .hero-section{
-    padding:190px 18px 38px;
-    gap:26px;
-  }
-
-  .exam-pill{
-    padding:9px 14px;
-    font-size:13px;
-    line-height:1.5;
-  }
-
-  .hero-left h1{
-    font-size:36px;
-  }
-
-  .hero-left p{
-    font-size:16px;
-  }
-
-  .hero-right{
-    height:330px;
-  }
-
-  .premium-math-visual{
-    width:min(300px, 78vw);
-    height:min(300px, 78vw);
-  }
-
-  .float-card{
-    min-width:128px;
-    max-width:142px;
-    padding:11px;
-    border-radius:14px;
-    font-size:24px;
-  }
-
-}
-
-
-/* ==========================================================
-   <=400px
-========================================================== */
-@media (max-width:400px){
-
-  .hero-section{
-    padding:202px 14px 32px;
-    gap:22px;
-  }
-
-  .exam-pill{
-    width:100%;
-    font-size:11px;
-    padding:10px;
-  }
-
-  .hero-left h1{
-    font-size:30px;
-    line-height:1.15;
-  }
-
-  .hero-left p{
-    font-size:14px;
-  }
-
-  .hero-actions{
-    gap:10px;
-  }
-
-  .primary-action,
-  .secondary-action{
-    min-height:48px;
-    font-size:14px;
-  }
-
-  .hero-right{
-    height:300px;
-  }
-
-  .premium-math-visual{
-    width:min(260px, 76vw);
-    height:min(260px, 76vw);
-  }
-
-  .float-card{
-    transform:scale(.72);
-    min-width:120px;
-    padding:10px;
-  }
-
-  .rank-card{
-    left:-2px;
-  }
-
-  .challenge-card,
-  .streak-card{
-    right:-2px;
-  }
-
-}
-
-/* Mobile homepage refinement */
-@media (max-width:768px){
-
-  .hero-section{
-    padding:210px 22px 28px;
-    gap:18px;
-    min-height:auto;
-    align-items:start;
-}
-
-  .hero-left h1{
-    font-size:clamp(34px, 8.2vw, 42px);
-    line-height:1.1;
-    margin-bottom:14px;
-  }
-
-  .hero-left p{
-    max-width:34rem;
-    font-size:16px;
-    line-height:1.58;
-  }
-
-  .exam-pill{
-    margin-bottom:16px;
-  }
-
-  .hero-actions{
-    margin-top:18px;
-    gap:10px;
-}
-
-  .primary-action,
-  .secondary-action{
-    min-height:48px;
-  }
-
-  .hero-right{
-    height:285px;
-    margin-top:0;
-    overflow:visible;
-}
-
-.premium-math-visual{
-  width:min(285px,72vw);
-  height:min(285px,72vw);
-    top:0;
-    animation:floatVisualMobile 8s ease-in-out infinite;
-  }
-
-  .float-card{
-    min-width:124px;
-    max-width:138px;
-    padding:10px 11px;
-    gap:8px;
-    border-radius:14px;
-    transform:scale(.78);
-  }
-
-  .float-card b{
     font-size:12px;
-  }
-
-  .float-card span{
-    margin-top:2px;
-    font-size:11px;
-    line-height:1.35;
-  }
-
-  .rank-card{
-    left:0;
-    top:72px;
-  }
-
-  .challenge-card{
-    right:0;
-    top:24px;
-  }
-
-  .streak-card{
-    right:0;
-    bottom:22px;
-  }
-
-  .hero-left{
-    padding-top:0;
-    overflow:visible;
+    padding:10px;
 }
 
 .hero-left h1{
-    overflow:visible;
-}
-}
-
-@keyframes floatVisualMobile{
-  0%,100%{
-    transform:translateX(-50%) translateY(0);
-  }
-
-  50%{
-    transform:translateX(-50%) translateY(-8px);
-  }
+    font-size:42px;
+    line-height:1.1;
 }
 
-@media (max-width:400px){
+.hero-left p{
+    font-size:16px;
+}
+
+.hero-actions{
+    gap:14px;
+}
+
+.primary-action,
+.secondary-action{
+    min-height:48px;
+    font-size:15px;
+}
+
+.hero-right{
+    height:420px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.premium-math-visual{
+    width:min(340px,85vw);
+    height:min(340px,85vw);
+}
+
+.float-card{
+    transform:scale(.72);
+    transform-origin:center;
+}
+
+.rank-card{
+    left:2%;
+}
+
+.challenge-card{
+    right:2%;
+}
+
+.streak-card{
+    right:2%;
+}
+
+}
+/* ==========================================================
+   <=576px
+========================================================== */
+
+@media (max-width:576px){
+
+.hero-section{
+padding:180px 16px 36px;
+}
+
+.hero-left h1{
+    font-size:34px;
+}
+
+.hero-left p{
+    font-size:15px;
+    margin-top: 10px;
+}
+
+.premium-math-visual{
+    width:min(270px,78vw);
+    height:min(270px,78vw);
+}
+
+.float-card{
+    display:none;
+}
+
+
+}
+
+
+@media (max-width:380px){
 
   .hero-section{
-    padding:104px 14px 24px;
-    gap:10px;
+    padding-top:195px;
   }
-
   .hero-right{
-    height:266px;
-  }
-
-  .premium-math-visual{
-    width:min(258px, 74vw);
-    height:min(258px, 74vw);
-  }
-
-  .float-card{
-    transform:scale(.68);
-  }
+    height:320px;
 }
+
+}
+
+  
