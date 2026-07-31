@@ -269,7 +269,7 @@
   .dashboard-logo{
     flex:1;
     min-width:0;
-    gap:12px;
+    gap:9px;
     align-items:center;
   }
   
@@ -282,17 +282,17 @@
   .dashboard-logo h3{
     margin:0;
     font-size:20px;
-    line-height:0.95;
+    line-height:1;
     letter-spacing:-0.4px;
     font-weight:700;
   }
   
   .dashboard-logo span{
     display:block;
-    margin-top:2px;
+    margin-top:4px;
     font-size:10px;
     font-weight:800;
-    letter-spacing:1.2px;
+    letter-spacing:1.1px;
     line-height:1;
     white-space:nowrap;
   }
